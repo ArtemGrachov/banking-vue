@@ -50,9 +50,11 @@ const clickOutsideHandler = () => {
         arrow_drop_down
       </span>
     </component>
-    <div v-if="isActive" ref="floating" :style="floatingStyles" class="content">
-      <slot />
-    </div>
+    <transition name="dropdown">
+      <div v-if="isActive" ref="floating" :style="floatingStyles" class="content">
+        <slot />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -77,5 +79,15 @@ const clickOutsideHandler = () => {
 
 .arrow {
   @include dropdowns.arrow();
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  @include dropdowns.dropdown-open();
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  @include dropdowns.dropdown-closed();
 }
 </style>

@@ -47,3 +47,14 @@
   transform: rotate(180deg);
   color: blue;
 }
+
+@mixin dropdown-open {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 200ms, transform 200ms;
+}
+
+@mixin dropdown-closed {
+  transform: translateY(-10%);
+  opacity: 0;
+}
