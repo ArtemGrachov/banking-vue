@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FormField from '@/components/forms/FormField.vue';
+import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
 
 </script>
@@ -42,7 +43,15 @@ import Input from '@/components/inputs/Input.vue';
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus neque omnis sed aspernatur culpa doloremque explicabo qui, fugiat quas. Tempora facere et magni obcaecati animi natus nihil odio, porro consequuntur?
     </p>
-    <div>
+    <form v-on:submit.prevent>
+      <FormStatus>
+        Custom form status
+      </FormStatus>
+      <FormStatus status="error" />
+      <FormStatus status="success" />
+      <FormStatus status="success">
+        Custom success text
+      </FormStatus>
       <FormField :label-attrs="{ for: 'input-default' }">
         <template #label>Default</template>
         <Input id="input-default" type="text" />
@@ -55,7 +64,7 @@ import Input from '@/components/inputs/Input.vue';
         <template #label>Valid</template>
         <Input id="input-valid" type="text" class="valid" />
       </FormField>
-    </div>
+    </form>
   </div>
 </template>
 
