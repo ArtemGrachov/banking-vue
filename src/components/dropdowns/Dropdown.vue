@@ -75,6 +75,7 @@ const clickOutsideHandler = () => {
 
 .content {
   @include dropdowns.dropdown();
+  @include dropdowns.content();
 }
 
 .arrow {

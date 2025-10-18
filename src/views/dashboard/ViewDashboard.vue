@@ -4,7 +4,7 @@ import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Dropdown from '@/components/dropdowns/Dropdown.vue';
 import Input from '@/components/inputs/Input.vue';
-
+import Select from '@/components/inputs/Select.vue';
 </script>
 
 <template>
@@ -102,6 +102,11 @@ import Input from '@/components/inputs/Input.vue';
     </Dropdown>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati cupiditate porro asperiores accusantium, magnam animi impedit, atque laboriosam debitis ipsum est consectetur nostrum. Quidem accusamus corporis minus optio quo sit.
+    </p>
+    <Input type="text" />
+    <Select></Select>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem nobis nam illo, praesentium in reiciendis nostrum dignissimos voluptatem officiis alias at aliquam consequuntur tempora architecto sequi ea accusantium reprehenderit voluptas.
     </p>
   </div>
 </template>
