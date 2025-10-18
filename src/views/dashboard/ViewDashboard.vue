@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
@@ -43,6 +44,24 @@ import Input from '@/components/inputs/Input.vue';
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus neque omnis sed aspernatur culpa doloremque explicabo qui, fugiat quas. Tempora facere et magni obcaecati animi natus nihil odio, porro consequuntur?
     </p>
+    <Button as="a" href="#" variant="primary">
+      Link primary button
+    </Button>
+    <Button as="a" href="#">
+      Link default button
+    </Button>
+    <Button variant="primary">
+      Primary button
+    </Button>
+    <Button variant="primary" disabled>
+      Primary button (disabled)
+    </Button>
+    <Button>
+      Default button
+    </Button>
+    <Button disabled>
+      Default button (disabled)
+    </Button>
     <form v-on:submit.prevent>
       <FormStatus>
         Custom form status
@@ -64,6 +83,9 @@ import Input from '@/components/inputs/Input.vue';
         <template #label>Valid</template>
         <Input id="input-valid" type="text" class="valid" />
       </FormField>
+      <Button variant="primary">
+        Submit
+      </Button>
     </form>
   </div>
 </template>
