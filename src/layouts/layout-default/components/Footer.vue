@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      Designed and developed by <a href="https://github.com/ArtemGrachov">Artem Hrachov</a>, 2025
+      Designed and developed by <a href="https://github.com/ArtemGrachov" target="_blank">Artem Hrachov</a>, 2025
     </div>
   </footer>
 </template>
