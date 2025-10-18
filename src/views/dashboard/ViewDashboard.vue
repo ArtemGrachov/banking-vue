@@ -2,6 +2,7 @@
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
+import Dropdown from '@/components/dropdowns/Dropdown.vue';
 import Input from '@/components/inputs/Input.vue';
 
 </script>
@@ -93,6 +94,15 @@ import Input from '@/components/inputs/Input.vue';
         Submit
       </Button>
     </form>
+    <Dropdown>
+      <template #toggle>
+        Dropdown
+      </template>
+      Dropdown content
+    </Dropdown>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati cupiditate porro asperiores accusantium, magnam animi impedit, atque laboriosam debitis ipsum est consectetur nostrum. Quidem accusamus corporis minus optio quo sit.
+    </p>
   </div>
 </template>
 
