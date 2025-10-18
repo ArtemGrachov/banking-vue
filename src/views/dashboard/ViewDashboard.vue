@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Input from '@/components/inputs/Input.vue';
+
+</script>
 
 <template>
   <div class="page">
@@ -38,6 +41,20 @@
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus neque omnis sed aspernatur culpa doloremque explicabo qui, fugiat quas. Tempora facere et magni obcaecati animi natus nihil odio, porro consequuntur?
     </p>
+    <div>
+      <p>
+        Default
+      </p>
+      <Input type="text" />
+      <p>
+        Invalid
+      </p>
+      <Input type="text" class="invalid" />
+      <p>
+        Valid
+      </p>
+      <Input type="text" class="valid" />
+    </div>
   </div>
 </template>
 
