@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FormField from '@/components/forms/FormField.vue';
 import Input from '@/components/inputs/Input.vue';
 
 </script>
@@ -42,18 +43,18 @@ import Input from '@/components/inputs/Input.vue';
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus neque omnis sed aspernatur culpa doloremque explicabo qui, fugiat quas. Tempora facere et magni obcaecati animi natus nihil odio, porro consequuntur?
     </p>
     <div>
-      <p>
-        Default
-      </p>
-      <Input type="text" />
-      <p>
-        Invalid
-      </p>
-      <Input type="text" class="invalid" />
-      <p>
-        Valid
-      </p>
-      <Input type="text" class="valid" />
+      <FormField :label-attrs="{ for: 'input-default' }">
+        <template #label>Default</template>
+        <Input id="input-default" type="text" />
+      </FormField>
+      <FormField :label-attrs="{ for: 'input-invalid' }">
+        <template #label>Invalid</template>
+        <Input id="input-invalid" type="text" class="invalid" />
+      </FormField>
+      <FormField :label-attrs="{ for: 'input-valid' }">
+        <template #label>Valid</template>
+        <Input id="input-valid" type="text" class="valid" />
+      </FormField>
     </div>
   </div>
 </template>
