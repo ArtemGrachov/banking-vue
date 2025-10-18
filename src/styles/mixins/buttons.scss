@@ -1,0 +1,34 @@
+@mixin base {
+  cursor: pointer;
+  transition: 200ms;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin icon() {
+  @include base;
+
+  display: var(--button-display, inline-flex);
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  color: #9b0000;
+
+  &:hover {
+    color: red;
+  }
+
+  &:active {
+    color: #ff5500;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: #bb8b8b;
+  }
+}

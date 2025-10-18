@@ -1,3 +1,5 @@
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
 @mixin heading-base {
   color: #1c1c1c;
   font-weight: 500;
@@ -24,7 +26,10 @@
 @mixin h1 {
   @include heading-base();
   @include h1-mobile();
-  @include h1-desktop();
+
+  @include breakpoints.lg() {
+    @include h1-desktop();
+  }
 }
 
 @mixin h2-mobile {
@@ -40,7 +45,10 @@
 @mixin h2 {
   @include heading-base();
   @include h2-mobile();
-  @include h2-desktop();
+
+  @include breakpoints.lg() {
+    @include h2-desktop();
+  }
 }
 
 @mixin h3-mobile {
@@ -56,7 +64,10 @@
 @mixin h3 {
   @include heading-base();
   @include h3-mobile();
-  @include h3-desktop();
+
+  @include breakpoints.lg() {
+    @include h3-desktop();
+  }
 }
 
 @mixin h4-mobile {
@@ -72,7 +83,10 @@
 @mixin h4 {
   @include heading-base();
   @include h4-mobile();
-  @include h4-desktop();
+
+  @include breakpoints.lg() {
+    @include h4-desktop();
+  }
 }
 
 @mixin h5-mobile {
@@ -88,7 +102,10 @@
 @mixin h5 {
   @include heading-base();
   @include h5-mobile();
-  @include h5-desktop();
+
+  @include breakpoints.lg() {
+    @include h5-desktop();
+  }
 }
 
 @mixin h6-mobile {
@@ -104,5 +121,8 @@
 @mixin h6 {
   @include heading-base();
   @include h6-mobile();
-  @include h6-desktop();
+
+  @include breakpoints.lg() {
+    @include h6-desktop();
+  }
 }
