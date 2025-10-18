@@ -62,6 +62,12 @@ import Input from '@/components/inputs/Input.vue';
     <Button disabled>
       Default button (disabled)
     </Button>
+    <Button variant="primary" :is-processing="true">
+      Primary button processing
+    </Button>
+    <Button :is-processing="true">
+      Default button processing
+    </Button>
     <form v-on:submit.prevent>
       <FormStatus>
         Custom form status
