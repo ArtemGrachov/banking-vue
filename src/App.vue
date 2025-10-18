@@ -16,20 +16,20 @@
   <h3>
     Heading 3
   </h3>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse facere ullam reiciendis officia. Quam, mollitia repellat eos ex maiores perferendis iure porro eum neque blanditiis in necessitatibus ipsum doloribus molestiae.
+  <p class="secondary">
+    <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> Esse facere ullam reiciendis officia. Quam, mollitia repellat eos ex maiores perferendis iure porro eum neque blanditiis in necessitatibus ipsum doloribus molestiae.
   </p>
   <h4>
     Heading 4
   </h4>
-  <p>
+  <p class="secondary">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, veniam doloribus quibusdam sint in harum fuga repudiandae, quis facilis soluta reiciendis veritatis nostrum ipsam, recusandae assumenda delectus iusto tempore eum.
   </p>
   <h5>
     Heading 5
   </h5>
   <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur consequatur dolorem odio alias, magni asperiores praesentium aliquam numquam, doloremque deleniti necessitatibus quos enim modi voluptatibus molestias ducimus et quis ipsum.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. <a href="#">Consequuntur consequatur</a> dolorem odio alias, magni asperiores praesentium aliquam numquam, doloremque deleniti necessitatibus quos enim modi voluptatibus molestias ducimus et quis ipsum.
   </p>
   <h6>
     Heading 6
@@ -39,4 +39,10 @@
   </p>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@use '/src/styles/mixins/texts.scss' as texts;
+
+.secondary {
+  @include texts.secondary();
+}
+</style>

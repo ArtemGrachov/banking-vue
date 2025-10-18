@@ -1,11 +1,13 @@
 @use './mixins/headings.scss' as headings;
+@use './mixins/links.scss' as links;
+@use './mixins/texts.scss' as texts;
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400..600;1,400..600&display=swap');
 
 html {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
-  line-height: 1.4;
+  @include texts.primary();
 }
 
 h1 {
@@ -30,4 +32,8 @@ h5 {
 
 h6 {
   @include headings.h6();
+}
+
+a {
+  @include links.link();
 }
