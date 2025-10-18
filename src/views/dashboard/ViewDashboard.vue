@@ -1,10 +1,22 @@
+
 <script setup lang="ts">
+import { ref } from 'vue';
+
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Dropdown from '@/components/dropdowns/Dropdown.vue';
 import Input from '@/components/inputs/Input.vue';
 import Select from '@/components/inputs/Select.vue';
+
+const selectValue = ref(2);
+const selectOptions = [
+  { value: 1, label: 'Option 1' },
+  { value: 2, label: 'Option 2' },
+  { value: 3, label: 'Option 3' },
+  { value: 4, label: 'Option 4' },
+  { value: 5, label: 'Option 5' },
+];
 </script>
 
 <template>
@@ -104,7 +116,12 @@ import Select from '@/components/inputs/Select.vue';
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati cupiditate porro asperiores accusantium, magnam animi impedit, atque laboriosam debitis ipsum est consectetur nostrum. Quidem accusamus corporis minus optio quo sit.
     </p>
     <Input type="text" />
-    <Select></Select>
+    <Select
+      v-model="selectValue"
+      :options="selectOptions"
+      trackBy="value"
+      label="label"
+    ></Select>
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem nobis nam illo, praesentium in reiciendis nostrum dignissimos voluptatem officiis alias at aliquam consequuntur tempora architecto sequi ea accusantium reprehenderit voluptas.
     </p>

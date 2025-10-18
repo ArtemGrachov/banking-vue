@@ -1,16 +1,44 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import Multiselect from 'vue-multiselect';
 
-const value = ref(null);
-const options = ref(['list', 'of', 'options']);
+interface IProps {
+  options?: any[];
+  value?: any;
+}
+
+type Emits = {
+  (e: 'update', value: any): void;
+}
+
+const { value, options } = defineProps<IProps>();
+const emit = defineEmits<Emits>();
+
+const internalValue = ref(value);
+
+watch(internalValue, v => {
+  if (v === value) {
+    return;
+  }
+
+  emit('update', v);
+});
+
+watch(() => value, v => {
+  if (v === internalValue) {
+    return;
+  }
+
+  internalValue.value = v;
+});
 </script>
 
 <template>
   <multiselect
-    v-model="value"
-    :options="options"
+    v-model="internalValue"
+    :options="options ?? []"
     class="select"
+    v-bind="$attrs"
   ></multiselect>
 </template>
 
