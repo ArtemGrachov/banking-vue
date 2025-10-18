@@ -1,3 +1,5 @@
+@use './breakpoints.scss';
+
 @mixin base {
   cursor: pointer;
   transition: 200ms;
@@ -7,8 +9,79 @@
   }
 }
 
+@mixin button() {
+  @include base();
+
+  height: 42px;
+  width: 100%;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  gap: 8px;
+  padding: 0 24px;
+  background: black;
+  color: white;
+  font-size: 14px;
+
+  @include breakpoints.sm() {
+    width: auto;
+  }
+
+  &:hover {
+    background: #434343;
+  }
+
+  &:active {
+    background: red;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    background: #434343;
+
+    &:hover {
+      background: #434343;
+    }
+
+    &:active {
+      background: #434343;
+    }
+  }
+}
+
+@mixin button-primary {
+  background: darkred;
+
+  &:hover {
+    background: red;
+  }
+
+  &:active {
+    background: orange;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    background: #bb8b8b;
+
+    &:hover {
+      background: #bb8b8b;
+    }
+
+    &:active {
+      background: #bb8b8b;
+    }
+  }
+}
+
 @mixin icon() {
-  @include base;
+  @include base();
 
   display: var(--button-display, inline-flex);
   align-items: center;
@@ -28,7 +101,6 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
     color: #bb8b8b;
   }
 }
