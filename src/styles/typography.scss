@@ -1,0 +1,39 @@
+@use './mixins/headings.scss' as headings;
+@use './mixins/links.scss' as links;
+@use './mixins/texts.scss' as texts;
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400..600;1,400..600&display=swap');
+
+html {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  @include texts.primary();
+}
+
+h1 {
+  @include headings.h1();
+}
+
+h2 {
+  @include headings.h2();
+}
+
+h3 {
+  @include headings.h3();
+}
+
+h4 {
+  @include headings.h4();
+}
+
+h5 {
+  @include headings.h5();
+}
+
+h6 {
+  @include headings.h6();
+}
+
+a {
+  @include links.link();
+}

@@ -1,0 +1,14 @@
+@mixin link {
+  color: #9b0000;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: 200ms;
+
+  &:hover {
+    color: red;
+  }
+
+  &:active {
+    color: #ff5500;
+  }
+}
