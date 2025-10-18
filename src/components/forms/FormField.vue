@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { LabelHTMLAttributes } from 'vue';
+import FormFieldError from '@/components/forms/FormFieldError.vue';
 
 interface IProps {
   labelAttrs?: LabelHTMLAttributes;
@@ -15,6 +16,7 @@ const props = defineProps<IProps>();
       <slot name="label" />
     </label>
     <slot></slot>
+    <FormFieldError />
   </div>
 </template>
 
