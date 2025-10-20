@@ -11,6 +11,7 @@ import Input from '@/components/inputs/Input.vue';
 import Select from '@/components/inputs/Select.vue';
 
 const SelectModal = defineAsyncComponent(() => import('@/components/modals/DefaultModal.vue'));
+const ConfirmationModal = defineAsyncComponent(() => import('@/components/modals/ConfirmationModal.vue'));
 
 const selectValue = ref(2);
 const selectOptions = [
@@ -21,16 +22,25 @@ const selectOptions = [
   { value: 5, label: 'Option 5' },
 ];
 
-const { open, close } = useModal({
+const { open: openTestModal, close: closeTestModal } = useModal({
   component: SelectModal,
   attrs: {
-    onClose: () => close(),
+    onClose: () => closeTestModal(),
   },
 });
 
-const testModalHandler = () => {
-  open();
-}
+const { open: openConfirmationModal, close: closeConfirmationModal } = useModal({
+  component: ConfirmationModal,
+  attrs: {
+    onClose: (confirm) => {
+      console.log({ confirm });
+      closeConfirmationModal();
+    },
+  },
+  slots: {
+    default: 'Test content',
+  },
+});
 </script>
 
 <template>
@@ -139,8 +149,11 @@ const testModalHandler = () => {
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem nobis nam illo, praesentium in reiciendis nostrum dignissimos voluptatem officiis alias at aliquam consequuntur tempora architecto sequi ea accusantium reprehenderit voluptas.
     </p>
-    <Button @click="testModalHandler">
+    <Button @click="openTestModal">
       Test modal
+    </Button>
+    <Button @click="openConfirmationModal">
+      Confirmation modal
     </Button>
   </div>
 </template>
