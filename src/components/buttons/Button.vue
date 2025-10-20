@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import BaseButton, { type IProps as IBaseButtonProps } from '@/components/buttons/BaseButton.vue';
 import { computed, defineAsyncComponent } from 'vue';
 
 const IconLoader = defineAsyncComponent(() => import('@/components/loaders/IconLoader.vue'));
 
-interface IProps {
+interface IProps extends IBaseButtonProps {
   variant?: 'default' | 'primary';
   as?: 'button' | 'a';
   isProcessing?: boolean;
@@ -23,12 +24,12 @@ const hostClassNames = computed(() => {
 </script>
 
 <template>
-  <component :is="as" class="button" :class="hostClassNames">
+  <BaseButton :as="as" class="button" :class="hostClassNames">
     <slot />
     <span v-if="isProcessing" class="loader">
       <IconLoader class="loader-icon" />
     </span>
-  </component>
+  </BaseButton>
 </template>
 
 <style lang="scss" scoped>

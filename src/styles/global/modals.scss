@@ -1,0 +1,55 @@
+@use 'sass:map';
+@use '../mixins/modals.scss' as modals;
+@use '../mixins/breakpoints.scss' as breakpoints;
+
+.modal-window-enter-active,
+.modal-window-leave-active {
+  @include modals.modal-transition-open();
+}
+
+.modal-window-enter-from,
+.modal-window-leave-to {
+  @include modals.modal-transition-closed();
+}
+
+.fullscreen-modal-enter-active,
+.fullscreen-modal-leave-active {
+  @include modals.fullscreen-modal-transition-open();
+}
+
+.fullscreen-modal-enter-from,
+.fullscreen-modal-leave-to {
+  @include modals.fullscreen-modal-transition-closed();
+}
+
+.modal-overlay-enter-active,
+.modal-overlay-leave-active {
+  @include modals.overlay-transition-open();
+}
+
+.modal-overlay-enter-from,
+.modal-overlay-leave-to {
+  @include modals.overlay-transition-closed();
+}
+
+.default-modal-enter-active,
+.default-modal-leave-active {
+  @media (max-width: #{map.get(breakpoints.$breakpoints, 'small') - 1px}) {
+    @include modals.fullscreen-modal-transition-open();
+  }
+
+  @include breakpoints.sm() {
+    @include modals.modal-transition-open();
+  }
+}
+
+.default-modal-enter-from,
+.default-modal-leave-to {
+  @media (max-width: #{map.get(breakpoints.$breakpoints, 'small') - 1px}) {
+    @include modals.fullscreen-modal-transition-closed();
+  }
+
+  @include breakpoints.sm() {
+    @include modals.modal-transition-closed();
+  }
+}
