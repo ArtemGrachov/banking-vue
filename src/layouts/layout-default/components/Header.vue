@@ -1,11 +1,27 @@
+<script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
+import { useModal } from 'vue-final-modal';
+
+import IconButton from '@/components/buttons/IconButton.vue';
+
+const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNav.vue'));
+
+const { open: openMobileNav, close } = useModal({
+  component: MobileNav,
+  attrs: {
+    onClose: () => close(),
+  },
+});
+</script>
+
 <template>
   <header class="header">
     <div class="container">
-      <button type="button" class="menu-toggle">
+      <IconButton type="button" class="menu-toggle" @click="openMobileNav">
         <span class="material-symbols-outlined">
           more_vert
         </span>
-      </button>
+      </IconButton>
       <div class="title">
         Page title
       </div>
@@ -68,10 +84,6 @@
   @include breakpoints.lg() {
     display: none;
   }
-}
-
-.menu-toggle {
-  @include buttons.icon();
 }
 
 .title {
