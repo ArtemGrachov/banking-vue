@@ -53,7 +53,10 @@ $margin: 32px;
 }
 
 @mixin content {
-  --content-padding: 16px;
+  $content-padding: 16px;
+
+  --content-padding: #{$content-padding};
+  --content-padding-negative: #{-$content-padding};
 
   flex: 1 1 auto;
   overflow-y: auto;

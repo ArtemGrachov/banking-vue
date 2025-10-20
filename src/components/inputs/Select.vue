@@ -1,20 +1,58 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { computed, defineAsyncComponent, ref, watch } from 'vue';
+import { useModal } from 'vue-final-modal';
 import Multiselect from 'vue-multiselect';
+
+const SelectModal = defineAsyncComponent(() => import('@/components/inputs/SelectModal.vue'));
 
 interface IProps {
   options?: any[];
   value?: any;
+  trackBy?: string;
+  label?: string;
+  inputLabel?: string;
 }
 
 type Emits = {
   (e: 'update', value: any): void;
 }
 
-const { value, options } = defineProps<IProps>();
+const { value, options, trackBy, label, inputLabel } = defineProps<IProps>();
+
 const emit = defineEmits<Emits>();
 
 const internalValue = ref(value);
+
+const selectedLabel = computed(() => {
+  return customLabel(internalValue.value);
+});
+
+const internalOptions = computed(() => {
+  return options?.map(opt => trackBy ? opt[trackBy] : opt);
+});
+
+const customLabel = (opt: any) => {
+  const option = options?.find(o => (trackBy ? o[trackBy] : o) === opt);
+  return label ? option?.[label] : option;
+}
+
+const { open: openSelectModal, close } = useModal({
+  component: SelectModal,
+  attrs: {
+    onClose: () => close(),
+    onSelect: value => {
+      internalValue.value = value;
+      close();
+    },
+    value: internalValue,
+    options,
+    trackBy,
+    label,
+  },
+  slots: {
+    header: inputLabel,
+  },
+});
 
 watch(internalValue, v => {
   if (v === value) {
@@ -34,20 +72,28 @@ watch(() => value, v => {
 </script>
 
 <template>
-  <multiselect
+  <button
+    type="button"
+    class="select _mobile"
+    @click="openSelectModal"
+  >
+    {{ selectedLabel }}
+  </button>
+  <Multiselect
     v-model="internalValue"
-    :options="options ?? []"
-    class="select"
     v-bind="$attrs"
+    :options="internalOptions ?? []"
+    class="select _desktop"
+    :custom-label="customLabel"
   ></multiselect>
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles//mixins/dropdowns.scss' as dropdowns;
+@use '/src/styles/mixins/dropdowns.scss' as dropdowns;
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .select {
   position: relative;
-  display: block;
   width: 100%;
   height: 42px;
   border: 1px solid black;
@@ -59,9 +105,26 @@ watch(() => value, v => {
   color: #2a2a2a;
   display: flex;
   align-items: center;
+  background: white;
 
   &.multiselect--active {
     border-color: blue;
+  }
+
+  &._desktop {
+    display: none;
+
+    @include breakpoints.sm() {
+      display: block;
+    }
+  }
+
+  &._mobile {
+    padding: 0 16px;
+
+    @include breakpoints.sm() {
+      display: none;
+    }
   }
 
   :deep() {

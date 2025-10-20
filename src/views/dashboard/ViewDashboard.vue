@@ -151,10 +151,11 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
     </p>
     <Input type="text" />
     <Select
-      v-model="selectValue"
+      v-model:value="selectValue"
       :options="selectOptions"
       trackBy="value"
       label="label"
+      input-label="Test select"
     ></Select>
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem nobis nam illo, praesentium in reiciendis nostrum dignissimos voluptatem officiis alias at aliquam consequuntur tempora architecto sequi ea accusantium reprehenderit voluptas.
