@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { defineAsyncComponent, ref } from 'vue';
 import { useModal } from 'vue-final-modal';
@@ -12,6 +11,7 @@ import Select from '@/components/inputs/Select.vue';
 
 const SelectModal = defineAsyncComponent(() => import('@/components/modals/DefaultModal.vue'));
 const ConfirmationModal = defineAsyncComponent(() => import('@/components/modals/ConfirmationModal.vue'));
+const AlertModal = defineAsyncComponent(() => import('@/components/modals/AlertModal.vue'));
 
 const selectValue = ref(2);
 const selectOptions = [
@@ -39,6 +39,16 @@ const { open: openConfirmationModal, close: closeConfirmationModal } = useModal(
   },
   slots: {
     default: 'Test content',
+  },
+});
+
+const { open: openAlertModal, close: closeAlertModal } = useModal({
+  component: AlertModal,
+  attrs: {
+    onClose: () => closeAlertModal(),
+  },
+  slots: {
+    default: 'Test alert',
   },
 });
 </script>
@@ -154,6 +164,9 @@ const { open: openConfirmationModal, close: closeConfirmationModal } = useModal(
     </Button>
     <Button @click="openConfirmationModal">
       Confirmation modal
+    </Button>
+    <Button @click="openAlertModal">
+      Alert modal
     </Button>
   </div>
 </template>
