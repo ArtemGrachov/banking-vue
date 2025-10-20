@@ -11,7 +11,10 @@ const emit = defineEmits<Emits>();
 </script>
 
 <template>
-  <VueFinalModal>
+  <VueFinalModal
+    content-transition="fullscreen-modal"
+    :hide-overlay="true"
+  >
     <div class="fullscreen-modal">
       <div class="header">
         <slot name="header" />

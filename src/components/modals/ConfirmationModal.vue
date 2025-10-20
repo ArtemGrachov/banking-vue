@@ -12,7 +12,11 @@ const emit = defineEmits<Emits>();
 </script>
 
 <template>
-  <VueFinalModal :click-to-close="false">
+  <VueFinalModal
+    :click-to-close="false"
+    content-transition="modal-window"
+    overlay-transition="modal-overlay"
+  >
     <div class="confirmation-modal">
       <div class="content">
         <slot />

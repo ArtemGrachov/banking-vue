@@ -11,7 +11,10 @@ const emit = defineEmits<Emits>();
 </script>
 
 <template>
-  <VueFinalModal>
+  <VueFinalModal
+    content-transition="default-modal"
+    overlay-transition="modal-overlay"
+  >
     <div class="default-modal">
       <div class="header">
         <slot name="header" />

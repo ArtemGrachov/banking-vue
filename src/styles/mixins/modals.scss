@@ -59,3 +59,31 @@ $margin: 32px;
   overflow-y: auto;
   padding: var(--content-padding);
 }
+
+@mixin modal-transition-open {
+  transition: opacity 200ms, transform 200ms;
+  transform: scale(1) translateY(0);
+}
+
+@mixin modal-transition-closed {
+  transform: scale(0.8) translateY(-20%);
+  opacity: 0;
+}
+
+@mixin overlay-transition-open {
+  transition: opacity 200ms, transform 200ms;
+  opacity: 1;
+}
+
+@mixin overlay-transition-closed {
+  opacity: 0;
+}
+
+@mixin fullscreen-modal-transition-open {
+  transition: transform 200ms;
+  transform: translateX(0);
+}
+
+@mixin fullscreen-modal-transition-closed {
+  transform: translateX(-100%);
+}
