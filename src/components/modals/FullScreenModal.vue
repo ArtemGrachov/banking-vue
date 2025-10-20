@@ -29,39 +29,22 @@ const emit = defineEmits<Emits>();
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/modals.scss' as modals;
+
 .fullscreen-modal {
-  width: 100dvw;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: white;
+  @include modals.base();
+  @include modals.fullscreen();
 }
 
 .header {
-  --header-height: 74px;
-
-  height: var(--header-height);
-  box-shadow: 0 5px 16px 0 rgba(black, 0.1);
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 16px;
-  flex: 0 0 auto;
+  @include modals.header();
 }
 
 .close {
-  height: var(--header-height);
-  width:  var(--header-height);
-  margin-left: auto;
+  @include modals.close();
 }
 
 .content {
-  --content-padding: 16px;
-
-  flex: 1 1 auto;
-  overflow-y: auto;
-  padding: var(--content-padding);
+  @include modals.content();
 }
 </style>

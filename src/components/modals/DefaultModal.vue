@@ -30,39 +30,19 @@ const emit = defineEmits<Emits>();
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
-
-$margin: 32px;
+@use '/src/styles/mixins/modals.scss' as modals;
 
 .default-modal {
-  width: 100dvw;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: white;
-  
+  @include modals.base();
+  @include modals.fullscreen();
+
   @include breakpoints.sm() {
-    margin: $margin auto;
-    width: calc(100dvw - #{$margin * 2});
-    height: auto;
-    max-width: 500px;
-    max-height: calc(100dvh - #{$margin * 2});
-    box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    @include modals.default();
   }
 }
 
 .header {
-  --header-height: 74px;
-
-  height: var(--header-height);
-  box-shadow: 0 5px 16px 0 rgba(black, 0.1);
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 16px;
-  flex: 0 0 auto;
+  @include modals.header();
 
   @include breakpoints.sm() {
     border-top-left-radius: 4px;
@@ -71,16 +51,10 @@ $margin: 32px;
 }
 
 .close {
-  height: var(--header-height);
-  width:  var(--header-height);
-  margin-left: auto;
+  @include modals.close();
 }
 
 .content {
-  --content-padding: 16px;
-
-  flex: 1 1 auto;
-  overflow-y: auto;
-  padding: var(--content-padding);
+  @include modals.content();
 }
 </style>

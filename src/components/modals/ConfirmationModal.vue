@@ -39,21 +39,13 @@ const emit = defineEmits<Emits>();
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/mixins/modals.scss' as modals;
 
 $margin: 32px;
 
 .confirmation-modal {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: white;
-  margin: $margin auto;
-  width: calc(100dvw - #{$margin * 2});
-  max-width: 300px;
-  max-height: calc(100dvh - #{$margin * 2});
-  box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-  position: relative;
+  @include modals.base();
+  @include modals.small();
 }
 
 .content {
