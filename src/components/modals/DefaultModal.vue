@@ -12,7 +12,7 @@ const emit = defineEmits<Emits>();
 
 <template>
   <VueFinalModal>
-    <div class="fullscreen-modal">
+    <div class="default-modal">
       <div class="header">
         <slot name="header" />
         <IconButton class="close" @click="emit('close')">
@@ -29,13 +29,27 @@ const emit = defineEmits<Emits>();
 </template>
 
 <style lang="scss" scoped>
-.fullscreen-modal {
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
+$margin: 32px;
+
+.default-modal {
   width: 100dvw;
   height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background: white;
+  
+  @include breakpoints.sm() {
+    margin: $margin auto;
+    width: calc(100dvw - #{$margin * 2});
+    height: auto;
+    max-width: 500px;
+    max-height: calc(100dvh - #{$margin * 2});
+    box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+  }
 }
 
 .header {
@@ -49,6 +63,11 @@ const emit = defineEmits<Emits>();
   align-items: center;
   padding-left: 16px;
   flex: 0 0 auto;
+
+  @include breakpoints.sm() {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
 }
 
 .close {

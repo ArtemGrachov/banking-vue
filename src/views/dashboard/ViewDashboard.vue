@@ -1,5 +1,7 @@
+
 <script setup lang="ts">
-import { ref } from 'vue';
+import { defineAsyncComponent, ref } from 'vue';
+import { useModal } from 'vue-final-modal';
 
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
@@ -7,6 +9,8 @@ import FormStatus from '@/components/forms/FormStatus.vue';
 import Dropdown from '@/components/dropdowns/Dropdown.vue';
 import Input from '@/components/inputs/Input.vue';
 import Select from '@/components/inputs/Select.vue';
+
+const SelectModal = defineAsyncComponent(() => import('@/components/modals/DefaultModal.vue'));
 
 const selectValue = ref(2);
 const selectOptions = [
@@ -16,6 +20,17 @@ const selectOptions = [
   { value: 4, label: 'Option 4' },
   { value: 5, label: 'Option 5' },
 ];
+
+const { open, close } = useModal({
+  component: SelectModal,
+  attrs: {
+    onClose: () => close(),
+  },
+});
+
+const testModalHandler = () => {
+  open();
+}
 </script>
 
 <template>
@@ -124,6 +139,9 @@ const selectOptions = [
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem nobis nam illo, praesentium in reiciendis nostrum dignissimos voluptatem officiis alias at aliquam consequuntur tempora architecto sequi ea accusantium reprehenderit voluptas.
     </p>
+    <Button @click="testModalHandler">
+      Test modal
+    </Button>
   </div>
 </template>
 
