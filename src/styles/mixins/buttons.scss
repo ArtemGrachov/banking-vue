@@ -104,3 +104,31 @@
     color: #bb8b8b;
   }
 }
+
+@mixin text() {
+  @include base();
+
+  display: var(--button-display, block);
+  background: none;
+  border: none;
+  line-height: 1;
+  color: #9b0000;
+  text-align: inherit;
+
+  &:hover {
+    color: red;
+  }
+
+  &:active {
+    color: #ff5500;
+  }
+
+  &:disabled {
+    color: #bb8b8b;
+  }
+}
+
+@mixin text-active {
+  background: #9b0000;
+  color: white;
+}
