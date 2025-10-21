@@ -146,8 +146,10 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
       </Button>
     </form>
     <Dropdown>
-      <template #toggle>
-        Dropdown
+      <template #toggle="{ isActive, toggle }">
+        <button type="button" @click="toggle">
+          Dropdown [{{ isActive }}]
+        </button>
       </template>
       Dropdown content
     </Dropdown>
