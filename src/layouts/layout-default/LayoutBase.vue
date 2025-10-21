@@ -34,12 +34,14 @@ import Header from '@/layouts/layout-default/components/Header.vue';
 
 .container {
   @include layout.container();
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
 
   flex: 1 1 auto;
 
   @include breakpoints.lg() {
-    display: flex;
-    align-items: stretch;
+    flex-direction: row;
   }
 }
 

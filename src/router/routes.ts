@@ -15,7 +15,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.HOME,
     path: '',
-    component: defineAsyncComponent(() => import('@/views/dashboard/ViewDashboard.vue')),
+    component: () => import('@/views/dashboard/ViewDashboard.vue'),
   },
 ];
 

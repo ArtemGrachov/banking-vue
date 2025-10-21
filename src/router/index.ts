@@ -34,8 +34,8 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
           },
           {
             name: 'ERROR',
-            path: '/:pathMatch(.*)*',
-            component: defineAsyncComponent(() => import('@/views/error/ViewError.vue')),
+            path: ':pathMatch(.*)*',
+            component: () => import('@/views/error/ViewError.vue'),
           },
         ],
       },

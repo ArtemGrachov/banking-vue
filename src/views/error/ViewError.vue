@@ -1,6 +1,15 @@
+<script setup lang="ts">
+import Error from '@/components/other/Error.vue';
+
+</script>
+
 <template>
   <div class="page">
-    error test
+    <Error>
+      <template #title>
+        404
+      </template>
+    </Error>
   </div>
 </template>
 
