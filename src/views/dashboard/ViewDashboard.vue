@@ -59,6 +59,11 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
       Banking Demo App
     </h1>
     <p>
+      <strong>
+        Locale message {{ $t('test') }}
+      </strong>
+    </p>
+    <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Non nobis autem eum, illum enim debitis eligendi quia. Ullam nobis officiis excepturi vero? Harum temporibus culpa consectetur voluptatibus aut, explicabo et!
     </p>
     <h2>

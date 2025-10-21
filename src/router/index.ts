@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { I18n } from 'vue-i18n';
 
 import { DEFAULT_LOCALE, LOCALES } from '@/i18n/config';
+import { loadLocaleMessages } from '@/i18n/load-locale-messages';
 import { ROUTE_NAMES } from '@/router/routes';
 
 import LayoutDefault from '@/layouts/layout-default/LayoutDefault.vue';
@@ -38,9 +39,13 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
     ],
   });
 
-  router.beforeEach((to, from, next) => {
-    const locale = to.params.locale || DEFAULT_LOCALE;
-    i18n.global.locale = locale as string;
+  router.beforeEach(async (to, from, next) => {
+    const locale = (to.params.locale as string)|| DEFAULT_LOCALE;
+    i18n.global.locale = locale;
+
+    if (!i18n.global.availableLocales.includes(locale)) {
+      await loadLocaleMessages(i18n, locale)
+    }
 
     if (locale === DEFAULT_LOCALE && to.params.locale) {
       const redirect = {
