@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 
+import { ROUTE_NAMES } from '@/router/routes';
+
 import Button from '@/components/buttons/Button.vue';
+import { useGetRoute } from '@/composables/routing/get-route';
+
+const getRoute = useGetRoute();
 
 </script>
 
@@ -19,7 +24,7 @@ import Button from '@/components/buttons/Button.vue';
         {{ $t('error.subtitle') }}
       </template>
     </div>
-    <Button :as="RouterLink" :to="'/'">
+    <Button :as="RouterLink" :to="getRoute({ name: ROUTE_NAMES.HOME })">
       {{ $t('error.return') }}
     </Button>
   </div>
