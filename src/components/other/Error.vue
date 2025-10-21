@@ -10,20 +10,17 @@ import Button from '@/components/buttons/Button.vue';
     <span class="material-symbols-outlined icon">
       warning
     </span>
-    <div class="title">
+    <div v-if="$slots.title" class="title">
       <slot name="title" />
-      <template v-if="!$slots.title">
-        Error title
-      </template>
     </div>
     <div class="subtitle">
       <slot name="subtitle" />
       <template v-if="!$slots.subtitle">
-        Error subtitle
+        {{ $t('error.subtitle') }}
       </template>
     </div>
     <Button :as="RouterLink" :to="'/'">
-      Return to the home page
+      {{ $t('error.return') }}
     </Button>
   </div>
 </template>
