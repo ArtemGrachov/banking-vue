@@ -24,7 +24,7 @@ const getRoute = useGetRoute();
         {{ $t('error.subtitle') }}
       </template>
     </div>
-    <Button :as="RouterLink" :to="getRoute({ name: ROUTE_NAMES.HOME })">
+    <Button :as="RouterLink" :to="getRoute({ name: ROUTE_NAMES.DASHBOARD })">
       {{ $t('error.return') }}
     </Button>
   </div>

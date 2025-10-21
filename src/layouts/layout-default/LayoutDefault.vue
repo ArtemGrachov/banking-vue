@@ -1,6 +1,11 @@
+<script setup lang="ts">
+import NavMenu from '@/components/nav/NavMenu.vue';
+
+</script>
+
 <template>
   <aside class="sidebar">
-    @todo user navigation menu
+    <NavMenu />
   </aside>
   <router-view></router-view>
 </template>
@@ -15,6 +20,7 @@
     display: block;
     width: 320px;
     flex: 0 0 auto;
+    padding: 32px 0;
   }
 }
 </style>
