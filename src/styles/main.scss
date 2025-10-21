@@ -1,5 +1,6 @@
 @use './typography.scss';
 @use './global/modals.scss';
+@use './libs/vue-toast-notification.scss';
 
 *, *:before, *:after {
   box-sizing: border-box;
