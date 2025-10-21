@@ -27,6 +27,7 @@ const { open: openMobileNav, close } = useModal({
       </div>
       <span class="cell-placeholder"></span>
       <div class="switch">
+        locale: [{{ $i18n.locale }}]
         @todo language and theme switch
       </div>
     </div>
