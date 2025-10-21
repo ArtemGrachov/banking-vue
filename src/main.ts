@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createVfm } from 'vue-final-modal';
+import ToastPlugin from 'vue-toast-notification';
 
 import { setupI18n } from '@/i18n';
 import { setupRouter } from '@/router';
@@ -19,5 +20,6 @@ app.use(createPinia());
 app.use(i18n);
 app.use(router);
 app.use(createVfm());
+app.use(ToastPlugin);
 
 app.mount('#app');

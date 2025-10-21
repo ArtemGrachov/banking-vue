@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref } from 'vue';
 import { useModal } from 'vue-final-modal';
+import { useToast } from 'vue-toast-notification';
 
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
@@ -13,6 +14,8 @@ import DropdownArrow from '@/components/dropdowns/DropdownArrow.vue';
 const SelectModal = defineAsyncComponent(() => import('@/components/modals/DefaultModal.vue'));
 const ConfirmationModal = defineAsyncComponent(() => import('@/components/modals/ConfirmationModal.vue'));
 const AlertModal = defineAsyncComponent(() => import('@/components/modals/AlertModal.vue'));
+
+const $toast = useToast();
 
 const selectValue = ref(2);
 const selectOptions = [
@@ -52,6 +55,35 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
     default: 'Test alert',
   },
 });
+
+const toasts = ['success', 'error', 'warning', 'info', 'default'];
+
+const showToast = (toastType: string) => {
+  const message = 'Toast test';
+
+  switch (toastType) {
+    case 'default': {
+      $toast.default(message, { position: 'top-right' });
+      break;
+    }
+    case 'error': {
+      $toast.error(message, { position: 'top-right' });
+      break;
+    }
+    case 'info': {
+      $toast.info(message, { position: 'top-right' });
+      break;
+    }
+    case 'success': {
+      $toast.success(message, { position: 'top-right' });
+      break;
+    }
+    case 'warning': {
+      $toast.warning(message, { position: 'top-right' });
+      break;
+    }
+  }
+}
 </script>
 
 <template>
@@ -184,6 +216,13 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
     <Button @click="openAlertModal">
       Alert modal
     </Button>
+    <ul>
+      <li v-for="toast in toasts" :key="toast">
+        <Button type="button" @click="showToast(toast)">
+          Show toast {{ toast }}
+        </Button>
+      </li>
+    </ul>
   </div>
 </template>
 

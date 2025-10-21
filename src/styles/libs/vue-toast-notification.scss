@@ -1,0 +1,146 @@
+@use '../mixins//breakpoints.scss' as breakpoints;
+
+@keyframes fadeOut {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
+.v-toast--fade-out {
+  animation-name: fadeOut
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+.v-toast--fade-in-down {
+  animation-name: fadeInDown
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+.v-toast--fade-in-up {
+  animation-name: fadeInUp
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}
+
+.v-toast {
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 9999;
+  pointer-events: none;
+  padding: 0;
+  position: fixed !important;
+
+  @include breakpoints.sm() {
+    position: fixed;
+    padding: 16px 24px;
+  }
+}
+
+.v-toast__item {
+  display: inline-flex;
+  align-items: center;
+  animation-duration: 200ms;
+  margin: 8px;
+  box-shadow: 0 8px 20px -8px rgba(black, 0.4);
+  border-radius: 4px;
+  pointer-events: auto;
+  color: white;
+  min-height: 42px;
+  cursor: pointer;
+}
+
+.v-toast__item--success {
+  background-color: green
+}
+
+.v-toast__item--info {
+  background-color: blue;
+}
+
+.v-toast__item--warning {
+  background-color: yellow;
+  color: #000
+}
+
+.v-toast__item--error {
+  background-color: red;
+}
+
+.v-toast__item--default {
+  background-color: #434343;
+}
+
+.v-toast__item.v-toast__item--top,
+.v-toast__item.v-toast__item--bottom {
+  align-self: center
+}
+
+.v-toast__item.v-toast__item--top-right,
+.v-toast__item.v-toast__item--bottom-right {
+  align-self: flex-end
+}
+
+.v-toast__item.v-toast__item--top-left,
+.v-toast__item.v-toast__item--bottom-left {
+  align-self: flex-start
+}
+
+.v-toast__text {
+  margin: 0;
+  padding: .5em 1em;
+  word-break: break-word
+}
+
+.v-toast__icon {
+  display: none
+}
+
+.v-toast.v-toast--top {
+  flex-direction: column
+}
+
+.v-toast.v-toast--bottom {
+  flex-direction: column-reverse
+}
+
+.v-toast.v-toast--custom-parent {
+  position: absolute
+}
