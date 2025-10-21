@@ -7,7 +7,7 @@ const { as = 'button' } = defineProps<IProps>();
 </script>
 
 <template>
-  <component :is="as" class="button">
+  <component :is="as">
     <slot />
   </component>
 </template>
