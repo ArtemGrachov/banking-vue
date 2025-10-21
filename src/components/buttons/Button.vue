@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import BaseButton, { type IProps as IBaseButtonProps } from '@/components/buttons/BaseButton.vue';
 import { computed, defineAsyncComponent } from 'vue';
+import BaseButton, { type IProps as IBaseButtonProps } from '@/components/buttons/BaseButton.vue';
 
 const IconLoader = defineAsyncComponent(() => import('@/components/loaders/IconLoader.vue'));
 
 interface IProps extends IBaseButtonProps {
-  variant?: 'default' | 'primary';
+  variant?: 'default' | 'primary' | 'transparent';
   as?: 'button' | 'a';
   isProcessing?: boolean;
 }
@@ -15,8 +15,15 @@ const { variant, as = 'button', isProcessing } = defineProps<IProps>();
 const hostClassNames = computed(() => {
   const result: string[] = [];
 
-  if (variant === 'primary') {
-    result.push('_primary')
+  switch (variant) {
+    case 'primary': {
+      result.push('_primary');
+      break;
+    }
+    case 'transparent': {
+      result.push('_transparent');
+      break;
+    }
   }
 
   return result;
@@ -40,6 +47,10 @@ const hostClassNames = computed(() => {
 
   &._primary {
     @include buttons.button-primary();
+  }
+
+  &._transparent {
+    @include buttons.button-transparent();
   }
 }
 
