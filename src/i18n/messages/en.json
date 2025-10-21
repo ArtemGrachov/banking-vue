@@ -1,3 +1,7 @@
 {
-  "test": "EN message"
+  "test": "EN message",
+  "error": {
+    "subtitle": "An error occured",
+    "return": "Retrun to the home page"
+  }
 }

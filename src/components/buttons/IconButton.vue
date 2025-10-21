@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import BaseButton from '@/components/buttons/BaseButton.vue';
 import { defineAsyncComponent } from 'vue';
+import BaseButton, { type IProps as IBaseButtonProps } from '@/components/buttons/BaseButton.vue';
 
 const IconLoader = defineAsyncComponent(() => import('@/components/loaders/IconLoader.vue'));
 
-interface IProps {
-  as?: 'button' | 'a';
+interface IProps extends IBaseButtonProps {
   isProcessing?: boolean;
 }
 

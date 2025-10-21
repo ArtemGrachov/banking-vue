@@ -1,12 +1,13 @@
+import { defineAsyncComponent } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import type { I18n } from 'vue-i18n';
 
 import { DEFAULT_LOCALE, LOCALES } from '@/i18n/config';
 import { loadLocaleMessages } from '@/i18n/load-locale-messages';
-import { ROUTE_NAMES } from '@/router/routes';
+import { ROUTE_NAMES, ROUTES_MAP } from '@/router/routes';
 
 import LayoutDefault from '@/layouts/layout-default/LayoutDefault.vue';
-import ViewDashboard from '@/views/dashboard/ViewDashboard.vue';
+import LayoutBase from '@/layouts/layout-default/LayoutBase.vue';
 
 const PATH_LOCALE = LOCALES.join('|');
 
@@ -21,26 +22,28 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
       {
         path: `/:locale(${PATH_LOCALE})?`,
         name: 'root',
-        component: LayoutDefault,
+        component: LayoutBase,
         children: [
           {
             name: 'LayoutDefault',
+            component: LayoutDefault,
             path: '',
             children: [
-              {
-                name: ROUTE_NAMES.HOME,
-                path: '',
-                component: ViewDashboard,
-              }
+              ROUTES_MAP[ROUTE_NAMES.HOME]!,
             ],
           },
-        ]
-      }
+          {
+            name: 'ERROR',
+            path: ':pathMatch(.*)*',
+            component: () => import('@/views/error/ViewError.vue'),
+          },
+        ],
+      },
     ],
   });
 
   router.beforeEach(async (to, from, next) => {
-    const locale = (to.params.locale as string)|| DEFAULT_LOCALE;
+    const locale = (to.params.locale as string) || DEFAULT_LOCALE;
     i18n.global.locale = locale;
 
     if (!i18n.global.availableLocales.includes(locale)) {
