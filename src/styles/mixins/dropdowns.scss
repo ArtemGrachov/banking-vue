@@ -33,22 +33,27 @@
 }
 
 @mixin content {
-  padding: 8px 16px;
+  --content-padding-y: 8px;
+  --content-padding-negative-y: -8px;
+  --content-padding-x: 16px;
+  --content-padding-negative-x: -16px;
+
+  padding: var(--content-padding-y) var(--content-padding-x);
+  overflow: hidden;
 }
 
 @mixin arrow() {
   flex: 0 0 auto;
   transition: 200ms;
   font-size: 24px;
-  color: #2a2a2a;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 50%;
+  margin-top: -12px;
+  right: 4px;
 }
 
 @mixin arrow-active() {
   transform: rotate(180deg);
-  color: blue;
 }
 
 @mixin dropdown-open {
@@ -60,4 +65,29 @@
 @mixin dropdown-closed {
   transform: translateY(-10%);
   opacity: 0;
+}
+
+@mixin option-list {
+  list-style: none;
+  padding: 0;
+  margin:
+    var(--content-padding-negative-y, 0)
+    var(--content-padding-negative-x, 0);
+}
+
+@mixin option {
+  @include content();
+
+  background: none;
+  border: none;
+  transition: 200ms;
+  color: #2a2a2a;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    background: blue;
+    color: white;
+  }
 }

@@ -3,6 +3,7 @@ import { defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
 
 import IconButton from '@/components/buttons/IconButton.vue';
+import LanguageSwitch from '@/components/language/LanguageSwitch.vue';
 
 const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNav.vue'));
 
@@ -27,7 +28,8 @@ const { open: openMobileNav, close } = useModal({
       </div>
       <span class="cell-placeholder"></span>
       <div class="switch">
-        @todo language and theme switch
+        <LanguageSwitch />
+        @todo theme switch
       </div>
     </div>
   </header>

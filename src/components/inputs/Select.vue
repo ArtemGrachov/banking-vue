@@ -163,23 +163,11 @@ watch(() => value, v => {
     }
 
     .multiselect__content {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      @include dropdowns.option-list();
     }
 
     .multiselect__option {
-      @include dropdowns.content();
-
-      transition: 200ms;
-      color: #2a2a2a;
-      cursor: pointer;
-      display: block;
-
-      &:hover {
-        background: blue;
-        color: white;
-      }
+      @include dropdowns.option();
     }
 
     .multiselect-enter-active,

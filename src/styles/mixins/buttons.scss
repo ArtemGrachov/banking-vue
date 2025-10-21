@@ -26,6 +26,7 @@
   background: black;
   color: white;
   font-size: 14px;
+  position: relative;
 
   @include breakpoints.sm() {
     width: auto;
@@ -39,18 +40,11 @@
     background: red;
   }
 
-  &:disabled {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
     cursor: not-allowed;
-
     background: #434343;
-
-    &:hover {
-      background: #434343;
-    }
-
-    &:active {
-      background: #434343;
-    }
   }
 }
 
@@ -65,18 +59,33 @@
     background: orange;
   }
 
-  &:disabled {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
     cursor: not-allowed;
-
     background: #bb8b8b;
+  }
+}
 
-    &:hover {
-      background: #bb8b8b;
-    }
+@mixin button-transparent {
+  background: none;
+  color: darkred;
 
-    &:active {
-      background: #bb8b8b;
-    }
+  &:hover {
+    background: red;
+    color: white;
+  }
+
+  &:active {
+    background: orange;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    cursor: not-allowed;
+    background: none;
+    color: #bb8b8b;
   }
 }
 
