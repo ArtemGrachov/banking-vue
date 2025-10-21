@@ -8,6 +8,7 @@ import FormStatus from '@/components/forms/FormStatus.vue';
 import Dropdown from '@/components/dropdowns/Dropdown.vue';
 import Input from '@/components/inputs/Input.vue';
 import Select from '@/components/inputs/Select.vue';
+import DropdownArrow from '@/components/dropdowns/DropdownArrow.vue';
 
 const SelectModal = defineAsyncComponent(() => import('@/components/modals/DefaultModal.vue'));
 const ConfirmationModal = defineAsyncComponent(() => import('@/components/modals/ConfirmationModal.vue'));
@@ -120,6 +121,12 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
     <Button :is-processing="true">
       Default button processing
     </Button>
+    <Button variant="transparent">
+      Transparent button
+    </Button>
+    <Button variant="transparent" disabled>
+      Transparent button (disabled)
+    </Button>
     <form v-on:submit.prevent>
       <FormStatus>
         Custom form status
@@ -147,9 +154,10 @@ const { open: openAlertModal, close: closeAlertModal } = useModal({
     </form>
     <Dropdown>
       <template #toggle="{ isActive, toggle }">
-        <button type="button" @click="toggle">
+        <Button type="button" @click="toggle">
           Dropdown [{{ isActive }}]
-        </button>
+          <DropdownArrow :is-active="isActive" />
+        </Button>
       </template>
       Dropdown content
     </Dropdown>
