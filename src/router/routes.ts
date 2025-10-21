@@ -1,3 +1,6 @@
+import { defineAsyncComponent, type Component } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
+
 export const ROUTE_NAMES = {
   HOME: 'HOME',
 };
@@ -5,16 +8,18 @@ export const ROUTE_NAMES = {
 export interface IRouteItem {
   name: string;
   path: string;
+  component: Component | ReturnType<typeof defineAsyncComponent>;
 }
 
-export const ROUTES: IRouteItem[] = [
+export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.HOME,
-    path: '/',
+    path: '',
+    component: defineAsyncComponent(() => import('@/views/dashboard/ViewDashboard.vue')),
   },
 ];
 
-export const ROUTES_MAP = ROUTES.reduce((acc, curr) => {
-  acc[curr.name] = curr;
+export const ROUTES_MAP = ROUTES.reduce((acc, curr, index) => {
+  acc[curr.name! as string] = curr;
   return acc;
-}, {} as Record<string, IRouteItem>);
+}, {} as Record<string, RouteRecordRaw>);
