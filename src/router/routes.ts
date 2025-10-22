@@ -2,7 +2,12 @@ import { defineAsyncComponent, type Component } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 
 export const ROUTE_NAMES = {
-  HOME: 'HOME',
+  DASHBOARD: 'DASHBOARD',
+  MONEY_TRANSFER: 'MONEY_TRANSFER',
+  TRANSACTION_HISTORY: 'TRANSACTION_HISTORY',
+  CHARTS: 'CHARTS',
+  PROFILE: 'PROFILE',
+  SECURITY: 'SECURITY',
 };
 
 export interface IRouteItem {
@@ -11,11 +16,38 @@ export interface IRouteItem {
   component: Component | ReturnType<typeof defineAsyncComponent>;
 }
 
+const PLACEHOLDER_CMP = { template: '@todo' };
+
 export const ROUTES: RouteRecordRaw[] = [
   {
-    name: ROUTE_NAMES.HOME,
+    name: ROUTE_NAMES.DASHBOARD,
     path: '',
     component: () => import('@/views/dashboard/ViewDashboard.vue'),
+  },
+  {
+    name: ROUTE_NAMES.MONEY_TRANSFER,
+    path: 'money-transfer',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.TRANSACTION_HISTORY,
+    path: 'transaction-history',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.CHARTS,
+    path: 'charts',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.PROFILE,
+    path: 'profile',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.SECURITY,
+    path: 'security',
+    component: PLACEHOLDER_CMP,
   },
 ];
 

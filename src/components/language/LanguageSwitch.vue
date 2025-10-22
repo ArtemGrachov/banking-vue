@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LOCALES } from '@/i18n/config';
+import { LOCALE_EMOJI, LOCALES } from '@/i18n/config';
 
 import { useLanguageSwitch } from '@/composables/language/language-switch';
 
@@ -9,11 +9,11 @@ import DropdownArrow from '@/components/dropdowns/DropdownArrow.vue';
 import DropdownOption from '@/components/dropdowns/DropdownOption.vue';
 import DropdownOptionsList from '@/components/dropdowns/DropdownOptionsList.vue';
 
-const { switchLocale } = useLanguageSwitch();
+const { localeOptions, switchLocale } = useLanguageSwitch();
 </script>
 
 <template>
-  <Dropdown>
+  <Dropdown :options="{ placement: 'bottom-end' }">
     <template #toggle="{ isActive, toggle }">
       <Button
         type="button"
@@ -21,17 +21,18 @@ const { switchLocale } = useLanguageSwitch();
         class="language-switch"
         @click="toggle"
       >
-        {{ $i18n.locale }}
+        {{ LOCALE_EMOJI[$i18n.locale] }} {{ $i18n.locale }}
         <DropdownArrow :is-active="isActive" />
       </Button>
     </template>
     <DropdownOptionsList :slots="LOCALES">
-      <template v-for="locale in LOCALES" :key="locale" #[locale]>
+      <template v-for="locale in localeOptions" :key="locale" #[locale.localeCode]>
         <DropdownOption
           type="button"
-          @click="switchLocale(locale)"
+          class="option"
+          @click="switchLocale(locale.localeCode)"
         >
-          {{ locale }}
+          {{ locale.emoji }} {{ locale.label }}
         </DropdownOption>
       </template>
     </DropdownOptionsList>
@@ -43,5 +44,9 @@ const { switchLocale } = useLanguageSwitch();
 
 .language-switch {
   text-transform: uppercase;
+}
+
+.option {
+  white-space: nowrap;
 }
 </style>

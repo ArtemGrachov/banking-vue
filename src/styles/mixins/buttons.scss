@@ -15,11 +15,11 @@
   height: 42px;
   width: 100%;
   border: none;
-  display: inline-flex;
+  display: var(--button-display, inline-flex);
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-radius: 4px;
+  justify-content: var(--button-justify-content, center);
+  text-align: var(--button-text-align, center);
+  border-radius: var(--button-border-radius, 4px);
   text-decoration: none;
   gap: 8px;
   padding: 0 24px;
@@ -122,7 +122,6 @@
   border: none;
   line-height: 1;
   color: #9b0000;
-  text-align: inherit;
 
   &:hover {
     color: red;

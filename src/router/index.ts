@@ -1,4 +1,3 @@
-import { defineAsyncComponent } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router'
 import type { I18n } from 'vue-i18n';
 
@@ -29,7 +28,12 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
             component: LayoutDefault,
             path: '',
             children: [
-              ROUTES_MAP[ROUTE_NAMES.HOME]!,
+              ROUTES_MAP[ROUTE_NAMES.DASHBOARD]!,
+              ROUTES_MAP[ROUTE_NAMES.MONEY_TRANSFER]!,
+              ROUTES_MAP[ROUTE_NAMES.TRANSACTION_HISTORY]!,
+              ROUTES_MAP[ROUTE_NAMES.CHARTS]!,
+              ROUTES_MAP[ROUTE_NAMES.PROFILE]!,
+              ROUTES_MAP[ROUTE_NAMES.SECURITY]!,
             ],
           },
           {
