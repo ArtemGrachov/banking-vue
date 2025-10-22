@@ -34,7 +34,11 @@ $margin: 32px;
 }
 
 @mixin header {
+  $header-padding: 16px;
+
   --header-height: 74px;
+  --header-padding: #{$header-padding};
+  --header-padding-negative: #{-$header-padding};
 
   height: var(--header-height);
   box-shadow: 0 5px 16px 0 rgba(black, 0.1);
@@ -42,7 +46,7 @@ $margin: 32px;
   gap: 16px;
   justify-content: space-between;
   align-items: center;
-  padding-left: 16px;
+  padding-left: var(--header-padding, 16px);
   flex: 0 0 auto;
 }
 
