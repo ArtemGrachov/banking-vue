@@ -1,13 +1,16 @@
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
-import { DEFAULT_LOCALE } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALE_EMOJI, LOCALES } from '@/i18n/config';
 
 import { useLoadMessages } from '@/composables/language/load-messages';
+import { computed } from 'vue';
 
 export const useLanguageSwitch = () => {
   const route = useRoute();
   const router = useRouter();
   const loadMessages = useLoadMessages();
+  const { t } = useI18n();
 
   const switchLocale = async (locale: string) => {
     const newPath = {
@@ -30,7 +33,16 @@ export const useLanguageSwitch = () => {
     router.push(newPath);
   }
 
+  const localeOptions = LOCALES.map(localeCode => {
+    return {
+      localeCode,
+      emoji: LOCALE_EMOJI[localeCode],
+      label: t(`common_locales.${localeCode}`),
+    };
+  });
+
   return {
     switchLocale,
+    localeOptions,
   };
 }

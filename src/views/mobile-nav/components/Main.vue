@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { LOCALE_EMOJI } from '@/i18n/config';
+
 import { EMobileNavViews } from '../constants';
 
-import Button from '@/components/buttons/Button.vue';
 import { type Emits as FullScreenModalEmits } from '@/components/modals/FullScreenModal.vue';
+import Button from '@/components/buttons/Button.vue';
 import NavMenu from '@/components/nav/NavMenu.vue';
 
 type Emits = FullScreenModalEmits & {
@@ -24,7 +26,12 @@ const emit = defineEmits<Emits>();
       variant="transparent"
       @click="emit('view', EMobileNavViews.LANGUAGE_SWITCH)"
     >
-      Language switch
+      <span>
+        {{ $t('common_locales.change_language') }}
+      </span>
+      <span>
+        {{ LOCALE_EMOJI[$i18n.locale] }} {{ $t(`common_locales.${$i18n.locale}`) }} 
+      </span>
     </Button>
   </div>
 
@@ -35,5 +42,8 @@ const emit = defineEmits<Emits>();
   --button-border-radius: 0;
   --button-justify-content: flex-start;
   --button-text-align: left;
+
+  justify-content: space-between;
+  gap: 16px;
 }
 </style>

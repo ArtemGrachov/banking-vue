@@ -57,6 +57,7 @@ const currentViewComponent = computed(() => {
         v-if="currentViewComponent"
         :is="currentViewComponent"
         @view="viewHandler"
+        @return="viewHandler(EMobileNavViews.MAIN)"
       />
     </div>
   </FullScreenModal>

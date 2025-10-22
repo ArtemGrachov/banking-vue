@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { offset, useFloating } from '@floating-ui/vue';
+import { ref } from 'vue';
+import { offset, useFloating, type UseFloatingOptions } from '@floating-ui/vue';
 import { directive as vClickAway } from 'vue3-click-away';
+
+interface IProps {
+  options?: UseFloatingOptions;
+}
+
+const { options } = defineProps<IProps>()
 
 const reference = ref(null);
 const floating = ref(null);
@@ -10,6 +16,7 @@ const { floatingStyles } = useFloating(reference, floating, {
   transform: false,
   placement: 'bottom-start',
   middleware: [offset(8)],
+  ...(options ?? {}),
 });
 
 const isActive = ref(false);
