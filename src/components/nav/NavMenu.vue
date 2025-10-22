@@ -15,31 +15,37 @@ const links = [
     key: 'dashboard',
     label: t('nav.dashboard'),
     path: getRoute({ name: ROUTE_NAMES.DASHBOARD }),
+    icon: 'widgets',
   },
   {
     key: 'money_transfer',
     label: t('nav.money_transfer'),
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
+    icon: 'output',
   },
   {
     key: 'transaction_history',
     label: t('nav.transaction_history'),
     path: getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY }),
+    icon: 'list',
   },
   {
     key: 'charts',
     label: t('nav.charts'),
     path: getRoute({ name: ROUTE_NAMES.CHARTS }),
+    icon: 'clock_loader_10',
   },
   {
     key: 'profile',
     label: t('nav.profile'),
     path: getRoute({ name: ROUTE_NAMES.PROFILE }),
+    icon: 'account_circle',
   },
   {
     key: 'security',
     label: t('nav.security'),
     path: getRoute({ name: ROUTE_NAMES.SECURITY }),
+    icon: 'security',
   },
 ];
 
@@ -59,6 +65,9 @@ const links = [
           variant="transparent"
           class="link"
         >
+          <span class="material-symbols-outlined">
+            {{ link.icon }}
+          </span>
           {{ link.label }}
         </Button>
       </li>
@@ -76,6 +85,7 @@ const links = [
 .link {
   --button-justify-content: flex-start;
   --button-text-align: left;
+  --button-border-radius: 0;
   width: 100%;
 }
 </style>
