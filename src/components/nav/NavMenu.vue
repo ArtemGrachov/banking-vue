@@ -7,6 +7,12 @@ import { ROUTE_NAMES } from '@/router/routes';
 import Button from '@/components/buttons/Button.vue';
 import { useGetRoute } from '@/composables/routing/get-route';
 
+type Emits = {
+  (e: 'navigate'): void;
+}
+
+const emit = defineEmits<Emits>();
+
 const { t } = useI18n();
 const getRoute = useGetRoute();
 
@@ -64,6 +70,7 @@ const links = [
           :to="link.path"
           variant="transparent"
           class="link"
+          @click="emit('navigate')"
         >
           <span class="material-symbols-outlined">
             {{ link.icon }}
