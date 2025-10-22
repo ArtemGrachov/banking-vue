@@ -22,5 +22,16 @@
     "en": "English",
     "de": "Deutsch / German",
     "change_language": "Change language"
+  },
+  "form_common": {
+    "full_name": "Full name",
+    "email": "Email",
+    "phone_number": "Phone number",
+    "submit": "Submit"
+  },
+  "view_registration": {
+    "login_label": "Already have an account?",
+    "login_link": "Log in!",
+    "forgot_password": "Forgot password?"
   }
 }

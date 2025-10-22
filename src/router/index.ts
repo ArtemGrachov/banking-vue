@@ -36,6 +36,9 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.SECURITY]!,
             ],
           },
+          ROUTES_MAP[ROUTE_NAMES.REGISTRATION]!,
+          ROUTES_MAP[ROUTE_NAMES.LOGIN]!,
+          ROUTES_MAP[ROUTE_NAMES.FORGOT_PASSWORD]!,
           {
             name: 'ERROR',
             path: ':pathMatch(.*)*',

@@ -14,6 +14,9 @@ const props = defineProps<IProps>();
   <div class="form-field">
     <label v-if=$slots.label class="label" v-bind="props.labelAttrs">
       <slot name="label" />
+      <span class="required material-symbols-outlined">
+        asterisk
+      </span>
     </label>
     <slot></slot>
     <FormFieldError />
@@ -29,5 +32,10 @@ const props = defineProps<IProps>();
 
 .label {
   @include forms.field-label();
+}
+
+.required {
+  color: red;
+  font-size: 12px;
 }
 </style>
