@@ -1,23 +1,42 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import { useToast } from 'vue-toast-notification';
+import { useI18n } from 'vue-i18n';
 
-import FormRegistration from '@/components/forms/FormRegistration.vue';
-import { useGetRoute } from '@/composables/routing/get-route';
 import { ROUTE_NAMES } from '@/router/routes';
+
+import { useRegistration } from './composable/registration';
+import { useGetRoute } from '@/composables/routing/get-route';
+import FormRegistration from '@/components/forms/FormRegistration.vue';
 
 import type { IFormRegistration } from '@/types/forms/form-registration';
 
+const router = useRouter();
 const getRoute = useGetRoute();
+const { submit, submitStatus, statusMessage } = useRegistration();
+const toast = useToast();
+const { t } = useI18n();
 
-const submitHandler = (formValue: IFormRegistration) => {
-  console.log(formValue);
+const submitHandler = async (formValue: IFormRegistration) => {
+  try {
+    await submit(formValue);
+    router.push(getRoute({ name: ROUTE_NAMES.REGISTRATION_CONFIRMATION }));
+    toast.success(t('view_registration.success'), { position: 'top-right', pauseOnHover: true });
+  } catch (err) {
+    console.error(err);
+    toast.error(t('common_errors.generic'), { position: 'top-right', pauseOnHover: true });
+  }
 }
 </script>
 
 <template>
   <div class="page">
     <div class="container">
-      <FormRegistration @submit="submitHandler" />
+      <FormRegistration
+        :submit-status="submitStatus"
+        :status-message="statusMessage"
+        @submit="submitHandler"
+      />
       <div class="footer">
         <div class="login">
           {{ $t('view_registration.login_label') }}

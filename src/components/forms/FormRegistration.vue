@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import { minLength, required, email, helpers } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
+import { EStatus } from '@/constants/status';
 import { PHONE_MASK, REGEXP_PHONE } from '@/validation/phone';
 
 import Button from '@/components/buttons/Button.vue';
@@ -13,10 +14,16 @@ import InputMask from '@/components/inputs/InputMask.vue';
 
 import type { IFormRegistration } from '@/types/forms/form-registration';
 
+interface IProps {
+  submitStatus?: EStatus;
+  statusMessage?: string | null;
+}
+
 type Emits = {
   (e: 'submit', formValue: IFormRegistration): any;
 }
 
+const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
 const fieldFullName = ref('');
@@ -46,8 +53,12 @@ const v$ = useVuelidate(rules, {
   phone_number: fieldPhoneNumber,
 });
 
+const isProcessing = computed(() => {
+  return submitStatus === EStatus.PROCESSING;
+})
+
 const submitHandler = async () => {
-  if (!(await v$.value.$validate())) {
+  if (isProcessing.value || !(await v$.value.$validate())) {
     return;
   }
 
@@ -61,8 +72,8 @@ const submitHandler = async () => {
 
 <template>
   <form @submit.prevent="submitHandler">
-    <FormStatus status="error">
-      Custom error text
+    <FormStatus v-if="statusMessage" :status="submitStatus">
+      {{ statusMessage }}
     </FormStatus>
     <FormField
       :label-attrs="{ for: 'full_name' }"
@@ -76,6 +87,7 @@ const submitHandler = async () => {
           id="full_name"
           v-model="fieldFullName"
           :class="classNames"
+          :readonly="isProcessing"
           @blur="v$.full_name.$touch()"
         />
       </template>
@@ -92,6 +104,7 @@ const submitHandler = async () => {
           id="email"
           v-model="fieldEmail"
           :class="classNames"
+          :readonly="isProcessing"
           @blur="v$.email.$touch()"
         />
       </template>
@@ -109,6 +122,7 @@ const submitHandler = async () => {
           v-model="fieldPhoneNumber"
           :class="classNames"
           :mask-or-alias="PHONE_MASK"
+          :readonly="isProcessing"
           @blur="v$.phone_number.$touch()"
         />
       </template>
@@ -116,7 +130,7 @@ const submitHandler = async () => {
         {{ $t('common_validation.phone_hint') }}
       </template>
     </FormField>
-    <Button type="submit" variant="primary">
+    <Button type="submit" variant="primary" :is-processing="isProcessing">
       {{ $t('form_common.submit') }}
     </Button>
   </form>

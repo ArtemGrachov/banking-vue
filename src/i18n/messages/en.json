@@ -32,7 +32,8 @@
   "view_registration": {
     "login_label": "Already have an account?",
     "login_link": "Log in!",
-    "forgot_password": "Forgot password?"
+    "forgot_password": "Forgot password?",
+    "success": "Registered successfully"
   },
   "common_validation": {
     "required": "This field is required",
@@ -51,5 +52,8 @@
     "registration": "Registration",
     "login": "Login",
     "forgot_password": "Forgot Password"
+  },
+  "common_errors": {
+    "generic": "An error occured"
   }
 }
