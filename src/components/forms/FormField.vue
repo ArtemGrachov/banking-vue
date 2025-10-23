@@ -24,7 +24,7 @@ const showValid = computed(() => {
     return false;
   }
 
-  return input.$dirty && input.$valid;
+  return input.$dirty && !input.$invalid;
 });
 
 const classNames = computed(() => {
