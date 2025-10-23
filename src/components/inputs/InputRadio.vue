@@ -6,9 +6,11 @@ interface IProps {
   labelAttrs?: LabelHTMLAttributes;
   id?: string;
   name?: string;
+  value?: string;
 }
 
 defineProps<IProps>();
+const model = defineModel();
 </script>
 
 <template>
@@ -17,6 +19,8 @@ defineProps<IProps>();
     :name="name"
     type="radio"
     class="input"
+    :value="value"
+    v-model="model"
     v-bind="inputAttrs"
   />
   <label

@@ -69,5 +69,10 @@
     "reset_by": "Reset by",
     "reset_by_phone": "SMS code",
     "reset_by_email": "Email link"
+  },
+  "view_forgot_password": {
+    "success_sms": "Reset code was sent",
+    "success_email": "Reset link was sent",
+    "description_email": "The email with the reset password link was sent to your email. In case if you did not received the email check if your email address is written correctly and then press the \"Send again\" button"
   }
 }
