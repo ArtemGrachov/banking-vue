@@ -33,7 +33,7 @@ const rules = computed(() => ({
   },
   password: {
     required,
-  }
+  },
 }));
 
 const v$ = useVuelidate(rules, {
