@@ -27,6 +27,7 @@
     "full_name": "Full name",
     "email": "Email",
     "phone_number": "Phone number",
+    "password": "Password",
     "submit": "Submit"
   },
   "view_registration": {
@@ -55,5 +56,12 @@
   },
   "common_errors": {
     "generic": "An error occured"
+  },
+  "form_login": {
+    "login": "Email or phone number"
+  },
+  "view_login": {
+    "registration_link": "Don't have an account?",
+    "forgot_password": "Forgot password?"
   }
 }
