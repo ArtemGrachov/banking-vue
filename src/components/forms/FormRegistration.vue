@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { minLength, required } from '@vuelidate/validators'
+import { minLength, required, email } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import Button from '@/components/buttons/Button.vue';
@@ -16,9 +16,9 @@ type Emits = {
 
 const emits = defineEmits<Emits>();
 
-const fullName = ref('');
-const email = ref('');
-const phoneNumber = ref('');
+const fieldFullName = ref('');
+const fieldEmail = ref('');
+const fieldPhoneNumber = ref('');
 
 const rules = computed(() => ({
   full_name: {
@@ -27,7 +27,7 @@ const rules = computed(() => ({
   },
   email: {
     required,
-    // @TODO email format
+    email,
   },
   phone_number: {
     required,
@@ -36,9 +36,9 @@ const rules = computed(() => ({
 }));
 
 const v$ = useVuelidate(rules, {
-  full_name: fullName,
-  email,
-  phone_number: phoneNumber,
+  full_name: fieldFullName,
+  email: fieldEmail,
+  phone_number: fieldPhoneNumber,
 });
 
 const submitHandler = () => {
@@ -49,9 +49,9 @@ const submitHandler = () => {
   }
 
   emits('submit', {
-    full_name: fullName.value,
-    email: email.value,
-    phone_number: phoneNumber.value,
+    full_name: fieldFullName.value,
+    email: fieldEmail.value,
+    phone_number: fieldPhoneNumber.value,
   });
 }
 </script>
@@ -71,7 +71,7 @@ const submitHandler = () => {
       <template #default="{ classNames }">
         <Input
           id="full_name"
-          v-model="fullName"
+          v-model="fieldFullName"
           :class="classNames"
           @blur="v$.full_name.$touch()"
         />
@@ -87,7 +87,7 @@ const submitHandler = () => {
       <template #default="{ classNames }">
         <Input
           id="email"
-          v-model="email"
+          v-model="fieldEmail"
           :class="classNames"
           @blur="v$.email.$touch()"
         />
@@ -103,7 +103,7 @@ const submitHandler = () => {
       <template #default="{ classNames }">
         <Input
           id="phone_number"
-          v-model="phoneNumber"
+          v-model="fieldPhoneNumber"
           :class="classNames"
           @blur="v$.phone_number.$touch()"
         />

@@ -20,6 +20,10 @@ export const useValidationMessages = (input?: Validation<any, any> | Record<stri
       result.push(t('common_validation.min_length', { min: input.minLength.$params.min }));
     }
 
+    if (input.email?.$invalid) {
+      result.push(t('common_validation.email'));
+    }
+
     return result;
   });
 
