@@ -1,33 +1,113 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue';
+import { minLength, required } from '@vuelidate/validators'
+import useVuelidate from '@vuelidate/core';
+
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
 
+import type { IFormRegistration } from '@/types/forms/form-registration';
+
+type Emits = {
+  (e: 'submit', formValue: IFormRegistration): any;
+}
+
+const emits = defineEmits<Emits>();
+
+const fullName = ref('');
+const email = ref('');
+const phoneNumber = ref('');
+
+const rules = computed(() => ({
+  full_name: {
+    required,
+    minLength: minLength(3),
+  },
+  email: {
+    required,
+    // @TODO email format
+  },
+  phone_number: {
+    required,
+    // @TODO phone number format
+  },
+}));
+
+const v$ = useVuelidate(rules, {
+  full_name: fullName,
+  email,
+  phone_number: phoneNumber,
+});
+
+const submitHandler = () => {
+  v$.value.$touch();
+
+  if (v$.value.$invalid) {
+    return;
+  }
+
+  emits('submit', {
+    full_name: fullName.value,
+    email: email.value,
+    phone_number: phoneNumber.value,
+  });
+}
 </script>
 
 <template>
-  <form @submit.prevent>
+  <form @submit.prevent="submitHandler">
     <FormStatus status="error">
       Custom error text
     </FormStatus>
-    <FormField :label-attrs="{ for: 'full_name' }">
+    <FormField
+      :label-attrs="{ for: 'full_name' }"
+      :input="v$.full_name"
+    >
       <template #label>
         {{ $t('form_common.full_name') }}
       </template>
-      <Input id="full_name" />
+      <template #default="{ classNames }">
+        <Input
+          id="full_name"
+          v-model="fullName"
+          :class="classNames"
+          @blur="v$.full_name.$touch()"
+        />
+      </template>
     </FormField>
-    <FormField :label-attrs="{ for: 'email' }">
+    <FormField
+      :label-attrs="{ for: 'email' }"
+      :input="v$.email"
+    >
       <template #label>
         {{ $t('form_common.email') }}
       </template>
-      <Input id="email" />
+      <template #default="{ classNames }">
+        <Input
+          id="email"
+          v-model="email"
+          :class="classNames"
+          @blur="v$.email.$touch()"
+        />
+      </template>
     </FormField>
-    <FormField :label-attrs="{ for: 'phone_number' }">
+    <FormField
+      :label-attrs="{ for: 'phone_number' }"
+      :input="v$.phone_number"
+    >
       <template #label>
         {{ $t('form_common.phone_number') }}
       </template>
-      <Input id="phone_number" />
+      <template #default="{ classNames }">
+        <Input
+          id="phone_number"
+          v-model="phoneNumber"
+          :class="classNames"
+          @blur="v$.phone_number.$touch()"
+        />
+      </template>
     </FormField>
     <Button type="submit" variant="primary">
       {{ $t('form_common.submit') }}

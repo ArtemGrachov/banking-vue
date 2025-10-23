@@ -33,5 +33,11 @@
     "login_label": "Already have an account?",
     "login_link": "Log in!",
     "forgot_password": "Forgot password?"
+  },
+  "common_validation": {
+    "required": "This field is required",
+    "email": "This field does not match email format",
+    "phone": "This field does not match phone format",
+    "min_length": "This field must contain at least {min} symbols"
   }
 }

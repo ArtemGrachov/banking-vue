@@ -5,14 +5,19 @@ import FormRegistration from '@/components/forms/FormRegistration.vue';
 import { useGetRoute } from '@/composables/routing/get-route';
 import { ROUTE_NAMES } from '@/router/routes';
 
+import type { IFormRegistration } from '@/types/forms/form-registration';
+
 const getRoute = useGetRoute();
 
+const submitHandler = (formValue: IFormRegistration) => {
+  console.log(formValue);
+}
 </script>
 
 <template>
   <div class="page">
     <div class="container">
-      <FormRegistration />
+      <FormRegistration @submit="submitHandler" />
       <div class="footer">
         <div class="login">
           {{ $t('view_registration.login_label') }}

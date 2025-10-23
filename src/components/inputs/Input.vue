@@ -1,5 +1,14 @@
+<script lang="ts" setup>
+const model = defineModel();
+</script>
+
 <template>
-  <input type="text" class="input">
+  <input
+    type="text"
+    class="input"
+    v-bind="$attrs"
+    v-model="model"
+  />
 </template>
 
 <style lang="scss" scoped>

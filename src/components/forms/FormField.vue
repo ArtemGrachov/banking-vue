@@ -1,25 +1,50 @@
 <script lang="ts" setup>
-import type { LabelHTMLAttributes } from 'vue';
+import { computed, type LabelHTMLAttributes } from 'vue';
+import type { Validation } from '@vuelidate/core';
+
 import FormFieldError from '@/components/forms/FormFieldError.vue';
 
 interface IProps {
   labelAttrs?: LabelHTMLAttributes;
+  input?: Validation<any, any> | Record<string, any>;
 }
 
-const props = defineProps<IProps>();
+const { labelAttrs, input } = defineProps<IProps>();
 
+const showErrors = computed(() => {
+  if (!input) {
+    return false;
+  }
+
+  return input.$dirty && input.$invalid;
+});
+
+const showValid = computed(() => {
+  if (!input) {
+    return false;
+  }
+
+  return input.$dirty && input.$valid;
+});
+
+const classNames = computed(() => {
+  return {
+    _invalid: showErrors.value,
+    _valid: showValid.value,
+  };
+});
 </script>
 
 <template>
   <div class="form-field">
-    <label v-if=$slots.label class="label" v-bind="props.labelAttrs">
+    <label v-if=$slots.label class="label" v-bind="labelAttrs">
       <slot name="label" />
       <span class="required material-symbols-outlined">
         asterisk
       </span>
     </label>
-    <slot></slot>
-    <FormFieldError />
+    <slot :show-errors="showErrors" :show-valid="showValid" :class-names="classNames" />
+    <FormFieldError v-if="showErrors" :input="input" />
   </div>
 </template>
 
