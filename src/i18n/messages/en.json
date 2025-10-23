@@ -28,7 +28,8 @@
     "email": "Email",
     "phone_number": "Phone number",
     "password": "Password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "resend": "Send again"
   },
   "view_registration": {
     "login_label": "Already have an account?",
@@ -63,5 +64,10 @@
   "view_login": {
     "registration_link": "Don't have an account?",
     "forgot_password": "Forgot password?"
+  },
+  "form_forgot_password": {
+    "reset_by": "Reset by",
+    "reset_by_phone": "SMS code",
+    "reset_by_email": "Email link"
   }
 }
