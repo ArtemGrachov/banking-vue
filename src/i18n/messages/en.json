@@ -40,5 +40,16 @@
     "phone": "This field does not match phone format",
     "phone_hint": "Numbers only, 7-15 digits length",
     "min_length": "This field must contain at least {min} symbols"
+  },
+  "page_title": {
+    "dashboard": "Dashboard",
+    "money_transfer": "Money Transfer",
+    "transaction_history": "Transaction History",
+    "charts": "Charts",
+    "profile": "Profile",
+    "security": "Security",
+    "registration": "Registration",
+    "login": "Login",
+    "forgot_password": "Forgot Password"
   }
 }
