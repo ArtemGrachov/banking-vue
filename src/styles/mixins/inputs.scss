@@ -16,11 +16,11 @@
     border-color: blue;
   }
 
-  &.invalid {
+  &._invalid {
     border-color: red;
   }
 
-  &.valid {
+  &._valid {
     border-color: green;
   }
 }

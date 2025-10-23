@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { EStatus } from '@/constants/status';
 import { computed } from 'vue';
 
 const enum EFormStatus {
@@ -7,7 +8,7 @@ const enum EFormStatus {
 }
 
 interface IProps {
-  status?: string;
+  status?: string | EStatus;
 }
 
 const { status } = defineProps<IProps>();
@@ -16,10 +17,12 @@ const hostClassNames = computed(() => {
   const result: string[] = [];
 
   switch (status) {
+    case EStatus.SUCCESS:
     case EFormStatus.SUCCESS: {
       result.push('_success');
       break;
     }
+    case EStatus.ERROR:
     case EFormStatus.ERROR: {
       result.push('_error');
       break;

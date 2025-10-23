@@ -8,6 +8,10 @@ export const ROUTE_NAMES = {
   CHARTS: 'CHARTS',
   PROFILE: 'PROFILE',
   SECURITY: 'SECURITY',
+  REGISTRATION: 'REGISTRATION',
+  REGISTRATION_CONFIRMATION: 'REGISTRATION_CONFIRMATION',
+  LOGIN: 'LOGIN',
+  FORGOT_PASSWORD: 'FORGOT_PASSWORD',
 };
 
 export interface IRouteItem {
@@ -47,6 +51,26 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.SECURITY,
     path: 'security',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.LOGIN,
+    path: 'login',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.REGISTRATION,
+    path: 'registration',
+    component: () => import('@/views/registration/ViewRegistration.vue'),
+  },
+  {
+    name: ROUTE_NAMES.REGISTRATION_CONFIRMATION,
+    path: 'registration-confirmation',
+    component: () => import('@/views/confirmation/ViewConfirmation.vue'),
+  },
+  {
+    name: ROUTE_NAMES.FORGOT_PASSWORD,
+    path: 'forgot-password',
     component: PLACEHOLDER_CMP,
   },
 ];

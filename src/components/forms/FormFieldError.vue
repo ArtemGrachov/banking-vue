@@ -1,6 +1,19 @@
+<script setup lang="ts">
+import { useValidationMessages } from '@/composables/validation/validation-messages';
+import type { Validation } from '@vuelidate/core';
+
+interface IProps {
+  input?: Validation<any, any> | Record<string, any>;
+}
+
+const { input } = defineProps<IProps>();
+
+const messages = useValidationMessages(input);
+</script>
+
 <template>
-  <div class="error">
-    Error lorem ipsum dolor sit amet
+  <div v-if="messages.length" class="error">
+    {{ messages[0] }}
   </div>
 </template>
 

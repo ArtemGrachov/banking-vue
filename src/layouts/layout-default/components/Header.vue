@@ -1,11 +1,51 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
+import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 import IconButton from '@/components/buttons/IconButton.vue';
 import LanguageSwitch from '@/components/language/LanguageSwitch.vue';
+import { ROUTE_NAMES } from '@/router/routes';
 
 const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNav.vue'));
+
+const { t } = useI18n();
+const route = useRoute();
+
+const title = computed(() => {
+  switch (route.name) {
+    case ROUTE_NAMES.DASHBOARD: {
+      return t('page_title.dashboard');
+    }
+    case ROUTE_NAMES.MONEY_TRANSFER: {
+      return t('page_title.money_transfer');
+    }
+    case ROUTE_NAMES.TRANSACTION_HISTORY: {
+      return t('page_title.transaction_history');
+    }
+    case ROUTE_NAMES.CHARTS: {
+      return t('page_title.charts');
+    }
+    case ROUTE_NAMES.PROFILE: {
+      return t('page_title.profile');
+    }
+    case ROUTE_NAMES.SECURITY: {
+      return t('page_title.security');
+    }
+    case ROUTE_NAMES.REGISTRATION: {
+      return t('page_title.registration');
+    }
+    case ROUTE_NAMES.LOGIN: {
+      return t('page_title.login');
+    }
+    case ROUTE_NAMES.FORGOT_PASSWORD: {
+      return t('page_title.forgot_password');
+    }
+  }
+
+  return '';
+});
 
 const { open: openMobileNav, close } = useModal({
   component: MobileNav,
@@ -24,7 +64,7 @@ const { open: openMobileNav, close } = useModal({
         </span>
       </IconButton>
       <div class="title">
-        Page title
+        {{ title }}
       </div>
       <span class="cell-placeholder"></span>
       <div class="switch">
