@@ -56,7 +56,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.LOGIN,
     path: 'login',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/login/ViewLogin.vue'),
   },
   {
     name: ROUTE_NAMES.REGISTRATION,

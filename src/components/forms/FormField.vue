@@ -39,7 +39,7 @@ const classNames = computed(() => {
   <div class="form-field">
     <label v-if=$slots.label class="label" v-bind="labelAttrs">
       <slot name="label" />
-      <span class="required material-symbols-outlined">
+      <span v-if="input?.required" class="required material-symbols-outlined">
         asterisk
       </span>
     </label>
