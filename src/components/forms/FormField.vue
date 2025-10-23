@@ -44,12 +44,16 @@ const classNames = computed(() => {
       </span>
     </label>
     <slot :show-errors="showErrors" :show-valid="showValid" :class-names="classNames" />
+    <div v-if="$slots.hint" class="hint">
+      <slot name="hint" />
+    </div>
     <FormFieldError v-if="showErrors" :input="input" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/forms.scss' as forms;
+@use '/src/styles/mixins/texts.scss' as texts;
 
 .form-field {
   margin-bottom: 24px;
@@ -62,5 +66,11 @@ const classNames = computed(() => {
 .required {
   color: red;
   font-size: 12px;
+}
+
+.hint {
+  @include texts.secondary();
+
+  margin-top: 12px;
 }
 </style>

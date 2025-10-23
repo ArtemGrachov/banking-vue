@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { minLength, required, email } from '@vuelidate/validators'
+import { minLength, required, email, helpers } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
+
+import { PHONE_MASK, REGEXP_PHONE } from '@/validation/phone';
 
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
+import InputMask from '@/components/inputs/InputMask.vue';
 
 import type { IFormRegistration } from '@/types/forms/form-registration';
 
@@ -20,6 +23,8 @@ const fieldFullName = ref('');
 const fieldEmail = ref('');
 const fieldPhoneNumber = ref('');
 
+const phoneValidator = helpers.regex(REGEXP_PHONE);
+
 const rules = computed(() => ({
   full_name: {
     required,
@@ -31,6 +36,7 @@ const rules = computed(() => ({
   },
   phone_number: {
     required,
+    phone: phoneValidator,
     // @TODO phone number format
   },
 }));
@@ -101,12 +107,16 @@ const submitHandler = () => {
         {{ $t('form_common.phone_number') }}
       </template>
       <template #default="{ classNames }">
-        <Input
+        <InputMask
           id="phone_number"
           v-model="fieldPhoneNumber"
           :class="classNames"
+          :mask-or-alias="PHONE_MASK"
           @blur="v$.phone_number.$touch()"
         />
+      </template>
+      <template #hint>
+        {{ $t('common_validation.phone_hint') }}
       </template>
     </FormField>
     <Button type="submit" variant="primary">

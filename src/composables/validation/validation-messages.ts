@@ -24,6 +24,10 @@ export const useValidationMessages = (input?: Validation<any, any> | Record<stri
       result.push(t('common_validation.email'));
     }
 
+    if (input.phone?.$invalid) {
+      result.push(t('common_validation.phone'));
+    }
+
     return result;
   });
 
