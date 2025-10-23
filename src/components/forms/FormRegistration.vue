@@ -37,7 +37,6 @@ const rules = computed(() => ({
   phone_number: {
     required,
     phone: phoneValidator,
-    // @TODO phone number format
   },
 }));
 
@@ -47,10 +46,8 @@ const v$ = useVuelidate(rules, {
   phone_number: fieldPhoneNumber,
 });
 
-const submitHandler = () => {
-  v$.value.$touch();
-
-  if (v$.value.$invalid) {
+const submitHandler = async () => {
+  if (!(await v$.value.$validate())) {
     return;
   }
 
