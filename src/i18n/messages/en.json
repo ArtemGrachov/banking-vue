@@ -28,6 +28,7 @@
     "email": "Email",
     "phone_number": "Phone number",
     "password": "Password",
+    "confirmation_code": "Confirmation code",
     "submit": "Submit",
     "resend": "Send again",
     "resend_timer": "Send again ({time})"
@@ -43,7 +44,9 @@
     "email": "This field does not match email format",
     "phone": "This field does not match phone format",
     "phone_hint": "Numbers only, 7-15 digits length",
-    "min_length": "This field must contain at least {min} symbols"
+    "min_length": "This field must contain at least {min} symbols",
+    "numeric": "This field can contain only numbers",
+    "length": "This symbol must have {length} symbols"
   },
   "page_title": {
     "dashboard": "Dashboard",
@@ -75,5 +78,14 @@
     "success_sms": "Reset code was sent",
     "success_email": "Reset link was sent",
     "description_email": "The email with the reset password link was sent to your email. In case if you did not received the email check if your email address is written correctly and then press the \"Send again\" button"
+  },
+  "form_confirmation": {
+    "confirm_by": "Confirm by",
+    "confirm_by_email": "By email",
+    "confirm_by_phone": "By phone"
+  },
+  "confirmation": {
+    "hint_email": "The email with the confirmation link was sent to your email. In case if you did not received the email check if your email address is written correctly and then press the \"Send again\" button",
+    "hint_sms": "The SMS with the confirmation code was sent to your phone. In case if you did not received the SMS check if your phone number is written correctly and then press the \"Send again\" button"
   }
 }
