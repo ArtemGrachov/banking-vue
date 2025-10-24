@@ -12,6 +12,7 @@ export const ROUTE_NAMES = {
   REGISTRATION_CONFIRMATION: 'REGISTRATION_CONFIRMATION',
   LOGIN: 'LOGIN',
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
+  FORGOT_PASSWORD_CONFIRMATION: 'FORGOT_PASSWORD_CONFIRMATION',
 };
 
 export interface IRouteItem {
@@ -69,9 +70,14 @@ export const ROUTES: RouteRecordRaw[] = [
     component: () => import('@/views/confirmation/ViewConfirmation.vue'),
   },
   {
+    name: ROUTE_NAMES.FORGOT_PASSWORD_CONFIRMATION,
+    path: 'forgot-password-confirmation',
+    component: () => import('@/views/confirmation/ViewConfirmation.vue'),
+  },
+  {
     name: ROUTE_NAMES.FORGOT_PASSWORD,
     path: 'forgot-password',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/forgot-password/ViewForgotPassword.vue'),
   },
 ];
 

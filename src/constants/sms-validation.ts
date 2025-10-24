@@ -1,0 +1,1 @@
+export const SMS_VALIDATION_TIMEOUT_MS = 10 * 1000;
