@@ -29,7 +29,8 @@
     "phone_number": "Phone number",
     "password": "Password",
     "submit": "Submit",
-    "resend": "Send again"
+    "resend": "Send again",
+    "resend_timer": "Send again ({time})"
   },
   "view_registration": {
     "login_label": "Already have an account?",

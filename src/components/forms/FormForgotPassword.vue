@@ -2,8 +2,10 @@
 import { computed, ref } from 'vue';
 import useVuelidate from '@vuelidate/core';
 import { required, email, minLength, helpers, requiredIf } from '@vuelidate/validators';
+import { useI18n } from 'vue-i18n';
 
 import { EStatus } from '@/constants/status';
+import { EPasswordResetBy } from '@/constants/password-reset';
 import { PHONE_MASK, REGEXP_PHONE } from '@/validation/phone';
 
 import Button from '@/components/buttons/Button.vue';
@@ -15,24 +17,22 @@ import FormStatus from '@/components/forms/FormStatus.vue';
 
 import type { IFormForgotPassword } from '@/types/forms/form-forgot-password';
 
-const enum EResetBy {
-  PHONE = 'phone',
-  EMAIL = 'email',
-}
-
 interface IProps {
   submitStatus?: EStatus;
   statusMessage?: string | null;
+  blocked?: boolean;
+  countdown?: number;
 }
 
 type Emits = {
   (e: 'submit', formValue: IFormForgotPassword): any;
 }
 
-const { statusMessage, submitStatus } = defineProps<IProps>();
+const { t } = useI18n();
+const { statusMessage, submitStatus, blocked, countdown } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
-const fieldResetBy = ref(EResetBy.EMAIL);
+const fieldResetBy = ref(EPasswordResetBy.EMAIL);
 const fieldEmail = ref('');
 const fieldPhoneNumber = ref('');
 
@@ -44,11 +44,11 @@ const rules = computed(() => ({
     minLength: minLength(3),
   },
   email: {
-    required: requiredIf(() => fieldResetBy.value === EResetBy.EMAIL),
+    required: requiredIf(() => fieldResetBy.value === EPasswordResetBy.EMAIL),
     email,
   },
   phone_number: {
-    required: requiredIf(() => fieldResetBy.value === EResetBy.PHONE),
+    required: requiredIf(() => fieldResetBy.value === EPasswordResetBy.PHONE),
     phone: phoneValidator,
   },
 }));
@@ -63,8 +63,12 @@ const isProcessing = computed(() => {
   return submitStatus === EStatus.PROCESSING;
 });
 
+const isSubmitted = computed(() => {
+  return submitStatus != EStatus.INIT;
+});
+
 const submitHandler = async () => {
-  if (isProcessing.value || !(await v$.value.$validate())) {
+  if (blocked || isProcessing.value || !(await v$.value.$validate())) {
     return;
   }
 
@@ -74,6 +78,18 @@ const submitHandler = async () => {
     phone_number: fieldPhoneNumber.value,
   });
 }
+
+const submitLabel = computed(() => {
+  if (isSubmitted.value) {
+    if (countdown) {
+      return t('form_common.resend_timer', { time: countdown });
+    }
+
+    return t('form_common.resend');
+  }
+
+  return t('form_common.submit');
+})
 </script>
 
 <template>
@@ -86,7 +102,7 @@ const submitHandler = async () => {
         <InputRadio
           id="reset_by_email"
           name="reset_by"
-          :value="EResetBy.EMAIL"
+          :value="EPasswordResetBy.EMAIL"
           v-model="fieldResetBy"
         >
           {{ $t('form_forgot_password.reset_by_email') }}
@@ -94,7 +110,7 @@ const submitHandler = async () => {
         <InputRadio
           id="reset_by_phone"
           name="reset_by"
-          :value="EResetBy.PHONE"
+          :value="EPasswordResetBy.PHONE"
           v-model="fieldResetBy"
         >
           {{ $t('form_forgot_password.reset_by_phone') }}
@@ -102,7 +118,7 @@ const submitHandler = async () => {
       </div>
     </FormField>
     <FormField
-      v-if="fieldResetBy === EResetBy.EMAIL"
+      v-if="fieldResetBy === EPasswordResetBy.EMAIL"
       :label-attrs="{ for: 'email' }"
       :input="v$.email"
     >
@@ -120,7 +136,7 @@ const submitHandler = async () => {
       </template>
     </FormField>
     <FormField
-      v-if="fieldResetBy === EResetBy.PHONE"
+      v-if="fieldResetBy === EPasswordResetBy.PHONE"
       :label-attrs="{ for: 'phone_number' }"
       :input="v$.phone_number"
     >
@@ -141,8 +157,14 @@ const submitHandler = async () => {
         {{ $t('common_validation.phone_hint') }}
       </template>
     </FormField>
-    <Button type="submit" variant="primary" :is-processing="isProcessing">
-      {{ $t('form_common.submit') }}
+    <slot />
+    <Button
+      type="submit"
+      variant="primary"
+      :disabled="blocked"
+      :is-processing="isProcessing"
+    >
+      {{ submitLabel }}
     </Button>
     <FormStatus v-if="statusMessage" :status="submitStatus" class="status">
       {{ statusMessage }}
