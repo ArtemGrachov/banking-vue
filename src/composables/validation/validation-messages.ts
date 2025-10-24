@@ -28,6 +28,14 @@ export const useValidationMessages = (input?: Validation<any, any> | Record<stri
       result.push(t('common_validation.phone'));
     }
 
+    if (input.numeric?.$invalid) {
+      result.push(t('common_validation.numeric'));
+    }
+
+    if (input.length?.$invalid) {
+      result.push(t('common_validation.length', { length: input.length?.$params.length }));
+    }
+
     return result;
   });
 

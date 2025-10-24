@@ -44,7 +44,9 @@
     "email": "This field does not match email format",
     "phone": "This field does not match phone format",
     "phone_hint": "Numbers only, 7-15 digits length",
-    "min_length": "This field must contain at least {min} symbols"
+    "min_length": "This field must contain at least {min} symbols",
+    "numeric": "This field can contain only numbers",
+    "length": "This symbol must have {length} symbols"
   },
   "page_title": {
     "dashboard": "Dashboard",

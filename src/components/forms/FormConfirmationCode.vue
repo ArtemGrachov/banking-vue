@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { required } from '@vuelidate/validators'
+import { required, numeric, helpers } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import { EStatus } from '@/constants/status';
+import { SMS_CODE_LENGHT } from '@/constants/sms-validation';
 
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
@@ -11,6 +12,7 @@ import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
 
 import type { IFormConfirmationCode } from '@/types/forms/form-confirmation-code';
+import { useLengthValidator } from '@/composables/validation/length-validator';
 
 interface IProps {
   submitStatus?: EStatus;
@@ -23,13 +25,15 @@ type Emits = {
 
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
+const lengthValidator = useLengthValidator(SMS_CODE_LENGHT);
 
 const fieldCode = ref('');
-const fieldPassword = ref('');
 
 const rules = computed(() => ({
   code: {
     required,
+    length: lengthValidator,
+    numeric,
   },
 }));
 
