@@ -1,28 +1,23 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toast-notification';
 import { useI18n } from 'vue-i18n';
 
-import { EPasswordResetBy } from '@/constants/password-reset';
+import { EConfirmBy } from '@/constants/confirmation';
 import { SMS_VALIDATION_TIMEOUT_MS } from '@/constants/sms-validation';
 import { EStatus } from '@/constants/status';
-import { ROUTE_NAMES } from '@/router/routes';
 
 import { useForgotPassword } from './composable/forgot-password';
-import { useGetRoute } from '@/composables/routing/get-route';
 import FormForgotPassword from '@/components/forms/FormForgotPassword.vue';
 import CountdownProgress from '@/components/other/CountdownProgress.vue';
 
 import type { IFormForgotPassword } from '@/types/forms/form-forgot-password';
 
-const router = useRouter();
-const getRoute = useGetRoute();
 const { submit, submitStatus, statusMessage } = useForgotPassword();
 const toast = useToast();
 const { t } = useI18n();
 
-const resetBy = ref<EPasswordResetBy | null>(null);
+const resetBy = ref<EConfirmBy | null>(null);
 const successMessage = ref<string | null>(null);
 const submittedTimeout = ref<number | null>(null);
 const blocked = ref(false);
@@ -43,7 +38,7 @@ const submitHandler = async (formValue: IFormForgotPassword) => {
     await submit(formValue);
 
     switch (formValue.reset_by) {
-      case EPasswordResetBy.EMAIL: {
+      case EConfirmBy.EMAIL: {
         toast.success(t('view_forgot_password.success_email'));
         successMessage.value = t('view_forgot_password.description_email');
         submittedTimeout.value = SMS_VALIDATION_TIMEOUT_MS;
@@ -51,8 +46,7 @@ const submitHandler = async (formValue: IFormForgotPassword) => {
         blocked.value = true;
         break;
       }
-      case EPasswordResetBy.PHONE: {
-        router.push(getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD_CONFIRMATION }));
+      case EConfirmBy.PHONE: {
         toast.success(t('view_forgot_password.success_sms'));
         break;
       }

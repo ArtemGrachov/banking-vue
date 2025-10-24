@@ -5,7 +5,7 @@ import { required, email, minLength, helpers, requiredIf } from '@vuelidate/vali
 import { useI18n } from 'vue-i18n';
 
 import { EStatus } from '@/constants/status';
-import { EPasswordResetBy } from '@/constants/password-reset';
+import { EConfirmBy } from '@/constants/confirmation';
 import { PHONE_MASK, REGEXP_PHONE } from '@/validation/phone';
 
 import Button from '@/components/buttons/Button.vue';
@@ -32,7 +32,7 @@ const { t } = useI18n();
 const { statusMessage, submitStatus, blocked, countdown } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
-const fieldResetBy = ref(EPasswordResetBy.EMAIL);
+const fieldResetBy = ref(EConfirmBy.EMAIL);
 const fieldEmail = ref('');
 const fieldPhoneNumber = ref('');
 
@@ -44,11 +44,11 @@ const rules = computed(() => ({
     minLength: minLength(3),
   },
   email: {
-    required: requiredIf(() => fieldResetBy.value === EPasswordResetBy.EMAIL),
+    required: requiredIf(() => fieldResetBy.value === EConfirmBy.EMAIL),
     email,
   },
   phone_number: {
-    required: requiredIf(() => fieldResetBy.value === EPasswordResetBy.PHONE),
+    required: requiredIf(() => fieldResetBy.value === EConfirmBy.PHONE),
     phone: phoneValidator,
   },
 }));
@@ -102,7 +102,7 @@ const submitLabel = computed(() => {
         <InputRadio
           id="reset_by_email"
           name="reset_by"
-          :value="EPasswordResetBy.EMAIL"
+          :value="EConfirmBy.EMAIL"
           v-model="fieldResetBy"
         >
           {{ $t('form_forgot_password.reset_by_email') }}
@@ -110,7 +110,7 @@ const submitLabel = computed(() => {
         <InputRadio
           id="reset_by_phone"
           name="reset_by"
-          :value="EPasswordResetBy.PHONE"
+          :value="EConfirmBy.PHONE"
           v-model="fieldResetBy"
         >
           {{ $t('form_forgot_password.reset_by_phone') }}
@@ -118,7 +118,7 @@ const submitLabel = computed(() => {
       </div>
     </FormField>
     <FormField
-      v-if="fieldResetBy === EPasswordResetBy.EMAIL"
+      v-if="fieldResetBy === EConfirmBy.EMAIL"
       :label-attrs="{ for: 'email' }"
       :input="v$.email"
     >
@@ -136,7 +136,7 @@ const submitLabel = computed(() => {
       </template>
     </FormField>
     <FormField
-      v-if="fieldResetBy === EPasswordResetBy.PHONE"
+      v-if="fieldResetBy === EConfirmBy.PHONE"
       :label-attrs="{ for: 'phone_number' }"
       :input="v$.phone_number"
     >

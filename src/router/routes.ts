@@ -9,10 +9,8 @@ export const ROUTE_NAMES = {
   PROFILE: 'PROFILE',
   SECURITY: 'SECURITY',
   REGISTRATION: 'REGISTRATION',
-  REGISTRATION_CONFIRMATION: 'REGISTRATION_CONFIRMATION',
   LOGIN: 'LOGIN',
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
-  FORGOT_PASSWORD_CONFIRMATION: 'FORGOT_PASSWORD_CONFIRMATION',
 };
 
 export interface IRouteItem {
@@ -63,16 +61,6 @@ export const ROUTES: RouteRecordRaw[] = [
     name: ROUTE_NAMES.REGISTRATION,
     path: 'registration',
     component: () => import('@/views/registration/ViewRegistration.vue'),
-  },
-  {
-    name: ROUTE_NAMES.REGISTRATION_CONFIRMATION,
-    path: 'registration-confirmation',
-    component: () => import('@/views/confirmation/ViewConfirmation.vue'),
-  },
-  {
-    name: ROUTE_NAMES.FORGOT_PASSWORD_CONFIRMATION,
-    path: 'forgot-password-confirmation',
-    component: () => import('@/views/confirmation/ViewConfirmation.vue'),
   },
   {
     name: ROUTE_NAMES.FORGOT_PASSWORD,
