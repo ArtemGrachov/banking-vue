@@ -48,6 +48,11 @@ const hostClassNames = computed(() => {
 
   &._primary {
     @include buttons.button-primary();
+
+    &._active,
+    &.router-link-exact-active {
+      @include buttons.button-transparent-active();
+    }
   }
 
   &._transparent {
