@@ -71,7 +71,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.RESET_PASSWORD,
     path: 'reset-password',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/reset-password/ViewResetPassword.vue'),
   },
 ];
 
