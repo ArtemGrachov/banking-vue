@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 import { ROUTE_NAMES } from '@/router/routes';
+import { EStatus } from '@/constants/status';
 
 import { useToast } from '@/composables/toast/toast';
 import { useTransactionsData } from '@/composables/transations/transactions-data';
@@ -14,7 +15,7 @@ import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import Button from '@/components/buttons/Button.vue';
 
 const toast = useToast();
-const { data: transactions, getTransactions } = useTransactionsData();
+const { data: transactions, getStatus: getTransactionsStatus, getTransactions } = useTransactionsData();
 const getErrorMessage = useGetErrorMessage();
 const getRoute = useGetRoute();
 
@@ -40,7 +41,10 @@ onMounted(() => {
       <h2>
         {{ $t('view_dashboard.transations_title') }}
       </h2>
-      <TransactionsList :transations="transactions" />
+      <TransactionsList
+        :transations="transactions"
+        :is-processing="getTransactionsStatus === EStatus.PROCESSING"
+      />
       <Button :as="RouterLink" variant="primary" :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })">
         {{ $t('view_dashboard.transactions_view_all') }}
       </Button>
@@ -57,6 +61,6 @@ onMounted(() => {
 }
 
 .cards {
-  margin-bottom: 16px;
+  margin-bottom: 48px;
 }
 </style>

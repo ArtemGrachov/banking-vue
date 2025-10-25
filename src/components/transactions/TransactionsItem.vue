@@ -55,6 +55,7 @@ const dateTimeFormatted = computed(() => {
   transition: background 200ms;
   padding: 16px;
   border-radius: 4px;
+  line-height: 1.3;
 
   &:hover {
     background: #fcefef;
