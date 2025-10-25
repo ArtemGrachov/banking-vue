@@ -10,6 +10,7 @@ import { useGetRoute } from '@/composables/routing/get-route';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import Button from '@/components/buttons/Button.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
+import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 
 const getRoute = useGetRoute();
 const transactionsStore = useTransactionsStore();
@@ -24,7 +25,20 @@ const transactionsStore = useTransactionsStore();
     :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
   />
   <NoTransactions v-if="transactionsStore.isEmpty" />
-  <Button v-if="!transactionsStore.isEmpty" :as="RouterLink" variant="primary" :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })">
+  <ErrorPlaceholder v-if="transactionsStore.isError">
+    <p>
+      {{ transactionsStore.statusMessage }}
+    </p>
+    <p>
+      {{ $t('common_errors.refresh') }}
+    </p>
+  </ErrorPlaceholder>
+  <Button
+    v-if="transactionsStore.isSuccess && !transactionsStore.isEmpty"
+    :as="RouterLink"
+    variant="primary"
+    :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })"
+  >
     {{ $t('view_dashboard.transactions_view_all') }}
   </Button>
 </template>

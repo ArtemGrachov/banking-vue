@@ -2,6 +2,8 @@ import { computed, ref } from 'vue';
 
 import { EStatus } from '@/constants/status';
 
+import { useGetErrorMessage } from '@/composables/common/get-error-message';
+
 import type { ITransaction } from '@/types/models/transaction';
 import type { IGetTransationsQuery } from '@/types/api/transations';
 
@@ -10,6 +12,8 @@ import { mockRequest } from '@/utils/mock-request';
 export const useTransactionsData = () => {
   const getStatus = ref(EStatus.INIT);
   const data = ref<ITransaction[] | null>(null);
+  const statusMessage = ref<string | null>(null);
+  const getErrorMessage = useGetErrorMessage();
 
   const getTransactions = async (query: IGetTransationsQuery) => {
     try {
@@ -23,10 +27,12 @@ export const useTransactionsData = () => {
       }
 
       getStatus.value = EStatus.SUCCESS;
+      statusMessage.value = null;
       data.value = response ?? null;
 
       return response;
     } catch (err) {
+      statusMessage.value = getErrorMessage(err);
       getStatus.value = EStatus.ERROR;
       throw err;
     }
@@ -50,6 +56,7 @@ export const useTransactionsData = () => {
     isSuccess,
     isEmpty,
     isError,
+    statusMessage,
     getTransactions,
   };
 }

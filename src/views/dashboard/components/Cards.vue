@@ -6,6 +6,7 @@ import { EStatus } from '@/constants/status';
 import BankCardCarousel from '@/components/bank-cards/BankCardCarousel.vue';
 import OrderCard from '@/components/bank-cards/OrderCard.vue';
 import NoCards from '@/components/bank-cards/NoCards.vue';
+import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 
 const cardsStore = useCardsStore();
 </script>
@@ -19,6 +20,13 @@ const cardsStore = useCardsStore();
     <OrderCard />
     <template v-if="cardsStore.isEmpty" #placeholder>
       <NoCards />
+    </template>
+    <template v-if="cardsStore.isError" #placeholder>
+      <ErrorPlaceholder>
+        {{ cardsStore.statusMessage }}
+        <br>
+        {{ $t('common_errors.refresh') }}
+      </ErrorPlaceholder>
     </template>
   </BankCardCarousel>
 </template>

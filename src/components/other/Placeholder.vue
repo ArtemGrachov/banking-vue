@@ -24,7 +24,6 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding: 32px 16px;
   color: #434343;
 }
 
@@ -38,8 +37,8 @@
 }
 
 .subtitle {
-  @include headings.h5();
-  color: #434343;
+  @include headings.h6();
+  color: #7d7d7d;
 }
 
 .icon {
@@ -49,6 +48,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #b3b3b3;
+  color: var(--placeholder-icon-color, #434343);
+  background: var(--placeholder-icon-background, #b3b3b3);
 }
 </style>

@@ -2,6 +2,8 @@ import { computed, ref } from 'vue';
 
 import { EStatus } from '@/constants/status';
 
+import { useGetErrorMessage } from '@/composables/common/get-error-message';
+
 import type { ICard } from '@/types/models/card';
 
 import { mockRequest } from '@/utils/mock-request';
@@ -9,6 +11,8 @@ import { mockRequest } from '@/utils/mock-request';
 export const useCardsData = () => {
   const getStatus = ref(EStatus.INIT);
   const data = ref<ICard[] | null>(null);
+  const statusMessage = ref<string | null>(null);
+  const getErrorMessage = useGetErrorMessage();
 
   const getCards = async () => {
     try {
@@ -18,10 +22,12 @@ export const useCardsData = () => {
       let response = await mockRequest<ICard[]>(cards);
 
       getStatus.value = EStatus.SUCCESS;
+      statusMessage.value = null;
       data.value = response ?? null;
 
       return response;
     } catch (err) {
+      statusMessage.value = getErrorMessage(err);
       getStatus.value = EStatus.ERROR;
       throw err;
     }
@@ -45,6 +51,7 @@ export const useCardsData = () => {
     isSuccess,
     isEmpty,
     isError,
+    statusMessage,
     getCards,
   };
 }

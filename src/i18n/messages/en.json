@@ -69,7 +69,8 @@
     "reset_password": "Reset Password"
   },
   "common_errors": {
-    "generic": "An error occured"
+    "generic": "An error occured",
+    "refresh": "Try to press update button or refresh the page"
   },
   "form_login": {
     "login": "Email or phone number"
