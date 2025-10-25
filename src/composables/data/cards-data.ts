@@ -33,6 +33,10 @@ export const useCardsData = () => {
     }
   }
 
+  const isProcessing = computed(() => {
+    return getStatus.value === EStatus.PROCESSING;
+  });
+
   const isSuccess = computed(() => {
     return getStatus.value === EStatus.SUCCESS;
   });
@@ -48,6 +52,7 @@ export const useCardsData = () => {
   return {
     getStatus,
     data,
+    isProcessing,
     isSuccess,
     isEmpty,
     isError,

@@ -10,6 +10,7 @@ import { useGetErrorMessage } from '@/composables/common/get-error-message';
 import NavLinks from './components/NavLinks.vue';
 import Cards from './components/Cards.vue';
 import Transactions from './components/Transactions.vue';
+import IconButton from '@/components/buttons/IconButton.vue';
 
 const transactionsStore = useTransactionsStore();
 const cardsStore = useCardsStore();
@@ -18,6 +19,10 @@ const toast = useToast();
 const getErrorMessage = useGetErrorMessage();
 
 const getTransactionsData = async () => {
+  if (transactionsStore.isProcessing) {
+    return;
+  }
+
   try {
     await transactionsStore.getTransactions({ itemsPerPage: 5 });
   } catch (err) {
@@ -27,6 +32,10 @@ const getTransactionsData = async () => {
 }
 
 const getCardsData = async () => {
+  if (cardsStore.isProcessing) {
+    return;
+  }
+
   try {
     await cardsStore.getCards();
   } catch (err) {
@@ -43,6 +52,13 @@ onMounted(() => {
 
 <template>
   <div class="page">
+    <div class="header">
+      <IconButton variant="primary">
+        <span class="material-symbols-outlined">
+          refresh
+        </span>
+      </IconButton>
+    </div>
     <div class="nav-links">
       <NavLinks />
     </div>
@@ -62,6 +78,12 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+}
+
+.header {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav-links {

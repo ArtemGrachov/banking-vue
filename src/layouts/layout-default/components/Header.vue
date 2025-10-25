@@ -112,6 +112,8 @@ const { open: openMobileNav, close } = useModal({
   flex: 0 0 auto;
   height: var(--header-height);
   width: var(--header-height);
+  --icon-button-height: var(--header-height);
+  --icon-button-width: var(--header-height);
 
   @include breakpoints.lg() {
     --button-display: none;

@@ -38,6 +38,10 @@ export const useTransactionsData = () => {
     }
   }
 
+  const isProcessing = computed(() => {
+    return getStatus.value === EStatus.PROCESSING;
+  });
+
   const isSuccess = computed(() => {
     return getStatus.value === EStatus.SUCCESS;
   });
@@ -53,6 +57,7 @@ export const useTransactionsData = () => {
   return {
     getStatus,
     data,
+    isProcessing,
     isSuccess,
     isEmpty,
     isError,

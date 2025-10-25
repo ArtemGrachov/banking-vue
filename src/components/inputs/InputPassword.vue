@@ -55,11 +55,13 @@ const visibility = ref(false);
 
 .input {
   @include inputs.default();
+
+  padding-right: 42px;
 }
 
 .visibility-toggle {
   position: absolute;
-  right: 8px;
-  top: 9px;
+  right: 0;
+  top: 0;
 }
 </style>
