@@ -58,6 +58,7 @@ const currentViewComponent = computed(() => {
         :is="currentViewComponent"
         @view="viewHandler"
         @return="viewHandler(EMobileNavViews.MAIN)"
+        @close="emit('close')"
       />
     </div>
   </FullScreenModal>
