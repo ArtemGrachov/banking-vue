@@ -13,6 +13,7 @@ interface IProps {
 
 type Emits = {
   (e: 'blur', payload: FocusEvent): void;
+  (e: 'focus', payload: FocusEvent): void;
 }
 
 defineProps<IProps>();
@@ -30,6 +31,7 @@ const visibility = ref(false);
       v-model="model"
       v-bind="inputAttrs"
       @blur="emit('blur', $event)"
+      @focus="emit('focus', $event)"
     />
     <IconButton
       :id="id"

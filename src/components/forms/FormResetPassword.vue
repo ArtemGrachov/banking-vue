@@ -11,6 +11,7 @@ import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import InputPassword from '@/components/inputs/InputPassword.vue';
+import PasswordHints from '@/components/inputs/PasswordHints.vue';
 
 import type { IFormResetPassword } from '@/types/forms/form-reset-password';
 
@@ -72,13 +73,16 @@ const submitHandler = async () => {
         {{ $t('form_common.password') }}
       </template>
       <template #default="{ classNames }">
-        <InputPassword
-          id="password"
-          v-model="fieldPassword"
-          :input-attrs="{ class: classNames }"
-          :readonly="isProcessing"
-          @blur="v$.password.$touch()"
-        />
+        <PasswordHints v-slot="{ onBlur, onFocus }" :input="v$.password">
+          <InputPassword
+            id="password"
+            v-model="fieldPassword"
+            :input-attrs="{ class: classNames }"
+            :readonly="isProcessing"
+            @blur="v$.password.$touch(); onBlur()"
+            @focus="onFocus"
+          />
+        </PasswordHints>
       </template>
     </FormField>
     <FormField

@@ -95,5 +95,13 @@
   "confirmation": {
     "hint_email": "The email with the confirmation link was sent to your email. In case if you did not received the email check if your email address is written correctly and then press the \"Send again\" button",
     "hint_sms": "The SMS with the confirmation code was sent to your phone. In case if you did not received the SMS check if your phone number is written correctly and then press the \"Send again\" button"
+  },
+  "password_hints": {
+    "min_length": "Minimum length {min}",
+    "contain_lower_case": "Lower case",
+    "contain_upper_case": "Uppercase",
+    "only_latin": "Only latin letters",
+    "contan_number": "Numbers",
+    "special_symbol": "Special symbols"
   }
 }
