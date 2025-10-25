@@ -3,12 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
 import BankCard from '@/components/bank-cards/BankCard.vue';
+import BankCardSkeleton from '@/components/bank-cards/BankCardSkeleton.vue';
 
 import type { ICard } from '@/types/models/card';
 
 interface IProps {
   mobileFullPage?: boolean;
   cards?: ICard[] | null;
+  isProcessing?: boolean;
 }
 
 defineProps<IProps>();
@@ -28,6 +30,11 @@ defineProps<IProps>();
         },
       }"
     >
+      <template v-if="isProcessing">
+        <SwiperSlide v-for="i in 3" :key="i" class="slide">
+          <BankCardSkeleton />
+        </SwiperSlide>
+      </template>
       <SwiperSlide v-for="card in cards" :key="card.id" class="slide">
         <BankCard :card="card" />
       </SwiperSlide>
