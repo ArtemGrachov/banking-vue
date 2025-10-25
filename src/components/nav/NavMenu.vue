@@ -25,6 +25,12 @@ const links = [
   },
   {
     key: 'money_transfer',
+    label: t('nav.cards'),
+    path: getRoute({ name: ROUTE_NAMES.CARDS }),
+    icon: 'credit_card',
+  },
+  {
+    key: 'money_transfer',
     label: t('nav.money_transfer'),
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
     icon: 'output',
