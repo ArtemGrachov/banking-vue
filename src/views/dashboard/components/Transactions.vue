@@ -9,10 +9,10 @@ import { useTransactionsStore } from '../store/transactions';
 import { useGetRoute } from '@/composables/routing/get-route';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import Button from '@/components/buttons/Button.vue';
+import NoTransactions from '@/components/transactions/NoTransactions.vue';
 
 const getRoute = useGetRoute();
 const transactionsStore = useTransactionsStore();
-
 </script>
 
 <template>
@@ -23,7 +23,8 @@ const transactionsStore = useTransactionsStore();
     :transations="transactionsStore.data"
     :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
   />
-  <Button :as="RouterLink" variant="primary" :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })">
+  <NoTransactions v-if="transactionsStore.isEmpty" />
+  <Button v-if="!transactionsStore.isEmpty" :as="RouterLink" variant="primary" :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })">
     {{ $t('view_dashboard.transactions_view_all') }}
   </Button>
 </template>

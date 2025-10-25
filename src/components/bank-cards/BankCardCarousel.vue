@@ -41,6 +41,9 @@ defineProps<IProps>();
       <SwiperSlide v-if="$slots.default" class="slide">
         <slot />
       </SwiperSlide>
+      <SwiperSlide v-if="$slots.placeholder" class="slide">
+        <slot name="placeholder" />
+      </SwiperSlide>
     </Swiper>
   </div>
 </template>

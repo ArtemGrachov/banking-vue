@@ -5,6 +5,7 @@ import { EStatus } from '@/constants/status';
 
 import BankCardCarousel from '@/components/bank-cards/BankCardCarousel.vue';
 import OrderCard from '@/components/bank-cards/OrderCard.vue';
+import NoCards from '@/components/bank-cards/NoCards.vue';
 
 const cardsStore = useCardsStore();
 </script>
@@ -16,5 +17,8 @@ const cardsStore = useCardsStore();
     :is-processing="cardsStore.getStatus === EStatus.PROCESSING"
   >
     <OrderCard />
+    <template v-if="cardsStore.isEmpty" #placeholder>
+      <NoCards />
+    </template>
   </BankCardCarousel>
 </template>

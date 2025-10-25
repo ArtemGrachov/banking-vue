@@ -120,5 +120,17 @@
   },
   "order_card": {
     "title": "Order a card"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "The list is empty",
+      "subtitle": "There are no transations yet"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "There are no cards yet",
+      "subtitle": "Order your first card"
+    }
   }
 }

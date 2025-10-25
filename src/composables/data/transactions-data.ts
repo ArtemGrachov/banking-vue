@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import { EStatus } from '@/constants/status';
 
@@ -32,9 +32,24 @@ export const useTransactionsData = () => {
     }
   }
 
+  const isSuccess = computed(() => {
+    return getStatus.value === EStatus.SUCCESS;
+  });
+
+  const isEmpty = computed(() => {
+    return isSuccess.value && !data.value?.length;
+  });
+
+  const isError = computed(() => {
+    return getStatus.value === EStatus.ERROR;
+  });
+
   return {
     getStatus,
     data,
+    isSuccess,
+    isEmpty,
+    isError,
     getTransactions,
   };
 }
