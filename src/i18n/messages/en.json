@@ -110,7 +110,6 @@
     "success": "Your password was resetted successfully. Now you can log in"
   },
   "view_dashboard": {
-    "transations_title": "Transactions",
     "transactions_view_all": "View all",
     "nav_links": {
       "link_money_transfer": "Transfer money",

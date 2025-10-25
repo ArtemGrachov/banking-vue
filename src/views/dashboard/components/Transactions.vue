@@ -17,9 +17,6 @@ const transactionsStore = useTransactionsStore();
 </script>
 
 <template>
-  <h2>
-    {{ $t('view_dashboard.transations_title') }}
-  </h2>
   <TransactionsList
     :transations="transactionsStore.data"
     :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
