@@ -37,3 +37,13 @@ h6 {
 a {
   @include links.link();
 }
+
+p {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

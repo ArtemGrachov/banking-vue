@@ -44,7 +44,6 @@ const currentViewComponent = computed(() => {
         v-if="showReturn"
         type="button"
         class="return-button"
-        variant="transparent"
         @click="viewHandler(EMobileNavViews.MAIN)"
       >
         <span class="material-symbols-outlined">
@@ -58,6 +57,7 @@ const currentViewComponent = computed(() => {
         :is="currentViewComponent"
         @view="viewHandler"
         @return="viewHandler(EMobileNavViews.MAIN)"
+        @close="emit('close')"
       />
     </div>
   </FullScreenModal>
@@ -76,8 +76,8 @@ const currentViewComponent = computed(() => {
 }
 
 .return-button {
+  --icon-button-height: var(--header-height);
+  --icon-button-width: var(--header-height);
   margin-left: var(--header-padding-negative);
-  height: var(--header-height);
-  width: var(--header-height);
 }
 </style>

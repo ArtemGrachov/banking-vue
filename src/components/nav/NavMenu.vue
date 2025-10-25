@@ -4,8 +4,8 @@ import { RouterLink } from 'vue-router';
 
 import { ROUTE_NAMES } from '@/router/routes';
 
-import Button from '@/components/buttons/Button.vue';
 import { useGetRoute } from '@/composables/routing/get-route';
+import Button, { type ButtonVariants } from '@/components/buttons/Button.vue';
 
 type Emits = {
   (e: 'navigate'): void;
@@ -25,9 +25,16 @@ const links = [
   },
   {
     key: 'money_transfer',
+    label: t('nav.cards'),
+    path: getRoute({ name: ROUTE_NAMES.CARDS }),
+    icon: 'credit_card',
+  },
+  {
+    key: 'money_transfer',
     label: t('nav.money_transfer'),
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
     icon: 'output',
+    variant: 'primary' as ButtonVariants,
   },
   {
     key: 'transaction_history',
@@ -68,7 +75,7 @@ const links = [
         <Button
           :as="RouterLink"
           :to="link.path"
-          variant="transparent"
+          :variant="link.variant ?? 'transparent'"
           class="link"
           @click="emit('navigate')"
         >

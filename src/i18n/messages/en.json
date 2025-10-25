@@ -6,8 +6,9 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "money_transfer": "Money transfer",
+    "money_transfer": "Transfer money",
     "transaction_history": "Transaction history",
+    "cards": "Cards",
     "charts": "Charts",
     "profile": "Profile",
     "security": "Security"
@@ -57,7 +58,7 @@
   },
   "page_title": {
     "dashboard": "Dashboard",
-    "money_transfer": "Money Transfer",
+    "money_transfer": "Transfer money",
     "transaction_history": "Transaction History",
     "charts": "Charts",
     "profile": "Profile",
@@ -68,7 +69,8 @@
     "reset_password": "Reset Password"
   },
   "common_errors": {
-    "generic": "An error occured"
+    "generic": "An error occured",
+    "refresh": "Try to press update button or refresh the page"
   },
   "form_login": {
     "login": "Email or phone number"
@@ -106,5 +108,29 @@
   },
   "view_reset_password": {
     "success": "Your password was resetted successfully. Now you can log in"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "View all",
+    "nav_links": {
+      "link_money_transfer": "Transfer money",
+      "link_charts": "Charts",
+      "link_cards": "Cards",
+      "link_order_card": "Order a card"
+    }
+  },
+  "order_card": {
+    "title": "Order a card"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "The list is empty",
+      "subtitle": "There are no transations yet"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "There are no cards yet",
+      "subtitle": "Order your first card"
+    }
   }
 }

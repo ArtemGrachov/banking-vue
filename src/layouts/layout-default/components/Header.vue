@@ -66,9 +66,9 @@ const { open: openMobileNav, close } = useModal({
           more_vert
         </span>
       </IconButton>
-      <div class="title">
+      <h1 class="title">
         {{ title }}
-      </div>
+      </h1>
       <span class="cell-placeholder"></span>
       <div class="switch">
         <LanguageSwitch />
@@ -112,6 +112,8 @@ const { open: openMobileNav, close } = useModal({
   flex: 0 0 auto;
   height: var(--header-height);
   width: var(--header-height);
+  --icon-button-height: var(--header-height);
+  --icon-button-width: var(--header-height);
 
   @include breakpoints.lg() {
     --button-display: none;

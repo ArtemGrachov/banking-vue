@@ -9,6 +9,7 @@ import NavMenu from '@/components/nav/NavMenu.vue';
 
 type Emits = FullScreenModalEmits & {
   (e: 'view', view: EMobileNavViews): void;
+  (e: 'close'): void;
 };
 
 const emit = defineEmits<Emits>();

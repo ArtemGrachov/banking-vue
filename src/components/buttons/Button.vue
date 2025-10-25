@@ -4,8 +4,10 @@ import BaseButton, { type IProps as IBaseButtonProps } from '@/components/button
 
 const IconLoader = defineAsyncComponent(() => import('@/components/loaders/IconLoader.vue'));
 
+export type ButtonVariants = 'default' | 'primary' | 'transparent';
+
 interface IProps extends IBaseButtonProps {
-  variant?: 'default' | 'primary' | 'transparent';
+  variant?: ButtonVariants;
   isProcessing?: boolean;
 }
 
@@ -46,10 +48,20 @@ const hostClassNames = computed(() => {
 
   &._primary {
     @include buttons.button-primary();
+
+    &._active,
+    &.router-link-exact-active {
+      @include buttons.button-transparent-active();
+    }
   }
 
   &._transparent {
     @include buttons.button-transparent();
+
+    &._active,
+    &.router-link-exact-active {
+      @include buttons.button-transparent-active();
+    }
   }
 }
 
