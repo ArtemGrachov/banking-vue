@@ -50,6 +50,11 @@ const hostClassNames = computed(() => {
 
   &._transparent {
     @include buttons.button-transparent();
+
+    &._active,
+    &.router-link-exact-active {
+      @include buttons.button-transparent-active();
+    }
   }
 }
 

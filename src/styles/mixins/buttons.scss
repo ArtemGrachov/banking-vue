@@ -89,6 +89,11 @@
   }
 }
 
+@mixin button-transparent-active {
+  background: red;
+  color: white
+}
+
 @mixin icon() {
   @include base();
 
