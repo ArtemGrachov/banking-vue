@@ -1,6 +1,11 @@
+<script setup lang="ts">
+import BankCard from '@/components/bank-cards/BankCard.vue';
+
+</script>
+
 <template>
   <div class="page">
-    Dashboard
+    <BankCard />
   </div>
 </template>
 
