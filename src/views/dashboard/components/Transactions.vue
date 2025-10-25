@@ -18,6 +18,7 @@ const transactionsStore = useTransactionsStore();
 
 <template>
   <TransactionsList
+    :mobile-full-page="true"
     :transactions="transactionsStore.data"
     :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
   />

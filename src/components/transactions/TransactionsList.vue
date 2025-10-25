@@ -14,7 +14,7 @@ const { transactions = [], isProcessing } = defineProps<IProps>();
 </script>
 
 <template>
-  <div class="transactions-list">
+  <div class="transactions-list" :class="{ '_mobile-full-page': mobileFullPage }">
     <ul class="list">
       <li
         v-for="transaction in transactions"
@@ -33,6 +33,25 @@ const { transactions = [], isProcessing } = defineProps<IProps>();
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:map';
+
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/mixins/layout.scss' as layout;
+
+.transactions-list {
+  &._mobile-full-page {
+    @media (max-width: #{map.get(breakpoints.$breakpoints, 'large') - 1px}) {
+      margin-left: -(layout.$layout-container-padding);
+      margin-right: -(layout.$layout-container-padding);
+
+      .swiper {
+        padding-left: layout.$layout-container-padding;
+        padding-right: layout.$layout-container-padding;
+      }
+    }
+  }
+}
+
 .list {
   list-style: none;
   padding: 0;
