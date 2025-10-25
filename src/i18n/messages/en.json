@@ -47,7 +47,13 @@
     "phone_hint": "Numbers only, 7-15 digits length",
     "min_length": "This field must contain at least {min} symbols",
     "numeric": "This field can contain only numbers",
-    "length": "This symbol must have {length} symbols"
+    "length": "This symbol must have {length} symbols",
+    "contain_lower_case": "This field must contain at least one lower case symbol",
+    "contain_upper_case": "This field must contain at least one upper case symbol",
+    "only_latin": "This field must contain only latin letters",
+    "contan_number": "This field must contain at least one number",
+    "special_symbol": "This field must contain at least one special symbol",
+    "password_match": "This field must match the password"
   },
   "page_title": {
     "dashboard": "Dashboard",

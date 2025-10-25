@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { required } from '@vuelidate/validators'
+import { required, sameAs } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import { EStatus } from '@/constants/status';
+
+import { usePasswordValidators } from '@/composables/validation/password-validators';
 
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
@@ -21,6 +23,7 @@ type Emits = {
   (e: 'submit', formValue: IFormResetPassword): any;
 }
 
+const passwordValidators = usePasswordValidators();
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
@@ -28,11 +31,10 @@ const fieldPassword = ref('');
 const fieldPasswordRepeat = ref('');
 
 const rules = computed(() => ({
-  password: {
-    required,
-  },
+  password: passwordValidators,
   passwordRepeat: {
     required,
+    sameAs: sameAs(fieldPassword, 'password'),
   },
 }));
 
@@ -40,6 +42,9 @@ const v$ = useVuelidate(rules, {
   password: fieldPassword,
   passwordRepeat: fieldPasswordRepeat,
 });
+
+console.log(v$);
+
 
 const isProcessing = computed(() => {
   return submitStatus === EStatus.PROCESSING;
