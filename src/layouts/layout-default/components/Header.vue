@@ -42,6 +42,9 @@ const title = computed(() => {
     case ROUTE_NAMES.FORGOT_PASSWORD: {
       return t('page_title.forgot_password');
     }
+    case ROUTE_NAMES.RESET_PASSWORD: {
+      return t('page_title.reset_password');
+    }
   }
 
   return '';

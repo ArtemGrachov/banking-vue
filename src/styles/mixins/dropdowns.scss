@@ -40,6 +40,7 @@
 
   padding: var(--content-padding-y) var(--content-padding-x);
   overflow: hidden;
+  z-index: 10;
 }
 
 @mixin arrow() {

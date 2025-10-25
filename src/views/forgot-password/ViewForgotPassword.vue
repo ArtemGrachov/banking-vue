@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useToast } from 'vue-toast-notification';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -10,6 +9,7 @@ import { EStatus } from '@/constants/status';
 
 import { useForgotPassword } from './composable/forgot-password';
 import { useForgotPasswordCode } from './composable/forgot-password-code';
+import { useToast } from '@/composables/toast/toast';
 import FormForgotPassword from '@/components/forms/FormForgotPassword.vue';
 import CountdownProgress from '@/components/other/CountdownProgress.vue';
 import FormConfirmationCode from '@/components/forms/FormConfirmationCode.vue';
