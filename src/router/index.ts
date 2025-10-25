@@ -40,6 +40,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
           ROUTES_MAP[ROUTE_NAMES.LOGIN]!,
           ROUTES_MAP[ROUTE_NAMES.FORGOT_PASSWORD]!,
           ROUTES_MAP[ROUTE_NAMES.RESET_PASSWORD]!,
+          ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
           {
             name: 'ERROR',
             path: ':pathMatch(.*)*',
