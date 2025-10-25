@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import { useToast } from 'vue-toast-notification';
 import { useI18n } from 'vue-i18n';
 
 import { ROUTE_NAMES } from '@/router/routes';
@@ -9,6 +8,7 @@ import { useRegistration } from './composable/registration';
 import { useRegistrationCode } from './composable/registration-code';
 import { useRegistrationConfirmation } from './composable/registration-confirmation';
 import { useGetRoute } from '@/composables/routing/get-route';
+import { useToast } from '@/composables/toast/toast';
 import FormRegistration from '@/components/forms/FormRegistration.vue';
 import Confirmation from '@/components/auth/confirmation/Confirmation.vue';
 import { useShowConfirmation } from '@/components/auth/confirmation/composables/show-confirmation';

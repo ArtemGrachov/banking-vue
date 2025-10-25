@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref } from 'vue';
 import { useModal } from 'vue-final-modal';
-import { useToast } from 'vue-toast-notification';
 
+import { useToast } from '@/composables/toast/toast';
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
@@ -15,7 +15,7 @@ const SelectModal = defineAsyncComponent(() => import('@/components/modals/Defau
 const ConfirmationModal = defineAsyncComponent(() => import('@/components/modals/ConfirmationModal.vue'));
 const AlertModal = defineAsyncComponent(() => import('@/components/modals/AlertModal.vue'));
 
-const $toast = useToast();
+const toast = useToast();
 
 const selectValue = ref(2);
 const selectOptions = [
@@ -63,23 +63,23 @@ const showToast = (toastType: string) => {
 
   switch (toastType) {
     case 'default': {
-      $toast.default(message, { position: 'top-right' });
+      toast.default(message);
       break;
     }
     case 'error': {
-      $toast.error(message, { position: 'top-right' });
+      toast.error(message);
       break;
     }
     case 'info': {
-      $toast.info(message, { position: 'top-right' });
+      toast.info(message);
       break;
     }
     case 'success': {
-      $toast.success(message, { position: 'top-right' });
+      toast.success(message);
       break;
     }
     case 'warning': {
-      $toast.warning(message, { position: 'top-right' });
+      toast.warning(message);
       break;
     }
   }

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from 'vue-router';
-import { useToast } from 'vue-toast-notification';
 import { useI18n } from 'vue-i18n';
 
 import { ROUTE_NAMES } from '@/router/routes';
 
 import { useLogin } from './composable/login';
 import { useGetRoute } from '@/composables/routing/get-route';
+import { useToast } from '@/composables/toast/toast';
+import FormLogin from '@/components/forms/FormLogin.vue';
 
 import type { IFormLogin } from '@/types/forms/form-login';
-import FormLogin from '@/components/forms/FormLogin.vue';
 
 const router = useRouter();
 const getRoute = useGetRoute();

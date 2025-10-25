@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { useToast } from 'vue-toast-notification';
 import { useI18n } from 'vue-i18n';
 
 import { ROUTE_NAMES } from '@/router/routes';
 
 import { useResetPassword } from './composable/reset-password';
+import { useToast } from '@/composables/toast/toast';
 import FormResetPassword from '@/components/forms/FormResetPassword.vue';
 import { useGetRoute } from '@/composables/routing/get-route';
 
