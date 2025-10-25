@@ -10,6 +10,7 @@ import { useTransactionsData } from '@/composables/transations/transactions-data
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 import { useGetRoute } from '@/composables/routing/get-route';
 
+import NavLinks from './components/NavLinks.vue';
 import BankCardCarousel from '@/components/bank-cards/BankCardCarousel.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import Button from '@/components/buttons/Button.vue';
@@ -34,6 +35,9 @@ onMounted(() => {
 
 <template>
   <div class="page">
+    <div class="nav-links">
+      <NavLinks />
+    </div>
     <div class="cards">
       <BankCardCarousel :mobileFullPage="true" />
     </div>
@@ -55,9 +59,22 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '/src/styles/mixins/layout.scss' as layout;
 @use '/src/styles/mixins/texts.scss' as texts;
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .page {
   @include layout.page();
+}
+
+.nav-links {
+  margin-left: -(layout.$layout-container-padding);
+  margin-right: -(layout.$layout-container-padding);
+  padding-left: layout.$layout-container-padding;
+  padding-right: layout.$layout-container-padding;
+  margin-bottom: 32px;
+
+  @include breakpoints.lg() {
+    display: none;
+  }
 }
 
 .cards {

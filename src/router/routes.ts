@@ -6,6 +6,7 @@ export const ROUTE_NAMES = {
   MONEY_TRANSFER: 'MONEY_TRANSFER',
   TRANSACTION_HISTORY: 'TRANSACTION_HISTORY',
   CARDS: 'CARDS',
+  ORDER_CARD: 'ORDER_CARD',
   CHARTS: 'CHARTS',
   PROFILE: 'PROFILE',
   SECURITY: 'SECURITY',
@@ -48,6 +49,11 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.CARDS,
     path: 'cards',
+    component: PLACEHOLDER_CMP,
+  },
+  {
+    name: ROUTE_NAMES.ORDER_CARD,
+    path: 'cards/order',
     component: PLACEHOLDER_CMP,
   },
   {

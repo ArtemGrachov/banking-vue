@@ -33,6 +33,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.TRANSACTION_HISTORY]!,
               ROUTES_MAP[ROUTE_NAMES.CHARTS]!,
               ROUTES_MAP[ROUTE_NAMES.CARDS]!,
+              ROUTES_MAP[ROUTE_NAMES.ORDER_CARD]!,
               ROUTES_MAP[ROUTE_NAMES.PROFILE]!,
               ROUTES_MAP[ROUTE_NAMES.SECURITY]!,
             ],

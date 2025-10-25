@@ -110,6 +110,11 @@
   },
   "view_dashboard": {
     "transations_title": "Transactions",
-    "transactions_view_all": "View all"
+    "transactions_view_all": "View all",
+    "nav_links": {
+      "link_charts": "Charts",
+      "link_cards": "Cards",
+      "link_order_card": "Order a card"
+    }
   }
 }
