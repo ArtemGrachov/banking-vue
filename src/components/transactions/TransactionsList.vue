@@ -5,22 +5,23 @@ import TransactionsItemSkeleton from '@/components/transactions/TransactionsItem
 import type { ITransaction } from '@/types/models/transaction';
 
 interface IProps {
-  transations?: ITransaction[] | null;
+  mobileFullPage?: boolean;
+  transactions?: ITransaction[] | null;
   isProcessing?: boolean;
 }
 
-const { transations = [], isProcessing } = defineProps<IProps>();
+const { transactions = [], isProcessing } = defineProps<IProps>();
 </script>
 
 <template>
-  <div class="transations-list">
+  <div class="transactions-list">
     <ul class="list">
       <li
-        v-for="transation in transations"
-        :key="transation.id"
+        v-for="transaction in transactions"
+        :key="transaction.id"
         class="item"
       >
-        <TransactionsItem :transaction="transation" />
+        <TransactionsItem :transaction="transaction" />
       </li>
       <template v-if="isProcessing">
         <li class="item" v-for="i in 5" :key="i">

@@ -5,7 +5,7 @@ import { EStatus } from '@/constants/status';
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
 import type { ITransaction } from '@/types/models/transaction';
-import type { IGetTransationsQuery } from '@/types/api/transations';
+import type { IGetTransactionsQuery } from '@/types/api/transactions';
 
 import { mockRequest } from '@/utils/mock-request';
 
@@ -15,12 +15,12 @@ export const useTransactionsData = () => {
   const statusMessage = ref<string | null>(null);
   const getErrorMessage = useGetErrorMessage();
 
-  const getTransactions = async (query?: IGetTransationsQuery) => {
+  const getTransactions = async (query?: IGetTransactionsQuery) => {
     try {
       getStatus.value = EStatus.PROCESSING;
 
-      const transations = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
-      let response = await mockRequest<ITransaction[]>(transations);
+      const transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      let response = await mockRequest<ITransaction[]>(transactions);
 
       if (query?.itemsPerPage) {
         response = response?.slice(0, query.itemsPerPage);

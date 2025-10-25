@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import dayjs from 'dayjs';
 
-import { ETransationsType } from '@/constants/transactions';
+import { ETransactionsType } from '@/constants/transactions';
 import { DATE_TIME_DEFAULT_FORMAT } from '@/constants/date-time';
 
 import type { ITransaction } from '@/types/models/transaction';
@@ -15,7 +15,7 @@ interface IProps {
 const { transaction } = defineProps<IProps>();
 
 const isIncome = computed(() => {
-  return transaction.type === ETransationsType.INCOME;
+  return transaction.type === ETransactionsType.INCOME;
 });
 
 const dateTimeFormatted = computed(() => {

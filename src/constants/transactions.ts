@@ -1,4 +1,4 @@
-export const enum ETransationsType {
+export const enum ETransactionsType {
   INCOME = 'income',
   OUTCOME = 'outcome',
 }

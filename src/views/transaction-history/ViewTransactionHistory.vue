@@ -42,7 +42,7 @@ onMounted(() => {
 <template>
   <div class="page">
     <TransactionsList
-      :transations="transactionsStore.data"
+      :transactions="transactionsStore.data"
       :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
     />
     <NoTransactions v-if="transactionsStore.isEmpty" />
