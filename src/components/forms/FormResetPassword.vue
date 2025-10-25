@@ -10,7 +10,7 @@ import { usePasswordValidators } from '@/composables/validation/password-validat
 import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
-import Input from '@/components/inputs/Input.vue';
+import InputPassword from '@/components/inputs/InputPassword.vue';
 
 import type { IFormResetPassword } from '@/types/forms/form-reset-password';
 
@@ -43,9 +43,6 @@ const v$ = useVuelidate(rules, {
   passwordRepeat: fieldPasswordRepeat,
 });
 
-console.log(v$);
-
-
 const isProcessing = computed(() => {
   return submitStatus === EStatus.PROCESSING;
 })
@@ -75,11 +72,10 @@ const submitHandler = async () => {
         {{ $t('form_common.password') }}
       </template>
       <template #default="{ classNames }">
-        <Input
+        <InputPassword
           id="password"
-          type="password"
           v-model="fieldPassword"
-          :class="classNames"
+          :input-attrs="{ class: classNames }"
           :readonly="isProcessing"
           @blur="v$.password.$touch()"
         />
@@ -93,11 +89,10 @@ const submitHandler = async () => {
         {{ $t('form_common.password_repeat') }}
       </template>
       <template #default="{ classNames }">
-        <Input
+        <InputPassword
           id="password_repeat"
-          type="password"
           v-model="fieldPasswordRepeat"
-          :class="classNames"
+          :input-attrs="{ class: classNames }"
           :readonly="isProcessing"
           @blur="v$.passwordRepeat.$touch()"
         />
