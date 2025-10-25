@@ -4,8 +4,10 @@ import BaseButton, { type IProps as IBaseButtonProps } from '@/components/button
 
 const IconLoader = defineAsyncComponent(() => import('@/components/loaders/IconLoader.vue'));
 
+export type ButtonVariants = 'default' | 'primary' | 'transparent';
+
 interface IProps extends IBaseButtonProps {
-  variant?: 'default' | 'primary' | 'transparent';
+  variant?: ButtonVariants;
   isProcessing?: boolean;
 }
 
