@@ -1,3 +1,17 @@
+<script lang="ts" setup>
+import { computed } from 'vue';
+
+import type { ICard } from '@/types/models/card';
+
+interface IProps {
+  card: ICard;
+}
+
+const { card } = defineProps<IProps>();
+
+const numberParts = computed(() => card.cardNumber.split(' '));
+</script>
+
 <template>
   <div class="bank-card">
     <div class="top">
@@ -7,10 +21,9 @@
     </div>
     <div class="bottom">
       <div class="number">
-        <span>1234</span>
-        <span>5678</span>
-        <span>9012</span>
-        <span>3456</span>
+        <span v-for="part in numberParts" :key="part">
+          {{ part }}
+        </span>
       </div>
       <div class="expire">
         <div class="expire-label">
@@ -21,12 +34,12 @@
             EXP
           </span>
           <span class="cell">
-            00/00
+            {{ card.expireDate }}
           </span>
         </div>
       </div>
       <div class="cardholder">
-        Cardholder Name
+        {{ card.cardholderName }}
       </div>
     </div>
   </div>

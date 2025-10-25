@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 
 import { useTransactionsStore } from './store/transactions';
+import { useCardsStore } from './store/cards';
 
 import { useToast } from '@/composables/toast/toast';
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
@@ -11,6 +12,7 @@ import Cards from './components/Cards.vue';
 import Transactions from './components/Transactions.vue';
 
 const transactionsStore = useTransactionsStore();
+const cardsStore = useCardsStore();
 
 const toast = useToast();
 const getErrorMessage = useGetErrorMessage();
@@ -19,12 +21,23 @@ const getTransactionsData = async () => {
   try {
     await transactionsStore.getTransactions({ itemsPerPage: 5 });
   } catch (err) {
+    console.error(err);
+    toast.error(getErrorMessage(err));
+  }
+}
+
+const getCardsData = async () => {
+  try {
+    await cardsStore.getCards();
+  } catch (err) {
+    console.error(err);
     toast.error(getErrorMessage(err));
   }
 }
 
 onMounted(() => {
   getTransactionsData();
+  getCardsData();
 });
 </script>
 

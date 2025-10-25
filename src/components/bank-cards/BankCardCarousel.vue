@@ -4,8 +4,11 @@ import 'swiper/css';
 
 import BankCard from '@/components/bank-cards/BankCard.vue';
 
+import type { ICard } from '@/types/models/card';
+
 interface IProps {
   mobileFullPage?: boolean;
+  cards?: ICard[] | null;
 }
 
 defineProps<IProps>();
@@ -25,8 +28,8 @@ defineProps<IProps>();
         },
       }"
     >
-      <SwiperSlide v-for="i in 5" :key="i" class="slide">
-        <BankCard />
+      <SwiperSlide v-for="card in cards" :key="card.id" class="slide">
+        <BankCard :card="card" />
       </SwiperSlide>
       <SwiperSlide v-if="$slots.default" class="slide">
         <slot />

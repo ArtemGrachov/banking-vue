@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "cardNumber": "4532 9183 4728 6351",
+    "verifiation": "582",
+    "expireDate": "07/27",
+    "isBlocked": false,
+    "currency": "USD",
+    "cardholderName": "Cardholder Name"
+  },
+  {
+    "id": 2,
+    "cardNumber": "5200 4831 9274 1102",
+    "verifiation": "941",
+    "expireDate": "11/26",
+    "currency": "EUR",
+    "cardholderName": "Cardholder Name"
+  },
+  {
+    "id": 3,
+    "cardNumber": "4024 5837 9921 7440",
+    "verifiation": "306",
+    "expireDate": "04/29",
+    "isBlocked": true,
+    "currency": "UAH",
+    "cardholderName": "Cardholder Name"
+  },
+  {
+    "id": 4,
+    "cardNumber": "3782 845631 0005",
+    "verifiation": "1279",
+    "expireDate": "09/28",
+    "currency": "GBP",
+    "cardholderName": "Cardholder Name"
+  },
+  {
+    "id": 5,
+    "cardNumber": "6011 9029 6654 3337",
+    "verifiation": "884",
+    "expireDate": "12/30",
+    "isBlocked": false,
+    "currency": "USD",
+    "cardholderName": "Cardholder Name"
+  }
+]
