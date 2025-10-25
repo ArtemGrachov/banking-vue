@@ -11,6 +11,7 @@ export const ROUTE_NAMES = {
   REGISTRATION: 'REGISTRATION',
   LOGIN: 'LOGIN',
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
+  RESET_PASSWORD: 'RESET_PASSWORD',
 };
 
 export interface IRouteItem {
@@ -66,6 +67,11 @@ export const ROUTES: RouteRecordRaw[] = [
     name: ROUTE_NAMES.FORGOT_PASSWORD,
     path: 'forgot-password',
     component: () => import('@/views/forgot-password/ViewForgotPassword.vue'),
+  },
+  {
+    name: ROUTE_NAMES.RESET_PASSWORD,
+    path: 'reset-password',
+    component: PLACEHOLDER_CMP,
   },
 ];
 
