@@ -28,6 +28,9 @@ defineProps<IProps>();
       <SwiperSlide v-for="i in 5" :key="i" class="slide">
         <BankCard />
       </SwiperSlide>
+      <SwiperSlide v-if="$slots.default" class="slide">
+        <slot />
+      </SwiperSlide>
     </Swiper>
   </div>
 </template>
@@ -55,6 +58,7 @@ defineProps<IProps>();
 .slide {
   width: 340px;
   max-width: calc(100svw - #{layout.$layout-container-padding * 2});
+  height: auto;
 
   @include breakpoints.sm() {
     width: 400px;

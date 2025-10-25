@@ -14,6 +14,7 @@ import NavLinks from './components/NavLinks.vue';
 import BankCardCarousel from '@/components/bank-cards/BankCardCarousel.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import Button from '@/components/buttons/Button.vue';
+import OrderCard from '@/components/bank-cards/OrderCard.vue';
 
 const toast = useToast();
 const { data: transactions, getStatus: getTransactionsStatus, getTransactions } = useTransactionsData();
@@ -39,7 +40,9 @@ onMounted(() => {
       <NavLinks />
     </div>
     <div class="cards">
-      <BankCardCarousel :mobileFullPage="true" />
+      <BankCardCarousel :mobileFullPage="true">
+        <OrderCard />
+      </BankCardCarousel>
     </div>
     <div class="transactions">
       <h2>

@@ -116,5 +116,8 @@
       "link_cards": "Cards",
       "link_order_card": "Order a card"
     }
+  },
+  "order_card": {
+    "title": "Order a card"
   }
 }
