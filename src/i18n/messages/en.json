@@ -103,5 +103,8 @@
     "only_latin": "Only latin letters",
     "contan_number": "Numbers",
     "special_symbol": "Special symbols"
+  },
+  "view_reset_password": {
+    "success": "Your password was resetted successfully. Now you can log in"
   }
 }

@@ -35,7 +35,7 @@ const rules = computed(() => ({
   password: passwordValidators,
   passwordRepeat: {
     required,
-    sameAs: sameAs(fieldPassword, 'password'),
+    passwordMatch: sameAs(fieldPassword, 'password'),
   },
 }));
 
