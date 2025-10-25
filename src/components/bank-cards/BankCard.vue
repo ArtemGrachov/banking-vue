@@ -61,6 +61,7 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 
   @include breakpoints.sm() {
     max-width: 400px;
+    min-height: 240px;
   }
 }
 

@@ -117,6 +117,7 @@ onMounted(() => {
   padding-right: layout.$layout-container-padding;
   top: 0;
   z-index: 1;
+  display: flex;
 
   @include breakpoints.lg() {
     padding-left: 0;

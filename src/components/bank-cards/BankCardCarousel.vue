@@ -71,10 +71,12 @@ defineProps<IProps>();
 .slide {
   width: 340px;
   max-width: calc(100svw - #{layout.$layout-container-padding * 2});
+  min-height: 200px;
   height: auto;
 
   @include breakpoints.sm() {
     width: 400px;
+    min-height: 240px;
   }
 }
 </style>

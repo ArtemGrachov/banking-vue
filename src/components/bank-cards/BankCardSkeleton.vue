@@ -13,7 +13,7 @@
       </div>
       <div class="expire">
         <div class="expire-label">
-          <span class="expire-skeleton" />
+          <span class="expire-label-skeleton" />
         </div>
         <div class="row">
           <span class="expire-skeleton" />
@@ -49,6 +49,7 @@
 
   @include breakpoints.sm() {
     max-width: 400px;
+    min-height: 240px;
   }
 }
 
@@ -109,8 +110,7 @@
 
 .bank-name-skeleton,
 .number-skeleton,
-.expire-skeleton,
-.expire-skeleton,
+.expire-label-skeleton,
 .expire-skeleton,
 .cardholder-skeleton {
   @include skeleton.skeleton();
@@ -124,7 +124,12 @@
   width: 45px;
 }
 
-.expire-skeleton {
+.expire-label-skeleton {
+  margin-bottom: 2px;
+}
+
+.expire-skeleton,
+.expire-label-skeleton {
   width: 50px;
 }
 
