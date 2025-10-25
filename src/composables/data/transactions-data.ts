@@ -15,7 +15,7 @@ export const useTransactionsData = () => {
   const statusMessage = ref<string | null>(null);
   const getErrorMessage = useGetErrorMessage();
 
-  const getTransactions = async (query: IGetTransationsQuery) => {
+  const getTransactions = async (query?: IGetTransationsQuery) => {
     try {
       getStatus.value = EStatus.PROCESSING;
 

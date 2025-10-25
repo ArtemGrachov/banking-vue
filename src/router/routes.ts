@@ -39,7 +39,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.TRANSACTION_HISTORY,
     path: 'transaction-history',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/transaction-history/ViewTransactionHistory.vue'),
   },
   {
     name: ROUTE_NAMES.CHARTS,
