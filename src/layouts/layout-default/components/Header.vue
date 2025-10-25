@@ -66,9 +66,9 @@ const { open: openMobileNav, close } = useModal({
           more_vert
         </span>
       </IconButton>
-      <div class="title">
+      <h1 class="title">
         {{ title }}
-      </div>
+      </h1>
       <span class="cell-placeholder"></span>
       <div class="switch">
         <LanguageSwitch />
