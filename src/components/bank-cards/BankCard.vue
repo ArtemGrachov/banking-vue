@@ -33,6 +33,8 @@
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
 .bank-card {
   display: flex;
   flex-direction: column;
@@ -41,9 +43,12 @@
   padding: 16px;
   background: linear-gradient(163deg, darkred 27%, black 100%);
   color: white;
-  max-width: 400px;
+  max-width: 340px;
   min-height: 200px;
-  gap: 16px;
+
+  @include breakpoints.sm() {
+    max-width: 400px;
+  }
 }
 
 .top, .bottom {
@@ -53,20 +58,33 @@
 }
 
 .top {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+
+  @include breakpoints.sm() {
+    margin-bottom: 48px;
+  }
 }
 
 .bank-name {
   align-self: flex-end;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
+
+  @include breakpoints.sm() {
+    font-size: 16px;
+  }
 }
 
 .number {
-  font-size: 24px;
+  font-size: 16px;
   display: flex;
-  gap: 16px;
+  gap: 8px;
+
+  @include breakpoints.sm() {
+    font-size: 24px;
+    gap: 16px;
+  }
 }
 
 .expire {
@@ -75,11 +93,19 @@
 
 .expire-label {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
+
+  @include breakpoints.sm() {
+    font-size: 12px;
+  }
 }
 
 .cardholder {
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
+
+  @include breakpoints.sm() {
+    font-size: 14px;
+  }
 }
 </style>

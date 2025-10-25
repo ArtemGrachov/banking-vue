@@ -12,4 +12,5 @@ $layout-container-padding: 16px;
   flex: 1 1 auto;
   padding-top: 32px;
   padding-bottom: 64px;
+  min-width: 0; // workaround for flexbox width issue
 }

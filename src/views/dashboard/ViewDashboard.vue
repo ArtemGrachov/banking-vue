@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import BankCard from '@/components/bank-cards/BankCard.vue';
+import BankCardCarousel from '@/components/bank-cards/BankCardCarousel.vue';
 
 </script>
 
 <template>
   <div class="page">
-    <BankCard />
+    <BankCardCarousel :mobileFullPage="true" />
   </div>
 </template>
 
