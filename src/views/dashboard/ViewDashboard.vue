@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
 import { useTransactionsStore } from './store/transactions';
 import { useCardsStore } from './store/cards';
@@ -17,6 +17,10 @@ const cardsStore = useCardsStore();
 
 const toast = useToast();
 const getErrorMessage = useGetErrorMessage();
+
+const pageProcessing = computed(() => {
+  return transactionsStore.isProcessing || cardsStore.isProcessing;
+});
 
 const getTransactionsData = async () => {
   if (transactionsStore.isProcessing) {
@@ -44,23 +48,33 @@ const getCardsData = async () => {
   }
 }
 
-onMounted(() => {
+const getPageData = () => {
+  transactionsStore.clear();
+  cardsStore.clear();
   getTransactionsData();
   getCardsData();
+}
+
+onMounted(() => {
+  getPageData();
 });
 </script>
 
 <template>
   <div class="page">
     <div class="header">
-      <IconButton variant="primary">
-        <span class="material-symbols-outlined">
-          refresh
-        </span>
-      </IconButton>
-    </div>
-    <div class="nav-links">
-      <NavLinks />
+      <div class="refresh">
+        <IconButton
+          variant="primary"
+          :is-processing="pageProcessing"
+          @click="getPageData"
+        >
+          <span class="material-symbols-outlined">
+            refresh
+          </span>
+        </IconButton>
+      </div>
+      <NavLinks class="nav-links" />
     </div>
     <div class="cards">
       <Cards />
@@ -84,14 +98,36 @@ onMounted(() => {
   margin-bottom: 16px;
   display: flex;
   justify-content: flex-end;
+  margin-left: -(layout.$layout-container-padding);
+  margin-right: -(layout.$layout-container-padding);
+  position: relative;
+
+  @include breakpoints.lg() {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.refresh {
+  position: absolute;
+  right: 0;
+  padding-left: layout.$layout-container-padding;
+  padding-right: layout.$layout-container-padding;
+  top: 0;
+  z-index: 1;
+
+  @include breakpoints.lg() {
+    padding-left: 0;
+    padding-right: 0;
+    position: static;
+  }
 }
 
 .nav-links {
-  margin-left: -(layout.$layout-container-padding);
-  margin-right: -(layout.$layout-container-padding);
   padding-left: layout.$layout-container-padding;
-  padding-right: layout.$layout-container-padding;
-  margin-bottom: 32px;
+  padding-right: layout.$layout-container-padding * 2 + 42px;
 
   @include breakpoints.lg() {
     display: none;

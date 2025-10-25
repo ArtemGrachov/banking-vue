@@ -38,6 +38,11 @@ export const useTransactionsData = () => {
     }
   }
 
+  const clear = () => {
+    getStatus.value = EStatus.INIT;
+    data.value = null;
+  }
+
   const isProcessing = computed(() => {
     return getStatus.value === EStatus.PROCESSING;
   });
@@ -63,5 +68,6 @@ export const useTransactionsData = () => {
     isError,
     statusMessage,
     getTransactions,
+    clear,
   };
 }

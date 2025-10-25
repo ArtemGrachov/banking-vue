@@ -20,13 +20,19 @@ const hostClassNames = computed(() => {
     result.push('_primary');
   }
 
+  if (isProcessing) {
+    result.push('_processing');
+  }
+
   return result;
 });
 </script>
 
 <template>
   <BaseButton :as="as" class="icon-button" :class="hostClassNames">
-    <slot />
+    <span class="content">
+      <slot />
+    </span>
     <span v-if="isProcessing" class="loader">
       <IconLoader class="loader-icon" />
     </span>
@@ -43,6 +49,12 @@ const hostClassNames = computed(() => {
 
   &._primary {
     @include buttons.icon-primary();
+  }
+
+  &._processing {
+    .content {
+      display: none;
+    }
   }
 }
 

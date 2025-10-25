@@ -51,40 +51,28 @@ const links: ILink[] = [
 </script>
 
 <template>
-  <nav class="nav-links">
-    <ul class="list">
-      <li
-        v-for="link in links"
-        :key="link.key"
-        class="item"
+  <ul class="list">
+    <li
+      v-for="link in links"
+      :key="link.key"
+      class="item"
+    >
+      <Button
+        :as="RouterLink"
+        :to="link.path"
+        :variant="link.variant"
+        class="link"
       >
-        <Button
-          :as="RouterLink"
-          :to="link.path"
-          :variant="link.variant"
-          class="link"
-        >
-          <span class="material-symbols-outlined">
-            {{ link.icon }}
-          </span>
-          {{ link.label }}
-        </Button>
-      </li>
-    </ul>
-  </nav>
+        <span class="material-symbols-outlined">
+          {{ link.icon }}
+        </span>
+        {{ link.label }}
+      </Button>
+    </li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>
-
-.nav-links {
-  overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
 
 .list {
   list-style: none;
@@ -92,6 +80,13 @@ const links: ILink[] = [
   margin: 0;
   display: flex;
   gap: 16px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .link {
