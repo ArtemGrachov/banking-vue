@@ -38,7 +38,7 @@ const screens = useScreens({
 
 const modalMode = computed(() => {
   return !screens.matches.medium;
-})
+});
 
 const internalOptions = computed(() => {
   return options?.map(opt => trackBy ? opt[trackBy] : opt);

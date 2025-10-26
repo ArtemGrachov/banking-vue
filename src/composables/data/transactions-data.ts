@@ -43,7 +43,6 @@ export const useTransactionsData = () => {
       }
 
       if (query.periodFrom) {
-        console.log(query.periodFrom);
         transactions = transactions.filter(t => dayjs(t.dateTime).isSameOrAfter(query.periodFrom));
       }
 
