@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
 import { TRANSACTION_CATEGORIES } from '@/constants/transactions';
 
 import { useCardsStore } from '@/store/cards';
+import { useFilterStore } from '../store/filter';
 
 import { useFormToRouteQuery } from '../composable/form-to-route-query';
 
@@ -25,6 +26,7 @@ const { t } = useI18n();
 const cardsStore = useCardsStore();
 const router = useRouter();
 const formToRouteQuery = useFormToRouteQuery();
+const filterStore = useFilterStore();
 
 const fieldCards = ref<number[]>([]);
 const fieldCategories = ref<string[]>([]);
@@ -61,6 +63,12 @@ const updateHandler = () => {
   router.push({ query: newQuery });
   emits('select');
 }
+
+watch(() => filterStore.formValue, () => {
+  fieldCards.value = filterStore.formValue.cards ?? [];
+  fieldCategories.value = filterStore.formValue.categories ?? [];
+  fieldTimePeriod.value = filterStore.formValue.timePeriod;
+}, { immediate: true });
 </script>
 
 <template>
