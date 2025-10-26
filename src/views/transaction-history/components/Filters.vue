@@ -14,14 +14,11 @@ import Select from '@/components/inputs/Select.vue';
 import Datepicker from '@/components/inputs/Datepicker.vue';
 
 import type { IFilterForm } from '../types/filter';
-import Button from '@/components/buttons/Button.vue';
 
 const { t } = useI18n();
 const cardsStore = useCardsStore();
 const router = useRouter();
 const formToRouteQuery = useFormToRouteQuery();
-
-const DATETIME_QUERY_FORMAT = 'YYYY-MM-DD';
 
 const fieldCards = ref<number[]>([]);
 const fieldCategories = ref<string[]>([]);

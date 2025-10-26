@@ -152,5 +152,10 @@
       "label_period": "Period",
       "mobile_trigger": "Open filters"
     }
+  },
+  "select": {
+    "no_result": "Nothing found",
+    "no_options": "No options",
+    "placeholder": "Select option"
   }
 }

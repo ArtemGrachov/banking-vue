@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref, type ComputedRef } from 'vue';
+
 import FullScreenModal, { type Emits as FullScreenModalEmits } from '@/components/modals/FullScreenModal.vue';
+import Placeholder from '@/components/other/Placeholder.vue';
 
 interface IProps {
-  options?: any[];
+  options?: ComputedRef<any[]>;
   value?: any | any[];
   trackBy?: string;
   label?: string;
   inputLabel?: string;
   multiple?: boolean;
+  noOptions?: string;
+  noResult?: string;
 }
 
 type Emits = FullScreenModalEmits & {
@@ -18,15 +22,25 @@ type Emits = FullScreenModalEmits & {
 const emit = defineEmits<Emits>();
 
 const {
-  options,
+  options: propOptions,
   value,
   trackBy,
   label,
   inputLabel,
   multiple,
+  noOptions,
+  noResult,
 } = defineProps<IProps>();
 
 const internalValue = ref<any | any[] | null | undefined>(null);
+
+const options = computed(() => {
+  return propOptions as unknown as any[];
+});
+
+const isNoOptions = computed(() => {
+  return !options?.value?.length
+});
 
 const checkIsActiveSingle = (opt: any, val: any) => {
   if (trackBy) {
@@ -45,7 +59,7 @@ const checkIsActive = (opt: any) => {
 }
 
 const getOption = (opt: any) => {
-  return options?.find(o => {
+  return (options?.value as any[])?.find(o => {
     if (trackBy) {
       return o?.[trackBy] === opt?.[trackBy];
     }
@@ -115,6 +129,16 @@ onMounted(() => {
     <template #header>
       {{ inputLabel }}
     </template>
+    <Placeholder v-if="isNoOptions">
+      <template #icon>
+        <span class="material-symbols-outlined">
+          list
+        </span>
+      </template>
+      <template #title>
+        {{ noOptions || $t('select.no_options') }}
+      </template>
+    </Placeholder>
     <ul class="list">
       <li
         v-for="(option, index) in options"
