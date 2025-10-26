@@ -2,8 +2,10 @@ import type { ITransaction } from '@/types/models/transaction';
 import type { IPagination } from '@/types/other/pagination';
 
 export interface IGetTransactionsQuery {
-  page: number;
-  itemsPerPage?: number;
+  page?: number | null;
+  itemsPerPage?: number | null;
+  cards?: number[] | null;
+  categories?: string[] | null;
 }
 
 export interface IGetTransactionsResponse {

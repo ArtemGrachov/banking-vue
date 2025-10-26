@@ -9,4 +9,5 @@ export interface ITransaction {
   amount: number;
   currency: string;
   category: ETransactionCategory;
+  cardId: number;
 }

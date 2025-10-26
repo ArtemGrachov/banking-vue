@@ -11,5 +11,15 @@ export const readQueryNumber = (rawQuery: string) => {
 }
 
 export const readQueryNumbers = (rawQuery: LocationQueryValue[] | string | string[] | undefined | null) => {
-  return [1];
+  if (typeof rawQuery === 'object' && (rawQuery as any[]).length) {
+    return rawQuery!.map(q => readQueryNumber(q as any)).filter(q => q != null);
+  }
+
+  const value = readQueryNumber(rawQuery as string);
+
+  if (value != null) {
+    return [value];
+  }
+
+  return [];
 }

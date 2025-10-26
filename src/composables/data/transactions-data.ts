@@ -24,9 +24,20 @@ export const useTransactionsData = () => {
 
       getStatus.value = EStatus.PROCESSING;
 
-      const transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      let transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+
+      if (query.cards?.length) {
+        const set = new Set(query.cards);
+        transactions = transactions.filter(t => set.has(t.cardId));
+      }
+
+      if (query.categories?.length) {
+        const set = new Set(query.categories);
+        transactions = transactions.filter(t => set.has(t.category));
+      }
+
       data.value = await mockPaginationRequest<IGetTransactionsResponse, ITransaction>(
-        query.page,
+        query.page ?? 1,
         query.itemsPerPage ?? 10,
         transactions,
       );

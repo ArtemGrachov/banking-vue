@@ -1,5 +1,5 @@
 import { watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 import { useTransactionsStore } from '../store/transactions';
 import { useFilterStore } from '../store/filter';
@@ -11,7 +11,6 @@ import { useToast } from '@/composables/toast/toast';
 import type { IFilterForm } from '@/views/transaction-history/types/filter';
 
 export const useData = () => {
-  const router = useRouter();
   const route = useRoute();
   const toast = useToast();
   const transactionsStore = useTransactionsStore();
@@ -31,7 +30,12 @@ export const useData = () => {
     }
 
     try {
-      await transactionsStore.getTransactions({ itemsPerPage: 20, page: formValue.page }, reset);
+      await transactionsStore.getTransactions({
+        itemsPerPage: 20,
+        page: formValue.page,
+        cards: formValue.cards,
+        categories: formValue.categories,
+      }, reset);
     } catch (err) {
       console.error(err);
       toast.error(getErrorMessage(err));
