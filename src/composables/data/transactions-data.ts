@@ -1,4 +1,7 @@
 import { computed, ref } from 'vue';
+import dayjs from 'dayjs';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 
 import { EStatus } from '@/constants/status';
 
@@ -8,6 +11,9 @@ import type { ITransaction } from '@/types/models/transaction';
 import type { IGetTransactionsQuery, IGetTransactionsResponse } from '@/types/api/transactions';
 
 import { mockPaginationRequest } from '@/utils/mock-request';
+
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
 
 export const useTransactionsData = () => {
   const getStatus = ref(EStatus.INIT);
@@ -34,6 +40,15 @@ export const useTransactionsData = () => {
       if (query.categories?.length) {
         const set = new Set(query.categories);
         transactions = transactions.filter(t => set.has(t.category));
+      }
+
+      if (query.periodFrom) {
+        console.log(query.periodFrom);
+        transactions = transactions.filter(t => dayjs(t.dateTime).isSameOrAfter(query.periodFrom));
+      }
+
+      if (query.periodTo) {
+        transactions = transactions.filter(t => dayjs(t.dateTime).isSameOrBefore(query.periodTo));
       }
 
       data.value = await mockPaginationRequest<IGetTransactionsResponse, ITransaction>(

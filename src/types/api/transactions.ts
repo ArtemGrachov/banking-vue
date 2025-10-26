@@ -6,6 +6,8 @@ export interface IGetTransactionsQuery {
   itemsPerPage?: number | null;
   cards?: number[] | null;
   categories?: string[] | null;
+  periodFrom?: string | null;
+  periodTo?: string | null;
 }
 
 export interface IGetTransactionsResponse {

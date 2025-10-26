@@ -35,6 +35,8 @@ export const useData = () => {
         page: formValue.page,
         cards: formValue.cards,
         categories: formValue.categories,
+        periodFrom: formValue.timePeriod?.[0],
+        periodTo: formValue.timePeriod?.[1],
       }, reset);
     } catch (err) {
       console.error(err);

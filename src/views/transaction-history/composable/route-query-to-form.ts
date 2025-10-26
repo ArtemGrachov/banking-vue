@@ -24,7 +24,7 @@ export const useRouteQueryToForm = () => {
 
       if (isValid) {
         timePeriod = [
-          dayjsTo.toJSON(),
+          dayjsFrom.toJSON(),
           dayjsTo.toJSON(),
         ] as [string, string];
       }
