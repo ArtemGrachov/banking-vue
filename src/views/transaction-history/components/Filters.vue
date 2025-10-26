@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import { TRANSACTION_CATEGORIES } from '@/constants/transactions';
 
 import FormField from '@/components/forms/FormField.vue';
 import Select from '@/components/inputs/Select.vue';
+import Datepicker from '@/components/inputs/Datepicker.vue';
 
 const { t } = useI18n();
 
@@ -19,6 +20,8 @@ const categoryOptions = computed(() => {
 
   return result;
 });
+
+const datepickerValue = ref(null);
 
 </script>
 
@@ -49,7 +52,7 @@ const categoryOptions = computed(() => {
         <template #label>
           {{ $t('view_transaction_history.filters.label_period') }}
         </template>
-        [time period]
+        <Datepicker v-model="datepickerValue" />
       </FormField>
     </div>
   </form>
