@@ -8,6 +8,7 @@ import { BREAKPOINTS } from '@/constants/breakpoints';
 
 import '@vuepic/vue-datepicker/dist/main.css'
 import '@/styles/libs/vue-datepicker.scss';
+import IconButton from '@/components/buttons/IconButton.vue';
 
 const DatepickerModal = defineAsyncComponent(() => import('@/components/inputs/DatepickerModal.vue'));
 
@@ -16,6 +17,7 @@ interface IProps {
   multiCalendars?: boolean;
   enableTimePicker?: boolean;
   format?: string;
+  inputLabel?: string;
 }
 
 const {
@@ -23,6 +25,7 @@ const {
   multiCalendars,
   enableTimePicker,
   format,
+  inputLabel,
 } = defineProps<IProps>();
 const screens = useScreens({
   xsmall: `${BREAKPOINTS.xsmall}px`,
@@ -52,6 +55,7 @@ const { open: openDatepickerModal, close: closeDatepickerModal } = useModal({
       model.value = value;
       emit('select');
     },
+    inputLabel,
     range,
     multiCalendars,
     enableTimePicker,
@@ -76,11 +80,25 @@ const openHandler = () => {
     :multi-calendars="multiCalendars"
     :enable-time-picker="enableTimePicker"
     :format="format"
+    :locale="$i18n.locale"
     class="datepicker"
     @blur="emit('blur')"
     @update:model-value="emit('select')"
     @open="openHandler"
-  />
+  >
+    <template #input-icon>
+      <span class="material-symbols-outlined">
+        calendar_month
+      </span>
+    </template>
+    <template #clear-icon="{ clear }">
+      <IconButton class="clear" @click="clear">
+        <span class="material-symbols-outlined">
+          close
+        </span>
+      </IconButton>
+    </template>
+  </VueDatePicker>
 </template>
 
 <style lang="scss" scoped>
@@ -89,11 +107,32 @@ const openHandler = () => {
 
 .datepicker {
   :deep() {
+    .dp__input_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 8px;
+    }
+
     .dp__outer_menu_wrap {
       @media (max-width: #{map.get(breakpoints.$breakpoints, 'medium') - 1px}) {
         display: none;
       }
     }
+
+    .dp--clear-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.clear {
+  --button-display: none;
+
+  @include breakpoints.md() {
+    --button-display: flex;
   }
 }
 </style>

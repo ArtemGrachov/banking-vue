@@ -83,6 +83,7 @@ watch(() => filterStore.formValue, () => {
           track-by="id"
           label="label"
           :multiple="true"
+          :searchable="false"
           :input-label="$t('view_transaction_history.filters.label_card')"
           v-model="fieldCards"
           @select="updateHandler"
@@ -100,6 +101,7 @@ watch(() => filterStore.formValue, () => {
           track-by="category"
           label="label"
           :multiple="true"
+          :searchable="false"
           :input-label="$t('view_transaction_history.filters.label_category')"
           v-model="fieldCategories"
           @select="updateHandler"
@@ -117,6 +119,7 @@ watch(() => filterStore.formValue, () => {
           :range="true"
           :enable-time-picker="false"
           :multi-calendars="true"
+          :input-label="$t('view_transaction_history.filters.label_period')"
           format="yyyy.MM.dd"
           @select="updateHandler"
         />

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { BREAKPOINTS } from '@/constants/breakpoints';
 import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
 import { useI18n } from 'vue-i18n';
 import Multiselect from 'vue-multiselect';
 import { useScreens } from 'vue-screen-utils';
+
+import { BREAKPOINTS } from '@/constants/breakpoints';
+
+import IconButton from '@/components/buttons/IconButton.vue';
 
 const SelectModal = defineAsyncComponent(() => import('@/components/inputs/SelectModal.vue'));
 
@@ -76,6 +79,16 @@ const openHandler = () => {
 
   openSelectModal();
 }
+
+const clearHandler = () => {
+  if (multiple) {
+    model.value = [];
+  } else {
+    model.value = null;
+  }
+
+  emit('select', model.value);
+}
 </script>
 
 <template>
@@ -98,6 +111,18 @@ const openHandler = () => {
     </template>
     <template #noResult>
       {{ $t('select.no_result') }}
+    </template>
+    <template #clear>
+      <IconButton
+        v-if="multiple ? (model as any[])?.length : model"
+        type="button"
+        class="clear"
+        @click="clearHandler"
+      >
+        <span class="material-symbols-outlined">
+          close
+        </span>
+      </IconButton>
     </template>
   </multiselect>
 </template>
@@ -168,7 +193,7 @@ const openHandler = () => {
       height: 100%;
       display: flex;
       align-items: center;
-      padding: 0 16px;
+      padding: 0 8px;
       gap: 8px;
     }
 
@@ -218,6 +243,18 @@ const openHandler = () => {
     .multiselect-leave-to {
       @include dropdowns.dropdown-closed();
     }
+  }
+}
+
+.clear {
+  --button-display: none;
+
+  @include breakpoints.md() {
+    --button-display: flex;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    z-index: 1;
   }
 }
 </style>

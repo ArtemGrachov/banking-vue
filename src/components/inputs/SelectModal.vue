@@ -3,6 +3,7 @@ import { computed, onMounted, ref, type ComputedRef } from 'vue';
 
 import FullScreenModal, { type Emits as FullScreenModalEmits } from '@/components/modals/FullScreenModal.vue';
 import Placeholder from '@/components/other/Placeholder.vue';
+import Button from '@/components/buttons/Button.vue';
 
 interface IProps {
   options?: ComputedRef<any[]>;
@@ -119,6 +120,14 @@ const closeHandler = () => {
   emit('close');
 }
 
+const clearHandler = () => {
+  if (multiple) {
+    internalValue.value = [];
+  } else {
+    internalValue.value = null;
+  }
+}
+
 onMounted(() => {
   internalValue.value = value;
 });
@@ -139,27 +148,48 @@ onMounted(() => {
         {{ noOptions || $t('select.no_options') }}
       </template>
     </Placeholder>
-    <ul class="list">
-      <li
-        v-for="(option, index) in options"
-        :key="getTrackBy(option, index)"
-        class="item"
-      >
-        <button
-          type="button"
-          class="option"
-          :class="{ '_active': checkIsActive(option) }"
-          @click="selectHandler(option)"
+    <div class="wrap">
+      <ul class="list">
+        <li
+          v-for="(option, index) in options"
+          :key="getTrackBy(option, index)"
+          class="item"
         >
-          {{ customLabel(option) }}
-        </button>
-      </li>
-    </ul>
+          <button
+            type="button"
+            class="option"
+            :class="{ '_active': checkIsActive(option) }"
+            @click="selectHandler(option)"
+          >
+            {{ customLabel(option) }}
+          </button>
+        </li>
+      </ul>
+      <Button
+        type="button"
+        variant="primary"
+        @click="clearHandler"
+      >
+        <span class="material-symbols-outlined">
+          close
+        </span>
+        {{ $t('select_modal.clear') }}
+      </Button>
+    </div>
   </FullScreenModal>
 </template>
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/buttons.scss' as buttons;
+
+.wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
 
 .list {
   list-style: none;

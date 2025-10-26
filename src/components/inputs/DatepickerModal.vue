@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 
 import FullScreenModal, { type Emits as FullScreenModalEmits } from '@/components/modals/FullScreenModal.vue';
+import Button from '@/components/buttons/Button.vue';
 
 interface IProps {
   inputLabel?: string;
@@ -32,6 +33,11 @@ const selectHandler = () => {
   emit('close');
   emit('select', internalValue.value);
 }
+
+const clearHandler = () => {
+  internalValue.value = null;
+  selectHandler();
+}
 </script>
 
 <template>
@@ -39,21 +45,43 @@ const selectHandler = () => {
     <template #header>
       {{ inputLabel }}
     </template>
-    <VueDatePicker
-      class="datepicker"
-      :inline="true"
-      :range="range"
-      :multi-calendars="multiCalendars"
-      :enable-time-picker="enableTimePicker"
-      :format="format"
-      v-model="internalValue"
-      @update:model-value="selectHandler"
-    />
+    <div class="wrap">
+      <VueDatePicker
+        class="datepicker"
+        :inline="true"
+        :range="range"
+        :multi-calendars="multiCalendars"
+        :enable-time-picker="enableTimePicker"
+        :format="format"
+        :locale="$i18n.locale"
+        v-model="internalValue"
+        @update:model-value="selectHandler"
+      />
+      <Button
+        type="button"
+        variant="primary"
+        @click="clearHandler"
+      >
+        <span class="material-symbols-outlined">
+          close
+        </span>
+        {{ $t('select_modal.clear') }}
+      </Button>
+    </div>
   </FullScreenModal>
 </template>
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/buttons.scss' as buttons;
+
+.wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
 
 .list {
   list-style: none;

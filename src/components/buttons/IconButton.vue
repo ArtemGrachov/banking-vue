@@ -58,6 +58,12 @@ const hostClassNames = computed(() => {
   }
 }
 
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loader {
   position: absolute;
   top: 50%;
