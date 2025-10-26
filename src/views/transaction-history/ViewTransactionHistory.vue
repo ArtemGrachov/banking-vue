@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useToast } from 'vue-toast-notification';
+import { onMounted } from 'vue';
 
 import { EStatus } from '@/constants/status';
 
 import { useTransactionsStore } from './store/transactions';
+import { useCardsStore } from '@/store/cards';
 
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
+import { useGetCardsData } from '@/composables/data/get-cards-data';
+import { useToast } from '@/composables/toast/toast';
 
 import Filters from './components/Filters.vue';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
@@ -16,7 +18,9 @@ import InfiniteScroll from '@/components/other/InfiniteScroll.vue';
 
 const toast = useToast();
 const transactionsStore = useTransactionsStore();
+const cardsStore = useCardsStore();
 const getErrorMessage = useGetErrorMessage();
+const { getCardsData } = useGetCardsData();
 
 const getTransactionsData = async () => {
   if (transactionsStore.isProcessing) {
@@ -40,7 +44,9 @@ const getTransactionsData = async () => {
 
 const getPageData = () => {
   transactionsStore.clear();
+  cardsStore.clear();
   getTransactionsData();
+  getCardsData();
 }
 
 const infiniteScrollHandler = () => {
@@ -53,6 +59,7 @@ const infiniteScrollHandler = () => {
 
 onMounted(() => {
   getPageData();
+  getCardsData();
 });
 </script>
 
