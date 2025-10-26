@@ -7,8 +7,17 @@ import { TRANSACTION_CATEGORIES } from '@/constants/transactions';
 import FormField from '@/components/forms/FormField.vue';
 import Select from '@/components/inputs/Select.vue';
 import Datepicker from '@/components/inputs/Datepicker.vue';
+import { useCardsStore } from '@/store/cards';
 
 const { t } = useI18n();
+const { data: cards } = useCardsStore();
+
+const cardOptions = computed(() => {
+  return cards?.map(card => ({
+    id: card.id,
+    label: card.cardNumber,
+  }));
+});
 
 const categoryOptions = computed(() => {
   const result = TRANSACTION_CATEGORIES.map(category => {
@@ -32,7 +41,11 @@ const datepickerValue = ref(null);
         <template #label>
           {{ $t('view_transaction_history.filters.label_card') }}
         </template>
-        <Select />
+        <Select
+          :options="cardOptions"
+          track-by="id"
+          label="label"
+        />
       </FormField>
     </div>
     <div class="cell">
