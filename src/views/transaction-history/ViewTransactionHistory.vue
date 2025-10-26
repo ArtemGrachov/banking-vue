@@ -4,11 +4,10 @@ import { onMounted } from 'vue';
 import { EStatus } from '@/constants/status';
 
 import { useTransactionsStore } from './store/transactions';
+import { useData } from './composable/data';
 import { useCardsStore } from '@/store/cards';
 
-import { useGetErrorMessage } from '@/composables/common/get-error-message';
 import { useGetCardsData } from '@/composables/data/get-cards-data';
-import { useToast } from '@/composables/toast/toast';
 
 import Filters from './components/Filters.vue';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
@@ -16,36 +15,15 @@ import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import InfiniteScroll from '@/components/other/InfiniteScroll.vue';
 
-const toast = useToast();
 const transactionsStore = useTransactionsStore();
 const cardsStore = useCardsStore();
-const getErrorMessage = useGetErrorMessage();
 const { getCardsData } = useGetCardsData();
-
-const getTransactionsData = async () => {
-  if (transactionsStore.isProcessing) {
-    return;
-  }
-
-  const totalPages = transactionsStore.data?.pagination.totalPages ?? 1;
-  const newPage = (transactionsStore.data?.pagination.currentPage ?? 0) + 1;
-
-  if (newPage > totalPages) {
-    return;
-  }
-
-  try {
-    await transactionsStore.getTransactions({ itemsPerPage: 20, page: newPage, });
-  } catch (err) {
-    console.error(err);
-    toast.error(getErrorMessage(err));
-  }
-}
+const { init, nextPage } = useData();
 
 const getPageData = () => {
   transactionsStore.clear();
   cardsStore.clear();
-  getTransactionsData();
+  init();
   getCardsData();
 }
 
@@ -54,12 +32,11 @@ const infiniteScrollHandler = () => {
     return;
   }
 
-  getTransactionsData();
+  nextPage();
 }
 
 onMounted(() => {
   getPageData();
-  getCardsData();
 });
 </script>
 

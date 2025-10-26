@@ -2,19 +2,23 @@
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import dayjs from 'dayjs';
 
 import { TRANSACTION_CATEGORIES } from '@/constants/transactions';
 
 import { useCardsStore } from '@/store/cards';
 
+import { useFormToRouteQuery } from '../composable/form-to-route-query';
+
 import FormField from '@/components/forms/FormField.vue';
 import Select from '@/components/inputs/Select.vue';
 import Datepicker from '@/components/inputs/Datepicker.vue';
 
+import type { IFilterForm } from '../types/filter';
+
 const { t } = useI18n();
 const cardsStore = useCardsStore();
 const router = useRouter();
+const formToRouteQuery = useFormToRouteQuery();
 
 const DATETIME_QUERY_FORMAT = 'YYYY-MM-DD';
 
@@ -41,23 +45,16 @@ const categoryOptions = computed(() => {
 });
 
 const updateHandler = () => {
-  const cardsValue = fieldCards.value;
-  const categoriesValue = fieldCategories.value;
-  const timePeriodValueFrom = fieldTimePeriod.value?.[0];
-  const timePeriodValueTo = fieldTimePeriod.value?.[1];
-
-  const isPeriodSelected = timePeriodValueFrom && timePeriodValueTo;
-
-  const query = {
-    cards: cardsValue ? cardsValue : undefined,
-    categories: categoriesValue ? categoriesValue : undefined,
-    time_period_from: isPeriodSelected ? dayjs(timePeriodValueFrom).format(DATETIME_QUERY_FORMAT) : undefined,
-    time_period_to: isPeriodSelected ? dayjs(timePeriodValueTo).format(DATETIME_QUERY_FORMAT) : undefined,
+  const newFormValue: IFilterForm = {
+    cards: fieldCards.value,
+    categories: fieldCategories.value,
+    timePeriod: fieldTimePeriod.value,
+    page: 1,
   };
 
-  router.push({
-    query,
-  });
+  const newQuery = formToRouteQuery(newFormValue);
+
+  router.push({ query: newQuery })
 }
 </script>
 

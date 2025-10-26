@@ -16,8 +16,12 @@ export const useTransactionsData = () => {
   const statusMessage = ref<string | null>(null);
   const getErrorMessage = useGetErrorMessage();
 
-  const getTransactions = async (query: IGetTransactionsQuery) => {
+  const getTransactions = async (query: IGetTransactionsQuery, reset: boolean) => {
     try {
+      if (reset) {
+        list.value = [];
+      }
+
       getStatus.value = EStatus.PROCESSING;
 
       const transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
