@@ -2,7 +2,7 @@
 import { computed, onMounted } from 'vue';
 
 import { useTransactionsStore } from './store/transactions';
-import { useCardsStore } from './store/cards';
+import { useCardsStore } from '../../store/cards';
 
 import { useToast } from '@/composables/toast/toast';
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
@@ -28,7 +28,7 @@ const getTransactionsData = async () => {
   }
 
   try {
-    await transactionsStore.getTransactions({ itemsPerPage: 5 });
+    await transactionsStore.getTransactions({ itemsPerPage: 5, page: 1 });
   } catch (err) {
     console.error(err);
     toast.error(getErrorMessage(err));
