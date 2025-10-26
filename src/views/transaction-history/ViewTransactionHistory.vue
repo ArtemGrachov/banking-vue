@@ -8,6 +8,7 @@ import { useTransactionsStore } from './store/transactions';
 
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
+import { vIntersectionObserver, type IntersectionCallback } from '@/directives/intersection-observer';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
@@ -34,6 +35,10 @@ const getPageData = () => {
   getTransactionsData();
 }
 
+const scrollCallback: IntersectionCallback = (entry) => {
+  console.log('SCROLL CALLBACK', entry.isIntersecting);
+}
+
 onMounted(() => {
   getPageData();
 });
@@ -55,6 +60,7 @@ onMounted(() => {
         {{ $t('common_errors.refresh') }}
       </p>
     </ErrorPlaceholder>
+    <div class="intersection-observer" v-intersection-observer="{ callback: scrollCallback }"></div>
   </div>
 </template>
 
@@ -63,6 +69,13 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+  position: relative;
 }
 
+.intersection-observer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 </style>
