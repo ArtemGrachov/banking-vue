@@ -8,6 +8,7 @@ import { useTransactionsStore } from './store/transactions';
 
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
+import Filters from './components/Filters.vue';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
@@ -57,6 +58,7 @@ onMounted(() => {
 
 <template>
   <div class="page">
+    <Filters />
     <TransactionsList
       :mobile-full-page="true"
       :transactions="transactionsStore.list"

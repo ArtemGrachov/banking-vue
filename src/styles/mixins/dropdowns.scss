@@ -30,6 +30,7 @@
   border: 1px solid #e0e0e0;
   border-radius: 4px;
   box-shadow: 0 8px 20px -8px rgba(black, 0.4);
+  z-index: 10;
 }
 
 @mixin content {
@@ -40,7 +41,6 @@
 
   padding: var(--content-padding-y) var(--content-padding-x);
   overflow: hidden;
-  z-index: 10;
 }
 
 @mixin arrow() {

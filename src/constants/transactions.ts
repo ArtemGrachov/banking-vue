@@ -14,3 +14,15 @@ export const enum ETransactionCategory {
   SALARY = 'salary',
   INCOME = 'income',
 }
+
+export const TRANSACTION_CATEGORIES = [
+  ETransactionCategory.GROCERIES,
+  ETransactionCategory.RESTAURANTS_CAFES,
+  ETransactionCategory.TRANSPORTATION,
+  ETransactionCategory.ENTERTAINMENT,
+  ETransactionCategory.HEALTH_MEDICINE,
+  ETransactionCategory.SHOPPING,
+  ETransactionCategory.UTILITIES_BILLS,
+  ETransactionCategory.SALARY,
+  ETransactionCategory.INCOME,
+];

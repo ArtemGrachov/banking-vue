@@ -17,7 +17,7 @@ type Emits = {
   (e: 'update', value: any): void;
 }
 
-const { value, options, trackBy, label, inputLabel } = defineProps<IProps>();
+const { value, options = [], trackBy, label, inputLabel } = defineProps<IProps>();
 
 const emit = defineEmits<Emits>();
 
@@ -50,7 +50,7 @@ const { open: openSelectModal, close } = useModal({
     label,
   },
   slots: {
-    header: inputLabel,
+    header: inputLabel ?? '',
   },
 });
 
@@ -106,6 +106,7 @@ watch(() => value, v => {
   display: flex;
   align-items: center;
   background: white;
+  line-height: 1;
 
   &.multiselect--active {
     border-color: blue;
@@ -133,6 +134,7 @@ watch(() => value, v => {
 
       position: absolute;
       top: calc(100% + 8px);
+      overflow-y: auto;
     }
 
     .multiselect__tags,
