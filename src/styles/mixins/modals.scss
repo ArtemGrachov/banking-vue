@@ -48,6 +48,8 @@ $margin: 32px;
   align-items: center;
   padding-left: var(--header-padding, 16px);
   flex: 0 0 auto;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 @mixin close {

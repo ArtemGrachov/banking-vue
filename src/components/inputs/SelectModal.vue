@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import FullScreenModal, { type Emits as FullScreenModalEmits } from '@/components/modals/FullScreenModal.vue';
 
 interface IProps {
   options?: any[];
-  value?: any;
+  value?: any | any[];
   trackBy?: string;
   label?: string;
   inputLabel?: string;
+  multiple?: boolean;
 }
 
 type Emits = FullScreenModalEmits & {
@@ -21,14 +23,25 @@ const {
   trackBy,
   label,
   inputLabel,
+  multiple,
 } = defineProps<IProps>();
 
-const checkIsActive = (opt: any) => {
+const internalValue = ref<any | any[] | null | undefined>(null);
+
+const checkIsActiveSingle = (opt: any, val: any) => {
   if (trackBy) {
-    return opt?.[trackBy] === value;
+    return opt?.[trackBy] === val;
   }
 
-  return opt === value;
+  return opt === val;
+}
+
+const checkIsActive = (opt: any) => {
+  if (multiple) {
+    return (internalValue.value as any[])?.some(val => checkIsActiveSingle(opt, val));
+  }
+
+  return checkIsActiveSingle(opt, internalValue.value);
 }
 
 const getOption = (opt: any) => {
@@ -59,20 +72,48 @@ const getTrackBy = (option: any, index: number) => {
 }
 
 const selectHandler = (option: any) => {
-  let value = option;
+  let newValue = option;
 
   if (trackBy) {
-    value = option?.[trackBy];
+    newValue = option?.[trackBy];
   }
 
-  emit('select', value);
+  if (multiple) {
+    const currentValue = (internalValue.value ?? []) as any[];
+
+    if (currentValue.includes(newValue)) {
+      internalValue.value =  currentValue.filter(v => v !== newValue);
+    } else {
+      internalValue.value =  [...currentValue, newValue];
+    }
+  } else {
+    internalValue.value = newValue;
+    emitSelect();
+  }
 }
+
+const emitSelect = () => {
+  emit('select', internalValue.value);
+  emit('close');
+}
+
+const closeHandler = () => {
+  if (internalValue.value !== value) {
+    emit('select', internalValue.value);
+  }
+
+  emit('close');
+}
+
+onMounted(() => {
+  internalValue.value = value;
+});
 </script>
 
 <template>
-  <FullScreenModal @close="emit('close')">
+  <FullScreenModal @close="closeHandler">
     <template #header>
-      <slot name="header" />
+      {{ inputLabel }}
     </template>
     <ul class="list">
       <li
@@ -107,6 +148,8 @@ const selectHandler = (option: any) => {
 
   padding: var(--content-padding);
   width: 100%;
+  font-size: 16px;
+  text-align: left;
 
   &._active {
     @include buttons.text-active();

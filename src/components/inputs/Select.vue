@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref, watch } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
 import Multiselect from 'vue-multiselect';
 
@@ -15,7 +15,6 @@ interface IProps {
 }
 
 type Emits = {
-  (e: 'update', value: any): void;
   (e: 'select', selectedOption: any): void;
   (e: 'remove', removedOption: any): void;
   (e: 'blur'): void;
@@ -24,11 +23,10 @@ type Emits = {
 const { value, options = [], trackBy, label, inputLabel, multiple } = defineProps<IProps>();
 
 const emit = defineEmits<Emits>();
-
-const internalValue = ref(value);
+const model = defineModel();
 
 const selectedLabel = computed(() => {
-  return customLabel(internalValue.value);
+  return customLabel(model.value);
 });
 
 const internalOptions = computed(() => {
@@ -44,34 +42,18 @@ const { open: openSelectModal, close } = useModal({
   component: SelectModal,
   attrs: {
     onClose: () => close(),
-    onSelect: value => {
-      internalValue.value = value;
+    onSelect: val => {
+      model.value = val;
       close();
+      emit('select', val);
     },
-    value: internalValue,
+    value: model,
     options,
     trackBy,
     label,
+    multiple,
+    inputLabel,
   },
-  slots: {
-    header: inputLabel ?? '',
-  },
-});
-
-watch(internalValue, v => {
-  if (v === value) {
-    return;
-  }
-
-  emit('update', v);
-});
-
-watch(() => value, v => {
-  if (v === internalValue) {
-    return;
-  }
-
-  internalValue.value = v;
 });
 </script>
 
@@ -84,7 +66,7 @@ watch(() => value, v => {
     {{ selectedLabel }}
   </button>
   <Multiselect
-    v-model="internalValue"
+    v-model="model as any"
     v-bind="$attrs"
     :options="internalOptions ?? []"
     class="select _desktop"

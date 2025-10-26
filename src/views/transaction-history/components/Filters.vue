@@ -14,6 +14,7 @@ import Select from '@/components/inputs/Select.vue';
 import Datepicker from '@/components/inputs/Datepicker.vue';
 
 import type { IFilterForm } from '../types/filter';
+import Button from '@/components/buttons/Button.vue';
 
 const { t } = useI18n();
 const cardsStore = useCardsStore();
@@ -70,6 +71,7 @@ const updateHandler = () => {
           track-by="id"
           label="label"
           :multiple="true"
+          :input-label="$t('view_transaction_history.filters.label_card')"
           v-model="fieldCards"
           @select="updateHandler"
           @remove="updateHandler"
@@ -86,6 +88,7 @@ const updateHandler = () => {
           track-by="category"
           label="label"
           :multiple="true"
+          :input-label="$t('view_transaction_history.filters.label_category')"
           v-model="fieldCategories"
           @select="updateHandler"
           @remove="updateHandler"
@@ -111,12 +114,18 @@ const updateHandler = () => {
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
 .filters {
-  display: flex;
-  gap: 32px;
+  @include breakpoints.sm() {
+    display: flex;
+    gap: 32px;
+  }
 }
 
 .cell {
-  flex: 1 1 0;
+  @include breakpoints.sm() {
+    flex: 1 1 0;
+  }
 }
 </style>

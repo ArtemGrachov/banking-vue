@@ -149,7 +149,8 @@
     "filters": {
       "label_card": "Card",
       "label_category": "Category",
-      "label_period": "Period"
+      "label_period": "Period",
+      "mobile_trigger": "Open filters"
     }
   }
 }
