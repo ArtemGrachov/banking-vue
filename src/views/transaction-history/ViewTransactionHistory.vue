@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { defineAsyncComponent, onMounted } from 'vue';
+import { useModal } from 'vue-final-modal';
 
 import { EStatus } from '@/constants/status';
 
@@ -14,6 +15,10 @@ import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
 import InfiniteScroll from '@/components/other/InfiniteScroll.vue';
+
+import Button from '@/components/buttons/Button.vue';
+
+const ModalFilters = defineAsyncComponent(() => import('@/views/transaction-history/components/ModalFilters.vue'));
 
 const transactionsStore = useTransactionsStore();
 const cardsStore = useCardsStore();
@@ -35,6 +40,13 @@ const infiniteScrollHandler = () => {
   nextPage();
 }
 
+const { open: openModalFilters, close: closeModalFilters } = useModal({
+  component: ModalFilters,
+  attrs: {
+    onClose: () => closeModalFilters(),
+  },
+});
+
 onMounted(() => {
   getPageData();
 });
@@ -42,7 +54,14 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <Filters />
+    <Button
+      class="modal-filters-trigger"
+      variant="primary"
+      @click="openModalFilters"
+    >
+      {{ $t('view_transaction_history.mobile_trigger') }}
+    </Button>
+    <Filters class="desktop-filters" />
     <TransactionsList
       :mobile-full-page="true"
       :transactions="transactionsStore.list"
@@ -60,16 +79,26 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/layout.scss' as layout;
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .page {
   @include layout.page();
   position: relative;
 }
 
-.intersection-observer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.modal-filters-trigger {
+  margin-bottom: 24px;
+
+  @include breakpoints.sm() {
+    display: none;
+  }
+}
+
+.desktop-filters {
+  display: none;
+
+  @include breakpoints.sm() {
+    display: flex;
+  }
 }
 </style>

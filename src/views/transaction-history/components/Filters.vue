@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
@@ -14,6 +14,12 @@ import Select from '@/components/inputs/Select.vue';
 import Datepicker from '@/components/inputs/Datepicker.vue';
 
 import type { IFilterForm } from '../types/filter';
+
+type Emits = {
+  (e: 'select'): void;
+}
+
+const emits = defineEmits<Emits>();
 
 const { t } = useI18n();
 const cardsStore = useCardsStore();
@@ -52,7 +58,8 @@ const updateHandler = () => {
 
   const newQuery = formToRouteQuery(newFormValue);
 
-  router.push({ query: newQuery })
+  router.push({ query: newQuery });
+  emits('select');
 }
 </script>
 

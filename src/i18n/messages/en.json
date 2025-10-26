@@ -146,11 +146,14 @@
     }
   },
   "view_transaction_history": {
+    "mobile_trigger": "Open filters",
     "filters": {
       "label_card": "Card",
       "label_category": "Category",
-      "label_period": "Period",
-      "mobile_trigger": "Open filters"
+      "label_period": "Period"
+    },
+    "modal_filters": {
+      "title": "Filters"
     }
   },
   "select": {
