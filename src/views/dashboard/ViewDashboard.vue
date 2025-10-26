@@ -2,10 +2,11 @@
 import { computed, onMounted } from 'vue';
 
 import { useTransactionsStore } from './store/transactions';
-import { useCardsStore } from './store/cards';
+import { useCardsStore } from '../../store/cards';
 
 import { useToast } from '@/composables/toast/toast';
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
+import { useGetCardsData } from '@/composables/data/get-cards-data';
 
 import NavLinks from './components/NavLinks.vue';
 import Cards from './components/Cards.vue';
@@ -14,6 +15,7 @@ import IconButton from '@/components/buttons/IconButton.vue';
 
 const transactionsStore = useTransactionsStore();
 const cardsStore = useCardsStore();
+const { getCardsData } = useGetCardsData();
 
 const toast = useToast();
 const getErrorMessage = useGetErrorMessage();
@@ -28,20 +30,7 @@ const getTransactionsData = async () => {
   }
 
   try {
-    await transactionsStore.getTransactions({ itemsPerPage: 5 });
-  } catch (err) {
-    console.error(err);
-    toast.error(getErrorMessage(err));
-  }
-}
-
-const getCardsData = async () => {
-  if (cardsStore.isProcessing) {
-    return;
-  }
-
-  try {
-    await cardsStore.getCards();
+    await transactionsStore.getTransactions({ itemsPerPage: 5, page: 1 });
   } catch (err) {
     console.error(err);
     toast.error(getErrorMessage(err));

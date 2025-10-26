@@ -27,6 +27,8 @@
   color: white;
   font-size: 14px;
   position: relative;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 
   @include breakpoints.sm() {
     width: auto;
@@ -150,6 +152,8 @@
   border: none;
   line-height: 1;
   color: #9b0000;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 
   &:hover {
     color: red;

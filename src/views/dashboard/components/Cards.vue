@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useCardsStore } from '../store/cards';
+import { useCardsStore } from '../../../store/cards';
 
 import { EStatus } from '@/constants/status';
 

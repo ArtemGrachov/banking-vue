@@ -18,7 +18,8 @@ const transactionsStore = useTransactionsStore();
 
 <template>
   <TransactionsList
-    :transations="transactionsStore.data"
+    :mobile-full-page="true"
+    :transactions="transactionsStore.data?.data"
     :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
   />
   <NoTransactions v-if="transactionsStore.isEmpty" />

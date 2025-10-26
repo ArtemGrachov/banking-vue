@@ -124,7 +124,19 @@
   "common_transactions": {
     "list_placeholder": {
       "title": "The list is empty",
-      "subtitle": "There are no transations yet"
+      "subtitle": "There are no transactions yet"
+    },
+    "categories": {
+      "all": "All",
+      "groceries": "Groceries",
+      "restaurants_cafes": "Restaurants & Cafes",
+      "transportation": "Transportation",
+      "entertainment": "Entertainment",
+      "health_medicine": "Health & Medicine",
+      "shopping": "Shopping",
+      "utilities_bills": "Utilities & Bills",
+      "salary": "Salary",
+      "income": "Income"
     }
   },
   "common_cards": {
@@ -132,5 +144,24 @@
       "title": "There are no cards yet",
       "subtitle": "Order your first card"
     }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Open filters",
+    "filters": {
+      "label_card": "Card",
+      "label_category": "Category",
+      "label_period": "Period"
+    },
+    "modal_filters": {
+      "title": "Filters"
+    }
+  },
+  "select": {
+    "no_result": "Nothing found",
+    "no_options": "No options",
+    "placeholder": "Select option"
+  },
+  "select_modal": {
+    "clear": "Clear"
   }
 }

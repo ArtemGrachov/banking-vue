@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref, watch } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
+import { useI18n } from 'vue-i18n';
 import Multiselect from 'vue-multiselect';
+import { useScreens } from 'vue-screen-utils';
+
+import { BREAKPOINTS } from '@/constants/breakpoints';
+
+import IconButton from '@/components/buttons/IconButton.vue';
 
 const SelectModal = defineAsyncComponent(() => import('@/components/inputs/SelectModal.vue'));
 
@@ -11,20 +17,30 @@ interface IProps {
   trackBy?: string;
   label?: string;
   inputLabel?: string;
+  multiple?: boolean;
+  searchable?: boolean;
 }
 
 type Emits = {
-  (e: 'update', value: any): void;
+  (e: 'select', selectedOption: any): void;
+  (e: 'remove', removedOption: any): void;
+  (e: 'blur'): void;
 }
 
-const { value, options, trackBy, label, inputLabel } = defineProps<IProps>();
+const { options = [], trackBy, label, inputLabel, multiple, searchable } = defineProps<IProps>();
 
+const { t } = useI18n();
 const emit = defineEmits<Emits>();
+const model = defineModel();
+const screens = useScreens({
+  xsmall: `${BREAKPOINTS.xsmall}px`,
+  small: `${BREAKPOINTS.small}px`,
+  medium: `${BREAKPOINTS.medium}px`,
+  large: `${BREAKPOINTS.large}px`,
+});
 
-const internalValue = ref(value);
-
-const selectedLabel = computed(() => {
-  return customLabel(internalValue.value);
+const modalMode = computed(() => {
+  return !screens.matches.medium;
 });
 
 const internalOptions = computed(() => {
@@ -40,52 +56,75 @@ const { open: openSelectModal, close } = useModal({
   component: SelectModal,
   attrs: {
     onClose: () => close(),
-    onSelect: value => {
-      internalValue.value = value;
+    onSelect: val => {
+      model.value = val;
       close();
+      emit('select', val);
     },
-    value: internalValue,
-    options,
+    value: model,
+    options: computed(() => options),
     trackBy,
     label,
-  },
-  slots: {
-    header: inputLabel,
+    multiple,
+    inputLabel,
+    noOptions: t('select.no_options'),
+    noResult: t('select.no_result'),
   },
 });
 
-watch(internalValue, v => {
-  if (v === value) {
+const openHandler = () => {
+  if (!modalMode.value) {
     return;
   }
 
-  emit('update', v);
-});
+  openSelectModal();
+}
 
-watch(() => value, v => {
-  if (v === internalValue) {
-    return;
+const clearHandler = () => {
+  if (multiple) {
+    model.value = [];
+  } else {
+    model.value = null;
   }
 
-  internalValue.value = v;
-});
+  emit('select', model.value);
+}
 </script>
 
 <template>
-  <button
-    type="button"
-    class="select _mobile"
-    @click="openSelectModal"
-  >
-    {{ selectedLabel }}
-  </button>
   <Multiselect
-    v-model="internalValue"
+    v-model="model as any"
     v-bind="$attrs"
+    :searchable="searchable && !modalMode"
     :options="internalOptions ?? []"
-    class="select _desktop"
+    class="select"
     :custom-label="customLabel"
-  ></multiselect>
+    :multiple="multiple"
+    :placeholder="$t('select.placeholder')"
+    @select="emit('select', $event)"
+    @remove="emit('remove', $event)"
+    @close="emit('blur')"
+    @click="openHandler"
+  >
+    <template #noOptions>
+      {{ $t('select.no_options') }}
+    </template>
+    <template #noResult>
+      {{ $t('select.no_result') }}
+    </template>
+    <template #clear>
+      <IconButton
+        v-if="multiple ? (model as any[])?.length : model"
+        type="button"
+        class="clear"
+        @click="clearHandler"
+      >
+        <span class="material-symbols-outlined">
+          close
+        </span>
+      </IconButton>
+    </template>
+  </multiselect>
 </template>
 
 <style lang="scss" scoped>
@@ -106,24 +145,17 @@ watch(() => value, v => {
   display: flex;
   align-items: center;
   background: white;
+  line-height: 1;
 
   &.multiselect--active {
     border-color: blue;
-  }
 
-  &._desktop {
-    display: none;
-
-    @include breakpoints.sm() {
-      display: block;
-    }
-  }
-
-  &._mobile {
-    padding: 0 16px;
-
-    @include breakpoints.sm() {
-      display: none;
+    :deep() {
+      .multiselect__tags-wrap {
+        @include breakpoints.md() {
+          display: none;
+        }
+      }
     }
   }
 
@@ -133,6 +165,13 @@ watch(() => value, v => {
 
       position: absolute;
       top: calc(100% + 8px);
+      overflow-y: auto;
+
+      display: none;
+
+      @include breakpoints.md() {
+        display: block;
+      }
     }
 
     .multiselect__tags,
@@ -141,11 +180,36 @@ watch(() => value, v => {
       height: 100%;
     }
 
+    .multiselect__tags-wrap {
+      pointer-events: none;
+      min-width: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 8px;
+    }
+
     .multiselect__placeholder,
     .multiselect__single {
       display: flex;
       align-items: center;
       padding: 0 16px;
+    }
+
+    .multiselect__tag {
+      white-space: nowrap;
+      padding: 4px 8px;
+      background: darkred;
+      color: white;
+      border-radius: 16px;
     }
 
     .multiselect__input {
@@ -179,6 +243,18 @@ watch(() => value, v => {
     .multiselect-leave-to {
       @include dropdowns.dropdown-closed();
     }
+  }
+}
+
+.clear {
+  --button-display: none;
+
+  @include breakpoints.md() {
+    --button-display: flex;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    z-index: 1;
   }
 }
 </style>
