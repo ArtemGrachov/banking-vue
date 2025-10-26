@@ -5,32 +5,37 @@ import { EStatus } from '@/constants/status';
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
 import type { ITransaction } from '@/types/models/transaction';
-import type { IGetTransactionsQuery } from '@/types/api/transactions';
+import type { IGetTransactionsQuery, IGetTransactionsResponse } from '@/types/api/transactions';
 
-import { mockRequest } from '@/utils/mock-request';
+import { mockPaginationRequest } from '@/utils/mock-request';
 
 export const useTransactionsData = () => {
   const getStatus = ref(EStatus.INIT);
-  const data = ref<ITransaction[] | null>(null);
+  const data = ref<IGetTransactionsResponse | null | undefined>(null);
+  const list = ref<ITransaction[]>([]);
   const statusMessage = ref<string | null>(null);
   const getErrorMessage = useGetErrorMessage();
 
-  const getTransactions = async (query?: IGetTransactionsQuery) => {
+  const getTransactions = async (query: IGetTransactionsQuery) => {
     try {
       getStatus.value = EStatus.PROCESSING;
 
       const transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
-      let response = await mockRequest<ITransaction[]>(transactions);
+      data.value = await mockPaginationRequest<IGetTransactionsResponse, ITransaction>(
+        query.page,
+        query.itemsPerPage ?? 10,
+        transactions,
+      );
 
-      if (query?.itemsPerPage) {
-        response = response?.slice(0, query.itemsPerPage);
-      }
+      list.value = [
+        ...list.value,
+        ...(data.value?.data ?? []),
+      ];
 
       getStatus.value = EStatus.SUCCESS;
       statusMessage.value = null;
-      data.value = response ?? null;
 
-      return response;
+      return data.value;
     } catch (err) {
       statusMessage.value = getErrorMessage(err);
       getStatus.value = EStatus.ERROR;
@@ -41,7 +46,12 @@ export const useTransactionsData = () => {
   const clear = () => {
     getStatus.value = EStatus.INIT;
     data.value = null;
+    list.value = [];
   }
+
+  const isInit = computed(() => {
+    return getStatus.value === EStatus.INIT;
+  });
 
   const isProcessing = computed(() => {
     return getStatus.value === EStatus.PROCESSING;
@@ -52,7 +62,7 @@ export const useTransactionsData = () => {
   });
 
   const isEmpty = computed(() => {
-    return isSuccess.value && !data.value?.length;
+    return isSuccess.value && !data.value?.data?.length;
   });
 
   const isError = computed(() => {
@@ -62,6 +72,8 @@ export const useTransactionsData = () => {
   return {
     getStatus,
     data,
+    list,
+    isInit,
     isProcessing,
     isSuccess,
     isEmpty,

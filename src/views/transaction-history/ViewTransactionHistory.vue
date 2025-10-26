@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useToast } from 'vue-toast-notification';
 
 import { EStatus } from '@/constants/status';
@@ -8,10 +8,10 @@ import { useTransactionsStore } from './store/transactions';
 
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
-import { vIntersectionObserver, type IntersectionCallback } from '@/directives/intersection-observer';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import TransactionsList from '@/components/transactions/TransactionsList.vue';
+import InfiniteScroll from '@/components/other/InfiniteScroll.vue';
 
 const toast = useToast();
 const transactionsStore = useTransactionsStore();
@@ -22,8 +22,15 @@ const getTransactionsData = async () => {
     return;
   }
 
+  const totalPages = transactionsStore.data?.pagination.totalPages ?? 1;
+  const newPage = (transactionsStore.data?.pagination.currentPage ?? 0) + 1;
+
+  if (newPage > totalPages) {
+    return;
+  }
+
   try {
-    await transactionsStore.getTransactions();
+    await transactionsStore.getTransactions({ itemsPerPage: 20, page: newPage, });
   } catch (err) {
     console.error(err);
     toast.error(getErrorMessage(err));
@@ -35,8 +42,12 @@ const getPageData = () => {
   getTransactionsData();
 }
 
-const scrollCallback: IntersectionCallback = (entry) => {
-  console.log('SCROLL CALLBACK', entry.isIntersecting);
+const infiniteScrollHandler = () => {
+  if (transactionsStore.isInit || transactionsStore.isError) {
+    return;
+  }
+
+  getTransactionsData();
 }
 
 onMounted(() => {
@@ -48,7 +59,7 @@ onMounted(() => {
   <div class="page">
     <TransactionsList
       :mobile-full-page="true"
-      :transactions="transactionsStore.data"
+      :transactions="transactionsStore.list"
       :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
     />
     <NoTransactions v-if="transactionsStore.isEmpty" />
@@ -56,11 +67,8 @@ onMounted(() => {
       <p>
         {{ transactionsStore.statusMessage }}
       </p>
-      <p>
-        {{ $t('common_errors.refresh') }}
-      </p>
     </ErrorPlaceholder>
-    <div class="intersection-observer" v-intersection-observer="{ callback: scrollCallback }"></div>
+    <InfiniteScroll :is-disabled="transactionsStore.isProcessing" @scroll="infiniteScrollHandler" />
   </div>
 </template>
 
