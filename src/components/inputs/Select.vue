@@ -11,13 +11,17 @@ interface IProps {
   trackBy?: string;
   label?: string;
   inputLabel?: string;
+  multiple?: boolean;
 }
 
 type Emits = {
   (e: 'update', value: any): void;
+  (e: 'select', selectedOption: any): void;
+  (e: 'remove', removedOption: any): void;
+  (e: 'blur'): void;
 }
 
-const { value, options = [], trackBy, label, inputLabel } = defineProps<IProps>();
+const { value, options = [], trackBy, label, inputLabel, multiple } = defineProps<IProps>();
 
 const emit = defineEmits<Emits>();
 
@@ -85,6 +89,10 @@ watch(() => value, v => {
     :options="internalOptions ?? []"
     class="select _desktop"
     :custom-label="customLabel"
+    :multiple="multiple"
+    @select="emit('select', $event)"
+    @remove="emit('remove', $event)"
+    @close="emit('blur')"
   ></multiselect>
 </template>
 
