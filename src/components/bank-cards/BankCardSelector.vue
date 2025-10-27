@@ -16,6 +16,7 @@ interface IProps {
 }
 
 const { mobileFullPage, cards, isProcessing } = defineProps<IProps>();
+let swiperInstance: SwiperType | null = null;
 
 const activeIndex = ref(-1);
 const model = defineModel<number | null | undefined>();
@@ -44,6 +45,7 @@ const changeHandler = (e: SwiperType) => {
       :center-insufficient-slides="true"
       :centered-slides="true"
       :initial-slide="initialSlide"
+      :slide-to-clicked-slide="true"
       @slide-change="changeHandler"
     >
       <template v-if="isProcessing">
@@ -51,7 +53,7 @@ const changeHandler = (e: SwiperType) => {
           <BankCardSkeleton />
         </SwiperSlide>
       </template>
-      <SwiperSlide v-for="card in cards" :key="card.id" class="slide">
+      <SwiperSlide v-for="(card, index) in cards" :key="card.id" class="slide">
         <BankCard :card="card" />
         <div class="balance">
           {{ card.balance }} {{ card.currency }}
