@@ -170,5 +170,8 @@
     "submit": "Send",
     "max": "Max: {value}",
     "max_validation": "You cannot transfer more than {value}"
+  },
+  "view_transfer": {
+    "confirmation": "Do you really want to transfer {value} to {recipient}?"
   }
 }

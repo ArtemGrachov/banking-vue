@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import { useCardsStore } from '@/store/cards';
 
 import { useGetCardsData } from '@/composables/data/get-cards-data';
 import FormMoneyTransfer from '@/components/forms/FormMoneyTransfer.vue';
+import { useConfirmationModal } from '@/composables/modals/confirmation-modal';
 
 import type { IFormMoneyTransfer } from '@/types/forms/form-money-transfer';
 
+const { t } = useI18n();
 const cardsStore = useCardsStore();
 const { getCardsData } = useGetCardsData();
 
@@ -16,7 +19,26 @@ const getPageData = () => {
   getCardsData();
 }
 
+const question = ref('');
+const confirmation = useConfirmationModal(question);
+
 const submitHandler = async (formValue: IFormMoneyTransfer) => {
+  const selectedCard = cardsStore.data?.find(c => c.id === formValue.card);
+
+  question.value = t(
+    'view_transfer.confirmation',
+    {
+      value: `${formValue.amount} ${selectedCard?.currency}`,
+      recipient: formValue.recipient,
+    },
+  );
+
+  const confirm = await confirmation();
+
+  if (!confirm) {
+    return;
+  }
+
   console.log(formValue);
 }
 
