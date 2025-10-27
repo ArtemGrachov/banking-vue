@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { required, email, helpers, sameAs } from '@vuelidate/validators'
+import { email, helpers, sameAs } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import { EStatus } from '@/constants/status';
@@ -40,11 +40,9 @@ const phoneValidator = helpers.regex(REGEXP_PHONE);
 
 const rules = computed(() => ({
   email: {
-    required,
     email,
   },
   phone_number: {
-    required,
     phone: phoneValidator,
   },
   password: passwordValidators,

@@ -244,7 +244,9 @@
     "id_number": "ID number"
   },
   "view_security": {
-    "update_success": "Security data was updated successfully"
+    "confirmation_success": "Security data update request send succesfully",
+    "success": "Security data updated succesfully",
+    "return": "Return"
   },
   "demo_confirmation": {
     "email_link": "DEMO: Click here to proceed",
