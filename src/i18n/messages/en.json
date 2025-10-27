@@ -180,5 +180,12 @@
   "bank_card_item": {
     "balance": "Balance",
     "manage": "Manage"
+  },
+  "view_card": {
+    "block": "Block",
+    "close": "Close",
+    "block_question": "Are you sure you want to block the card {cardNumber}?",
+    "close_question": "Are you sure you want to close the card {cardNumber}?",
+    "balance": "Balance"
   }
 }

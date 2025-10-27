@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/router/routes';
+
+import { useGetRoute } from '@/composables/routing/get-route';
 import Button from '@/components/buttons/Button.vue';
+
 import type { ICard } from '@/types/models/card';
 
 interface IProps {
@@ -7,6 +13,7 @@ interface IProps {
 }
 
 defineProps<IProps>();
+const getRoute = useGetRoute();
 
 </script>
 
@@ -24,7 +31,12 @@ defineProps<IProps>();
           {{ card.balance }} {{ card.currency }}
         </template>
       </div>
-      <Button v-if="card" type="button" variant="primary">
+      <Button
+        v-if="card"
+        :to="getRoute({ name: ROUTE_NAMES.CARD, params: { id: card.id } })"
+        :as="RouterLink"
+        variant="primary"
+      >
         <span class="material-symbols-outlined">
           settings
         </span>
