@@ -5,10 +5,12 @@ import { useI18n } from 'vue-i18n';
 import { useCardsStore } from '@/store/cards';
 
 import { useGetCardsData } from '@/composables/data/get-cards-data';
-import FormMoneyTransfer from '@/components/forms/FormMoneyTransfer.vue';
 import { useConfirmationModal } from '@/composables/modals/confirmation-modal';
+import FormMoneyTransfer from '@/components/forms/FormMoneyTransfer.vue';
+import SuccessPlaceholder from '@/components/error/SuccessPlaceholder.vue';
 
 import type { IFormMoneyTransfer } from '@/types/forms/form-money-transfer';
+import Button from '@/components/buttons/Button.vue';
 
 const { t } = useI18n();
 const cardsStore = useCardsStore();
@@ -20,6 +22,7 @@ const getPageData = () => {
 }
 
 const question = ref('');
+const transferred = ref(false);
 const confirmation = useConfirmationModal(question);
 
 const submitHandler = async (formValue: IFormMoneyTransfer) => {
@@ -39,7 +42,7 @@ const submitHandler = async (formValue: IFormMoneyTransfer) => {
     return;
   }
 
-  console.log(formValue);
+  transferred.value = true;
 }
 
 onMounted(() => {
@@ -49,7 +52,19 @@ onMounted(() => {
 
 <template>
   <div class="page">
+    <SuccessPlaceholder v-if="transferred">
+      <template #title>
+        Done
+      </template>
+      <template #subtitle>
+        Transfer was completed succssfully
+        <Button type="button" class="return" variant="primary" @click="transferred = false">
+          Transfer again
+        </Button>
+      </template>
+    </SuccessPlaceholder>
     <FormMoneyTransfer
+      v-else
       :cards="cardsStore.data"
       :is-cards-processing="cardsStore.isProcessing"
       @submit="submitHandler"
@@ -62,5 +77,9 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+}
+
+.return {
+  margin-top: 24px;
 }
 </style>
