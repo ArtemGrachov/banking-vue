@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { required } from '@vuelidate/validators'
+import { maxValue, required } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
+import { useI18n } from 'vue-i18n';
 
 import { CARD_MASK } from '@/validation/cards';
 
@@ -17,18 +18,38 @@ import type { IFormMoneyTransfer } from '@/types/forms/form-money-transfer';
 
 interface IProps {
   cards?: ICard[] | null;
+  isCardsProcessing?: boolean;
 }
 
 type Emits = {
   (e: 'submit', formValue: IFormMoneyTransfer): any;
 }
 
-const { cards } = defineProps<IProps>();
+const { t } = useI18n();
+const { cards, isCardsProcessing } = defineProps<IProps>();
 const emit = defineEmits<Emits>();
 
 const fieldCard = ref(null);
 const fieldAmount = ref(null);
 const fieldRecipient = ref(null);
+
+const selectedCard = computed(() => {
+  return cards?.find(c => c.id === fieldCard.value);
+});
+
+const max = computed(() => {
+  return selectedCard.value?.balance;
+});
+
+const maxFormatted = computed(() => {
+  return `${max.value} ${selectedCard.value?.currency}`;
+});
+
+const amountValidationMessages = computed(() => {
+  return {
+    max: t('form_money_transfer.max_validation', { value: maxFormatted.value }),
+  };
+})
 
 const rules = computed(() => ({
   card: {
@@ -36,6 +57,7 @@ const rules = computed(() => ({
   },
   amount: {
     required,
+    max: maxValue(max.value ?? 0),
   },
   recipient: {
     required,
@@ -64,37 +86,47 @@ const submitHandler = async () => {
 <template>
   <form @submit.prevent="submitHandler">
     <FormField :input="v$.card">
+      <NoCards v-if="!isCardsProcessing && !cards?.length" />
       <BankCardSelector
+        v-else
         :cards="cards"
+        :is-processing="isCardsProcessing"
         v-model="fieldCard"
-        @update:model-value="v$.card.$touch"
-      >
-        <template v-if="!cards?.length" #placeholder>
-          <NoCards />
-        </template>
-      </BankCardSelector>
+      />
     </FormField>
     <div class="subfields">
-      <FormField :input="v$.amount">
+      <FormField
+        :input="v$.amount"
+        :custom-validation-messages="amountValidationMessages"
+      >
         <template #label>
           {{ $t('form_money_transfer.amount') }}
         </template>
-        <Input
-          type="number"
-          min="0"
-          v-model="fieldAmount"
-          @blur="v$.amount.$touch()"
-        />
+        <template #default="{ classNames }">
+          <Input
+            type="number"
+            min="0"
+            :class="classNames"
+            v-model="fieldAmount"
+            @blur="v$.amount.$touch()"
+          />
+        </template>
+        <template v-if="selectedCard" #hint>
+          {{ $t('form_money_transfer.max', { value: maxFormatted }) }}
+        </template>
       </FormField>
       <FormField :input="v$.recipient">
         <template #label>
           {{ $t('form_money_transfer.recipient') }}
         </template>
-        <InputMask
-          :mask-or-alias="CARD_MASK"
-          v-model="fieldRecipient"
-          @blur="v$.recipient.$touch()"
-        />
+        <template #default="{ classNames }">
+          <InputMask
+            :mask-or-alias="CARD_MASK"
+            :class="classNames"
+            v-model="fieldRecipient"
+            @blur="v$.recipient.$touch()"
+          />
+        </template>
       </FormField>
       <Button
         type="submit"

@@ -167,6 +167,8 @@
   "form_money_transfer": {
     "amount": "Amount",
     "recipient": "Recipient",
-    "submit": "Send"
+    "submit": "Send",
+    "max": "Max: {value}",
+    "max_validation": "You cannot transfer more than {value}"
   }
 }

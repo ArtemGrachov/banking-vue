@@ -22,7 +22,7 @@ const model = defineModel<number | null | undefined>();
 
 const selectedCard = computed(() => {
   return cards?.[activeIndex.value];
-})
+});
 
 const initialSlide = computed(() => {
   return 0; // cards?.map(c => c.id).findIndex(model.value);
@@ -47,7 +47,7 @@ const changeHandler = (e: SwiperType) => {
       @slide-change="changeHandler"
     >
       <template v-if="isProcessing">
-        <SwiperSlide v-for="i in 3" :key="i" class="slide">
+        <SwiperSlide v-for="i in 4" :key="i" class="slide">
           <BankCardSkeleton />
         </SwiperSlide>
       </template>

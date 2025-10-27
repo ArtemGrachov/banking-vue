@@ -29,6 +29,7 @@ onMounted(() => {
   <div class="page">
     <FormMoneyTransfer
       :cards="cardsStore.data"
+      :is-cards-processing="cardsStore.isProcessing"
       @submit="submitHandler"
     />
   </div>
