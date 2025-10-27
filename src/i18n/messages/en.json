@@ -208,5 +208,8 @@
   "form_order_card": {
     "design": "Design",
     "submit": "Order card"
+  },
+  "view_order_card": {
+    "success": "The card was successfully ordered"
   }
 }

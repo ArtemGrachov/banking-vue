@@ -69,10 +69,6 @@ const handleDesignSelect = () => {
 
 <template>
   <form @submit.prevent="submitHandler">
-    
-    <FormStatus v-if="statusMessage" :status="submitStatus">
-      {{ statusMessage }}
-    </FormStatus>
     <FormField :input="v$.design">
       <template #label>
         {{ $t('form_order_card.design') }}
@@ -94,5 +90,18 @@ const handleDesignSelect = () => {
     >
       {{ $t('form_order_card.submit') }}
     </Button>
+    <FormStatus
+      v-if="statusMessage"
+      :status="submitStatus"
+      class="status"
+    >
+      {{ statusMessage }}
+    </FormStatus>
   </form>
 </template>
+
+<style lang="scss" scoped>
+.status {
+  margin-top: 24px;
+}
+</style>
