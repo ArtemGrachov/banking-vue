@@ -34,7 +34,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.MONEY_TRANSFER,
     path: 'money-transfer',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/transfer/ViewTransfer.vue'),
   },
   {
     name: ROUTE_NAMES.TRANSACTION_HISTORY,

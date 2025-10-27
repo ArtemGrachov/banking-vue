@@ -6,7 +6,8 @@
     "expireDate": "07/27",
     "isBlocked": false,
     "currency": "USD",
-    "cardholderName": "Cardholder Name"
+    "cardholderName": "Cardholder Name",
+    "balance": 5000
   },
   {
     "id": 2,
@@ -14,7 +15,8 @@
     "verifiation": "941",
     "expireDate": "11/26",
     "currency": "EUR",
-    "cardholderName": "Cardholder Name"
+    "cardholderName": "Cardholder Name",
+    "balance": 0
   },
   {
     "id": 3,
@@ -23,7 +25,8 @@
     "expireDate": "04/29",
     "isBlocked": true,
     "currency": "UAH",
-    "cardholderName": "Cardholder Name"
+    "cardholderName": "Cardholder Name",
+    "balance": 1200
   },
   {
     "id": 4,
@@ -31,7 +34,8 @@
     "verifiation": "1279",
     "expireDate": "09/28",
     "currency": "GBP",
-    "cardholderName": "Cardholder Name"
+    "cardholderName": "Cardholder Name",
+    "balance": 3000
   },
   {
     "id": 5,
@@ -40,6 +44,7 @@
     "expireDate": "12/30",
     "isBlocked": false,
     "currency": "USD",
-    "cardholderName": "Cardholder Name"
+    "cardholderName": "Cardholder Name",
+    "balance": 0
   }
 ]

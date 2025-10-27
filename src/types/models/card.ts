@@ -6,4 +6,5 @@ export interface ICard {
   isBlocked?: boolean;
   currency: string;
   cardholderName: string;
+  balance: number;
 }

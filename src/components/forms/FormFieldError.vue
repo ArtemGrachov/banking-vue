@@ -4,11 +4,12 @@ import type { Validation } from '@vuelidate/core';
 
 interface IProps {
   input?: Validation<any, any> | Record<string, any>;
+  customValidationMessages?: Record<string, string>;
 }
 
-const { input } = defineProps<IProps>();
+const { input, customValidationMessages } = defineProps<IProps>();
 
-const messages = useValidationMessages(input);
+const messages = useValidationMessages(input, customValidationMessages);
 </script>
 
 <template>

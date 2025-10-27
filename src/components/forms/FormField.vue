@@ -7,6 +7,7 @@ import FormFieldError from '@/components/forms/FormFieldError.vue';
 interface IProps {
   labelAttrs?: LabelHTMLAttributes;
   input?: Validation<any, any> | Record<string, any>;
+  customValidationMessages?: Record<string, string>;
 }
 
 const { labelAttrs, input } = defineProps<IProps>();
@@ -47,7 +48,11 @@ const classNames = computed(() => {
     <div v-if="$slots.hint" class="hint">
       <slot name="hint" />
     </div>
-    <FormFieldError v-if="showErrors" :input="input" />
+    <FormFieldError
+      v-if="showErrors"
+      :input="input"
+      :custom-validation-messages="customValidationMessages"
+    />
   </div>
 </template>
 
