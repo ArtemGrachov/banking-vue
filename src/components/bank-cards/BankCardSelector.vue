@@ -35,7 +35,7 @@ const changeHandler = (e: SwiperType) => {
 </script>
 
 <template>
-  <div class="bank-card-carousel" :class="{ '_mobile-full-page': mobileFullPage }">
+  <div class="bank-card-selector" :class="{ '_mobile-full-page': mobileFullPage }">
     <Swiper
       class="swiper"
       :slides-per-view="'auto'"
@@ -73,7 +73,7 @@ const changeHandler = (e: SwiperType) => {
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 @use '/src/styles/mixins/layout.scss' as layout;
 
-.bank-card-carousel {
+.bank-card-selector {
   &._mobile-full-page {
     @media (max-width: #{map.get(breakpoints.$breakpoints, 'large') - 1px}) {
       margin-left: -(layout.$layout-container-padding);

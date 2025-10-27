@@ -91,6 +91,7 @@ const submitHandler = async () => {
         v-else
         :cards="cards"
         :is-processing="isCardsProcessing"
+        :mobile-full-page="true"
         v-model="fieldCard"
       />
     </FormField>
