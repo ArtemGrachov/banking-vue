@@ -156,6 +156,13 @@
       "question_unblock": "Are you sure you want to unblock the card {cardNumber}?",
       "block_success": "Card is blocked successfully",
       "unblock_success": "Card is unblocked successfully"
+    },
+    "design": {
+      "red": "Red",
+      "green": "Green",
+      "blue": "Blue",
+      "golden": "Golden",
+      "silver": "Silver"
     }
   },
   "view_transaction_history": {
@@ -197,5 +204,9 @@
   "view_card": {
     "balance": "Balance",
     "transactions": "Transactions"
+  },
+  "form_order_card": {
+    "design": "Design",
+    "submit": "Order card"
   }
 }

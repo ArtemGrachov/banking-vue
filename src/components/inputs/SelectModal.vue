@@ -14,6 +14,7 @@ interface IProps {
   multiple?: boolean;
   noOptions?: string;
   noResult?: string;
+  allowEmpty?: boolean;
 }
 
 type Emits = FullScreenModalEmits & {
@@ -166,6 +167,7 @@ onMounted(() => {
         </li>
       </ul>
       <Button
+        v-if="allowEmpty && (multiple ? (internalValue as any[])?.length : internalValue)"
         type="button"
         variant="primary"
         @click="clearHandler"

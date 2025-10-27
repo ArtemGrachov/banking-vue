@@ -19,6 +19,7 @@ interface IProps {
   inputLabel?: string;
   multiple?: boolean;
   searchable?: boolean;
+  allowEmpty?: boolean;
 }
 
 type Emits = {
@@ -27,7 +28,15 @@ type Emits = {
   (e: 'blur'): void;
 }
 
-const { options = [], trackBy, label, inputLabel, multiple, searchable } = defineProps<IProps>();
+const {
+  options = [],
+  trackBy,
+  label,
+  inputLabel,
+  multiple,
+  searchable,
+  allowEmpty,
+} = defineProps<IProps>();
 
 const { t } = useI18n();
 const emit = defineEmits<Emits>();
@@ -69,6 +78,7 @@ const { open: openSelectModal, close } = useModal({
     inputLabel,
     noOptions: t('select.no_options'),
     noResult: t('select.no_result'),
+    allowEmpty,
   },
 });
 
@@ -101,6 +111,7 @@ const clearHandler = () => {
     :custom-label="customLabel"
     :multiple="multiple"
     :placeholder="$t('select.placeholder')"
+    :allow-empty="allowEmpty"
     @select="emit('select', $event)"
     @remove="emit('remove', $event)"
     @close="emit('blur')"
@@ -114,7 +125,7 @@ const clearHandler = () => {
     </template>
     <template #clear>
       <IconButton
-        v-if="multiple ? (model as any[])?.length : model"
+        v-if="allowEmpty && (multiple ? (model as any[])?.length : model)"
         type="button"
         class="clear"
         @click="clearHandler"

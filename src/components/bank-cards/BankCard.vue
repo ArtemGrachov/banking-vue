@@ -13,7 +13,7 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 </script>
 
 <template>
-  <div class="bank-card">
+  <div class="bank-card" :class="`_${card.design}`">
     <div class="top">
       <div class="bank-name">
         Bank name
