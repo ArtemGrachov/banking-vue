@@ -45,11 +45,17 @@ const designSelectHandler = (value: ECardDesign) => {
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/layout.scss' as layout;
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .page {
   @include layout.page();
-  max-width: 400px;
+  max-width: 340px;
+  width: 100%;
   margin: 0 auto;
+
+  @include breakpoints.sm() {
+    max-width: 400px;
+  }
 }
 
 .card-preview {

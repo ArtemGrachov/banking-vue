@@ -70,6 +70,24 @@ const numberParts = computed(() => card.cardNumber.split(' '));
     max-width: 400px;
     min-height: 240px;
   }
+
+  &._green {
+    background: linear-gradient(30deg, darkgreen 10%, rgb(73, 190, 139) 100%);
+  }
+
+  &._blue {
+    background: linear-gradient(163deg, darkblue 27%, rgb(108, 48, 211) 50%, blue 100%);
+  }
+
+  &._golden {
+    background: linear-gradient(163deg, gold 27%, white 50%, yellow 52%, orange 85%, yellow 100%);
+    color: black;
+  }
+
+  &._silver {
+    background: linear-gradient(163deg, silver 27%, white 80%, darkgrey 81%, grey 100%);
+    color: black;
+  }
 }
 
 .blocked-icon,
