@@ -84,12 +84,12 @@ watch(route, (newRoute) => {
   <div class="page">
     <SuccessPlaceholder v-if="isTransferred">
       <template #title>
-        Done
+        {{ $t('view_transfer.success_title') }}
       </template>
       <template #subtitle>
-        Transfer was completed succssfully
+        {{ $t('view_transfer.success_subtitle') }}
         <Button type="button" class="return" variant="primary" @click="returnHandler">
-          Transfer again
+          {{ $t('view_transfer.return') }}
         </Button>
       </template>
     </SuccessPlaceholder>

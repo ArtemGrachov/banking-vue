@@ -172,6 +172,9 @@
     "max_validation": "You cannot transfer more than {value}"
   },
   "view_transfer": {
-    "confirmation": "Do you really want to transfer {value} to {recipient}?"
+    "confirmation": "Do you really want to transfer {value} to {recipient}?",
+    "success_title": "Done",
+    "success_subtitle": "Transfer was completed succssfully",
+    "return": "Transfer again"
   }
 }
