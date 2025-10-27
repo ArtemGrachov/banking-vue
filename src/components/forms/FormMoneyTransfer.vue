@@ -5,6 +5,7 @@ import useVuelidate from '@vuelidate/core';
 import { useI18n } from 'vue-i18n';
 
 import { CARD_MASK } from '@/validation/cards';
+import { EStatus } from '@/constants/status';
 
 import Button from '@/components/buttons/Button.vue';
 import BankCardSelector from '@/components/bank-cards/BankCardSelector.vue';
@@ -12,6 +13,7 @@ import NoCards from '@/components/bank-cards/NoCards.vue';
 import FormField from '@/components/forms/FormField.vue';
 import Input from '@/components/inputs/Input.vue';
 import InputMask from '@/components/inputs/InputMask.vue';
+import FormStatus from '@/components/forms/FormStatus.vue';
 
 import type { ICard } from '@/types/models/card';
 import type { IFormMoneyTransfer } from '@/types/forms/form-money-transfer';
@@ -19,6 +21,8 @@ import type { IFormMoneyTransfer } from '@/types/forms/form-money-transfer';
 interface IProps {
   cards?: ICard[] | null;
   isCardsProcessing?: boolean;
+  submitStatus?: EStatus;
+  statusMessage?: string | null;
 }
 
 type Emits = {
@@ -26,7 +30,7 @@ type Emits = {
 }
 
 const { t } = useI18n();
-const { cards, isCardsProcessing } = defineProps<IProps>();
+const { cards, isCardsProcessing, submitStatus, statusMessage } = defineProps<IProps>();
 const emit = defineEmits<Emits>();
 
 const fieldCard = ref(null);
@@ -64,6 +68,10 @@ const rules = computed(() => ({
   },
 }));
 
+const isProcessing = computed(() => {
+  return submitStatus === EStatus.PROCESSING;
+});
+
 const v$ = useVuelidate(rules, {
   card: fieldCard,
   amount: fieldAmount,
@@ -92,9 +100,13 @@ const submitHandler = async () => {
         :cards="cards"
         :is-processing="isCardsProcessing"
         :mobile-full-page="true"
+        :disabled="isProcessing || isCardsProcessing"
         v-model="fieldCard"
       />
     </FormField>
+    <FormStatus v-if="statusMessage" :status="submitStatus">
+      {{ statusMessage }}
+    </FormStatus>
     <div class="subfields">
       <FormField
         :input="v$.amount"
@@ -108,6 +120,7 @@ const submitHandler = async () => {
             type="number"
             min="0"
             :class="classNames"
+            :readonly="isProcessing"
             v-model="fieldAmount"
             @blur="v$.amount.$touch()"
           />
@@ -124,6 +137,7 @@ const submitHandler = async () => {
           <InputMask
             :mask-or-alias="CARD_MASK"
             :class="classNames"
+            :readonly="isProcessing"
             v-model="fieldRecipient"
             @blur="v$.recipient.$touch()"
           />
@@ -133,6 +147,7 @@ const submitHandler = async () => {
         type="submit"
         variant="primary"
         class="submit"
+        :is-processing="isProcessing"
       >
         {{ $t('form_money_transfer.submit') }}
       </Button>

@@ -13,10 +13,10 @@ interface IProps {
   mobileFullPage?: boolean;
   cards?: ICard[] | null;
   isProcessing?: boolean;
+  disabled?: boolean;
 }
 
 const { mobileFullPage, cards, isProcessing } = defineProps<IProps>();
-let swiperInstance: SwiperType | null = null;
 
 const activeIndex = ref(-1);
 const model = defineModel<number | null | undefined>();
@@ -46,6 +46,8 @@ const changeHandler = (e: SwiperType) => {
       :centered-slides="true"
       :initial-slide="initialSlide"
       :slide-to-clicked-slide="true"
+      :allowSlidePrev="!disabled"
+      :allowSlideNext="!disabled"
       @slide-change="changeHandler"
     >
       <template v-if="isProcessing">
