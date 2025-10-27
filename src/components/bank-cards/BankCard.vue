@@ -42,6 +42,12 @@ const numberParts = computed(() => card.cardNumber.split(' '));
         {{ card.cardholderName }}
       </div>
     </div>
+    <span v-if="card.isBlocked" class="blocked-icon material-symbols-outlined">
+      lock
+    </span>
+    <span v-if="card.isClosed" class="closed-icon material-symbols-outlined">
+      close
+    </span>
   </div>
 </template>
 
@@ -58,11 +64,28 @@ const numberParts = computed(() => card.cardNumber.split(' '));
   color: white;
   max-width: 340px;
   min-height: 200px;
+  position: relative;
 
   @include breakpoints.sm() {
     max-width: 400px;
     min-height: 240px;
   }
+}
+
+.blocked-icon,
+.closed-icon {
+  color: red;
+  text-shadow: 1px 1px 1px 1px black;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 42px;
+  height: 42px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .top, .bottom {

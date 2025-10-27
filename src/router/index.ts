@@ -32,6 +32,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.MONEY_TRANSFER]!,
               ROUTES_MAP[ROUTE_NAMES.TRANSACTION_HISTORY]!,
               ROUTES_MAP[ROUTE_NAMES.CHARTS]!,
+              ROUTES_MAP[ROUTE_NAMES.CARD]!,
               ROUTES_MAP[ROUTE_NAMES.CARDS]!,
               ROUTES_MAP[ROUTE_NAMES.ORDER_CARD]!,
               ROUTES_MAP[ROUTE_NAMES.IDENTITY_VERIFICATION]!,

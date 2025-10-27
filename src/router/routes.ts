@@ -6,6 +6,7 @@ export const ROUTE_NAMES = {
   MONEY_TRANSFER: 'MONEY_TRANSFER',
   TRANSACTION_HISTORY: 'TRANSACTION_HISTORY',
   CARDS: 'CARDS',
+  CARD: 'CARD',
   ORDER_CARD: 'ORDER_CARD',
   CHARTS: 'CHARTS',
   IDENTITY_VERIFICATION: 'IDENTITY_VERIFICATION',
@@ -50,6 +51,11 @@ export const ROUTES: RouteRecordRaw[] = [
     name: ROUTE_NAMES.CARDS,
     path: 'cards',
     component: () => import('@/views/cards/ViewCards.vue'),
+  },
+  {
+    name: ROUTE_NAMES.CARD,
+    path: 'cards/:id',
+    component: () => import('@/views/card/ViewCard.vue'),
   },
   {
     name: ROUTE_NAMES.ORDER_CARD,

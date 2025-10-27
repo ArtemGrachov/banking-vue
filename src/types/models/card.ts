@@ -4,6 +4,7 @@ export interface ICard {
   verifiation: string;
   expireDate: string;
   isBlocked?: boolean;
+  isClosed?: boolean;
   currency: string;
   cardholderName: string;
   balance: number;
