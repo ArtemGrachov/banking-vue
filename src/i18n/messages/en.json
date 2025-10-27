@@ -143,6 +143,19 @@
     "list_placeholder": {
       "title": "There are no cards yet",
       "subtitle": "Order your first card"
+    },
+    "close": {
+      "label": "Close",
+      "question": "Are you sure you want to close the card {cardNumber}?",
+      "success": "Card is closed successfully"
+    },
+    "block": {
+      "label_block": "Block",
+      "label_unblock": "Unblock",
+      "question_block": "Are you sure you want to block the card {cardNumber}?",
+      "question_unblock": "Are you sure you want to unblock the card {cardNumber}?",
+      "block_success": "Card is blocked successfully",
+      "unblock_success": "Card is unblocked successfully"
     }
   },
   "view_transaction_history": {
@@ -182,10 +195,6 @@
     "manage": "Manage"
   },
   "view_card": {
-    "block": "Block",
-    "close": "Close",
-    "block_question": "Are you sure you want to block the card {cardNumber}?",
-    "close_question": "Are you sure you want to close the card {cardNumber}?",
     "balance": "Balance"
   }
 }

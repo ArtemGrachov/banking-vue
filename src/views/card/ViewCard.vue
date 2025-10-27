@@ -1,29 +1,35 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+
+import { useCardStore } from './store/card';
 import { useCardsStore } from '@/store/cards';
 
-import { useGetCardsData } from '@/composables/data/get-cards-data';
+import { useCard } from './composables/card';
+import { useBlock } from './composables/block';
+import { useClose } from './composables/close';
 
 import Button from '@/components/buttons/Button.vue';
 import BankCard from '@/components/bank-cards/BankCard.vue';
 import BankCardSkeleton from '@/components/bank-cards/BankCardSkeleton.vue';
+import FormStatus from '@/components/forms/FormStatus.vue';
 
-const route = useRoute();
-
+const { getPageData } = useCard();
+const cardStore = useCardStore();
 const cardsStore = useCardsStore();
-const { getCardsData } = useGetCardsData();
+const card = computed(() => cardStore.card);
 
-const getPageData = () => {
-  cardsStore.clear();
-  getCardsData();
-}
-
-const card = computed(() => {
-  const rawId = route.params.id!;
-
-  return cardsStore.data?.find(c => c.id === +rawId);
-});
+const {
+  blockStatus,
+  statusMessage: blockStatusMessage,
+  isProcessing: blockIsProcessing,
+  block,
+} = useBlock();
+const {
+  closeStatus,
+  statusMessage: closeStatusMessage,
+  isProcessing: closeIsProcessing,
+  close,
+} = useClose();
 
 onMounted(() => {
   getPageData();
@@ -40,29 +46,56 @@ onMounted(() => {
       <span class="label">
         {{ $t('view_card.balance') }}: 
       </span>
-      1000 USD
+      <template v-if="cardsStore.isProcessing">
+        ...
+      </template>
+      <template v-else-if="card">
+        {{ card.balance }} {{ card.currency }}
+      </template>
     </div>
     <div class="actions">
       <Button
         type="button"
         variant="primary"
         class="action"
+        :is-processing="blockIsProcessing"
+        :disabled="card?.isClosed"
+        @click="block"
       >
         <span class="material-symbols-outlined">
           block
         </span>
-        {{ $t('view_card.block') }}
+        {{ card?.isBlocked ? $t('common_cards.block.label_unblock') : $t('common_cards.block.label_block') }}
       </Button>
       <Button
         type="button"
         variant="primary"
         class="action"
+        :is-processing="closeIsProcessing"
+        :disabled="card?.isClosed"
+        @click="close"
       >
         <span class="material-symbols-outlined">
           close
         </span>
-        {{ $t('view_card.close') }}
+        {{ $t('common_cards.close.label') }}
       </Button>
+    </div>
+    <div v-if="blockStatusMessage || closeStatusMessage" class="statuses">
+      <FormStatus
+        v-if="blockStatusMessage"
+        class="status"
+        :status="blockStatus"
+      >
+        {{ blockStatusMessage }}
+      </FormStatus>
+      <FormStatus
+        v-if="closeStatusMessage"
+        class="status"
+        :status="closeStatus"
+      >
+        {{ closeStatusMessage }}
+      </FormStatus>
     </div>
   </div>
 </template>
@@ -81,8 +114,12 @@ onMounted(() => {
 
 .card-row {
   width: 100%;
-  max-width: 400px;
+  max-width: 340px;
   margin-bottom: 24px;
+
+  @include breakpoints.sm() {
+    max-width: 400px;
+  }
 }
 
 .balance {
@@ -107,5 +144,13 @@ onMounted(() => {
   @include breakpoints.sm() {
     margin-bottom: 0;
   }
+}
+
+.statuses {
+  max-width: 400px;
+}
+
+.status {
+  margin-top: 24px;
 }
 </style>
