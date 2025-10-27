@@ -49,7 +49,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.CARDS,
     path: 'cards',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/cards/ViewCards.vue'),
   },
   {
     name: ROUTE_NAMES.ORDER_CARD,
