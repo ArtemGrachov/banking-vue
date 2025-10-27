@@ -163,5 +163,10 @@
   },
   "select_modal": {
     "clear": "Clear"
+  },
+  "form_money_transfer": {
+    "amount": "Amount",
+    "recipient": "Recipient",
+    "submit": "Send"
   }
 }

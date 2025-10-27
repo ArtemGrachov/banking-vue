@@ -22,7 +22,7 @@ export const useTransactionsData = () => {
   const statusMessage = ref<string | null>(null);
   const getErrorMessage = useGetErrorMessage();
 
-  const getTransactions = async (query: IGetTransactionsQuery, reset: boolean) => {
+  const getTransactions = async (query: IGetTransactionsQuery, reset: boolean = false) => {
     try {
       if (reset) {
         list.value = [];
