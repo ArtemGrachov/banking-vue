@@ -8,7 +8,7 @@ export const ROUTE_NAMES = {
   CARDS: 'CARDS',
   ORDER_CARD: 'ORDER_CARD',
   CHARTS: 'CHARTS',
-  PROFILE: 'PROFILE',
+  IDENTITY_VERIFICATION: 'IDENTITY_VERIFICATION',
   SECURITY: 'SECURITY',
   REGISTRATION: 'REGISTRATION',
   LOGIN: 'LOGIN',
@@ -57,14 +57,14 @@ export const ROUTES: RouteRecordRaw[] = [
     component: PLACEHOLDER_CMP,
   },
   {
-    name: ROUTE_NAMES.PROFILE,
-    path: 'profile',
+    name: ROUTE_NAMES.IDENTITY_VERIFICATION,
+    path: 'identity-verification',
     component: PLACEHOLDER_CMP,
   },
   {
     name: ROUTE_NAMES.SECURITY,
     path: 'security',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/security/ViewSecurity.vue'),
   },
   {
     name: ROUTE_NAMES.LOGIN,
