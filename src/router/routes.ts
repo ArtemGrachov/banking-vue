@@ -60,7 +60,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.ORDER_CARD,
     path: 'cards/order',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/order-card/ViewOrderCard.vue'),
   },
   {
     name: ROUTE_NAMES.IDENTITY_VERIFICATION,
