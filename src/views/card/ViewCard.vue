@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 
 import { useCardStore } from './store/card';
 import { useCardsStore } from '@/store/cards';
@@ -7,16 +8,19 @@ import { useCardsStore } from '@/store/cards';
 import { useCard } from './composables/card';
 import { useBlock } from './composables/block';
 import { useClose } from './composables/close';
+import { useGetRoute } from '@/composables/routing/get-route';
 
 import Button from '@/components/buttons/Button.vue';
 import BankCard from '@/components/bank-cards/BankCard.vue';
 import BankCardSkeleton from '@/components/bank-cards/BankCardSkeleton.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
+import { ROUTE_NAMES } from '@/router/routes';
 
 const { getPageData } = useCard();
 const cardStore = useCardStore();
 const cardsStore = useCardsStore();
 const card = computed(() => cardStore.card);
+const getRoute = useGetRoute();
 
 const {
   blockStatus,
@@ -24,12 +28,26 @@ const {
   isProcessing: blockIsProcessing,
   block,
 } = useBlock();
+
 const {
   closeStatus,
   statusMessage: closeStatusMessage,
   isProcessing: closeIsProcessing,
   close,
 } = useClose();
+
+const transactionsLink = computed(() => {
+  const id = card.value?.id;
+
+  const link = getRoute({
+    name: ROUTE_NAMES.TRANSACTION_HISTORY,
+    query: {
+      cards: id ? [id] : undefined,
+    },
+  });
+
+  return link;
+});
 
 onMounted(() => {
   getPageData();
@@ -55,8 +73,18 @@ onMounted(() => {
     </div>
     <div class="actions">
       <Button
-        type="button"
         variant="primary"
+        :as="RouterLink"
+        :to="transactionsLink"
+      >
+        <span class="material-symbols-outlined">
+          list
+        </span>
+        {{ $t('view_card.transactions') }}
+      </Button>
+      <Button
+        type="button"
+        variant="transparent"
         class="action"
         :is-processing="blockIsProcessing"
         :disabled="card?.isClosed"
@@ -69,7 +97,7 @@ onMounted(() => {
       </Button>
       <Button
         type="button"
-        variant="primary"
+        variant="transparent"
         class="action"
         :is-processing="closeIsProcessing"
         :disabled="card?.isClosed"

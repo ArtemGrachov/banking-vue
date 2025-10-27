@@ -195,6 +195,7 @@
     "manage": "Manage"
   },
   "view_card": {
-    "balance": "Balance"
+    "balance": "Balance",
+    "transactions": "Transactions"
   }
 }

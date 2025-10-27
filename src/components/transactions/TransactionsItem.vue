@@ -54,7 +54,7 @@ const dateTimeFormatted = computed(() => {
   gap: 16px;
   transition: background 200ms;
   padding: 16px;
-  border-radius: var(--transation-item-border-radius, 4px);
+  border-radius: var(--transaction-item-border-radius, 4px);
   line-height: 1.3;
 
   &:hover {
