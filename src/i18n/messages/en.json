@@ -222,6 +222,8 @@
     },
     "modal_filters": {
       "title": "Filters"
-    }
+    },
+    "title_income": "Income",
+    "title_outcome": "Outcome"
   }
 }

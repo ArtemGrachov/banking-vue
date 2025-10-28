@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, onMounted } from 'vue';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'vue-chartjs';
+import { computed, defineAsyncComponent, onMounted } from 'vue';
 import { useModal } from 'vue-final-modal';
 
 import { useData } from './composable/data';
@@ -10,26 +8,10 @@ import { useStatsStore } from '@/views/charts/store/stats';
 import { useGetCardsData } from '@/composables/data/get-cards-data';
 
 import Filters from './components/Filters.vue';
+import Chart from './components/Chart.vue';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoTransactions from '@/components/transactions/NoTransactions.vue';
 import Button from '@/components/buttons/Button.vue';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-const data = {
-  labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
-  datasets: [
-    {
-      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-      data: [40, 20, 80, 10],
-    },
-  ],
-};
-
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-};
 
 const ModalFilters = defineAsyncComponent(() => import('./components/ModalFilters.vue'));
 
@@ -67,8 +49,19 @@ onMounted(() => {
       {{ $t('view_transaction_history.mobile_trigger') }}
     </Button>
     <Filters class="desktop-filters" />
-    <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart">
-      <Pie :data="data" :options="options" />
+    <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart-row">
+      <h2 class="chart-title">
+        {{ $t('view_charts.title_outcome') }}
+      </h2>
+      <div class="chart">
+        <Chart :stats="statsStore.data!.outcome" />
+      </div>
+      <h2 class="chart-title">
+        {{ $t('view_charts.title_income') }}
+      </h2>
+      <div class="chart">
+        <Chart :stats="statsStore.data!.income" />
+      </div>
     </div>
     <NoTransactions v-if="statsStore.isEmpty" />
     <ErrorPlaceholder v-if="statsStore.isError">
@@ -103,8 +96,17 @@ onMounted(() => {
   }
 }
 
-.chart {
+.chart-row {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.chart-title {
+  text-align: center;
+}
+
+.chart {
+  max-width: 100%;
+  max-height: 300px;
 }
 </style>
