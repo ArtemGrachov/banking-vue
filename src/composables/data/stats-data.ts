@@ -4,6 +4,7 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 
 import { EStatus } from '@/constants/status';
+import { ETransactionsType } from '@/constants/transactions';
 
 import { useGetErrorMessage } from '@/composables/common/get-error-message';
 
@@ -14,7 +15,6 @@ import type {
   IGetStatsQuery,
   IGetStatsResponse,
 } from '@/types/api/stats';
-import { ETransactionsType } from '@/constants/transactions';
 
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
@@ -61,25 +61,25 @@ export const useStatsData = () => {
         acc[curr.cardId] = (acc[curr.cardId] ?? 0) + curr.amount;
         return acc;
       }, {} as CardStats);
-      const outcomeByCardsTotal = Object.values(outcomeByCards).reduce((acc, curr) => acc + curr);
+      const outcomeByCardsTotal = Object.values(outcomeByCards).reduce((acc, curr) => acc + curr, 0);
 
       const outcomeByCategories = outcomeTransactions.reduce((acc, curr) => {
         acc[curr.category] = (acc[curr.category] ?? 0) + curr.amount;
         return acc;
       }, {} as CategoriesStats);
-      const outcomeByCategoriesTotal = Object.values(outcomeByCategories).reduce((acc, curr) => acc + curr);
+      const outcomeByCategoriesTotal = Object.values(outcomeByCategories).reduce((acc, curr) => acc + curr, 0);
 
       const incomeByCards = incomeTransactions.reduce((acc, curr) => {
         acc[curr.cardId] = (acc[curr.cardId] ?? 0) + curr.amount;
         return acc;
       }, {} as CardStats);
-      const incomeByCardsTotal = Object.values(incomeByCards).reduce((acc, curr) => acc + curr);
+      const incomeByCardsTotal = Object.values(incomeByCards).reduce((acc, curr) => acc + curr, 0);
 
       const incomeByCategories = incomeTransactions.reduce((acc, curr) => {
         acc[curr.category] = (acc[curr.category] ?? 0) + curr.amount;
         return acc;
       }, {} as CategoriesStats);
-      const incomeByCategoriesTotal = Object.values(incomeByCategories).reduce((acc, curr) => acc + curr);
+      const incomeByCategoriesTotal = Object.values(incomeByCategories).reduce((acc, curr) => acc + curr, 0);
 
       const result: IGetStatsResponse = {
         income: {
@@ -94,6 +94,7 @@ export const useStatsData = () => {
           cardsTotal: outcomeByCardsTotal,
           categoriesTotal: outcomeByCategoriesTotal,
         },
+        noData: transactions.length === 0,
       };
 
       return data.value = result;
@@ -125,6 +126,10 @@ export const useStatsData = () => {
     return getStatus.value === EStatus.ERROR;
   });
 
+  const isEmpty = computed(() => {
+    return Boolean(data.value?.noData);
+  });
+
   return {
     getStatus,
     data,
@@ -132,6 +137,7 @@ export const useStatsData = () => {
     isProcessing,
     isSuccess,
     isError,
+    isEmpty,
     statusMessage,
     getStats,
     clear,

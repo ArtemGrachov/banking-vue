@@ -21,4 +21,5 @@ export interface IStats {
 export interface IGetStatsResponse {
   income: IStats;
   outcome: IStats;
+  noData?: boolean;
 }
