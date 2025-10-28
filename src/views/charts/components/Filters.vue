@@ -83,6 +83,7 @@ const updateHandler = () => {
 }
 
 watch(() => filterStore.formValue, () => {
+  fieldCurrency.value = filterStore.formValue.currency;
   fieldCards.value = filterStore.formValue.cards ?? [];
   fieldCategories.value = filterStore.formValue.categories ?? [];
   fieldTimePeriod.value = filterStore.formValue.timePeriod;
