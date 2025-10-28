@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import { useStatsData } from '@/composables/data/stats-data';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { onMounted } from 'vue';
 import { Pie } from 'vue-chartjs';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -19,6 +21,13 @@ const options = {
   maintainAspectRatio: false,
 };
 
+const { getStats } = useStatsData();
+
+onMounted(() => {
+  getStats({ currency: 'USD' }).then(r => {
+    console.log(r);
+  });
+});
 </script>
 
 <template>
