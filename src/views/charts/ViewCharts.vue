@@ -10,7 +10,8 @@ import { useGetCardsData } from '@/composables/data/get-cards-data';
 import Filters from './components/Filters.vue';
 import Chart from './components/Chart.vue';
 import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
-import NoTransactions from '@/components/transactions/NoTransactions.vue';
+import NoStats from '@/views/charts/components/NoStats.vue';
+import Placeholder from '@/components/other/Placeholder.vue';
 import Button from '@/components/buttons/Button.vue';
 
 const ModalFilters = defineAsyncComponent(() => import('./components/ModalFilters.vue'));
@@ -63,7 +64,7 @@ onMounted(() => {
         <Chart :stats="statsStore.data!.income" />
       </div>
     </div>
-    <NoTransactions v-if="statsStore.isEmpty" />
+    <NoStats v-if="statsStore.isEmpty" />
     <ErrorPlaceholder v-if="statsStore.isError">
       <p>
         {{ statsStore.statusMessage }}
@@ -93,6 +94,7 @@ onMounted(() => {
 
   @include breakpoints.sm() {
     display: flex;
+    margin-bottom: 24px;
   }
 }
 
