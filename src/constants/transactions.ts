@@ -26,3 +26,15 @@ export const TRANSACTION_CATEGORIES = [
   ETransactionCategory.SALARY,
   ETransactionCategory.INCOME,
 ];
+
+export const CATEGORY_COLORS = {
+  [ETransactionCategory.GROCERIES]: 'yellow',
+  [ETransactionCategory.RESTAURANTS_CAFES]: '#e59191',
+  [ETransactionCategory.TRANSPORTATION]: 'lightblue',
+  [ETransactionCategory.ENTERTAINMENT]: 'purple',
+  [ETransactionCategory.HEALTH_MEDICINE]: 'red',
+  [ETransactionCategory.SHOPPING]: 'orange',
+  [ETransactionCategory.UTILITIES_BILLS]: 'blue',
+  [ETransactionCategory.SALARY]: 'lime',
+  [ETransactionCategory.INCOME]: 'green',
+};

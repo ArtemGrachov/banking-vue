@@ -45,7 +45,7 @@ export const ROUTES: RouteRecordRaw[] = [
   {
     name: ROUTE_NAMES.CHARTS,
     path: 'charts',
-    component: PLACEHOLDER_CMP,
+    component: () => import('@/views/charts/ViewCharts.vue'),
   },
   {
     name: ROUTE_NAMES.CARDS,

@@ -211,5 +211,23 @@
   },
   "view_order_card": {
     "success": "The card was successfully ordered"
+  },
+  "view_charts": {
+    "mobile_trigger": "Open filters",
+    "filters": {
+      "label_card": "Card",
+      "label_category": "Category",
+      "label_period": "Period",
+      "label_currency": "Currency"
+    },
+    "modal_filters": {
+      "title": "Filters"
+    },
+    "title_income": "Income",
+    "title_outcome": "Outcome",
+    "no_stats": {
+      "title": "No data",
+      "subtitle": "No statistics to display"
+    }
   }
 }
