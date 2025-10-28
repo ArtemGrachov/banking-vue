@@ -61,7 +61,6 @@ const internalMessage = computed(() => {
   transition: 200ms;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
-  border-radius: 4px;
   letter-spacing: 0.05em;
   color: #2a2a2a;
   line-height: 1;

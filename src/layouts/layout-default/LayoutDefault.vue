@@ -4,14 +4,22 @@ import NavMenu from '@/components/nav/NavMenu.vue';
 </script>
 
 <template>
-  <aside class="sidebar">
-    <NavMenu />
-  </aside>
-  <router-view></router-view>
+  <div class="row">
+    <aside class="sidebar">
+      <NavMenu />
+    </aside>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
+.row {
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 auto;
+}
 
 .sidebar {
   display: none;

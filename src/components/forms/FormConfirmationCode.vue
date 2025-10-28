@@ -78,8 +78,17 @@ const submitHandler = async () => {
         />
       </template>
     </FormField>
-    <Button type="submit" variant="primary" :is-processing="isProcessing">
-      {{ $t('form_common.submit') }}
-    </Button>
+    <div class="submit-row">
+      <Button type="submit" variant="primary" :is-processing="isProcessing">
+        {{ $t('form_common.submit') }}
+      </Button>
+    </div>
   </form>
 </template>
+
+<style lang="scss" scoped>
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
+}
+</style>

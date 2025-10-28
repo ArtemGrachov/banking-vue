@@ -39,11 +39,11 @@ const currentViewComponent = computed(() => {
 
 <template>
   <FullScreenModal @close="emit('close')">
-    <template #header>
+    <template v-if="showReturn" #close>
       <IconButton
-        v-if="showReturn"
         type="button"
         class="return-button"
+        variant="primary"
         @click="viewHandler(EMobileNavViews.MAIN)"
       >
         <span class="material-symbols-outlined">
@@ -78,6 +78,5 @@ const currentViewComponent = computed(() => {
 .return-button {
   --icon-button-height: var(--header-height);
   --icon-button-width: var(--header-height);
-  margin-left: var(--header-padding-negative);
 }
 </style>

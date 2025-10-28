@@ -9,7 +9,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 4px;
   text-decoration: none;
   gap: 8px;
   padding: 0 42px 0 16px;
@@ -28,13 +27,12 @@
 @mixin dropdown {
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
   box-shadow: 0 8px 20px -8px rgba(black, 0.4);
   z-index: 10;
 }
 
 @mixin content {
-  --content-padding-y: 8px;
+  --content-padding-y: 12px;
   --content-padding-negative-y: -8px;
   --content-padding-x: 16px;
   --content-padding-negative-x: -16px;

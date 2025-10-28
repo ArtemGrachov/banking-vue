@@ -52,24 +52,21 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/functions/px-to-em.scss' as *;
+@use '/src/styles/mixins/bank-card.scss' as bank-card;
 
 .bank-card {
+  @include bank-card.container();
+
+  font-size: var(--bank-card-font-size, 16px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: px-to-em(12px);
+  padding: px-to-em(16px);
   background: linear-gradient(163deg, darkred 27%, black 100%);
   color: white;
-  max-width: 340px;
-  min-height: 200px;
   position: relative;
-
-  @include breakpoints.sm() {
-    max-width: 400px;
-    min-height: 240px;
-  }
 
   &._green {
     background: linear-gradient(30deg, darkgreen 10%, rgb(73, 190, 139) 100%);
@@ -95,10 +92,10 @@ const numberParts = computed(() => card.cardNumber.split(' '));
   color: red;
   text-shadow: 1px 1px 1px 1px black;
   position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 42px;
-  height: 42px;
+  top: px-to-em(8px);
+  left: px-to-em(8px);
+  width: px-to-em(32px);
+  height: px-to-em(32px);
   background: white;
   display: flex;
   align-items: center;
@@ -109,37 +106,24 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 .top, .bottom {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: px-to-em(16px);
 }
 
 .top {
-  margin-bottom: 24px;
-
-  @include breakpoints.sm() {
-    margin-bottom: 48px;
-  }
+  margin-bottom: px-to-em(24px);
 }
 
 .bank-name {
   align-self: flex-end;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 12px;
-
-  @include breakpoints.sm() {
-    font-size: 16px;
-  }
+  font-size: px-to-em(12px);
 }
 
 .number {
-  font-size: 16px;
+  font-size: px-to-em(16px);
   display: flex;
-  gap: 8px;
-
-  @include breakpoints.sm() {
-    font-size: 24px;
-    gap: 16px;
-  }
+  gap: px-to-em(8px);
 }
 
 .expire {
@@ -148,19 +132,11 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 
 .expire-label {
   text-transform: uppercase;
-  font-size: 10px;
-
-  @include breakpoints.sm() {
-    font-size: 12px;
-  }
+  font-size: px-to-em(10px);
 }
 
 .cardholder {
-  font-size: 12px;
+  font-size: px-to-em(12px);
   text-transform: uppercase;
-
-  @include breakpoints.sm() {
-    font-size: 14px;
-  }
 }
 </style>

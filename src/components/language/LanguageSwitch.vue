@@ -43,7 +43,10 @@ const { localeOptions, switchLocale } = useLanguageSwitch();
 @use '/src/styles/mixins/dropdowns.scss' as dropdowns;
 
 .language-switch {
+  --button-text-color: var(--text-color);
+
   text-transform: uppercase;
+  color: var(--text-color);
 }
 
 .option {

@@ -39,48 +39,34 @@ const submitHandler = async (formValue: IFormRegistration) => {
 </script>
 
 <template>
-  <div class="page">
-    <div class="container">
-      <Confirmation
-        v-if="showConfirmation"
-        :code-submit-callback="registrationCode.submit"
-        :confirmation-submit-callback="registrationConfirmation.submit"
-      />
-      <template v-else>
-        <FormRegistration
-          :submit-status="submitStatus"
-          :status-message="statusMessage"
-          @submit="submitHandler"
-        />
-        <div class="footer">
-          <div class="login">
-            {{ $t('view_registration.login_label') }}
-            <RouterLink :to="getRoute({ name: ROUTE_NAMES.LOGIN })">
-              {{ $t('view_registration.login_link') }}
-            </RouterLink>
-          </div>
-          <div class="forgot">
-            <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
-              {{ $t('view_registration.forgot_password') }}
-            </RouterLink>
-          </div>
-        </div>
-      </template>
+  <Confirmation
+    v-if="showConfirmation"
+    :code-submit-callback="registrationCode.submit"
+    :confirmation-submit-callback="registrationConfirmation.submit"
+  />
+  <template v-else>
+    <FormRegistration
+      :submit-status="submitStatus"
+      :status-message="statusMessage"
+      @submit="submitHandler"
+    />
+    <div class="footer">
+      <div class="login">
+        {{ $t('view_registration.login_label') }}
+        <RouterLink :to="getRoute({ name: ROUTE_NAMES.LOGIN })">
+          {{ $t('view_registration.login_link') }}
+        </RouterLink>
+      </div>
+      <div class="forgot">
+        <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
+          {{ $t('view_registration.forgot_password') }}
+        </RouterLink>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles/mixins/layout.scss' as layout;
-
-.page {
-  @include layout.page();
-}
-
-.container {
-  @include layout.container(400px);
-}
-
 .footer {
   text-align: center;
   margin-top: 32px;

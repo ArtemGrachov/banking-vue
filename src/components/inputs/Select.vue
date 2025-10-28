@@ -145,13 +145,12 @@ const clearHandler = () => {
 .select {
   position: relative;
   width: 100%;
-  height: 42px;
-  border: 1px solid black;
+  height: 48px;
+  border-bottom: 1px solid black;
   transition: 200ms;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.05em;
-  border-radius: 4px;
   color: #2a2a2a;
   display: flex;
   align-items: center;

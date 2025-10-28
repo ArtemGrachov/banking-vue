@@ -99,7 +99,9 @@ const links = [
 .link {
   --button-justify-content: flex-start;
   --button-text-align: left;
-  --button-border-radius: 0;
+  --button-text-color: darkred;
+  --button-font-weight: 500;
+
   width: 100%;
 }
 </style>

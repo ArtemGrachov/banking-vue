@@ -31,7 +31,6 @@
   align-items: flex-start;
   gap: 16px;
   padding: 16px;
-  border-radius: 4px;
   line-height: 1.3;
 }
 
@@ -39,7 +38,6 @@
   flex: 0 0 auto;
   width: 42px;
   height: 42px;
-  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -11,10 +11,10 @@ $margin: 32px;
   background: white;
   margin: $margin auto;
   width: calc(100dvw - #{$margin * 2});
-  max-width: 300px;
+  max-width: 500px;
+  text-align: center;
   max-height: calc(100dvh - #{$margin * 2});
   box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
 }
 
 @mixin default {
@@ -24,7 +24,6 @@ $margin: 32px;
   max-width: 500px;
   max-height: calc(100dvh - #{$margin * 2});
   box-shadow: 0 18px 30px -8px rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
 }
 
 @mixin fullscreen {
@@ -37,8 +36,6 @@ $margin: 32px;
   $header-padding: 16px;
 
   --header-height: 74px;
-  --header-padding: #{$header-padding};
-  --header-padding-negative: #{-$header-padding};
 
   height: var(--header-height);
   box-shadow: 0 5px 16px 0 rgba(black, 0.1);
@@ -46,10 +43,11 @@ $margin: 32px;
   gap: 16px;
   justify-content: space-between;
   align-items: center;
-  padding-left: var(--header-padding, 16px);
   flex: 0 0 auto;
   font-weight: 600;
   text-transform: uppercase;
+  background: red;
+  color: white;
 }
 
 @mixin close {
@@ -57,7 +55,6 @@ $margin: 32px;
   width:  var(--header-height);
   --icon-button-height: var(--header-height);
   --icon-button-width:  var(--header-height);
-  margin-left: auto;
 }
 
 @mixin content {

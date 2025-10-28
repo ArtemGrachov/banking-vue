@@ -1,0 +1,6 @@
+@use '/src/styles/functions/px-to-em.scss' as *;
+
+@mixin container {
+  width: px-to-em(340px);
+  height: px-to-em(200px);
+}

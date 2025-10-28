@@ -1,6 +1,7 @@
 @use './typography.scss';
 @use './global/modals.scss';
 @use './libs/vue-toast-notification.scss';
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -12,6 +13,15 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
+}
+
+body {
+  background: #eeeded;
+  --bank-card-font-size: 4.28vw;
+
+  @include breakpoints.sm() {
+    --bank-card-font-size: 18px;
+  }
 }
 
 #app {

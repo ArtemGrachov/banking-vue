@@ -12,46 +12,27 @@
 @mixin button() {
   @include base();
 
-  height: 42px;
-  width: 100%;
+  height: 48px;
+  width: var(--button-width, 100%);
   border: none;
   display: var(--button-display, inline-flex);
   align-items: center;
   justify-content: var(--button-justify-content, center);
   text-align: var(--button-text-align, center);
-  border-radius: var(--button-border-radius, 4px);
   text-decoration: none;
   gap: 8px;
   padding: 0 24px;
-  background: black;
-  color: white;
+  background: darkred;
+  color: var(--button-text-color, white);
   font-size: 14px;
   position: relative;
   font-family: 'Raleway', sans-serif;
-  font-weight: 500;
+  font-weight: var(--button-font-weight, 600);
+  letter-spacing: 0.1em;
 
   @include breakpoints.sm() {
-    width: auto;
+    width: var(--button-width, auto);
   }
-
-  &:hover {
-    background: #434343;
-  }
-
-  &:active {
-    background: red;
-  }
-
-  &:disabled,
-  &:disabled:hover,
-  &:disabled:focus {
-    cursor: not-allowed;
-    background: #434343;
-  }
-}
-
-@mixin button-primary {
-  background: darkred;
 
   &:hover {
     background: red;
@@ -65,13 +46,33 @@
   &:disabled:hover,
   &:disabled:focus {
     cursor: not-allowed;
+    background: #434343;
+  }
+}
+
+@mixin button-primary {
+  background: red;
+  color: white;
+
+  &:hover {
+    background: orange;
+  }
+
+  &:active {
+    background: yellow;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
+    cursor: not-allowed;
     background: #bb8b8b;
   }
 }
 
 @mixin button-transparent {
   background: none;
-  color: darkred;
+  color: var(--button-text-color, red);
 
   &:hover {
     background: red;
@@ -106,10 +107,9 @@
   border: none;
   padding: 0;
   line-height: 1;
-  border-radius: 50%;
-  color: #9b0000;
-  width: var(--icon-button-height, 42px);
-  height: var(--icon-button-width, 42px);
+  color: var(--button-color,#9b0000);
+  width: var(--icon-button-height, 48px);
+  height: var(--icon-button-width, 48px);
 
   &:hover {
     color: red;
@@ -125,15 +125,15 @@
 }
 
 @mixin icon-primary {
-  background: darkred;
+  background: red;
   color: white;
 
   &:hover {
-    background: red;
+    background: orange;
   }
 
   &:active {
-    background: orange;
+    background: yellow;
   }
 
   &:disabled,
@@ -151,7 +151,7 @@
   background: none;
   border: none;
   line-height: 1;
-  color: #9b0000;
+  color: var(--button-text-color, #9b0000);
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 

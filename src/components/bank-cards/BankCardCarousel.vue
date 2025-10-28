@@ -26,12 +26,12 @@ defineProps<IProps>();
       :loop="true"
       :breakpoints="{
         768: {
-          spaceBetween: 32,
+          spaceBetween: 16,
         },
       }"
     >
       <template v-if="isProcessing">
-        <SwiperSlide v-for="i in 3" :key="i" class="slide">
+        <SwiperSlide v-for="i in 5" :key="i" class="slide">
           <BankCardSkeleton />
         </SwiperSlide>
       </template>
@@ -53,8 +53,11 @@ defineProps<IProps>();
 
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 @use '/src/styles/mixins/layout.scss' as layout;
+@use '/src/styles/mixins/bank-card.scss' as bank-card;
 
 .bank-card-carousel {
+  font-size: var(--bank-card-font-size);
+
   &._mobile-full-page {
     @media (max-width: #{map.get(breakpoints.$breakpoints, 'large') - 1px}) {
       margin-left: -(layout.$layout-container-padding);
@@ -68,15 +71,13 @@ defineProps<IProps>();
   }
 }
 
-.slide {
-  width: 340px;
-  max-width: calc(100svw - #{layout.$layout-container-padding * 2});
-  min-height: 200px;
-  height: auto;
+.swiper {
+  padding: var(--bank-card-carousel-padding);
+}
 
-  @include breakpoints.sm() {
-    width: 400px;
-    min-height: 240px;
-  }
+.slide {
+  @include bank-card.container();
+
+  height: auto;
 }
 </style>

@@ -24,17 +24,20 @@ const getRoute = useGetRoute();
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/functions/px-to-em.scss' as *;
+@use '/src/styles/mixins/bank-card.scss' as bank-card;
 
 .order-card {
-  height: 100%;
-  width: 100%;
+  @include bank-card.container();
+
+  font-size: var(--bank-card-font-size, 16px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  gap: 16px;
-  padding: 16px;
+  border-radius: px-to-em(12px);
+  gap: px-to-em(16px);
+  padding: px-to-em(16px);
   background-image: linear-gradient(
     163deg,
     rgb(232, 228, 228) 0%,
@@ -46,26 +49,23 @@ const getRoute = useGetRoute();
   background-size: 100%;
   background-position: center;
   color: #1c1c1c;
-  max-width: 340px;
-  min-height: 200px;
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
   text-decoration: none;
   transition: ease-in-out 400ms;
-
-  @include breakpoints.sm() {
-    max-width: 400px;
-  }
 
   &:hover {
     background-size: 800%;
   }
 }
 
+.title {
+  font-size: 18px;
+}
+
 .icon {
-  width: 48px;
-  height: 48px;
+  width: px-to-em(48px);
+  height: px-to-em(48px);
   border-radius: 50%;
   display: flex;
   align-items: center;

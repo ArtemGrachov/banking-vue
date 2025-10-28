@@ -40,7 +40,6 @@ const emit = defineEmits<Emits>();
 
 <style lang="scss" scoped>
 .language-switch {
-  --button-border-radius: 0;
   --button-justify-content: flex-start;
   --button-text-align: left;
 

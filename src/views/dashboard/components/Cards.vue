@@ -13,16 +13,16 @@ const cardsStore = useCardsStore();
 
 <template>
   <BankCardCarousel
-    :mobileFullPage="true"
+    class="carousel"
     :cards="cardsStore.data"
     :is-processing="cardsStore.getStatus === EStatus.PROCESSING"
   >
-    <OrderCard />
+    <OrderCard v-if="!cardsStore.isProcessing" />
     <template v-if="cardsStore.isEmpty" #placeholder>
       <NoCards />
     </template>
     <template v-if="cardsStore.isError" #placeholder>
-      <ErrorPlaceholder>
+      <ErrorPlaceholder class="placeholder">
         {{ cardsStore.statusMessage }}
         <br>
         {{ $t('common_errors.refresh') }}
@@ -30,3 +30,14 @@ const cardsStore = useCardsStore();
     </template>
   </BankCardCarousel>
 </template>
+
+<style lang="scss" scoped>
+.carousel {
+  --bank-card-carousel-padding: 0 16px;
+  overflow: hidden;
+}
+
+.placeholder {
+  height: 100%;
+}
+</style>

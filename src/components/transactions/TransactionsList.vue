@@ -60,5 +60,9 @@ const { transactions = [], isProcessing } = defineProps<IProps>();
 
 .item {
   margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 </style>

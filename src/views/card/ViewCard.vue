@@ -56,74 +56,77 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <div class="card-row">
-      <BankCardSkeleton v-if="cardsStore.isProcessing" />
-      <BankCard v-else-if="card" :card="card" />
-    </div>
-    <div class="balance">
-      <span class="label">
-        {{ $t('view_card.balance') }}: 
-      </span>
-      <template v-if="cardsStore.isProcessing">
-        ...
-      </template>
-      <template v-else-if="card">
-        {{ card.balance }} {{ card.currency }}
-      </template>
-    </div>
-    <div class="actions">
-      <Button
-        variant="primary"
-        :as="RouterLink"
-        :to="transactionsLink"
-      >
-        <span class="material-symbols-outlined">
-          list
+    <div class="container">
+      <div class="card-row">
+        <BankCardSkeleton v-if="cardsStore.isProcessing" />
+        <BankCard v-else-if="card" :card="card" />
+      </div>
+      <div class="balance">
+        <span class="label">
+          {{ $t('view_card.balance') }}: 
         </span>
-        {{ $t('view_card.transactions') }}
-      </Button>
-      <Button
-        type="button"
-        variant="transparent"
-        class="action"
-        :is-processing="blockIsProcessing"
-        :disabled="card?.isClosed"
-        @click="block"
-      >
-        <span class="material-symbols-outlined">
-          block
-        </span>
-        {{ card?.isBlocked ? $t('common_cards.block.label_unblock') : $t('common_cards.block.label_block') }}
-      </Button>
-      <Button
-        type="button"
-        variant="transparent"
-        class="action"
-        :is-processing="closeIsProcessing"
-        :disabled="card?.isClosed"
-        @click="close"
-      >
-        <span class="material-symbols-outlined">
-          close
-        </span>
-        {{ $t('common_cards.close.label') }}
-      </Button>
-    </div>
-    <div v-if="blockStatusMessage || closeStatusMessage" class="statuses">
-      <FormStatus
-        v-if="blockStatusMessage"
-        class="status"
-        :status="blockStatus"
-      >
-        {{ blockStatusMessage }}
-      </FormStatus>
-      <FormStatus
-        v-if="closeStatusMessage"
-        class="status"
-        :status="closeStatus"
-      >
-        {{ closeStatusMessage }}
-      </FormStatus>
+        <template v-if="cardsStore.isProcessing">
+          ...
+        </template>
+        <template v-else-if="card">
+          {{ card.balance }} {{ card.currency }}
+        </template>
+      </div>
+      <div class="actions">
+        <Button
+          variant="primary"
+          class="action"
+          :as="RouterLink"
+          :to="transactionsLink"
+        >
+          <span class="material-symbols-outlined">
+            list
+          </span>
+          {{ $t('view_card.transactions') }}
+        </Button>
+        <Button
+          type="button"
+          variant="transparent"
+          class="action"
+          :is-processing="blockIsProcessing"
+          :disabled="card?.isClosed"
+          @click="block"
+        >
+          <span class="material-symbols-outlined">
+            block
+          </span>
+          {{ card?.isBlocked ? $t('common_cards.block.label_unblock') : $t('common_cards.block.label_block') }}
+        </Button>
+        <Button
+          type="button"
+          variant="transparent"
+          class="action"
+          :is-processing="closeIsProcessing"
+          :disabled="card?.isClosed"
+          @click="close"
+        >
+          <span class="material-symbols-outlined">
+            close
+          </span>
+          {{ $t('common_cards.close.label') }}
+        </Button>
+      </div>
+      <div v-if="blockStatusMessage || closeStatusMessage" class="statuses">
+        <FormStatus
+          v-if="blockStatusMessage"
+          class="status"
+          :status="blockStatus"
+        >
+          {{ blockStatusMessage }}
+        </FormStatus>
+        <FormStatus
+          v-if="closeStatusMessage"
+          class="status"
+          :status="closeStatus"
+        >
+          {{ closeStatusMessage }}
+        </FormStatus>
+      </div>
     </div>
   </div>
 </template>
@@ -135,19 +138,18 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
+}
+
+.container {
+  @include layout.container(auto);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .card-row {
-  width: 100%;
-  max-width: 340px;
   margin-bottom: 24px;
-
-  @include breakpoints.sm() {
-    max-width: 400px;
-  }
 }
 
 .balance {

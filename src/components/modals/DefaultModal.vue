@@ -18,7 +18,11 @@ const emit = defineEmits<Emits>();
     <div class="default-modal">
       <div class="header">
         <slot name="header" />
-        <IconButton class="close" @click="emit('close')">
+        <IconButton
+          class="close"
+          variant="primary"
+          @click="emit('close')"
+        >
           <span class="material-symbols-outlined">
             close
           </span>
