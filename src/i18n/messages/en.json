@@ -11,7 +11,11 @@
     "cards": "Cards",
     "charts": "Charts",
     "profile": "Profile",
-    "security": "Security"
+    "security": "Security",
+    "login": "Log in",
+    "registration": "Create an account",
+    "forgot-password": "Forgot password?",
+    "logout": "Log out"
   },
   "common_locales": {
     "uk": "Українська / Ukrainian",

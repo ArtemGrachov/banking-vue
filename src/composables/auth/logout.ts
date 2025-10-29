@@ -18,11 +18,13 @@ export const useLogout = () => {
     const confirmation = await confirmationModal();
 
     if (!confirmation) {
-      return;
+      return false;
     }
 
     authStore.unauthorize();
     router.push({ name: ROUTE_NAMES.LOGIN });
+
+    return true;
   }
 
   return {
