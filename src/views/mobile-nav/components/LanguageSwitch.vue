@@ -47,6 +47,7 @@ const switchLocaleHandler = (localeCode: string) => {
 .link {
   --button-justify-content: flex-start;
   --button-text-align: left;
+  --button-border-radius: 0;
   width: 100%;
 }
 </style>

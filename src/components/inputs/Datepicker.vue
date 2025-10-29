@@ -104,6 +104,7 @@ const openHandler = () => {
 <style lang="scss" scoped>
 @use 'sass:map';
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/mixins/dropdowns.scss' as dropdowns;
 
 .datepicker {
   :deep() {
@@ -115,6 +116,8 @@ const openHandler = () => {
     }
 
     .dp__outer_menu_wrap {
+      @include dropdowns.dropdown();
+
       @media (max-width: #{map.get(breakpoints.$breakpoints, 'medium') - 1px}) {
         display: none;
       }

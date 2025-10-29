@@ -54,7 +54,7 @@ onMounted(() => {
       <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart-row">
         <div class="col">
           <h2 class="chart-title">
-            {{ $t('view_charts.title_outcome') }}
+            {{ $t('view_charts.title_expense') }}
           </h2>
           <div class="chart">
             <Chart :stats="statsStore.data!.outcome" />

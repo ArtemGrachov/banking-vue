@@ -178,6 +178,7 @@ const logoutHandler = async () => {
   --button-justify-content: flex-start;
   --button-text-align: left;
   --button-font-weight: 500;
+  --button-border-radius: 0;
 
   width: 100%;
 }

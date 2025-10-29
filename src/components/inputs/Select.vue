@@ -140,13 +140,13 @@ const clearHandler = () => {
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/dropdowns.scss' as dropdowns;
+@use '/src/styles/mixins/inputs.scss' as inputs;
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .select {
   position: relative;
   width: 100%;
   height: 48px;
-  border-bottom: 1px solid black;
   transition: 200ms;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
@@ -155,6 +155,7 @@ const clearHandler = () => {
   display: flex;
   align-items: center;
   line-height: 1;
+  @include inputs.default-border;
 
   &.multiselect--active {
     border-color: blue;

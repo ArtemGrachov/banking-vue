@@ -25,6 +25,7 @@ const visibility = ref(false);
 <template>
   <div class="input-password">
     <input
+      :id="id"
       :type="visibility ? 'text' : 'password'"
       :readonly="readonly"
       class="input"
@@ -34,7 +35,6 @@ const visibility = ref(false);
       @focus="emit('focus', $event)"
     />
     <IconButton
-      :id="id"
       type="button"
       class="visibility-toggle"
       @click="visibility = !visibility"
