@@ -13,6 +13,7 @@ import { useToast } from '@/composables/toast/toast';
 import FormForgotPassword from '@/components/forms/FormForgotPassword.vue';
 import CountdownProgress from '@/components/other/CountdownProgress.vue';
 import FormConfirmationCode from '@/components/forms/FormConfirmationCode.vue';
+import AuthLinks from '@/components/auth/confirmation/AuthLinks.vue';
 
 import type { IFormForgotPassword } from '@/types/forms/form-forgot-password';
 
@@ -109,6 +110,7 @@ const isCode = computed(() => !!route?.query?.codeToken);
     :status-message="codeStatusMessage"
     @submit="codeSubmitHandler"
   />
+  <AuthLinks :is-reset-password="true" />
 </template>
 
 <style lang="scss" scoped>

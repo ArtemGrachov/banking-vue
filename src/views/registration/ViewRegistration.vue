@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-
-import { ROUTE_NAMES } from '@/router/routes';
 
 import { useRegistration } from './composable/registration';
 import { useRegistrationCode } from './composable/registration-code';
@@ -13,6 +10,7 @@ import FormRegistration from '@/components/forms/FormRegistration.vue';
 import Confirmation from '@/components/auth/confirmation/Confirmation.vue';
 import { useShowConfirmation } from '@/components/auth/confirmation/composables/show-confirmation';
 import { useInitConfirmation } from '@/components/auth/confirmation/composables/init-confirmation';
+import AuthLinks from '@/components/auth/confirmation/AuthLinks.vue';
 
 import type { IFormRegistration } from '@/types/forms/form-registration';
 
@@ -50,28 +48,11 @@ const submitHandler = async (formValue: IFormRegistration) => {
       :status-message="statusMessage"
       @submit="submitHandler"
     />
-    <div class="footer">
-      <div class="login">
-        {{ $t('view_registration.login_label') }}
-        <RouterLink :to="getRoute({ name: ROUTE_NAMES.LOGIN })">
-          {{ $t('view_registration.login_link') }}
-        </RouterLink>
-      </div>
-      <div class="forgot">
-        <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
-          {{ $t('view_registration.forgot_password') }}
-        </RouterLink>
-      </div>
-    </div>
+    <AuthLinks :is-registration="true" />
   </template>
 </template>
 
 <style lang="scss" scoped>
-.footer {
-  text-align: center;
-  margin-top: 32px;
-}
-
 .login {
   margin-bottom: 16px;
 }

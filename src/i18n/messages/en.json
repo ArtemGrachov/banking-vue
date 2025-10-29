@@ -36,9 +36,6 @@
     "resend_timer": "Send again ({time})"
   },
   "view_registration": {
-    "login_label": "Already have an account?",
-    "login_link": "Log in!",
-    "forgot_password": "Forgot password?",
     "success": "Registered successfully"
   },
   "common_validation": {
@@ -76,10 +73,6 @@
   },
   "form_login": {
     "login": "Email or phone number"
-  },
-  "view_login": {
-    "registration_link": "Don't have an account?",
-    "forgot_password": "Forgot password?"
   },
   "form_forgot_password": {
     "reset_by": "Reset by",
@@ -234,6 +227,10 @@
   },
   "common_auth": {
     "logout": "Logout",
-    "logout_question": "Are you sure you want to log out?"
+    "logout_question": "Are you sure you want to log out?",
+    "registration_link": "Don't have an account?",
+    "login_label": "Already have an account?",
+    "login_link": "Log in!",
+    "forgot_password": "Forgot password?"
   }
 }
