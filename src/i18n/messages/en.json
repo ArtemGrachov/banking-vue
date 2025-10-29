@@ -10,7 +10,7 @@
     "transaction_history": "Transaction history",
     "cards": "Cards",
     "charts": "Charts",
-    "profile": "Profile",
+    "personal_info": "Personal information",
     "security": "Security",
     "login": "Log in",
     "registration": "Create an account",
@@ -62,7 +62,7 @@
     "money_transfer": "Transfer money",
     "transaction_history": "Transaction History",
     "charts": "Charts",
-    "profile": "Profile",
+    "personal_info": "Personal information",
     "security": "Security",
     "registration": "Registration",
     "login": "Login",
@@ -236,5 +236,11 @@
     "login_label": "Already have an account?",
     "login_link": "Log in!",
     "forgot_password": "Forgot password?"
+  },
+  "personal_info": {
+    "full_name": "Full name",
+    "country": "Country",
+    "address": "Address",
+    "id_number": "ID number"
   }
 }

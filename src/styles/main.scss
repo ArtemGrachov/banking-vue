@@ -32,8 +32,10 @@ body {
 @include themes.global-theme-dark() {
   --primary-background: #242424;
   --page-background: #1f1f1f;
-    --header-background: #181818;
-    --header-color: red;
+  --header-background: #181818;
+  --header-color: red;
+
+  --heading-color: #eeeded;
 
   --primary-text: white;
   --secondary-text: #727272;
@@ -60,6 +62,8 @@ body {
   --page-background: white;
   --header-background: red;
   --header-color: white;
+
+  --heading-color: #1c1c1c;
 
   --primary-text: #141414;
   --secondary-text: #434343;

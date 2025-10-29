@@ -36,8 +36,8 @@ const title = computed(() => {
     case ROUTE_NAMES.CHARTS: {
       return t('page_title.charts');
     }
-    case ROUTE_NAMES.IDENTITY_VERIFICATION: {
-      return t('page_title.profile');
+    case ROUTE_NAMES.PERSONAL_INFO: {
+      return t('page_title.personal_info');
     }
     case ROUTE_NAMES.SECURITY: {
       return t('page_title.security');

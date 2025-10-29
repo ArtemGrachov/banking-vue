@@ -24,7 +24,7 @@ export const USER_ROUTES = [
   ROUTE_NAMES.CARD,
   ROUTE_NAMES.CARDS,
   ROUTE_NAMES.ORDER_CARD,
-  ROUTE_NAMES.IDENTITY_VERIFICATION,
+  ROUTE_NAMES.PERSONAL_INFO,
   ROUTE_NAMES.SECURITY,
 ];
 
@@ -53,7 +53,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.CARD]!,
               ROUTES_MAP[ROUTE_NAMES.CARDS]!,
               ROUTES_MAP[ROUTE_NAMES.ORDER_CARD]!,
-              ROUTES_MAP[ROUTE_NAMES.IDENTITY_VERIFICATION]!,
+              ROUTES_MAP[ROUTE_NAMES.PERSONAL_INFO]!,
               ROUTES_MAP[ROUTE_NAMES.SECURITY]!,
             ],
           },
@@ -66,9 +66,9 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.LOGIN]!,
               ROUTES_MAP[ROUTE_NAMES.FORGOT_PASSWORD]!,
               ROUTES_MAP[ROUTE_NAMES.RESET_PASSWORD]!,
-              ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
             ],
           },
+          ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
           {
             name: 'ERROR',
             path: ':pathMatch(.*)*',
