@@ -128,14 +128,6 @@ onMounted(() => {
   }
 }
 
-.refresh-button {
-  box-shadow: 0 0 0 1px rgba(white, 1);
-
-  @include breakpoints.lg() {
-    box-shadow: none;
-  }
-}
-
 .nav-links {
   padding-left: layout.$layout-container-padding;
   padding-right: layout.$layout-container-padding * 2 + 42px;

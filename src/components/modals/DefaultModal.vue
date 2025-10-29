@@ -20,7 +20,6 @@ const emit = defineEmits<Emits>();
         <slot name="header" />
         <IconButton
           class="close"
-          variant="primary"
           @click="emit('close')"
         >
           <span class="material-symbols-outlined">

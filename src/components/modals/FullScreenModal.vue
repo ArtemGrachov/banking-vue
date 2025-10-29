@@ -20,7 +20,6 @@ const emit = defineEmits<Emits>();
         <IconButton
           v-if="!$slots.close"
           class="close"
-          variant="primary"
           @click="emit('close')"
         >
           <span class="material-symbols-outlined">

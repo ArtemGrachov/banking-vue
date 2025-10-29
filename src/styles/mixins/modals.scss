@@ -8,7 +8,7 @@ $margin: 32px;
 }
 
 @mixin small {
-  background: white;
+  background: var(--modal-background);
   margin: $margin auto;
   width: calc(100dvw - #{$margin * 2});
   max-width: 500px;
@@ -29,7 +29,7 @@ $margin: 32px;
 @mixin fullscreen {
   width: 100dvw;
   height: 100dvh;
-  background: white;
+  background: var(--modal-background);
 }
 
 @mixin header {
@@ -41,13 +41,12 @@ $margin: 32px;
   box-shadow: 0 5px 16px 0 rgba(black, 0.1);
   display: flex;
   gap: 16px;
-  justify-content: space-between;
   align-items: center;
   flex: 0 0 auto;
   font-weight: 600;
   text-transform: uppercase;
-  background: red;
-  color: white;
+  height: var(--header-height);
+  background: var(--header-background);
 }
 
 @mixin close {

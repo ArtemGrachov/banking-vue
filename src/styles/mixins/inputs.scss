@@ -5,12 +5,12 @@
   padding: 0 16px;
   border: none;
   background: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--input-border-color);
   transition: 200ms;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.05em;
-  color: #2a2a2a;
+  color: var(--input-text-color);
 
   &:focus,
   &._invalid:focus,

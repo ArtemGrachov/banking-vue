@@ -7,9 +7,15 @@
   --dp-input-padding: 12px 16px 11px;
   --dp-font-size: 16px;
   --dp-border-color-hover: blue;
+  --dp-background-color: var(--dropdown-background);
+  --dp-menu-border-color: none;
+  --dp-text-color: var(--primary-text);
 }
 
 .dp__input {
+  --dp-background-color: none;
+  --dp-text-color: var(--input-text-color);
+
   border-width: 0;
   border-bottom-width: 1px;
 }

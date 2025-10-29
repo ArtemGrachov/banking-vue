@@ -70,7 +70,6 @@ const { open: openMobileNav, close } = useModal({
     <IconButton
       type="button"
       class="menu-toggle"
-      variant="primary"
       @click="openMobileNav"
     >
       <span class="material-symbols-outlined">
@@ -95,13 +94,13 @@ const { open: openMobileNav, close } = useModal({
 
 .header {
   --header-height: 74px;
-  --heading-color: white;
-  --text-color: white;
+  --heading-color: var(--header-color);
+  --text-color: var(--header-color);
 
   height: var(--header-height);
+  background: var(--header-background);
   display: flex;
   align-items: center;
-  background: red;
   color: var(--text-color);
   box-shadow: 0 15px 30px 0 rgba(black, 0.1);
   display: flex;

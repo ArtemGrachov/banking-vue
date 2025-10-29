@@ -43,7 +43,6 @@ const currentViewComponent = computed(() => {
       <IconButton
         type="button"
         class="return-button"
-        variant="primary"
         @click="viewHandler(EMobileNavViews.MAIN)"
       >
         <span class="material-symbols-outlined">

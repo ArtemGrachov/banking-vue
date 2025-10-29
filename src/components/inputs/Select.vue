@@ -151,10 +151,9 @@ const clearHandler = () => {
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.05em;
-  color: #2a2a2a;
+  color: var(--input-text-color);
   display: flex;
   align-items: center;
-  background: white;
   line-height: 1;
 
   &.multiselect--active {

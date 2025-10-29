@@ -90,6 +90,8 @@ const links = [
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/themes.scss' as themes;
+
 .list {
   list-style: none;
   padding: 0;
@@ -99,9 +101,20 @@ const links = [
 .link {
   --button-justify-content: flex-start;
   --button-text-align: left;
-  --button-text-color: darkred;
   --button-font-weight: 500;
 
   width: 100%;
+}
+
+@include themes.component-theme-dark() {
+  .link {
+    --button-text-color: #ff5e5e;
+  }
+}
+
+@include themes.component-theme-light() {
+  .link {
+    --button-text-color: darkred;
+  }
 }
 </style>

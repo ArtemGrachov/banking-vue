@@ -17,6 +17,7 @@
 
 @use '/src/styles/mixins/layout.scss' as layout;
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+@use '/src/styles/mixins/themes.scss' as themes;
 
 .page {
   @include layout.page-default();
@@ -29,16 +30,32 @@
 
 .col {
   &._form {
-    background-image: url('/src/assets/brano-heYdDdq0cbE-unsplash.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     padding: 16px 16px 72px;
+    position: relative;
+
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      filter: var(--background-filter);
+      background-image: url('/src/assets/brano-heYdDdq0cbE-unsplash.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      @include breakpoints.sm() {
+        display: none;
+      }
+    }
   }
 
   &._image {
@@ -50,7 +67,6 @@
       width: 35%;
       min-width: 400px;
       flex: 0 0 auto;
-      background: none;
     }
   
     &._image {
@@ -62,6 +78,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       display: block;
+      filter: var(--background-filter);
     }
   }
 }
@@ -71,8 +88,14 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 24px;
-  background: rgba(white, 0.5);
+  background: var(--content-background);
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+
+  @include breakpoints.sm() {
+    background: none;
+  }
 }
 
 .author {
@@ -90,6 +113,20 @@
     text-align: right;
     right: 24px;
     bottom: 24px;
+  }
+}
+
+@include themes.component-theme-dark() {
+  .content-wrap {
+    --content-background: #{rgba(black, 0.75)};
+    --background-filter: brightness(50%);
+  }
+}
+
+@include themes.component-theme-light() {
+  .content-wrap {
+    --content-background: #{rgba(white, 0.5)};
+    --background-filter:
   }
 }
 </style>

@@ -1,4 +1,5 @@
-@use './breakpoints.scss';
+@use './breakpoints.scss' as breakpoints;
+@use './themes.scss' as themes;
 
 $layout-container-padding: 16px;
 
@@ -23,6 +24,6 @@ $layout-container-padding: 16px;
 }
 
 @mixin page-default {
-  background: white;
+  background: var(--page-background);
   box-shadow: 0 15px 30px 0 rgba(black, 0.1);
 }

@@ -30,6 +30,7 @@
 @use '/src/styles/functions/px-to-em.scss' as *;
 @use '/src/styles/mixins/skeleton.scss' as skeleton;
 @use '/src/styles/mixins/bank-card.scss' as bank-card;
+@use '/src/styles/mixins/themes.scss' as themes;
 
 .bank-card-skeleton {
   @include bank-card.container();
@@ -40,13 +41,7 @@
   justify-content: space-between;
   border-radius: px-to-em(12px);
   padding: px-to-em(16px);
-  background-image: linear-gradient(
-    163deg,
-    rgb(232, 228, 228) 0%,
-    rgb(179, 179, 179) 50%,
-    rgb(179, 179, 179) 70%,
-    rgb(148, 148, 148) 100%,
-  );
+  background: var(--card-skeleton-background);
 }
 
 .top, .bottom {
@@ -110,5 +105,17 @@
 
 .cardholder-skeleton {
   width: px-to-em(250px);
+}
+
+@include themes.component-theme-dark() {
+  .bank-card-skeleton {
+    --card-skeleton-background: #2d2d2d;
+  }
+}
+
+@include themes.component-theme-light() {
+  .bank-card-skeleton {
+    --card-skeleton-background: #a9a9a9;
+  }
 }
 </style>
