@@ -23,14 +23,6 @@ const getRoute = useGetRoute();
       <slot />
     </div>
     <div class="col _details">
-      <div class="balance">
-        <template v-if="card">
-          <span class="label">
-            {{ $t('bank_card_item.balance') }}:
-          </span>
-          {{ card.balance }} {{ card.currency }}
-        </template>
-      </div>
       <Button
         v-if="card"
         :to="getRoute({ name: ROUTE_NAMES.CARD, params: { id: card.id } })"
@@ -78,12 +70,6 @@ const getRoute = useGetRoute();
     @include breakpoints.sm() {
       display: block;
     }
-  }
-}
-
-.balance {
-  @include breakpoints.sm() {
-    margin-bottom: 16px;
   }
 }
 

@@ -61,17 +61,6 @@ onMounted(() => {
         <BankCardSkeleton v-if="cardsStore.isProcessing" />
         <BankCard v-else-if="card" :card="card" />
       </div>
-      <div class="balance">
-        <span class="label">
-          {{ $t('view_card.balance') }}: 
-        </span>
-        <template v-if="cardsStore.isProcessing">
-          ...
-        </template>
-        <template v-else-if="card">
-          {{ card.balance }} {{ card.currency }}
-        </template>
-      </div>
       <div class="actions">
         <Button
           class="action"
