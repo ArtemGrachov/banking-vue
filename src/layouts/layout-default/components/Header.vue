@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
 import { ROUTE_NAMES } from '@/router/routes';
 
+import { useAuthStore } from '@/store/auth';
+
+import { useGetRoute } from '@/composables/routing/get-route';
 import IconButton from '@/components/buttons/IconButton.vue';
 import LanguageSwitch from '@/components/language/LanguageSwitch.vue';
 import ThemeToggle from '@/components/other/ThemeToggle.vue';
@@ -14,6 +17,8 @@ const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNa
 
 const { t } = useI18n();
 const route = useRoute();
+const authStore = useAuthStore();
+const getRoute = useGetRoute();
 
 const title = computed(() => {
   switch (route.name) {
@@ -59,6 +64,14 @@ const title = computed(() => {
   return '';
 });
 
+const homeLink = computed(() => {
+  if (authStore.isAuthorized) {
+    return getRoute({ name: ROUTE_NAMES.DASHBOARD });
+  }
+
+  return getRoute({ name: ROUTE_NAMES.LOGIN });
+});
+
 const { open: openMobileNav, close } = useModal({
   component: MobileNav,
   attrs: {
@@ -76,6 +89,15 @@ const { open: openMobileNav, close } = useModal({
     >
       <span class="material-symbols-outlined">
         more_vert
+      </span>
+    </IconButton>
+    <IconButton
+      :as="RouterLink"
+      :to="homeLink"
+      class="logo"
+    >
+      <span class="material-symbols-outlined">
+        account_balance
       </span>
     </IconButton>
     <h1 class="title">
@@ -123,7 +145,8 @@ const { open: openMobileNav, close } = useModal({
 }
 
 .menu-toggle,
-.theme-toggle {
+.theme-toggle,
+.logo {
   flex: 0 0 auto;
   height: var(--header-height);
   width: var(--header-height);
@@ -141,6 +164,15 @@ const { open: openMobileNav, close } = useModal({
 .menu-toggle {
   @include breakpoints.lg() {
     --button-display: none;
+  }
+}
+
+.logo {
+  --button-display: none;
+  font-size: 48px;
+
+  @include breakpoints.lg() {
+    --button-display: inline-flex;
   }
 }
 
