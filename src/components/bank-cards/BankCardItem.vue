@@ -36,7 +36,6 @@ const getRoute = useGetRoute();
         :to="getRoute({ name: ROUTE_NAMES.CARD, params: { id: card.id } })"
         :as="RouterLink"
         class="manage"
-        variant="primary"
       >
         <span class="material-symbols-outlined">
           settings

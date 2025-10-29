@@ -23,7 +23,7 @@
   gap: 8px;
   padding: 0 24px;
   background: darkred;
-  color: var(--button-text-color, white);
+  color: var(--button-color, white);
   font-size: 14px;
   position: relative;
   font-family: 'Raleway', sans-serif;
@@ -151,7 +151,7 @@
   background: none;
   border: none;
   line-height: 1;
-  color: var(--button-text-color, var(--button-text-color));
+  color: var(--text-button-color, var(--button-text-color));
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 

@@ -15,7 +15,7 @@ interface ILink {
   path: ReturnType<typeof getRoute>;
   icon: string;
   label: string;
-  variant: ButtonVariants;
+  variant?: ButtonVariants;
   className?: string;
 }
 
@@ -25,7 +25,6 @@ const links: ILink[] = [
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
     icon: 'output',
     label: t('view_dashboard.nav_links.link_money_transfer'),
-    variant: 'primary',
   },
   {
     key: 'cards',

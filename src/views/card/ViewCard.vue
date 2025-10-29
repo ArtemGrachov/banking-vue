@@ -74,7 +74,6 @@ onMounted(() => {
       </div>
       <div class="actions">
         <Button
-          variant="primary"
           class="action"
           :as="RouterLink"
           :to="transactionsLink"

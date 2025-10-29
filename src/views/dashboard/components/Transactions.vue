@@ -35,7 +35,6 @@ const transactionsStore = useTransactionsStore();
     <Button
       v-if="transactionsStore.isSuccess && !transactionsStore.isEmpty"
       :as="RouterLink"
-      variant="primary"
       :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })"
     >
       {{ $t('view_dashboard.transactions_view_all') }}

@@ -1,4 +1,4 @@
-@use '../mixins//breakpoints.scss' as breakpoints;
+@use '../mixins/breakpoints.scss' as breakpoints;
 
 @keyframes fadeOut {
   from {
@@ -101,6 +101,7 @@
 
 .v-toast__item--error {
   background-color: red;
+  color: #000
 }
 
 .v-toast__item--default {
