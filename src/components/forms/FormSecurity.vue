@@ -32,7 +32,7 @@ const emits = defineEmits<Emits>();
 const passwordValidators = usePasswordValidators();
 
 const fieldEmail = ref('test@test.com');
-const fieldPhoneNumber = ref('+380991112233');
+const fieldPhoneNumber = ref('380991112233');
 const fieldPassword = ref('');
 const fieldPasswordRepeat = ref('');
 
@@ -49,7 +49,6 @@ const rules = computed(() => ({
   },
   password: passwordValidators,
   passwordRepeat: {
-    required,
     passwordMatch: sameAs(fieldPassword, 'password'),
   },
 }));

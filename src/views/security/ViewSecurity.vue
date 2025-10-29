@@ -1,10 +1,23 @@
 <script setup lang="ts">
 import FormSecurity from '@/components/forms/FormSecurity.vue';
+import { useToast } from '@/composables/toast/toast';
+import type { IFormSecurity } from '@/types/forms/form-security';
 
-import type { IFormRegistration } from '@/types/forms/form-registration';
+import { useSecurity } from '@/views/security/composable/security';
+import { useI18n } from 'vue-i18n';
 
-const submitHandler = async (formValue: IFormRegistration) => {
-  console.log(formValue);
+const { submit, submitStatus, statusMessage } = useSecurity();
+const toast = useToast();
+const { t } = useI18n();
+
+const submitHandler = async (formValue: IFormSecurity) => {
+  try {
+    await submit(formValue);
+    toast.success(t('view_security.update_success'), { position: 'top-right', pauseOnHover: true });
+  } catch (err) {
+    console.error(err);
+    toast.error(t('common_errors.generic'), { position: 'top-right', pauseOnHover: true });
+  }
 }
 </script>
 
@@ -12,6 +25,8 @@ const submitHandler = async (formValue: IFormRegistration) => {
   <div class="page">
     <div class="container">
       <FormSecurity
+        :submit-status="submitStatus"
+        :status-message="statusMessage"
         @submit="submitHandler"
       />
     </div>
