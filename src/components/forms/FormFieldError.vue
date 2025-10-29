@@ -13,13 +13,13 @@ const messages = useValidationMessages(input, customValidationMessages);
 </script>
 
 <template>
-  <div v-if="messages.length" class="error">
+  <div v-if="messages.length" class="form-field-error">
     {{ messages[0] }}
   </div>
 </template>
 
 <style lang="scss" scoped>
-.error {
+.form-field-error {
   margin-top: 12px;
   font-size: 14px;
   color: red;

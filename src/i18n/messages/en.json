@@ -188,7 +188,8 @@
     "recipient": "Recipient",
     "submit": "Send",
     "max": "Max: {value}",
-    "max_validation": "You cannot transfer more than {value}"
+    "max_validation": "You cannot transfer more than {value}",
+    "card_available_validation": "The card must be available"
   },
   "view_transfer": {
     "confirmation": "Do you really want to transfer {value} to {recipient}?",

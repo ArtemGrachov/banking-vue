@@ -63,8 +63,12 @@ export const useValidationMessages = (
       result.push(customMessages?.passwordMatch ?? t('common_validation.password_match'));
     }
 
-    if (input.max?.$invalid && customMessages?.max) {
-      result.push(customMessages.max);
+    if (customMessages) {
+      Object.entries(customMessages).forEach(([key, value]) => {
+        if (input[key]?.$invalid && value) {
+          result.push(value);
+        }
+      });
     }
 
     return result;

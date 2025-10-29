@@ -61,7 +61,7 @@ const classNames = computed(() => {
 @use '/src/styles/mixins/texts.scss' as texts;
 
 .form-field {
-  margin-bottom: 24px;
+  margin-bottom: var(--form-field-margin-bottom, 24px);
 }
 
 .label {

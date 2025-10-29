@@ -87,7 +87,9 @@ watch(route, (newRoute) => {
         {{ $t('view_transfer.success_title') }}
       </template>
       <template #subtitle>
-        {{ $t('view_transfer.success_subtitle') }}
+        <p>
+          {{ $t('view_transfer.success_subtitle') }}
+        </p>
         <Button type="button" class="return" variant="primary" @click="returnHandler">
           {{ $t('view_transfer.return') }}
         </Button>
@@ -112,9 +114,5 @@ watch(route, (newRoute) => {
   @include layout.page-default();
 
   overflow: hidden;
-}
-
-.return {
-  margin-top: 24px;
 }
 </style>
