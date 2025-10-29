@@ -34,7 +34,7 @@ export const useThemeStore = defineStore('theme', () => {
     theme.value = value;
   }
 
-  const initTheme = () => {
+  const init = () => {
     let theme;
 
     try {
@@ -48,10 +48,9 @@ export const useThemeStore = defineStore('theme', () => {
     }
   }
 
-  initTheme();
-
   return {
     theme,
     setTheme,
+    init,
   };
 });
