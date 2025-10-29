@@ -242,6 +242,10 @@ const clearHandler = () => {
 
     .multiselect__option {
       @include dropdowns.option();
+
+      &--selected {
+        @include dropdowns.option-active();
+      }
     }
 
     .multiselect-enter-active,

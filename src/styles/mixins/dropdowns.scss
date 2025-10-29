@@ -69,3 +69,8 @@
     color: white;
   }
 }
+
+@mixin option-active {
+  background: red;
+  color: white;
+}
