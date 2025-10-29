@@ -28,7 +28,15 @@ export const USER_ROUTES = [
   ROUTE_NAMES.SECURITY,
 ];
 
+export const GUEST_ROUTES = [
+  ROUTE_NAMES.LOGIN,
+  ROUTE_NAMES.REGISTRATION,
+  ROUTE_NAMES.FORGOT_PASSWORD,
+  ROUTE_NAMES.RESET_PASSWORD,
+];
+
 const USER_ROUTES_SET = new Set(USER_ROUTES);
+const GUEST_ROUTES_SET = new Set(GUEST_ROUTES);
 
 export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
   const authStore = useAuthStore();
@@ -68,6 +76,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.RESET_PASSWORD]!,
             ],
           },
+          ROUTES_MAP[ROUTE_NAMES.ABOUT]!,
           ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
           {
             name: 'ERROR',
@@ -108,7 +117,7 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
       return next({
         name: ROUTE_NAMES.LOGIN,
       });
-    } else if (authStore.isAuthorized && !USER_ROUTES_SET.has(to.name as string)) {
+    } else if (authStore.isAuthorized && GUEST_ROUTES_SET.has(to.name as string)) {
       return next({
         name: ROUTE_NAMES.DASHBOARD,
       });
