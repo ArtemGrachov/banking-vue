@@ -1,0 +1,71 @@
+@mixin toggle-active {
+  color: blue;
+  border-color: blue;
+}
+
+@mixin dropdown {
+  background: var(--dropdown-background);
+  box-shadow: 0 8px 20px -8px rgba(black, 0.4);
+  z-index: 10;
+}
+
+@mixin content {
+  --content-padding-y: 12px;
+  --content-padding-negative-y: -8px;
+  --content-padding-x: 16px;
+  --content-padding-negative-x: -16px;
+
+  padding: var(--content-padding-y) var(--content-padding-x);
+  overflow: hidden;
+}
+
+@mixin arrow() {
+  flex: 0 0 auto;
+  transition: 200ms;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+  right: 4px;
+}
+
+@mixin arrow-active() {
+  transform: rotate(180deg);
+}
+
+@mixin dropdown-open {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 200ms, transform 200ms;
+}
+
+@mixin dropdown-closed {
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+@mixin option-list {
+  list-style: none;
+  padding: 0;
+  margin:
+    var(--content-padding-negative-y, 0)
+    var(--content-padding-negative-x, 0);
+}
+
+@mixin option {
+  @include content();
+
+  background: none;
+  border: none;
+  transition: 200ms;
+  color: var(--dropdown-option-color);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background: darkred;
+    color: white;
+  }
+}

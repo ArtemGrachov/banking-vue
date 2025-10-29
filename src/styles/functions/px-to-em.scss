@@ -1,0 +1,5 @@
+@use 'sass:math';
+
+@function px-to-em($pxValue, $baseFontSize: 16px) {
+  @return #{math.div($pxValue, $baseFontSize)}em;
+}

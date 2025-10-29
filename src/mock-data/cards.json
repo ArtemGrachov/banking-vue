@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "cardNumber": "4532 9183 4728 6351",
+    "verification": "582",
+    "expireDate": "07/27",
+    "isBlocked": false,
+    "currency": "USD",
+    "cardholderName": "Cardholder Name",
+    "balance": 5000,
+    "design": "red"
+  },
+  {
+    "id": 2,
+    "cardNumber": "5200 4831 9274 1102",
+    "verification": "941",
+    "expireDate": "11/26",
+    "currency": "EUR",
+    "cardholderName": "Cardholder Name",
+    "balance": 0,
+    "design": "green"
+  },
+  {
+    "id": 3,
+    "cardNumber": "4024 5837 9921 7440",
+    "verification": "306",
+    "expireDate": "04/29",
+    "isBlocked": true,
+    "currency": "UAH",
+    "cardholderName": "Cardholder Name",
+    "balance": 1200,
+    "design": "blue"
+  },
+  {
+    "id": 4,
+    "cardNumber": "3782 845631 0005",
+    "verification": "1279",
+    "expireDate": "09/28",
+    "currency": "GBP",
+    "cardholderName": "Cardholder Name",
+    "balance": 3000,
+    "design": "golden"
+  },
+  {
+    "id": 5,
+    "cardNumber": "6011 9029 6654 3337",
+    "verification": "884",
+    "expireDate": "12/30",
+    "isBlocked": false,
+    "currency": "USD",
+    "cardholderName": "Cardholder Name",
+    "balance": 0,
+    "design": "silver"
+  }
+]

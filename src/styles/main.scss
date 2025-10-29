@@ -1,0 +1,82 @@
+@use './typography.scss';
+@use './global/modals.scss';
+@use './mixins/themes.scss' as themes;
+@use './libs/vue-toast-notification.scss';
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--primary-background);
+  --bank-card-font-size: 4.28vw;
+
+  @include breakpoints.sm() {
+    --bank-card-font-size: 18px;
+  }
+}
+
+#app {
+  height: 100%;
+}
+
+@include themes.global-theme-dark() {
+  --primary-background: #242424;
+  --page-background: #1f1f1f;
+    --header-background: #181818;
+    --header-color: red;
+
+  --primary-text: white;
+  --secondary-text: #727272;
+  --link-color: red;
+
+  --text-button-color: #ff5e5e;
+
+  --input-text-color: white;
+  --input-border-color: #727272;
+
+  --field-label-color: #9e9e9e;
+
+  --dropdown-background: #3b3b3b;
+  --dropdown-option-color: white;
+
+  --skeleton-color: #3b3b3b;
+  --skeleton-animation-color: rgba(255, 166, 0, 0.074);
+
+  --modal-background: #1f1f1f;
+}
+
+@include themes.global-theme-light() {
+  --primary-background: #eeeded;
+  --page-background: white;
+  --header-background: red;
+  --header-color: white;
+
+  --primary-text: #141414;
+  --secondary-text: #434343;
+  --link-color: #9b0000;
+
+  --button-text-color: #9b0000;
+
+  --input-text-color: #2a2a2a;
+  --input-border-color: #141414;
+
+  --field-label-color: #2a2a2a;
+
+  --dropdown-background: white;
+  --dropdown-option-color: #2a2a2a;
+
+  --skeleton-color: #d3d3d3;
+  --skeleton-animation-color: rgba(255, 255, 255, 0.3);
+
+  --modal-background: white;
+}

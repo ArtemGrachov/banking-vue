@@ -1,0 +1,9 @@
+@mixin field-label {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: var(--field-label-color);
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-align: var(--label-text-align);
+}

@@ -1,0 +1,29 @@
+@mixin default {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid var(--input-border-color);
+  transition: 200ms;
+  font-size: 14px;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.05em;
+  color: var(--input-text-color);
+
+  &:focus,
+  &._invalid:focus,
+  &._valid:focus {
+    outline: none;
+    border-color: blue;
+  }
+
+  &._invalid {
+    border-color: red;
+  }
+
+  &._valid {
+    border-color: green;
+  }
+}

@@ -1,9 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ModalsContainer } from 'vue-final-modal';
+</script>
 
 <template>
-  <h1>
-    Banking Demo App
-  </h1>
+  <router-view></router-view>
+  <ModalsContainer />
 </template>
-
-<style scoped></style>

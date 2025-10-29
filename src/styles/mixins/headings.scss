@@ -1,0 +1,128 @@
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
+
+@mixin heading-base {
+  color: var(--heading-color, #1c1c1c);
+  font-weight: 500;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin h1-mobile {
+  margin: 24px 0;
+  font-size: 24px;
+}
+
+@mixin h1-desktop {
+  margin: 32px 0;
+  font-size: 32px;
+}
+
+@mixin h1 {
+  @include heading-base();
+  @include h1-mobile();
+
+  @include breakpoints.lg() {
+    @include h1-desktop();
+  }
+}
+
+@mixin h2-mobile {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+@mixin h2-desktop {
+  margin: 28px 0;
+  font-size: 28px;
+}
+
+@mixin h2 {
+  @include heading-base();
+  @include h2-mobile();
+
+  @include breakpoints.lg() {
+    @include h2-desktop();
+  }
+}
+
+@mixin h3-mobile {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+@mixin h3-desktop {
+  margin: 24px 0;
+  font-size: 24px;
+}
+
+@mixin h3 {
+  @include heading-base();
+  @include h3-mobile();
+
+  @include breakpoints.lg() {
+    @include h3-desktop();
+  }
+}
+
+@mixin h4-mobile {
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+@mixin h4-desktop {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+@mixin h4 {
+  @include heading-base();
+  @include h4-mobile();
+
+  @include breakpoints.lg() {
+    @include h4-desktop();
+  }
+}
+
+@mixin h5-mobile {
+  margin: 14px 0;
+  font-size: 14px;
+}
+
+@mixin h5-desktop {
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+@mixin h5 {
+  @include heading-base();
+  @include h5-mobile();
+
+  @include breakpoints.lg() {
+    @include h5-desktop();
+  }
+}
+
+@mixin h6-mobile {
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+@mixin h6-desktop {
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+@mixin h6 {
+  @include heading-base();
+  @include h6-mobile();
+
+  @include breakpoints.lg() {
+    @include h6-desktop();
+  }
+}
