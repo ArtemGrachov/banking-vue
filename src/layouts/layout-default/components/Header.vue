@@ -4,9 +4,11 @@ import { useModal } from 'vue-final-modal';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
+import { ROUTE_NAMES } from '@/router/routes';
+
 import IconButton from '@/components/buttons/IconButton.vue';
 import LanguageSwitch from '@/components/language/LanguageSwitch.vue';
-import { ROUTE_NAMES } from '@/router/routes';
+import ThemeToggle from '@/components/other/ThemeToggle.vue';
 
 const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNav.vue'));
 
@@ -79,9 +81,11 @@ const { open: openMobileNav, close } = useModal({
     <h1 class="title">
       {{ title }}
     </h1>
-    <span class="cell-placeholder"></span>
     <div class="switch">
-      <LanguageSwitch />
+      <ThemeToggle class="theme-toggle" />
+      <div class="language-switch">
+        <LanguageSwitch />
+      </div>
     </div>
   </header>
 </template>
@@ -91,6 +95,7 @@ const { open: openMobileNav, close } = useModal({
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 @use '/src/styles/mixins/buttons.scss' as buttons;
 @use '/src/styles/mixins/headings.scss' as headings;
+@use '/src/styles/mixins/themes.scss' as themes;
 
 .header {
   --header-height: 74px;
@@ -115,13 +120,15 @@ const { open: openMobileNav, close } = useModal({
 }
 
 .menu-toggle,
-.cell-placeholder {
+.theme-toggle {
   flex: 0 0 auto;
   height: var(--header-height);
   width: var(--header-height);
   --icon-button-height: var(--header-height);
   --icon-button-width: var(--header-height);
+}
 
+.menu-toggle {
   @include breakpoints.lg() {
     --button-display: none;
     display: none;
@@ -131,12 +138,6 @@ const { open: openMobileNav, close } = useModal({
 .menu-toggle {
   @include breakpoints.lg() {
     --button-display: none;
-  }
-}
-
-.cell-placeholder {
-  @include breakpoints.lg() {
-    display: none;
   }
 }
 
@@ -153,11 +154,35 @@ const { open: openMobileNav, close } = useModal({
   }
 }
 
-.switch {
+.language-switch {
   display: none;
 
   @include breakpoints.lg() {
-    display: block;
+    display: flex;
+  }
+}
+
+.switch {
+  @include breakpoints.lg() {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@include themes.component-theme-dark() {
+  .header {
+    --icon-button-color: red;
+    --icon-button-hover-color: orange;
+    --icon-button-active-color: white;
+  }
+}
+
+@include themes.component-theme-light() {
+  .header {
+    --icon-button-color: white;
+    --icon-button-hover-color: orange;
+    --icon-button-active-color: yellow;
   }
 }
 </style>

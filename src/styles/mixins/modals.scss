@@ -36,6 +36,8 @@ $margin: 32px;
   $header-padding: 16px;
 
   --header-height: 74px;
+  --icon-button-color: white;
+  --icon-button-hover-color: orange;
 
   height: var(--header-height);
   box-shadow: 0 5px 16px 0 rgba(black, 0.1);
