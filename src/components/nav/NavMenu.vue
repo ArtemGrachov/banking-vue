@@ -22,7 +22,7 @@ const getRoute = useGetRoute();
 const { logout } = useLogout();
 const authStore = useAuthStore();
 
-const links = [
+const links = computed(() => [
   {
     key: 'dashboard',
     label: t('nav.dashboard'),
@@ -94,10 +94,10 @@ const links = [
     icon: 'password',
     guestOnly: true,
   },
-];
+]);
 
 const outputLinks = computed(() => {
-  return links.filter(link => {
+  return links.value.filter(link => {
     if (authStore.isAuthorized) {
       return !link.guestOnly;
     } else {

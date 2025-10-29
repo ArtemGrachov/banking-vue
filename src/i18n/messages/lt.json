@@ -1,3 +1,249 @@
 {
-  "test": "LT message"
+  "error": {
+    "subtitle": "Įvyko klaida",
+    "return": "Grįžti į pagrindinį puslapį"
+  },
+  "nav": {
+    "dashboard": "Pagrindinis",
+    "money_transfer": "Pervesti pinigus",
+    "transaction_history": "Transakcijų istorija",
+    "cards": "Kortelės",
+    "charts": "Diagramos",
+    "personal_info": "Asmens duomenys",
+    "security": "Sauga",
+    "login": "Prisijungti",
+    "registration": "Sukurti paskyrą",
+    "forgot-password": "Pamiršote slaptažodį?",
+    "logout": "Atsijungti"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Keisti kalbą"
+  },
+  "form_common": {
+    "full_name": "Pilnas vardas",
+    "email": "El. paštas",
+    "phone_number": "Telefono numeris",
+    "password": "Slaptažodis",
+    "password_repeat": "Pakartokite slaptažodį",
+    "confirmation_code": "Patvirtinimo kodas",
+    "submit": "Siųsti",
+    "resend": "Siųsti dar kartą",
+    "resend_timer": "Siųsti dar kartą ({time})"
+  },
+  "view_registration": {
+    "success": "Sėkmingai užsiregistruota"
+  },
+  "common_validation": {
+    "required": "Šis laukas privalomas",
+    "email": "Šis laukas neatitinka el. pašto formato",
+    "phone": "Šis laukas neatitinka telefono formato",
+    "phone_hint": "Tik skaičiai, 7–15 ženklų",
+    "min_length": "Šiame lauke turi būti bent {min} simbolių",
+    "numeric": "Šiame lauke gali būti tik skaičiai",
+    "length": "Šis simbolis turi turėti {length} simbolius",
+    "contain_lower_case": "Šiame lauke turi būti bent viena mažoji raidė",
+    "contain_upper_case": "Šiame lauke turi būti bent viena didžioji raidė",
+    "only_latin": "Šiame lauke gali būti tik lotyniškos raidės",
+    "contan_number": "Šiame lauke turi būti bent vienas skaičius",
+    "special_symbol": "Šiame lauke turi būti bent vienas specialus simbolis",
+    "password_match": "Šis laukas turi atitikti slaptažodį"
+  },
+  "page_title": {
+    "dashboard": "Pagrindinis",
+    "money_transfer": "Pervesti pinigus",
+    "transaction_history": "Transakcijų istorija",
+    "charts": "Diagramos",
+    "personal_info": "Asmens duomenys",
+    "security": "Sauga",
+    "registration": "Registracija",
+    "login": "Prisijungimas",
+    "forgot_password": "Pamiršote slaptažodį",
+    "reset_password": "Atstatyti slaptažodį",
+    "cards": "Kortelės",
+    "order_card": "Užsakyti kortelę"
+  },
+  "common_errors": {
+    "generic": "Įvyko klaida",
+    "refresh": "Pabandykite paspausti atnaujinimo mygtuką arba perkrauti puslapį"
+  },
+  "form_login": {
+    "login": "El. paštas arba telefono numeris"
+  },
+  "form_forgot_password": {
+    "reset_by": "Atstatyti per",
+    "reset_by_phone": "SMS kodas",
+    "reset_by_email": "El. pašto nuoroda"
+  },
+  "view_forgot_password": {
+    "success_sms": "Atstatymo kodas išsiųstas",
+    "success_email": "Atstatymo nuoroda išsiųsta",
+    "description_email": "El. laiškas su slaptažodžio atstatymo nuoroda buvo išsiųstas jūsų el. pašto adresu. Jei laiškas nepasiekė jūsų pašto dėžutės, patikrinkite el. pašto adresą ir spustelėkite „Siųsti dar kartą“"
+  },
+  "form_confirmation": {
+    "confirm_by": "Patvirtinti per",
+    "confirm_by_email": "El. paštu",
+    "confirm_by_phone": "Telefono numeriu"
+  },
+  "confirmation": {
+    "hint_email": "El. laiškas su patvirtinimo nuoroda buvo išsiųstas jūsų el. pašto adresu. Jei laiškas nepasiekė jūsų pašto dėžutės, patikrinkite el. pašto adresą ir spustelėkite „Siųsti dar kartą“",
+    "hint_sms": "SMS su patvirtinimo kodu buvo išsiųsta jūsų telefonui. Jei SMS nepasiekė jūsų, patikrinkite telefono numerį ir spustelėkite „Siųsti dar kartą“"
+  },
+  "password_hints": {
+    "min_length": "Minimalus ilgis {min}",
+    "contain_lower_case": "Mažosios raidės",
+    "contain_upper_case": "Didžiosios raidės",
+    "only_latin": "Tik lotyniškos raidės",
+    "contan_number": "Skaičiai",
+    "special_symbol": "Specialūs simboliai"
+  },
+  "view_reset_password": {
+    "success": "Jūsų slaptažodis sėkmingai atstatytas. Dabar galite prisijungti"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Rodyti visus",
+    "nav_links": {
+      "link_money_transfer": "Pervesti pinigus",
+      "link_charts": "Diagramos",
+      "link_cards": "Kortelės",
+      "link_order_card": "Užsakyti kortelę"
+    }
+  },
+  "order_card": {
+    "title": "Užsakyti kortelę"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Sąrašas tuščias",
+      "subtitle": "Transakcijų dar nėra"
+    },
+    "categories": {
+      "all": "Visos",
+      "groceries": "Maisto prekės",
+      "restaurants_cafes": "Restoranai ir kavinės",
+      "transportation": "Transportas",
+      "entertainment": "Pramogos",
+      "health_medicine": "Sveikata ir medicina",
+      "shopping": "Pirkimai",
+      "utilities_bills": "Komunalinės paslaugos",
+      "salary": "Alga",
+      "income": "Pajamos"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Kortelių dar nėra",
+      "subtitle": "Užsisakykite savo pirmąją kortelę"
+    },
+    "close": {
+      "label": "Uždaryti",
+      "question": "Ar tikrai norite uždaryti kortelę {cardNumber}?",
+      "success": "Kortelė sėkmingai uždaryta"
+    },
+    "block": {
+      "label_block": "Blokuoti",
+      "label_unblock": "Atblokuoti",
+      "question_block": "Ar tikrai norite užblokuoti kortelę {cardNumber}?",
+      "question_unblock": "Ar tikrai norite atblokuoti kortelę {cardNumber}?",
+      "block_success": "Kortelė sėkmingai užblokuota",
+      "unblock_success": "Kortelė sėkmingai atblokuota"
+    },
+    "design": {
+      "red": "Raudona",
+      "green": "Žalia",
+      "blue": "Mėlyna",
+      "golden": "Auksinė",
+      "silver": "Sidabrinė"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Atidaryti filtrus",
+    "filters": {
+      "label_card": "Kortelė",
+      "label_category": "Kategorija",
+      "label_period": "Laikotarpis"
+    },
+    "modal_filters": {
+      "title": "Filtrai"
+    }
+  },
+  "select": {
+    "no_result": "Nieko nerasta",
+    "no_options": "Nėra variantų",
+    "placeholder": "Pasirinkite variantą"
+  },
+  "select_modal": {
+    "clear": "Išvalyti"
+  },
+  "form_money_transfer": {
+    "amount": "Suma",
+    "recipient": "Gavėjas",
+    "submit": "Siųsti",
+    "max": "Maks.: {value}",
+    "max_validation": "Negalite pervesti daugiau nei {value}",
+    "card_available_validation": "Kortelė turi būti prieinama"
+  },
+  "view_transfer": {
+    "confirmation": "Ar tikrai norite pervesti {value} gavėjui {recipient}?",
+    "success_title": "Atlikta",
+    "success_subtitle": "Pervedimas sėkmingai atliktas",
+    "return": "Pervesti dar kartą"
+  },
+  "bank_card_item": {
+    "balance": "Balansas",
+    "manage": "Tvarkyti"
+  },
+  "view_card": {
+    "balance": "Balansas",
+    "transactions": "Transakcijos"
+  },
+  "form_order_card": {
+    "design": "Dizainas",
+    "submit": "Užsisakyti kortelę"
+  },
+  "view_order_card": {
+    "success": "Kortelė sėkmingai užsakyta"
+  },
+  "view_charts": {
+    "mobile_trigger": "Atidaryti filtrus",
+    "filters": {
+      "label_card": "Kortelė",
+      "label_category": "Kategorija",
+      "label_period": "Laikotarpis",
+      "label_currency": "Valiuta"
+    },
+    "modal_filters": {
+      "title": "Filtrai"
+    },
+    "title_income": "Pajamos",
+    "title_expense": "Išlaidos",
+    "no_stats": {
+      "title": "Nėra duomenų",
+      "subtitle": "Nėra statistikos rodymui"
+    }
+  },
+  "common_auth": {
+    "logout": "Atsijungti",
+    "logout_question": "Ar tikrai norite atsijungti?",
+    "registration_link": "Dar neturite paskyros?",
+    "login_label": "Jau turite paskyrą?",
+    "login_link": "Prisijungti!",
+    "forgot_password": "Pamiršote slaptažodį?"
+  },
+  "personal_info": {
+    "full_name": "Pilnas vardas",
+    "country": "Šalis",
+    "address": "Adresas",
+    "id_number": "Asmens kodas / ID numeris"
+  },
+  "view_security": {
+    "update_success": "Saugumo duomenys sėkmingai atnaujinti"
+  }
 }

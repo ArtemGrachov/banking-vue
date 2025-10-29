@@ -1,3 +1,249 @@
 {
-  "test": "CS message"
+  "error": {
+    "subtitle": "Došlo k chybě",
+    "return": "Vrátit se na úvodní stránku"
+  },
+  "nav": {
+    "dashboard": "Přehled",
+    "money_transfer": "Převod peněz",
+    "transaction_history": "Historie transakcí",
+    "cards": "Karty",
+    "charts": "Grafy",
+    "personal_info": "Osobní údaje",
+    "security": "Bezpečnost",
+    "login": "Přihlásit se",
+    "registration": "Vytvořit účet",
+    "forgot-password": "Zapomenuté heslo?",
+    "logout": "Odhlásit se"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Změnit jazyk"
+  },
+  "form_common": {
+    "full_name": "Celé jméno",
+    "email": "Email",
+    "phone_number": "Telefonní číslo",
+    "password": "Heslo",
+    "password_repeat": "Opakovat heslo",
+    "confirmation_code": "Potvrzovací kód",
+    "submit": "Odeslat",
+    "resend": "Odeslat znovu",
+    "resend_timer": "Odeslat znovu ({time})"
+  },
+  "view_registration": {
+    "success": "Registrace byla úspěšná"
+  },
+  "common_validation": {
+    "required": "Toto pole je povinné",
+    "email": "Toto pole neodpovídá formátu emailu",
+    "phone": "Toto pole neodpovídá formátu telefonu",
+    "phone_hint": "Pouze čísla, délka 7-15 číslic",
+    "min_length": "Toto pole musí obsahovat alespoň {min} znaků",
+    "numeric": "Toto pole může obsahovat pouze čísla",
+    "length": "Tento znak musí mít {length} znaků",
+    "contain_lower_case": "Toto pole musí obsahovat alespoň jedno malé písmeno",
+    "contain_upper_case": "Toto pole musí obsahovat alespoň jedno velké písmeno",
+    "only_latin": "Toto pole musí obsahovat pouze latinská písmena",
+    "contan_number": "Toto pole musí obsahovat alespoň jedno číslo",
+    "special_symbol": "Toto pole musí obsahovat alespoň jeden speciální znak",
+    "password_match": "Toto pole musí odpovídat heslu"
+  },
+  "page_title": {
+    "dashboard": "Přehled",
+    "money_transfer": "Převod peněz",
+    "transaction_history": "Historie transakcí",
+    "charts": "Grafy",
+    "personal_info": "Osobní údaje",
+    "security": "Bezpečnost",
+    "registration": "Registrace",
+    "login": "Přihlášení",
+    "forgot_password": "Zapomenuté heslo",
+    "reset_password": "Resetovat heslo",
+    "cards": "Karty",
+    "order_card": "Objednat kartu"
+  },
+  "common_errors": {
+    "generic": "Došlo k chybě",
+    "refresh": "Zkuste stisknout tlačítko aktualizace nebo obnovit stránku"
+  },
+  "form_login": {
+    "login": "Email nebo telefonní číslo"
+  },
+  "form_forgot_password": {
+    "reset_by": "Resetovat přes",
+    "reset_by_phone": "SMS kód",
+    "reset_by_email": "Odkaz v emailu"
+  },
+  "view_forgot_password": {
+    "success_sms": "Kód pro reset byl odeslán",
+    "success_email": "Odkaz pro reset byl odeslán",
+    "description_email": "Email s odkazem pro reset hesla byl odeslán na vaši emailovou adresu. Pokud email nedorazil, zkontrolujte správnost emailu a stiskněte tlačítko \"Odeslat znovu\""
+  },
+  "form_confirmation": {
+    "confirm_by": "Potvrdit přes",
+    "confirm_by_email": "Email",
+    "confirm_by_phone": "Telefon"
+  },
+  "confirmation": {
+    "hint_email": "Email s potvrzovacím odkazem byl odeslán na vaši emailovou adresu. Pokud email nedorazil, zkontrolujte správnost emailu a stiskněte \"Odeslat znovu\"",
+    "hint_sms": "SMS s potvrzovacím kódem byla odeslána na váš telefon. Pokud SMS nedorazila, zkontrolujte číslo telefonu a stiskněte \"Odeslat znovu\""
+  },
+  "password_hints": {
+    "min_length": "Minimální délka {min}",
+    "contain_lower_case": "Malá písmena",
+    "contain_upper_case": "Velká písmena",
+    "only_latin": "Pouze latinská písmena",
+    "contan_number": "Čísla",
+    "special_symbol": "Speciální znaky"
+  },
+  "view_reset_password": {
+    "success": "Vaše heslo bylo úspěšně resetováno. Nyní se můžete přihlásit"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Zobrazit vše",
+    "nav_links": {
+      "link_money_transfer": "Převod peněz",
+      "link_charts": "Grafy",
+      "link_cards": "Karty",
+      "link_order_card": "Objednat kartu"
+    }
+  },
+  "order_card": {
+    "title": "Objednat kartu"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Seznam je prázdný",
+      "subtitle": "Zatím nejsou žádné transakce"
+    },
+    "categories": {
+      "all": "Vše",
+      "groceries": "Potraviny",
+      "restaurants_cafes": "Restaurace a kavárny",
+      "transportation": "Doprava",
+      "entertainment": "Zábava",
+      "health_medicine": "Zdraví a léky",
+      "shopping": "Nákupy",
+      "utilities_bills": "Služby a účty",
+      "salary": "Plat",
+      "income": "Příjem"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Žádné karty",
+      "subtitle": "Objednejte svou první kartu"
+    },
+    "close": {
+      "label": "Zavřít",
+      "question": "Opravdu chcete zavřít kartu {cardNumber}?",
+      "success": "Karta byla úspěšně uzavřena"
+    },
+    "block": {
+      "label_block": "Blokovat",
+      "label_unblock": "Odblokovat",
+      "question_block": "Opravdu chcete zablokovat kartu {cardNumber}?",
+      "question_unblock": "Opravdu chcete odblokovat kartu {cardNumber}?",
+      "block_success": "Karta byla úspěšně zablokována",
+      "unblock_success": "Karta byla úspěšně odblokována"
+    },
+    "design": {
+      "red": "Červená",
+      "green": "Zelená",
+      "blue": "Modrá",
+      "golden": "Zlatá",
+      "silver": "Stříbrná"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Otevřít filtry",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategorie",
+      "label_period": "Období"
+    },
+    "modal_filters": {
+      "title": "Filtry"
+    }
+  },
+  "select": {
+    "no_result": "Nic nenalezeno",
+    "no_options": "Žádné možnosti",
+    "placeholder": "Vyberte možnost"
+  },
+  "select_modal": {
+    "clear": "Vyčistit"
+  },
+  "form_money_transfer": {
+    "amount": "Částka",
+    "recipient": "Příjemce",
+    "submit": "Odeslat",
+    "max": "Max: {value}",
+    "max_validation": "Nemůžete převést více než {value}",
+    "card_available_validation": "Karta musí být dostupná"
+  },
+  "view_transfer": {
+    "confirmation": "Opravdu chcete převést {value} na {recipient}?",
+    "success_title": "Hotovo",
+    "success_subtitle": "Převod byl úspěšně dokončen",
+    "return": "Převést znovu"
+  },
+  "bank_card_item": {
+    "balance": "Zůstatek",
+    "manage": "Spravovat"
+  },
+  "view_card": {
+    "balance": "Zůstatek",
+    "transactions": "Transakce"
+  },
+  "form_order_card": {
+    "design": "Design",
+    "submit": "Objednat kartu"
+  },
+  "view_order_card": {
+    "success": "Karta byla úspěšně objednána"
+  },
+  "view_charts": {
+    "mobile_trigger": "Otevřít filtry",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategorie",
+      "label_period": "Období",
+      "label_currency": "Měna"
+    },
+    "modal_filters": {
+      "title": "Filtry"
+    },
+    "title_income": "Příjem",
+    "title_expense": "Výdaje",
+    "no_stats": {
+      "title": "Žádná data",
+      "subtitle": "Žádná statistika k zobrazení"
+    }
+  },
+  "common_auth": {
+    "logout": "Odhlásit se",
+    "logout_question": "Opravdu se chcete odhlásit?",
+    "registration_link": "Nemáte účet?",
+    "login_label": "Již máte účet?",
+    "login_link": "Přihlásit se!",
+    "forgot_password": "Zapomenuté heslo?"
+  },
+  "personal_info": {
+    "full_name": "Celé jméno",
+    "country": "Země",
+    "address": "Adresa",
+    "id_number": "Číslo ID"
+  },
+  "view_security": {
+    "update_success": "Bezpečnostní údaje byly úspěšně aktualizovány"
+  }
 }

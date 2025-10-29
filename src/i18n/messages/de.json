@@ -1,3 +1,249 @@
 {
-  "test": "DE message"
+  "error": {
+    "subtitle": "Ein Fehler ist aufgetreten",
+    "return": "Zur Startseite zurückkehren"
+  },
+  "nav": {
+    "dashboard": "Übersicht",
+    "money_transfer": "Geld überweisen",
+    "transaction_history": "Transaktionsverlauf",
+    "cards": "Karten",
+    "charts": "Diagramme",
+    "personal_info": "Persönliche Informationen",
+    "security": "Sicherheit",
+    "login": "Anmelden",
+    "registration": "Konto erstellen",
+    "forgot-password": "Passwort vergessen?",
+    "logout": "Abmelden"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Sprache ändern"
+  },
+  "form_common": {
+    "full_name": "Vollständiger Name",
+    "email": "E-Mail",
+    "phone_number": "Telefonnummer",
+    "password": "Passwort",
+    "password_repeat": "Passwort wiederholen",
+    "confirmation_code": "Bestätigungscode",
+    "submit": "Senden",
+    "resend": "Erneut senden",
+    "resend_timer": "Erneut senden ({time})"
+  },
+  "view_registration": {
+    "success": "Erfolgreich registriert"
+  },
+  "common_validation": {
+    "required": "Dieses Feld ist erforderlich",
+    "email": "Dieses Feld entspricht nicht dem E-Mail-Format",
+    "phone": "Dieses Feld entspricht nicht dem Telefonformat",
+    "phone_hint": "Nur Zahlen, 7-15 Stellen",
+    "min_length": "Dieses Feld muss mindestens {min} Zeichen enthalten",
+    "numeric": "Dieses Feld darf nur Zahlen enthalten",
+    "length": "Dieses Symbol muss {length} Zeichen haben",
+    "contain_lower_case": "Dieses Feld muss mindestens einen Kleinbuchstaben enthalten",
+    "contain_upper_case": "Dieses Feld muss mindestens einen Großbuchstaben enthalten",
+    "only_latin": "Dieses Feld darf nur lateinische Buchstaben enthalten",
+    "contan_number": "Dieses Feld muss mindestens eine Zahl enthalten",
+    "special_symbol": "Dieses Feld muss mindestens ein Sonderzeichen enthalten",
+    "password_match": "Dieses Feld muss dem Passwort entsprechen"
+  },
+  "page_title": {
+    "dashboard": "Übersicht",
+    "money_transfer": "Geld überweisen",
+    "transaction_history": "Transaktionsverlauf",
+    "charts": "Diagramme",
+    "personal_info": "Persönliche Informationen",
+    "security": "Sicherheit",
+    "registration": "Registrierung",
+    "login": "Anmelden",
+    "forgot_password": "Passwort vergessen",
+    "reset_password": "Passwort zurücksetzen",
+    "cards": "Karten",
+    "order_card": "Karte bestellen"
+  },
+  "common_errors": {
+    "generic": "Ein Fehler ist aufgetreten",
+    "refresh": "Versuchen Sie, die Aktualisierungstaste zu drücken oder die Seite neu zu laden"
+  },
+  "form_login": {
+    "login": "E-Mail oder Telefonnummer"
+  },
+  "form_forgot_password": {
+    "reset_by": "Zurücksetzen per",
+    "reset_by_phone": "SMS-Code",
+    "reset_by_email": "E-Mail-Link"
+  },
+  "view_forgot_password": {
+    "success_sms": "Reset-Code wurde gesendet",
+    "success_email": "Reset-Link wurde gesendet",
+    "description_email": "Die E-Mail mit dem Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet. Wenn Sie die E-Mail nicht erhalten haben, prüfen Sie Ihre E-Mail-Adresse und klicken Sie auf die Schaltfläche „Erneut senden“"
+  },
+  "form_confirmation": {
+    "confirm_by": "Bestätigen per",
+    "confirm_by_email": "Per E-Mail",
+    "confirm_by_phone": "Per Telefon"
+  },
+  "confirmation": {
+    "hint_email": "Die E-Mail mit dem Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet. Wenn Sie die E-Mail nicht erhalten haben, prüfen Sie Ihre E-Mail-Adresse und klicken Sie auf „Erneut senden“",
+    "hint_sms": "Die SMS mit dem Bestätigungscode wurde an Ihr Telefon gesendet. Wenn Sie die SMS nicht erhalten haben, überprüfen Sie Ihre Telefonnummer und klicken Sie auf „Erneut senden“"
+  },
+  "password_hints": {
+    "min_length": "Mindestlänge {min}",
+    "contain_lower_case": "Kleinbuchstaben",
+    "contain_upper_case": "Großbuchstaben",
+    "only_latin": "Nur lateinische Buchstaben",
+    "contan_number": "Zahlen",
+    "special_symbol": "Sonderzeichen"
+  },
+  "view_reset_password": {
+    "success": "Ihr Passwort wurde erfolgreich zurückgesetzt. Sie können sich jetzt anmelden"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Alle anzeigen",
+    "nav_links": {
+      "link_money_transfer": "Geld überweisen",
+      "link_charts": "Diagramme",
+      "link_cards": "Karten",
+      "link_order_card": "Karte bestellen"
+    }
+  },
+  "order_card": {
+    "title": "Karte bestellen"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Die Liste ist leer",
+      "subtitle": "Es gibt noch keine Transaktionen"
+    },
+    "categories": {
+      "all": "Alle",
+      "groceries": "Lebensmittel",
+      "restaurants_cafes": "Restaurants & Cafés",
+      "transportation": "Transport",
+      "entertainment": "Unterhaltung",
+      "health_medicine": "Gesundheit & Medizin",
+      "shopping": "Einkäufe",
+      "utilities_bills": "Versorger & Rechnungen",
+      "salary": "Gehalt",
+      "income": "Einnahmen"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Es gibt noch keine Karten",
+      "subtitle": "Bestellen Sie Ihre erste Karte"
+    },
+    "close": {
+      "label": "Schließen",
+      "question": "Sind Sie sicher, dass Sie die Karte {cardNumber} schließen möchten?",
+      "success": "Karte wurde erfolgreich geschlossen"
+    },
+    "block": {
+      "label_block": "Sperren",
+      "label_unblock": "Entsperren",
+      "question_block": "Sind Sie sicher, dass Sie die Karte {cardNumber} sperren möchten?",
+      "question_unblock": "Sind Sie sicher, dass Sie die Karte {cardNumber} entsperren möchten?",
+      "block_success": "Karte wurde erfolgreich gesperrt",
+      "unblock_success": "Karte wurde erfolgreich entsperrt"
+    },
+    "design": {
+      "red": "Rot",
+      "green": "Grün",
+      "blue": "Blau",
+      "golden": "Gold",
+      "silver": "Silber"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Filter öffnen",
+    "filters": {
+      "label_card": "Karte",
+      "label_category": "Kategorie",
+      "label_period": "Zeitraum"
+    },
+    "modal_filters": {
+      "title": "Filter"
+    }
+  },
+  "select": {
+    "no_result": "Nichts gefunden",
+    "no_options": "Keine Optionen",
+    "placeholder": "Option auswählen"
+  },
+  "select_modal": {
+    "clear": "Löschen"
+  },
+  "form_money_transfer": {
+    "amount": "Betrag",
+    "recipient": "Empfänger",
+    "submit": "Senden",
+    "max": "Max: {value}",
+    "max_validation": "Sie können nicht mehr als {value} überweisen",
+    "card_available_validation": "Die Karte muss verfügbar sein"
+  },
+  "view_transfer": {
+    "confirmation": "Möchten Sie wirklich {value} an {recipient} überweisen?",
+    "success_title": "Erledigt",
+    "success_subtitle": "Überweisung wurde erfolgreich abgeschlossen",
+    "return": "Erneut überweisen"
+  },
+  "bank_card_item": {
+    "balance": "Kontostand",
+    "manage": "Verwalten"
+  },
+  "view_card": {
+    "balance": "Kontostand",
+    "transactions": "Transaktionen"
+  },
+  "form_order_card": {
+    "design": "Design",
+    "submit": "Karte bestellen"
+  },
+  "view_order_card": {
+    "success": "Die Karte wurde erfolgreich bestellt"
+  },
+  "view_charts": {
+    "mobile_trigger": "Filter öffnen",
+    "filters": {
+      "label_card": "Karte",
+      "label_category": "Kategorie",
+      "label_period": "Zeitraum",
+      "label_currency": "Währung"
+    },
+    "modal_filters": {
+      "title": "Filter"
+    },
+    "title_income": "Einnahmen",
+    "title_expense": "Ausgaben",
+    "no_stats": {
+      "title": "Keine Daten",
+      "subtitle": "Keine Statistik zum Anzeigen"
+    }
+  },
+  "common_auth": {
+    "logout": "Abmelden",
+    "logout_question": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+    "registration_link": "Noch keinen Account?",
+    "login_label": "Bereits einen Account?",
+    "login_link": "Anmelden!",
+    "forgot_password": "Passwort vergessen?"
+  },
+  "personal_info": {
+    "full_name": "Vollständiger Name",
+    "country": "Land",
+    "address": "Adresse",
+    "id_number": "Ausweisnummer"
+  },
+  "view_security": {
+    "update_success": "Sicherheitsdaten wurden erfolgreich aktualisiert"
+  }
 }

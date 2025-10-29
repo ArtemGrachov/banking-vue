@@ -6,6 +6,7 @@ import { ROUTE_NAMES } from '@/router/routes';
 
 import { useGetRoute } from '@/composables/routing/get-route';
 import Button, { type ButtonVariants } from '@/components/buttons/Button.vue';
+import { computed } from 'vue';
 
 const { t } = useI18n();
 const getRoute = useGetRoute();
@@ -19,7 +20,7 @@ interface ILink {
   className?: string;
 }
 
-const links: ILink[] = [
+const links = computed<ILink[]>(() => [
   {
     key: 'money_transfer',
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
@@ -49,7 +50,7 @@ const links: ILink[] = [
     variant: 'transparent',
     className: '_mobile',
   },
-];
+]);
 </script>
 
 <template>
