@@ -44,30 +44,35 @@ const isSuccess = computed(() => {
 
 const submitHandler = async (formValue: IFormForgotPassword) => {
   try {
+    resetBy.value = null;
+    submittedTimeout.value = null;
+    successMessage.value = null;
+
+    await submitForgotPassword(formValue);
+
     if (formValue.reset_by) {
       resetBy.value = formValue.reset_by;
     }
-
-    submittedTimeout.value = null;
-
-    await submitForgotPassword(formValue);
 
     switch (formValue.reset_by) {
       case EConfirmBy.EMAIL: {
         toast.success(t('view_forgot_password.success_email'));
         successMessage.value = t('view_forgot_password.description_email');
-        submittedTimeout.value = SMS_VALIDATION_TIMEOUT_MS;
-        countdown.value = SMS_VALIDATION_TIMEOUT_MS / 1000;
         blocked.value = true;
         router.push({ query: { codeToken: undefined } });
         break;
       }
       case EConfirmBy.PHONE: {
         router.push({ query: { codeToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } });
+        successMessage.value = null;
+        blocked.value = true;
         toast.success(t('view_forgot_password.success_sms'));
         break;
       }
     }
+
+    submittedTimeout.value = SMS_VALIDATION_TIMEOUT_MS;
+    countdown.value = SMS_VALIDATION_TIMEOUT_MS / 1000;
   } catch (err) {
     console.error(err);
     successMessage.value = null;
