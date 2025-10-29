@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n';
 import { CARD_MASK } from '@/validation/cards';
 import { EStatus } from '@/constants/status';
 
+import { useMoneyFormat } from '@/composables/money/money-format';
 import Button from '@/components/buttons/Button.vue';
 import BankCardSelector from '@/components/bank-cards/BankCardSelector.vue';
 import NoCards from '@/components/bank-cards/NoCards.vue';
@@ -32,6 +33,7 @@ type Emits = {
 const { t } = useI18n();
 const { cards, isCardsProcessing, submitStatus, statusMessage } = defineProps<IProps>();
 const emit = defineEmits<Emits>();
+const mf = useMoneyFormat();
 
 const fieldCard = ref<number | null>(null);
 const fieldAmount = ref<number | null>(null);
@@ -46,7 +48,7 @@ const max = computed(() => {
 });
 
 const maxFormatted = computed(() => {
-  return `${max.value} ${selectedCard.value?.currency}`;
+  return mf(max.value ?? 0, selectedCard.value?.currency ?? '');
 });
 
 const amountValidationMessages = computed(() => {

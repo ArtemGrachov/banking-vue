@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
+import { useMoneyFormat } from '@/composables/money/money-format';
+
 import type { ICard } from '@/types/models/card';
 
 interface IProps {
@@ -8,6 +10,7 @@ interface IProps {
 }
 
 const { card } = defineProps<IProps>();
+const mf = useMoneyFormat();
 
 const numberParts = computed(() => card.cardNumber.split(' '));
 </script>
@@ -16,8 +19,7 @@ const numberParts = computed(() => card.cardNumber.split(' '));
   <div class="bank-card" :class="`_${card.design}`">
     <div class="top">
       <div class="balance">
-        {{ card.balance }}
-        {{ card.currency }}
+        {{ mf(card.balance, card.currency) }}
       </div>
       <div class="bank-name">
         Bank name
