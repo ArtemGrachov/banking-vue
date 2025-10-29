@@ -251,5 +251,8 @@
   "demo_confirmation": {
     "email_link": "DEMO: Click here to proceed",
     "sms_code": "DEMO: Type any 4 numbers"
+  },
+  "footer": {
+    "about_link": "About the project"
   }
 }

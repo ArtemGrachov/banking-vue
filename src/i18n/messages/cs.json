@@ -249,5 +249,8 @@
   "demo_confirmation": {
     "email_link": "DEMO: Klikněte zde pro pokračování",
     "sms_code": "DEMO: Zadejte libovolné 4 číslice"
+  },
+  "footer": {
+    "about_link": "O projektu"
   }
 }

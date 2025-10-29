@@ -249,5 +249,8 @@
   "demo_confirmation": {
     "email_link": "DEMO: Spustelėkite čia, kad tęstumėte",
     "sms_code": "DEMO: Įveskite bet kokius 4 skaičius"
+  },
+  "footer": {
+    "about_link": "Apie projektą"
   }
 }

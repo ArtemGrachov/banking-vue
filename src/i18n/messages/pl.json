@@ -249,5 +249,8 @@
   "demo_confirmation": {
     "email_link": "DEMO: Kliknij tutaj, aby kontynuować",
     "sms_code": "DEMO: Wpisz dowolne 4 cyfry"
+  },
+  "footer": {
+    "about_link": "O projekcie"
   }
 }
