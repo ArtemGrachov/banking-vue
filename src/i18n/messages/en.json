@@ -231,5 +231,9 @@
       "title": "No data",
       "subtitle": "No statistics to display"
     }
+  },
+  "common_auth": {
+    "logout": "Logout",
+    "logout_question": "Are you sure you want to log out?"
   }
 }
