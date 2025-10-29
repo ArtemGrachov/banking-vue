@@ -5,6 +5,7 @@ import { RouterLink } from 'vue-router';
 import { ROUTE_NAMES } from '@/router/routes';
 
 import { useGetRoute } from '@/composables/routing/get-route';
+import { useLogout } from '@/composables/auth/logout';
 import Button, { type ButtonVariants } from '@/components/buttons/Button.vue';
 
 type Emits = {
@@ -15,6 +16,7 @@ const emit = defineEmits<Emits>();
 
 const { t } = useI18n();
 const getRoute = useGetRoute();
+const { logout } = useLogout();
 
 const links = [
   {
@@ -86,7 +88,12 @@ const links = [
         </Button>
       </li>
       <li class="item _separate">
-        <Button type="button" class="link" variant="transparent">
+        <Button
+          type="button"
+          class="link"
+          variant="transparent"
+          @click="logout(); emit('navigate')"
+        >
           <span class="material-symbols-outlined">
             logout
           </span>
