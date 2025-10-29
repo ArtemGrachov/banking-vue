@@ -42,34 +42,40 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <Button
-      class="modal-filters-trigger"
-      variant="primary"
-      @click="openModalFilters"
-    >
-      {{ $t('view_transaction_history.mobile_trigger') }}
-    </Button>
-    <Filters class="desktop-filters" />
-    <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart-row">
-      <h2 class="chart-title">
-        {{ $t('view_charts.title_outcome') }}
-      </h2>
-      <div class="chart">
-        <Chart :stats="statsStore.data!.outcome" />
+    <div class="container">
+      <Button
+        class="modal-filters-trigger"
+        variant="primary"
+        @click="openModalFilters"
+      >
+        {{ $t('view_transaction_history.mobile_trigger') }}
+      </Button>
+      <Filters class="desktop-filters" />
+      <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart-row">
+        <div class="col">
+          <h2 class="chart-title">
+            {{ $t('view_charts.title_outcome') }}
+          </h2>
+          <div class="chart">
+            <Chart :stats="statsStore.data!.outcome" />
+          </div>
+        </div>
+        <div class="col">
+          <h2 class="chart-title">
+            {{ $t('view_charts.title_income') }}
+          </h2>
+          <div class="chart">
+            <Chart :stats="statsStore.data!.income" />
+          </div>
+        </div>
       </div>
-      <h2 class="chart-title">
-        {{ $t('view_charts.title_income') }}
-      </h2>
-      <div class="chart">
-        <Chart :stats="statsStore.data!.income" />
-      </div>
+      <NoStats v-if="statsStore.isEmpty" class="placeholder" />
+      <ErrorPlaceholder v-if="statsStore.isError" class="placeholder">
+        <p>
+          {{ statsStore.statusMessage }}
+        </p>
+      </ErrorPlaceholder>
     </div>
-    <NoStats v-if="statsStore.isEmpty" />
-    <ErrorPlaceholder v-if="statsStore.isError">
-      <p>
-        {{ statsStore.statusMessage }}
-      </p>
-    </ErrorPlaceholder>
   </div>
 </template>
 
@@ -79,6 +85,11 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
+}
+
+.container {
+  @include layout.container();
 }
 
 .modal-filters-trigger {
@@ -98,9 +109,26 @@ onMounted(() => {
   }
 }
 
+.placeholder,
+.chart-row {
+  min-height: 500px;
+}
+
 .chart-row {
   max-width: 800px;
   margin: 0 auto;
+  min-height: 500px;
+  margin-bottom: 64px;
+
+  @include breakpoints.sm() {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.col {
+  flex: 1 1 0;
 }
 
 .chart-title {

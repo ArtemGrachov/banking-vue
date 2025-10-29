@@ -54,26 +54,28 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <Button
-      class="modal-filters-trigger"
-      variant="primary"
-      @click="openModalFilters"
-    >
-      {{ $t('view_transaction_history.mobile_trigger') }}
-    </Button>
-    <Filters class="desktop-filters" />
-    <TransactionsList
-      :mobile-full-page="true"
-      :transactions="transactionsStore.list"
-      :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
-    />
-    <NoTransactions v-if="transactionsStore.isEmpty" />
-    <ErrorPlaceholder v-if="transactionsStore.isError">
-      <p>
-        {{ transactionsStore.statusMessage }}
-      </p>
-    </ErrorPlaceholder>
-    <InfiniteScroll :is-disabled="transactionsStore.isProcessing" @scroll="infiniteScrollHandler" />
+    <div class="container">
+      <Button
+        class="modal-filters-trigger"
+        variant="primary"
+        @click="openModalFilters"
+      >
+        {{ $t('view_transaction_history.mobile_trigger') }}
+      </Button>
+      <Filters class="desktop-filters" />
+      <TransactionsList
+        :mobile-full-page="true"
+        :transactions="transactionsStore.list"
+        :is-processing="transactionsStore.getStatus === EStatus.PROCESSING"
+      />
+      <NoTransactions v-if="transactionsStore.isEmpty" />
+      <ErrorPlaceholder v-if="transactionsStore.isError">
+        <p>
+          {{ transactionsStore.statusMessage }}
+        </p>
+      </ErrorPlaceholder>
+      <InfiniteScroll :is-disabled="transactionsStore.isProcessing" @scroll="infiniteScrollHandler" />
+    </div>
   </div>
 </template>
 
@@ -83,7 +85,12 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
   position: relative;
+}
+
+.container {
+  @include layout.container();
 }
 
 .modal-filters-trigger {

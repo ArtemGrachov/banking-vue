@@ -31,12 +31,20 @@ const transactionsStore = useTransactionsStore();
       {{ $t('common_errors.refresh') }}
     </p>
   </ErrorPlaceholder>
-  <Button
-    v-if="transactionsStore.isSuccess && !transactionsStore.isEmpty"
-    :as="RouterLink"
-    variant="primary"
-    :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })"
-  >
-    {{ $t('view_dashboard.transactions_view_all') }}
-  </Button>
+  <div class="button-row">
+    <Button
+      v-if="transactionsStore.isSuccess && !transactionsStore.isEmpty"
+      :as="RouterLink"
+      :to="getRoute({ name: ROUTE_NAMES.TRANSACTION_HISTORY })"
+    >
+      {{ $t('view_dashboard.transactions_view_all') }}
+    </Button>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.button-row {
+  text-align: right;
+  margin-top: 24px;
+}
+</style>

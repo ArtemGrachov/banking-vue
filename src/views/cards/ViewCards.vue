@@ -22,25 +22,38 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <BankCardList
-      class="bank-card-list"
-      :cards="cardsStore.data"
-      :is-processing="cardsStore.isProcessing"
-    />
+    <div class="container">
+      <BankCardList
+        class="bank-card-list"
+        :cards="cardsStore.data"
+        :is-processing="cardsStore.isProcessing"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use '/src/styles/mixins/layout.scss' as layout;
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .page {
   @include layout.page();
+  @include layout.page-default();
   display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include breakpoints.lg() {
+    @include layout.container();
+  }
 }
 
 .bank-card-list {
   flex: 0 0 auto;
-  margin-left: auto;
-  margin-right: auto;
 }
 </style>

@@ -35,7 +35,7 @@ const getRoute = useGetRoute();
         v-if="card"
         :to="getRoute({ name: ROUTE_NAMES.CARD, params: { id: card.id } })"
         :as="RouterLink"
-        variant="primary"
+        class="manage"
       >
         <span class="material-symbols-outlined">
           settings
@@ -64,21 +64,34 @@ const getRoute = useGetRoute();
 
     @include breakpoints.sm() {
       margin-bottom: 0;
-      width: 400px;
     }
   }
 
   &._details {
     flex: 0 1 auto;
     min-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include breakpoints.sm() {
+      display: block;
+    }
   }
 }
 
 .balance {
-  margin-bottom: 16px;
+  @include breakpoints.sm() {
+    margin-bottom: 16px;
+  }
 }
 
 .label {
   font-weight: 600;
+}
+
+.manage {
+  --button-width: auto;
 }
 </style>

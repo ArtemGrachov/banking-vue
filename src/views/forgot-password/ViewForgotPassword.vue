@@ -87,45 +87,31 @@ const isCode = computed(() => !!route?.query?.codeToken);
 </script>
 
 <template>
-  <div class="page">
-    <div class="container">
-      <FormForgotPassword
-        :submit-status="submitForgotPasswordStatus"
-        :status-message="forgotPasswordStatusMessage || successMessage"
-        :blocked="blocked"
-        :countdown="countdown"
-        @submit="submitHandler"
-      >
-        <CountdownProgress
-          v-if="isSuccess"
-          class="countdown"
-          :time="submittedTimeout"
-          @end="endHandler"
-          @progress="countdownHandler"
-        />
-      </FormForgotPassword>
-      <FormConfirmationCode
-        v-if="isCode"
-        class="form-confirmation-code"
-        :submit-status="codeSubmitStatus"
-        :status-message="codeStatusMessage"
-        @submit="codeSubmitHandler"
-      />
-    </div>
-  </div>
+  <FormForgotPassword
+    :submit-status="submitForgotPasswordStatus"
+    :status-message="forgotPasswordStatusMessage || successMessage"
+    :blocked="blocked"
+    :countdown="countdown"
+    @submit="submitHandler"
+  >
+    <CountdownProgress
+      v-if="isSuccess"
+      class="countdown"
+      :time="submittedTimeout"
+      @end="endHandler"
+      @progress="countdownHandler"
+    />
+  </FormForgotPassword>
+  <FormConfirmationCode
+    v-if="isCode"
+    class="form-confirmation-code"
+    :submit-status="codeSubmitStatus"
+    :status-message="codeStatusMessage"
+    @submit="codeSubmitHandler"
+  />
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles/mixins/layout.scss' as layout;
-
-.page {
-  @include layout.page();
-}
-
-.container {
-  @include layout.container(400px);
-}
-
 .countdown {
   margin-bottom: 24px;
 }

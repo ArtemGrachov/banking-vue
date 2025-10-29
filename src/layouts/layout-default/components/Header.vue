@@ -24,6 +24,13 @@ const title = computed(() => {
     case ROUTE_NAMES.TRANSACTION_HISTORY: {
       return t('page_title.transaction_history');
     }
+    case ROUTE_NAMES.CARD:
+    case ROUTE_NAMES.CARDS: {
+      return t('page_title.cards');
+    }
+    case ROUTE_NAMES.ORDER_CARD: {
+      return t('page_title.order_card');
+    }
     case ROUTE_NAMES.CHARTS: {
       return t('page_title.charts');
     }
@@ -60,20 +67,21 @@ const { open: openMobileNav, close } = useModal({
 
 <template>
   <header class="header">
-    <div class="container">
-      <IconButton type="button" class="menu-toggle" @click="openMobileNav">
-        <span class="material-symbols-outlined">
-          more_vert
-        </span>
-      </IconButton>
-      <h1 class="title">
-        {{ title }}
-      </h1>
-      <span class="cell-placeholder"></span>
-      <div class="switch">
-        <LanguageSwitch />
-        @todo theme switch
-      </div>
+    <IconButton
+      type="button"
+      class="menu-toggle"
+      @click="openMobileNav"
+    >
+      <span class="material-symbols-outlined">
+        more_vert
+      </span>
+    </IconButton>
+    <h1 class="title">
+      {{ title }}
+    </h1>
+    <span class="cell-placeholder"></span>
+    <div class="switch">
+      <LanguageSwitch />
     </div>
   </header>
 </template>
@@ -86,16 +94,15 @@ const { open: openMobileNav, close } = useModal({
 
 .header {
   --header-height: 74px;
+  --heading-color: var(--header-color);
+  --text-color: var(--header-color);
 
   height: var(--header-height);
-  border-bottom: 4px solid red;
+  background: var(--header-background);
   display: flex;
   align-items: center;
-  background: white;
-  box-shadow: 0 5px 16px 0 rgba(black, 0.1);
-}
-
-.container {
+  color: var(--text-color);
+  box-shadow: 0 15px 30px 0 rgba(black, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,7 +110,7 @@ const { open: openMobileNav, close } = useModal({
   width: 100%;
 
   @include breakpoints.lg() {
-    @include layout.container();
+    padding: 0 24px;
   }
 }
 

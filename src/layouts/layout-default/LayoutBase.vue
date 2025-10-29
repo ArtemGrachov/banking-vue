@@ -7,17 +7,12 @@ import Header from '@/layouts/layout-default/components/Header.vue';
 <template>
   <div class="layout">
     <Header class="header" />
-    <div class="container">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
     <Footer class="footer" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles/mixins/layout.scss' as layout;
-@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
-
 .layout {
   min-height: 100%;
   display: flex;
@@ -32,28 +27,6 @@ import Header from '@/layouts/layout-default/components/Header.vue';
   z-index: 10;
 }
 
-.container {
-  @include layout.container();
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  flex: 1 1 auto;
-
-  @include breakpoints.lg() {
-    flex-direction: row;
-    gap: 32px;
-  }
-}
-
-.sidebar {
-  display: none;
-
-  @include breakpoints.lg() {
-    display: block;
-    width: 320px;
-    flex: 0 0 auto;
-  }
-}
 
 .footer {
   flex: 0 0 auto;

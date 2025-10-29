@@ -1,3 +1,6 @@
+@use './breakpoints.scss' as breakpoints;
+@use './themes.scss' as themes;
+
 $layout-container-padding: 16px;
 
 @mixin container($width: 1140px, $padding: $layout-container-padding) {
@@ -10,7 +13,17 @@ $layout-container-padding: 16px;
 
 @mixin page {
   flex: 1 1 auto;
-  padding-top: 32px;
-  padding-bottom: 64px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   min-width: 0; // workaround for flexbox width issue
+
+  @include breakpoints.sm() {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+}
+
+@mixin page-default {
+  background: var(--page-background);
+  box-shadow: 0 15px 30px 0 rgba(black, 0.1);
 }

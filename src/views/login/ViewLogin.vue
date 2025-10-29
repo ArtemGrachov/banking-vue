@@ -29,40 +29,26 @@ const submitHandler = async (formValue: IFormLogin) => {
 </script>
 
 <template>
-  <div class="page">
-    <div class="container">
-      <FormLogin
-        :submit-status="submitStatus"
-        :status-message="statusMessage"
-        @submit="submitHandler"
-      />
-      <div class="footer">
-        <div class="login">
-          <RouterLink :to="getRoute({ name: ROUTE_NAMES.REGISTRATION })">
-            {{ $t('view_login.registration_link') }}
-          </RouterLink>
-        </div>
-        <div class="forgot">
-          <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
-            {{ $t('view_login.forgot_password') }}
-          </RouterLink>
-        </div>
-      </div>
+  <FormLogin
+    :submit-status="submitStatus"
+    :status-message="statusMessage"
+    @submit="submitHandler"
+  />
+  <div class="footer">
+    <div class="login">
+      <RouterLink :to="getRoute({ name: ROUTE_NAMES.REGISTRATION })">
+        {{ $t('view_login.registration_link') }}
+      </RouterLink>
+    </div>
+    <div class="forgot">
+      <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
+        {{ $t('view_login.forgot_password') }}
+      </RouterLink>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use '/src/styles/mixins/layout.scss' as layout;
-
-.page {
-  @include layout.page();
-}
-
-.container {
-  @include layout.container(400px);
-}
-
 .footer {
   text-align: center;
   margin-top: 32px;

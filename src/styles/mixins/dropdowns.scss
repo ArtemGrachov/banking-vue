@@ -1,40 +1,16 @@
-@use '/src/styles/mixins/buttons.scss' as buttons;
-
-@mixin toggle {
-  @include buttons.base();
-
-  height: 42px;
-  width: 100%;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  border-radius: 4px;
-  text-decoration: none;
-  gap: 8px;
-  padding: 0 42px 0 16px;
-  background: white;
-  color: #2a2a2a;
-  font-size: 14px;
-  border: 1px solid #2a2a2a;
-  position: relative;
-}
-
 @mixin toggle-active {
   color: blue;
   border-color: blue;
 }
 
 @mixin dropdown {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  background: var(--dropdown-background);
   box-shadow: 0 8px 20px -8px rgba(black, 0.4);
   z-index: 10;
 }
 
 @mixin content {
-  --content-padding-y: 8px;
+  --content-padding-y: 12px;
   --content-padding-negative-y: -8px;
   --content-padding-x: 16px;
   --content-padding-negative-x: -16px;
@@ -82,7 +58,7 @@
   background: none;
   border: none;
   transition: 200ms;
-  color: #2a2a2a;
+  color: var(--dropdown-option-color);
   cursor: pointer;
   display: block;
   width: 100%;

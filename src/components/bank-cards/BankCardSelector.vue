@@ -76,8 +76,11 @@ const changeHandler = (e: SwiperType) => {
 
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 @use '/src/styles/mixins/layout.scss' as layout;
+@use '/src/styles/mixins/bank-card.scss' as bank-card;
 
 .bank-card-selector {
+  font-size: var(--bank-card-font-size);
+
   &._mobile-full-page {
     @media (max-width: #{map.get(breakpoints.$breakpoints, 'large') - 1px}) {
       margin-left: -(layout.$layout-container-padding);
@@ -92,16 +95,10 @@ const changeHandler = (e: SwiperType) => {
 }
 
 .slide {
-  width: 340px;
-  max-width: calc(100svw - #{layout.$layout-container-padding * 2});
-  min-height: 200px;
+  @include bank-card.container();
+
   height: auto;
   transition: transform 200ms, opacity 200ms;
-
-  @include breakpoints.sm() {
-    width: 400px;
-    min-height: 240px;
-  }
 
   &.swiper-slide-active {
     position: relative;

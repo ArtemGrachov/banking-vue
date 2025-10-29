@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #434343;
+  color: var(--secondary-text);
 }
 
 .content {
@@ -31,7 +31,7 @@
 
 .title {
   @include headings.h4();
-  color: #434343;
+  color: var(--secondary-text);
 }
 
 .subtitle {
@@ -46,7 +46,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--placeholder-icon-color, #434343);
+  color: var(--placeholder-icon-color, var(--secondary-text));
   background: var(--placeholder-icon-background, #b3b3b3);
 }
 </style>

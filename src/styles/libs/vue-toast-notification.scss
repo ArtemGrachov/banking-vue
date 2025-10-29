@@ -1,4 +1,4 @@
-@use '../mixins//breakpoints.scss' as breakpoints;
+@use '../mixins/breakpoints.scss' as breakpoints;
 
 @keyframes fadeOut {
   from {
@@ -80,10 +80,9 @@
   animation-duration: 200ms;
   margin: 8px;
   box-shadow: 0 8px 20px -8px rgba(black, 0.4);
-  border-radius: 4px;
   pointer-events: auto;
   color: white;
-  min-height: 42px;
+  min-height: 48px;
   cursor: pointer;
 }
 
@@ -102,6 +101,7 @@
 
 .v-toast__item--error {
   background-color: red;
+  color: #000
 }
 
 .v-toast__item--default {

@@ -143,14 +143,16 @@ const submitHandler = async () => {
           />
         </template>
       </FormField>
-      <Button
-        type="submit"
-        variant="primary"
-        class="submit"
-        :is-processing="isProcessing"
-      >
-        {{ $t('form_money_transfer.submit') }}
-      </Button>
+      <div class="submit-row">
+        <Button
+          type="submit"
+          variant="primary"
+          class="submit"
+          :is-processing="isProcessing"
+        >
+          {{ $t('form_money_transfer.submit') }}
+        </Button>
+      </div>
     </div>
   </form>
 </template>
@@ -160,5 +162,10 @@ const submitHandler = async () => {
   margin: 0 auto;
   max-width: 400px;
   text-align: center;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

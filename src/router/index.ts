@@ -7,6 +7,7 @@ import { ROUTE_NAMES, ROUTES_MAP } from '@/router/routes';
 
 import LayoutDefault from '@/layouts/layout-default/LayoutDefault.vue';
 import LayoutBase from '@/layouts/layout-default/LayoutBase.vue';
+import LayoutAuth from '@/layouts/layout-default/LayoutAuth.vue';
 
 const PATH_LOCALE = LOCALES.join('|');
 
@@ -39,11 +40,18 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
               ROUTES_MAP[ROUTE_NAMES.SECURITY]!,
             ],
           },
-          ROUTES_MAP[ROUTE_NAMES.REGISTRATION]!,
-          ROUTES_MAP[ROUTE_NAMES.LOGIN]!,
-          ROUTES_MAP[ROUTE_NAMES.FORGOT_PASSWORD]!,
-          ROUTES_MAP[ROUTE_NAMES.RESET_PASSWORD]!,
-          ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
+          {
+            name: 'LayoutAuth',
+            component: LayoutAuth,
+            path: '',
+            children: [
+              ROUTES_MAP[ROUTE_NAMES.REGISTRATION]!,
+              ROUTES_MAP[ROUTE_NAMES.LOGIN]!,
+              ROUTES_MAP[ROUTE_NAMES.FORGOT_PASSWORD]!,
+              ROUTES_MAP[ROUTE_NAMES.RESET_PASSWORD]!,
+              ROUTES_MAP[ROUTE_NAMES.UI_KIT]!,
+            ],
+          },
           {
             name: 'ERROR',
             path: ':pathMatch(.*)*',

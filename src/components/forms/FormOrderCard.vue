@@ -83,13 +83,15 @@ const handleDesignSelect = () => {
         @update:model-value="handleDesignSelect"
       />
     </FormField>
-    <Button
-      type="submit"
-      variant="primary"
-      :is-processing="isProcessing"
-    >
-      {{ $t('form_order_card.submit') }}
-    </Button>
+    <div class="submit-row">
+      <Button
+        type="submit"
+        variant="primary"
+        :is-processing="isProcessing"
+      >
+        {{ $t('form_order_card.submit') }}
+      </Button>
+    </div>
     <FormStatus
       v-if="statusMessage"
       :status="submitStatus"
@@ -103,5 +105,10 @@ const handleDesignSelect = () => {
 <style lang="scss" scoped>
 .status {
   margin-top: 24px;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

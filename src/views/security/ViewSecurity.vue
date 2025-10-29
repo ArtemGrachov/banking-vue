@@ -23,9 +23,10 @@ const submitHandler = async (formValue: IFormRegistration) => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
+}
 
-  max-width: 400px;
-  margin: 0 auto;
-  width: 100%;
+.container {
+  @include layout.container(400px);
 }
 </style>

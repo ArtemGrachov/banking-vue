@@ -158,14 +158,16 @@ const submitLabel = computed(() => {
       </template>
     </FormField>
     <slot />
-    <Button
-      type="submit"
-      variant="primary"
-      :disabled="blocked"
-      :is-processing="isProcessing"
-    >
-      {{ submitLabel }}
-    </Button>
+    <div class="submit-row">
+      <Button
+        type="submit"
+        variant="primary"
+        :disabled="blocked"
+        :is-processing="isProcessing"
+      >
+        {{ submitLabel }}
+      </Button>
+    </div>
     <FormStatus v-if="statusMessage" :status="submitStatus" class="status">
       {{ statusMessage }}
     </FormStatus>
@@ -185,6 +187,11 @@ const submitLabel = computed(() => {
 }
 
 .status {
-  margin-top: 16px;
+  margin-top: 24px;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

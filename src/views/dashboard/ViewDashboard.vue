@@ -51,24 +51,27 @@ onMounted(() => {
 
 <template>
   <div class="page">
-    <div class="header">
-      <div class="refresh">
-        <IconButton
-          variant="primary"
-          :is-processing="pageProcessing"
-          @click="getPageData"
-        >
-          <span class="material-symbols-outlined">
-            refresh
-          </span>
-        </IconButton>
+    <div class="header-container">
+      <div class="header">
+        <NavLinks class="nav-links" />
+        <div class="refresh">
+          <IconButton
+            variant="primary"
+            class="refresh-button"
+            :is-processing="pageProcessing"
+            @click="getPageData"
+          >
+            <span class="material-symbols-outlined">
+              refresh
+            </span>
+          </IconButton>
+        </div>
       </div>
-      <NavLinks class="nav-links" />
     </div>
     <div class="cards">
       <Cards />
     </div>
-    <div class="transactions">
+    <div class="transactions-container">
       <Transactions />
     </div>
   </div>
@@ -81,6 +84,15 @@ onMounted(() => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
+}
+
+.header-container {
+  @include layout.container();
+}
+
+.transactions-container {
+  @include layout.container(640px);
 }
 
 .header {
@@ -96,6 +108,7 @@ onMounted(() => {
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
+    justify-content: space-between;
   }
 }
 
@@ -120,11 +133,12 @@ onMounted(() => {
   padding-right: layout.$layout-container-padding * 2 + 42px;
 
   @include breakpoints.lg() {
-    display: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 .cards {
-  margin-bottom: 48px;
+  margin-bottom: 16px;
 }
 </style>

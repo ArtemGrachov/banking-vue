@@ -48,17 +48,18 @@ const dateTimeFormatted = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/themes.scss' as themes;
+
 .transaction {
   display: flex;
   align-items: flex-start;
   gap: 16px;
   transition: background 200ms;
   padding: 16px;
-  border-radius: var(--transaction-item-border-radius, 4px);
   line-height: 1.3;
 
   &:hover {
-    background: #fcefef;
+    background: var(--transaction-hover);
   }
 
   &._income {
@@ -73,7 +74,7 @@ const dateTimeFormatted = computed(() => {
     }
 
     &:hover {
-      background: #ebfbeb;
+      background: var(--transaction-income-hover);
     }
   }
 }
@@ -105,7 +106,7 @@ const dateTimeFormatted = computed(() => {
 
 .datetime {
   font-size: 14px;
-  color: #484848;
+  color: var(--secondary-text);
 }
 
 .participant {
@@ -117,5 +118,19 @@ const dateTimeFormatted = computed(() => {
   flex: 0 0 auto;
   font-weight: 600;
   color: red;
+}
+
+@include themes.component-theme-dark() {
+  .transaction {
+    --transaction-hover: #2d2222;
+    --transaction-income-hover: #263b26;
+  }
+}
+
+@include themes.component-theme-light() {
+  .transaction {
+    --transaction-hover: #fcefef;
+    --transaction-income-hover: #ebfbeb;
+  }
 }
 </style>

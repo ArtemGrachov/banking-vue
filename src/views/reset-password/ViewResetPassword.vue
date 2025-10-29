@@ -30,25 +30,9 @@ const submitHandler = async (formValue: IFormLogin) => {
 </script>
 
 <template>
-  <div class="page">
-    <div class="container">
-      <FormResetPassword
-        :submit-status="submitStatus"
-        :status-message="statusMessage"
-        @submit="submitHandler"
-      />
-    </div>
-  </div>
+  <FormResetPassword
+    :submit-status="submitStatus"
+    :status-message="statusMessage"
+    @submit="submitHandler"
+  />
 </template>
-
-<style lang="scss" scoped>
-@use '/src/styles/mixins/layout.scss' as layout;
-
-.page {
-  @include layout.page();
-}
-
-.container {
-  @include layout.container(400px);
-}
-</style>

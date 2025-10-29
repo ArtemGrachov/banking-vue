@@ -55,17 +55,18 @@ const designSelectHandler = (value: ECardDesign) => {
 
 <template>
   <div class="page">
-    <div class="card-preview">
+    <div class="container">
       <BankCard
         :card="mockCard"
+        class="card-preview"
+      />
+      <FormOrderCard
+        :submit-status="submitStatus"
+        :status-message="statusMessage"
+        @submit="submitHandler"
+        @design-select="designSelectHandler"
       />
     </div>
-    <FormOrderCard
-      :submit-status="submitStatus"
-      :status-message="statusMessage"
-      @submit="submitHandler"
-      @design-select="designSelectHandler"
-    />
   </div>
 </template>
 
@@ -76,16 +77,18 @@ const designSelectHandler = (value: ECardDesign) => {
 
 .page {
   @include layout.page();
-  max-width: 340px;
-  width: 100%;
-  margin: 0 auto;
+  @include layout.page-default();
+}
+
+.container {
+  @include layout.container();
 
   @include breakpoints.sm() {
-    max-width: 400px;
+    @include layout.container(400px);
   }
 }
 
 .card-preview {
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 }
 </style>

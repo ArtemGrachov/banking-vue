@@ -17,12 +17,17 @@ const emit = defineEmits<Emits>();
   >
     <div class="fullscreen-modal">
       <div class="header">
-        <slot name="header" />
-        <IconButton class="close" @click="emit('close')">
+        <IconButton
+          v-if="!$slots.close"
+          class="close"
+          @click="emit('close')"
+        >
           <span class="material-symbols-outlined">
             close
           </span>
         </IconButton>
+        <slot name="close" />
+        <slot name="header" />
       </div>
       <div class="content">
         <slot />

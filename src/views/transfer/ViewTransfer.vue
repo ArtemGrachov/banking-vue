@@ -109,6 +109,9 @@ watch(route, (newRoute) => {
 
 .page {
   @include layout.page();
+  @include layout.page-default();
+
+  overflow: hidden;
 }
 
 .return {

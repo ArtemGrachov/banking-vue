@@ -129,17 +129,19 @@ watch(() => submitStatus, () => {
       @end="endHandler"
       @progress="countdownHandler"
     />
-    <Button
-      type="submit"
-      variant="primary"
-      :disabled="blocked"
-      :is-processing="isProcessing"
-    >
-      {{ submitLabel }}
-    </Button>
-    <FormStatus v-if="statusMessage" :status="submitStatus" class="status">
-      {{ statusMessage }}
-    </FormStatus>
+    <div class="submit-row">
+      <Button
+        type="submit"
+        variant="primary"
+        :disabled="blocked"
+        :is-processing="isProcessing"
+      >
+        {{ submitLabel }}
+      </Button>
+      <FormStatus v-if="statusMessage" :status="submitStatus" class="status">
+        {{ statusMessage }}
+      </FormStatus>
+    </div>
   </form>
 </template>
 
@@ -161,5 +163,10 @@ watch(() => submitStatus, () => {
 
 .countdown {
   margin-bottom: 24px;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

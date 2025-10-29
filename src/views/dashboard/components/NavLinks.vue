@@ -15,7 +15,8 @@ interface ILink {
   path: ReturnType<typeof getRoute>;
   icon: string;
   label: string;
-  variant: ButtonVariants;
+  variant?: ButtonVariants;
+  className?: string;
 }
 
 const links: ILink[] = [
@@ -24,7 +25,6 @@ const links: ILink[] = [
     path: getRoute({ name: ROUTE_NAMES.MONEY_TRANSFER }),
     icon: 'output',
     label: t('view_dashboard.nav_links.link_money_transfer'),
-    variant: 'primary',
   },
   {
     key: 'cards',
@@ -32,6 +32,7 @@ const links: ILink[] = [
     icon: 'credit_card',
     label: t('view_dashboard.nav_links.link_cards'),
     variant: 'transparent',
+    className: '_mobile',
   },
   {
     key: 'order_card',
@@ -46,6 +47,7 @@ const links: ILink[] = [
     icon: 'clock_loader_10',
     label: t('view_dashboard.nav_links.link_charts'),
     variant: 'transparent',
+    className: '_mobile',
   },
 ];
 </script>
@@ -62,6 +64,7 @@ const links: ILink[] = [
         :to="link.path"
         :variant="link.variant"
         class="link"
+        :class="link.className"
       >
         <span class="material-symbols-outlined">
           {{ link.icon }}
@@ -73,13 +76,14 @@ const links: ILink[] = [
 </template>
 
 <style lang="scss" scoped>
+@use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 16px;
+  gap: 1px;
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -91,5 +95,11 @@ const links: ILink[] = [
 
 .link {
   white-space: nowrap;
+
+  &._mobile {
+    @include breakpoints.lg() {
+      display: none;
+    }
+  }
 }
 </style>
