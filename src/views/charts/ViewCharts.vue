@@ -13,6 +13,7 @@ import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 import NoStats from '@/views/charts/components/NoStats.vue';
 import Placeholder from '@/components/other/Placeholder.vue';
 import Button from '@/components/buttons/Button.vue';
+import IconLoader from '@/components/loaders/IconLoader.vue';
 
 const ModalFilters = defineAsyncComponent(() => import('./components/ModalFilters.vue'));
 
@@ -51,6 +52,9 @@ onMounted(() => {
         {{ $t('view_transaction_history.mobile_trigger') }}
       </Button>
       <Filters class="desktop-filters" />
+      <div v-if="statsStore.isProcessing" class="chart-row">
+        <IconLoader class="chart-loader" />
+      </div>
       <div v-if="statsStore.isSuccess && !statsStore.isEmpty" class="chart-row">
         <div class="col">
           <h2 class="chart-title">
@@ -69,7 +73,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <NoStats v-if="statsStore.isEmpty" class="placeholder" />
+      <NoStats v-if="statsStore.isEmpty && !statsStore.isProcessing" class="placeholder" />
       <ErrorPlaceholder v-if="statsStore.isError" class="placeholder">
         <p>
           {{ statsStore.statusMessage }}
@@ -137,5 +141,11 @@ onMounted(() => {
 
 .chart {
   max-width: 100%;
+}
+
+.chart-loader {
+  margin: auto;
+  font-size: 48px;
+  color: var(--secondary-text);
 }
 </style>
