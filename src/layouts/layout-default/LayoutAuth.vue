@@ -126,7 +126,7 @@
 @include themes.component-theme-light() {
   .content-wrap {
     --content-background: #{rgba(white, 0.5)};
-    --background-filter:
+    --background-filter: none;
   }
 }
 </style>

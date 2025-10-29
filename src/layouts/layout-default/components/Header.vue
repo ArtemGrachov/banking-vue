@@ -101,6 +101,9 @@ const { open: openMobileNav, close } = useModal({
   --header-height: 74px;
   --heading-color: var(--header-color);
   --text-color: var(--header-color);
+  --icon-button-color: var(--header-icon-button-color);
+  --icon-button-hover-color: var(--header-icon-button-hover-color);
+  --icon-button-active-color: var(--header-icon-button-active-color);
 
   height: var(--header-height);
   background: var(--header-background);
@@ -145,7 +148,8 @@ const { open: openMobileNav, close } = useModal({
   @include headings.h3();
 
   margin: 0;
-  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-style: italic;
   text-align: center;
   flex: 1 1 auto;
 
@@ -172,17 +176,17 @@ const { open: openMobileNav, close } = useModal({
 
 @include themes.component-theme-dark() {
   .header {
-    --icon-button-color: red;
-    --icon-button-hover-color: orange;
-    --icon-button-active-color: white;
+    --header-icon-button-color: red;
+    --header-icon-button-hover-color: orange;
+    --header-icon-button-active-color: white;
   }
 }
 
 @include themes.component-theme-light() {
   .header {
-    --icon-button-color: white;
-    --icon-button-hover-color: orange;
-    --icon-button-active-color: yellow;
+    --header-icon-button-color: white;
+    --header-icon-button-hover-color: orange;
+    --header-icon-button-active-color: yellow;
   }
 }
 </style>

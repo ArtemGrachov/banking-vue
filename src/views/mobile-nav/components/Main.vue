@@ -42,6 +42,7 @@ const emit = defineEmits<Emits>();
 .language-switch {
   --button-justify-content: flex-start;
   --button-text-align: left;
+  --button-border-radius: 0;
 
   justify-content: space-between;
   gap: 16px;
