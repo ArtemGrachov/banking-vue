@@ -245,5 +245,9 @@
   },
   "view_security": {
     "update_success": "Saugumo duomenys sėkmingai atnaujinti"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Spustelėkite čia, kad tęstumėte",
+    "sms_code": "DEMO: Įveskite bet kokius 4 skaičius"
   }
 }

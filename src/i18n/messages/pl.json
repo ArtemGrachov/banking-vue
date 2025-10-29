@@ -245,5 +245,9 @@
   },
   "view_security": {
     "update_success": "Dane bezpieczeństwa zostały pomyślnie zaktualizowane"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Kliknij tutaj, aby kontynuować",
+    "sms_code": "DEMO: Wpisz dowolne 4 cyfry"
   }
 }

@@ -245,5 +245,9 @@
   },
   "view_security": {
     "update_success": "Bezpečnostní údaje byly úspěšně aktualizovány"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Klikněte zde pro pokračování",
+    "sms_code": "DEMO: Zadejte libovolné 4 číslice"
   }
 }

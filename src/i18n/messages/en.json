@@ -245,5 +245,9 @@
   },
   "view_security": {
     "update_success": "Security data was updated successfully"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Click here to proceed",
+    "sms_code": "DEMO: Type any 4 numbers"
   }
 }
