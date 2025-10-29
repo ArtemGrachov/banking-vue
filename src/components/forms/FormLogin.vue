@@ -9,6 +9,7 @@ import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
+import InputPassword from '@/components/inputs/InputPassword.vue';
 
 import type { IFormLogin } from '@/types/forms/form-login';
 
@@ -87,8 +88,9 @@ const submitHandler = async () => {
         {{ $t('form_common.password') }}
       </template>
       <template #default="{ classNames }">
-        <Input
+        <InputPassword
           id="password"
+          type="password"
           v-model="fieldPassword"
           :class="classNames"
           :readonly="isProcessing"
