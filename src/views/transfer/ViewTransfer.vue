@@ -8,6 +8,7 @@ import { useCardsStore } from '@/store/cards';
 import { useTransfer } from './composable/transfer';
 import { useGetCardsData } from '@/composables/data/get-cards-data';
 import { useToast } from '@/composables/toast/toast';
+import { useMoneyFormat } from '@/composables/money/money-format';
 import Button from '@/components/buttons/Button.vue';
 import { useConfirmationModal } from '@/composables/modals/confirmation-modal';
 import FormMoneyTransfer from '@/components/forms/FormMoneyTransfer.vue';
@@ -31,6 +32,7 @@ const getPageData = () => {
 const question = ref('');
 const isTransferred = ref(false);
 const confirmation = useConfirmationModal(question);
+const mf = useMoneyFormat();
 
 const submitHandler = async (formValue: IFormMoneyTransfer) => {
   const selectedCard = cardsStore.data?.find(c => c.id === formValue.card);
@@ -38,7 +40,7 @@ const submitHandler = async (formValue: IFormMoneyTransfer) => {
   question.value = t(
     'view_transfer.confirmation',
     {
-      value: `${formValue.amount} ${selectedCard?.currency}`,
+      value: mf(formValue.amount ?? 0, selectedCard?.currency ?? ''),
       recipient: formValue.recipient,
     },
   );
@@ -87,7 +89,9 @@ watch(route, (newRoute) => {
         {{ $t('view_transfer.success_title') }}
       </template>
       <template #subtitle>
-        {{ $t('view_transfer.success_subtitle') }}
+        <p>
+          {{ $t('view_transfer.success_subtitle') }}
+        </p>
         <Button type="button" class="return" variant="primary" @click="returnHandler">
           {{ $t('view_transfer.return') }}
         </Button>
@@ -112,9 +116,5 @@ watch(route, (newRoute) => {
   @include layout.page-default();
 
   overflow: hidden;
-}
-
-.return {
-  margin-top: 24px;
 }
 </style>

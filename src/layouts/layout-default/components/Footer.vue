@@ -1,6 +1,23 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+import { ROUTE_NAMES } from '@/router/routes';
+import { useGetRoute } from '@/composables/routing/get-route';
+
+const getRoute = useGetRoute();
+
+</script>
+
 <template>
   <footer class="footer">
-    Designed and developed by <a href="https://github.com/ArtemGrachov" target="_blank">Artem Hrachov</a>, 2025
+    <div class="cell">
+      <RouterLink :to="getRoute({ name: ROUTE_NAMES.ABOUT })">
+        {{ $t('footer.about_link') }}
+      </RouterLink>
+    </div>
+    <div class="cell">
+      Designed and developed by <a href="https://github.com/ArtemGrachov" target="_blank">Artem Hrachov</a>, 2025
+    </div>
   </footer>
 </template>
 
@@ -18,7 +35,8 @@
   --link-color: red;
 
   @include breakpoints.sm() {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
   }
 }
 

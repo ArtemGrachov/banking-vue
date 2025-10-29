@@ -62,6 +62,9 @@ const hintText = computed(() => {
 </script>
 
 <template>
+  <FormStatus v-if="confirmationSubmitStatus === EStatus.SUCCESS && confirmBy === EConfirmBy.PHONE">
+    {{ $t('demo_confirmation.sms_code') }}
+  </FormStatus>
   <FormConfirmation
     :submit-status="confirmationSubmitStatus"
     :status-message="confirmationStatusMessage"

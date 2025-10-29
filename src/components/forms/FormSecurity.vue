@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { required, email, helpers, sameAs } from '@vuelidate/validators'
+import { email, helpers, sameAs } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import { EStatus } from '@/constants/status';
@@ -32,7 +32,7 @@ const emits = defineEmits<Emits>();
 const passwordValidators = usePasswordValidators();
 
 const fieldEmail = ref('test@test.com');
-const fieldPhoneNumber = ref('+380991112233');
+const fieldPhoneNumber = ref('380991112233');
 const fieldPassword = ref('');
 const fieldPasswordRepeat = ref('');
 
@@ -40,16 +40,13 @@ const phoneValidator = helpers.regex(REGEXP_PHONE);
 
 const rules = computed(() => ({
   email: {
-    required,
     email,
   },
   phone_number: {
-    required,
     phone: phoneValidator,
   },
   password: passwordValidators,
   passwordRepeat: {
-    required,
     passwordMatch: sameAs(fieldPassword, 'password'),
   },
 }));

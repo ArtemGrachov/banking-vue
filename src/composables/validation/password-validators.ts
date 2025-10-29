@@ -1,8 +1,9 @@
-import { required, helpers, minLength } from '@vuelidate/validators';
+import { helpers, minLength } from '@vuelidate/validators';
 
 import { PASSWORD_MIN_LENGTH } from '@/constants/password-validation';
+import type { ValidationRule } from '@vuelidate/core';
 
-export const usePasswordValidators = () => {
+export const usePasswordValidators = (baseValidators?: Record<string, ValidationRule>) => {
   const containUpperCaseValidator = helpers.regex(/^(?=.*[A-Z]).+$/);
   const containLowerCaseValidator = helpers.regex(/^(?=.*[a-z]).+$/);
   const containNumberValidator = helpers.regex(/^(?=.*\d).+$/);
@@ -11,12 +12,12 @@ export const usePasswordValidators = () => {
   const minLengthValidator = minLength(PASSWORD_MIN_LENGTH);
 
   return {
-    required,
     containUpperCase: containUpperCaseValidator,
     containLowerCase: containLowerCaseValidator,
     containNumber: containNumberValidator,
     onlyLatin: onlyLatinValidator,
     specialSymbol: specialSymbolValidator,
     minLength: minLengthValidator,
+    ...(baseValidators ?? {}),
   };
 }

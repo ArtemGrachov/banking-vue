@@ -8,6 +8,7 @@ import { useResetPassword } from './composable/reset-password';
 import { useToast } from '@/composables/toast/toast';
 import FormResetPassword from '@/components/forms/FormResetPassword.vue';
 import { useGetRoute } from '@/composables/routing/get-route';
+import AuthLinks from '@/components/auth/confirmation/AuthLinks.vue';
 
 import type { IFormLogin } from '@/types/forms/form-login';
 
@@ -35,4 +36,5 @@ const submitHandler = async (formValue: IFormLogin) => {
     :status-message="statusMessage"
     @submit="submitHandler"
   />
+  <AuthLinks :is-reset-password="true" />
 </template>

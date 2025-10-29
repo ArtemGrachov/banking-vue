@@ -9,6 +9,7 @@ import Button from '@/components/buttons/Button.vue';
 import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
+import InputPassword from '@/components/inputs/InputPassword.vue';
 
 import type { IFormLogin } from '@/types/forms/form-login';
 
@@ -24,8 +25,8 @@ type Emits = {
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
-const fieldLogin = ref('');
-const fieldPassword = ref('');
+const fieldLogin = ref('test@test.com');
+const fieldPassword = ref('Test123#');
 
 const rules = computed(() => ({
   login: {
@@ -87,8 +88,9 @@ const submitHandler = async () => {
         {{ $t('form_common.password') }}
       </template>
       <template #default="{ classNames }">
-        <Input
+        <InputPassword
           id="password"
+          type="password"
           v-model="fieldPassword"
           :class="classNames"
           :readonly="isProcessing"

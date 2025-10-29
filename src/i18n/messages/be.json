@@ -1,3 +1,256 @@
 {
-  "test": "BE message"
+  "error": {
+    "subtitle": "Адбылася памылка",
+    "return": "Вярнуцца на галоўную старонку"
+  },
+  "nav": {
+    "dashboard": "Панэль кіравання",
+    "money_transfer": "Перакладаць грошы",
+    "transaction_history": "Гісторыя транзакцый",
+    "cards": "Карты",
+    "charts": "Дыяграмы",
+    "personal_info": "Асабістыя дадзеныя",
+    "security": "Бяспека",
+    "login": "Увайсці",
+    "registration": "Стварыць уліковы запіс",
+    "forgot-password": "Забылі пароль?",
+    "logout": "Выйсці"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Змяніць мову"
+  },
+  "form_common": {
+    "full_name": "Поўнае імя",
+    "email": "Электронная пошта",
+    "phone_number": "Нумар тэлефона",
+    "password": "Пароль",
+    "password_repeat": "Паўтарыць пароль",
+    "confirmation_code": "Код пацверджання",
+    "submit": "Адправіць",
+    "resend": "Адправіць яшчэ раз",
+    "resend_timer": "Адправіць яшчэ раз ({time})"
+  },
+  "view_registration": {
+    "success": "Рэгістрацыя прайшла паспяхова"
+  },
+  "common_validation": {
+    "required": "Гэта поле абавязковае",
+    "email": "Гэта поле не адпавядае фармату email",
+    "phone": "Гэта поле не адпавядае фармату тэлефона",
+    "phone_hint": "Толькі лічбы, даўжыня 7-15 сімвалаў",
+    "min_length": "Гэта поле павінна змяшчаць не менш за {min} сімвалаў",
+    "numeric": "Гэта поле можа ўтрымліваць толькі лічбы",
+    "length": "Гэты сімвал павінен мець {length} сімвалаў",
+    "contain_lower_case": "Гэта поле павінна змяшчаць хаця б адзін малы знак",
+    "contain_upper_case": "Гэта поле павінна змяшчаць хаця б адзін вялікі знак",
+    "only_latin": "Гэта поле павінна змяшчаць толькі літары лацінскага алфавіта",
+    "contan_number": "Гэта поле павінна змяшчаць хаця б адну лічбу",
+    "special_symbol": "Гэта поле павінна змяшчаць хаця б адзін спецыяльны сімвал",
+    "password_match": "Гэта поле павінна супадаць з паролем"
+  },
+  "page_title": {
+    "dashboard": "Панэль кіравання",
+    "money_transfer": "Перакладаць грошы",
+    "transaction_history": "Гісторыя транзакцый",
+    "charts": "Дыяграмы",
+    "personal_info": "Асабістыя дадзеныя",
+    "security": "Бяспека",
+    "registration": "Рэгістрацыя",
+    "login": "Увайсці",
+    "forgot_password": "Забылі пароль",
+    "reset_password": "Скідаць пароль",
+    "cards": "Карты",
+    "order_card": "Заказаць карту"
+  },
+  "common_errors": {
+    "generic": "Адбылася памылка",
+    "refresh": "Спробуйце націснуць кнопку абнаўлення або перазагрузіць старонку"
+  },
+  "form_login": {
+    "login": "Электронная пошта або нумар тэлефона"
+  },
+  "form_forgot_password": {
+    "reset_by": "Скінуць праз",
+    "reset_by_phone": "SMS код",
+    "reset_by_email": "Спасылка на email"
+  },
+  "view_forgot_password": {
+    "success_sms": "Код для скіду быў адпраўлены",
+    "success_email": "Спасылка для скіду была адпраўлена",
+    "description_email": "Ліст са спасылкай для скіду пароля быў адпраўлены на вашу электронную пошту. Калі вы не атрымалі ліст, праверце правільнасць уведзенага email і націсніце кнопку «Адправіць яшчэ раз»"
+  },
+  "form_confirmation": {
+    "confirm_by": "Пацвердзіць праз",
+    "confirm_by_email": "Па email",
+    "confirm_by_phone": "Па тэлефоне"
+  },
+  "confirmation": {
+    "hint_email": "Ліст са спасылкай для пацверджання быў адпраўлены на вашу электронную пошту. Калі вы не атрымалі ліст, праверце правільнасць email і націсніце «Адправіць яшчэ раз»",
+    "hint_sms": "SMS з кодам пацверджання быў адпраўлены на ваш тэлефон. Калі вы не атрымалі SMS, праверце правільнасць нумара і націсніце «Адправіць яшчэ раз»"
+  },
+  "password_hints": {
+    "min_length": "Мінімальная даўжыня {min}",
+    "contain_lower_case": "Малыя літары",
+    "contain_upper_case": "Вялікія літары",
+    "only_latin": "Толькі літары лацінкі",
+    "contan_number": "Лічбы",
+    "special_symbol": "Спецыяльныя сімвалы"
+  },
+  "view_reset_password": {
+    "success": "Ваш пароль быў паспяхова скінуты. Цяпер вы можаце ўвайсці"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Паказаць усё",
+    "nav_links": {
+      "link_money_transfer": "Перакладаць грошы",
+      "link_charts": "Дыяграмы",
+      "link_cards": "Карты",
+      "link_order_card": "Заказаць карту"
+    }
+  },
+  "order_card": {
+    "title": "Заказаць карту"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Спіс пусты",
+      "subtitle": "Пакуль няма транзакцый"
+    },
+    "categories": {
+      "all": "Усе",
+      "groceries": "Прадукты",
+      "restaurants_cafes": "Рэстараны і кафэ",
+      "transportation": "Транспарт",
+      "entertainment": "Забавы",
+      "health_medicine": "Здароўе і медыцына",
+      "shopping": "Пакупкі",
+      "utilities_bills": "Камунальныя паслугі",
+      "salary": "Зарплата",
+      "income": "Дохад"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Карт пакуль няма",
+      "subtitle": "Закажыце сваю першую карту"
+    },
+    "close": {
+      "label": "Закрыць",
+      "question": "Вы ўпэўненыя, што хочаце закрыць карту {cardNumber}?",
+      "success": "Карта была паспяхова закрыта"
+    },
+    "block": {
+      "label_block": "Блакаваць",
+      "label_unblock": "Разблакаваць",
+      "question_block": "Вы ўпэўненыя, што хочаце заблакаваць карту {cardNumber}?",
+      "question_unblock": "Вы ўпэўненыя, што хочаце разблакаваць карту {cardNumber}?",
+      "block_success": "Карта была паспяхова заблакавана",
+      "unblock_success": "Карта была паспяхова разблакавана"
+    },
+    "design": {
+      "red": "Чырвоны",
+      "green": "Зялёны",
+      "blue": "Сіні",
+      "golden": "Залаты",
+      "silver": "Срэбны"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Адкрыць фільтры",
+    "filters": {
+      "label_card": "Карта",
+      "label_category": "Катэгорыя",
+      "label_period": "Перыяд"
+    },
+    "modal_filters": {
+      "title": "Фільтры"
+    }
+  },
+  "select": {
+    "no_result": "Нішто не знойдзена",
+    "no_options": "Няма варыянтаў",
+    "placeholder": "Выберыце варыянт"
+  },
+  "select_modal": {
+    "clear": "Ачысціць"
+  },
+  "form_money_transfer": {
+    "amount": "Сума",
+    "recipient": "Атрымальнік",
+    "submit": "Адправіць",
+    "max": "Макс: {value}",
+    "max_validation": "Вы не можаце перадаць больш за {value}",
+    "card_available_validation": "Карта павінна быць даступная"
+  },
+  "view_transfer": {
+    "confirmation": "Вы сапраўды хочаце пералічыць {value} на {recipient}?",
+    "success_title": "Гатова",
+    "success_subtitle": "Пераклад быў паспяхова завершаны",
+    "return": "Перакласці яшчэ раз"
+  },
+  "bank_card_item": {
+    "balance": "Баланс",
+    "manage": "Кіраваць"
+  },
+  "view_card": {
+    "balance": "Баланс",
+    "transactions": "Транзакцыі"
+  },
+  "form_order_card": {
+    "design": "Дызайн",
+    "submit": "Заказаць карту"
+  },
+  "view_order_card": {
+    "success": "Карта была паспяхова заказана"
+  },
+  "view_charts": {
+    "mobile_trigger": "Адкрыць фільтры",
+    "filters": {
+      "label_card": "Карта",
+      "label_category": "Катэгорыя",
+      "label_period": "Перыяд",
+      "label_currency": "Валюта"
+    },
+    "modal_filters": {
+      "title": "Фільтры"
+    },
+    "title_income": "Дохад",
+    "title_expense": "Выдаткі",
+    "no_stats": {
+      "title": "Дадзеных няма",
+      "subtitle": "Няма статыстыкі для адлюстравання"
+    }
+  },
+  "common_auth": {
+    "logout": "Выйсці",
+    "logout_question": "Вы ўпэўненыя, што хочаце выйсці?",
+    "registration_link": "У вас няма ўліковага запісу?",
+    "login_label": "Ужо ёсць уліковы запіс?",
+    "login_link": "Увайсці!",
+    "forgot_password": "Забылі пароль?"
+  },
+  "personal_info": {
+    "full_name": "Поўнае імя",
+    "country": "Краіна",
+    "address": "Адрас",
+    "id_number": "Нумар дакумента"
+  },
+  "view_security": {
+    "update_success": "Дадзеныя бяспекі былі паспяхова абноўлены"
+  },
+  "demo_confirmation": {
+    "email_link": "ДЭМА: Націсніце тут, каб працягнуць",
+    "sms_code": "ДЭМА: Увядзіце любыя 4 лічбы"
+  },
+  "footer": {
+    "about_link": "Пра праект"
+  }
 }

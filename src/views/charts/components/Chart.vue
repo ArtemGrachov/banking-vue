@@ -21,7 +21,25 @@ const { t } = useI18n();
 const options = {
   responsive: true,
   maintainAspectRatio: false,
+  layout: {
+    padding: { bottom: 24 },
+  },
+  plugins: {
+    legend: {
+      position: 'bottom',
+      align: 'center',
+      labels: {
+        boxWidth: 14,
+        padding: 12,
+        font: {
+          size: 14,
+          family: "'Raleway', sans-serif",
+        },
+      },
+    },
+  },
 };
+
 
 const chartData = computed(() => {
   const categories = Object.keys(stats.categories);
@@ -42,6 +60,7 @@ const chartData = computed(() => {
 
 <template>
   <div>
+    <!-- @vue-expect-error -->
     <Pie :data="chartData" :options="options" />
   </div>
 </template>

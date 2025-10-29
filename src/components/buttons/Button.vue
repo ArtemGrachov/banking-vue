@@ -27,6 +27,10 @@ const hostClassNames = computed(() => {
     }
   }
 
+  if (isProcessing) {
+    result.push('_processing');
+  }
+
   return result;
 });
 </script>
@@ -66,12 +70,12 @@ const hostClassNames = computed(() => {
 }
 
 .loader {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .loader-icon {
-  position: absolute;
-  top: -0.5em;
-  left: -0.25em;
+  font-size: 20px;
 }
 </style>

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import type SwiperType from 'swiper';
 import 'swiper/css';
 
+import { useMoneyFormat } from '@/composables/money/money-format';
 import BankCard from '@/components/bank-cards/BankCard.vue';
 import BankCardSkeleton from '@/components/bank-cards/BankCardSkeleton.vue';
 
@@ -17,6 +18,7 @@ interface IProps {
 }
 
 const { mobileFullPage, cards, isProcessing } = defineProps<IProps>();
+const mf = useMoneyFormat();
 
 const activeIndex = ref(-1);
 const model = defineModel<number | null | undefined>();
@@ -41,7 +43,6 @@ const changeHandler = (e: SwiperType) => {
       class="swiper"
       :slides-per-view="'auto'"
       :space-between="-50"
-      :loop="true"
       :center-insufficient-slides="true"
       :centered-slides="true"
       :initial-slide="initialSlide"
@@ -58,7 +59,7 @@ const changeHandler = (e: SwiperType) => {
       <SwiperSlide v-for="(card, index) in cards" :key="card.id" class="slide">
         <BankCard :card="card" />
         <div class="balance">
-          {{ card.balance }} {{ card.currency }}
+          {{ mf(card.balance, card.currency) }}
         </div>
       </SwiperSlide>
       <SwiperSlide v-if="$slots.default" class="slide">

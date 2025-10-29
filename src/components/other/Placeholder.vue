@@ -18,6 +18,7 @@
 @use '/src/styles/mixins/headings.scss' as headings;
 
 .placeholder {
+  padding: var(--placeholder-padding, 24px);
   display: flex;
   align-items: center;
   justify-content: center;

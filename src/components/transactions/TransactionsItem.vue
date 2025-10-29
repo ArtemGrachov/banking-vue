@@ -5,14 +5,17 @@ import dayjs from 'dayjs';
 import { ETransactionsType } from '@/constants/transactions';
 import { DATE_TIME_DEFAULT_FORMAT } from '@/constants/date-time';
 
-import type { ITransaction } from '@/types/models/transaction';
+import { useMoneyFormat } from '@/composables/money/money-format';
 import TransactionCategoryIcon from '@/components/transactions/TransactionCategoryIcon.vue';
+
+import type { ITransaction } from '@/types/models/transaction';
 
 interface IProps {
   transaction: ITransaction;
 }
 
 const { transaction } = defineProps<IProps>();
+const mf = useMoneyFormat();
 
 const isIncome = computed(() => {
   return transaction.type === ETransactionsType.INCOME;
@@ -41,8 +44,7 @@ const dateTimeFormatted = computed(() => {
       </div>
     </div>
     <div class="amount">
-      <!-- @TODO number and currency format -->
-      {{ transaction.amount }} {{  transaction.currency }}
+      {{ mf(transaction.amount, transaction.currency) }}
     </div>
   </article>
 </template>

@@ -32,8 +32,10 @@ body {
 @include themes.global-theme-dark() {
   --primary-background: #242424;
   --page-background: #1f1f1f;
-    --header-background: #181818;
-    --header-color: red;
+  --header-background: #181818;
+  --header-color: red;
+
+  --heading-color: #eeeded;
 
   --primary-text: white;
   --secondary-text: #727272;
@@ -61,6 +63,8 @@ body {
   --header-background: red;
   --header-color: white;
 
+  --heading-color: #1c1c1c;
+
   --primary-text: #141414;
   --secondary-text: #434343;
   --link-color: #9b0000;
@@ -68,7 +72,7 @@ body {
   --button-text-color: #9b0000;
 
   --input-text-color: #2a2a2a;
-  --input-border-color: #141414;
+  --input-border-color: #b9b9b9;
 
   --field-label-color: #2a2a2a;
 

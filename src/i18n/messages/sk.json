@@ -1,3 +1,256 @@
 {
-  "test": "SK message"
+  "error": {
+    "subtitle": "Došlo k chybe",
+    "return": "Späť na hlavnú stránku"
+  },
+  "nav": {
+    "dashboard": "Prehľad",
+    "money_transfer": "Poslať peniaze",
+    "transaction_history": "História transakcií",
+    "cards": "Karty",
+    "charts": "Grafy",
+    "personal_info": "Osobné údaje",
+    "security": "Bezpečnosť",
+    "login": "Prihlásiť sa",
+    "registration": "Vytvoriť účet",
+    "forgot-password": "Zabudli ste heslo?",
+    "logout": "Odhlásiť sa"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Zmeniť jazyk"
+  },
+  "form_common": {
+    "full_name": "Celé meno",
+    "email": "Email",
+    "phone_number": "Telefónne číslo",
+    "password": "Heslo",
+    "password_repeat": "Opakovať heslo",
+    "confirmation_code": "Potvrdzovací kód",
+    "submit": "Odoslať",
+    "resend": "Poslať znova",
+    "resend_timer": "Poslať znova ({time})"
+  },
+  "view_registration": {
+    "success": "Registrácia prebehla úspešne"
+  },
+  "common_validation": {
+    "required": "Toto pole je povinné",
+    "email": "Toto pole nezodpovedá formátu emailu",
+    "phone": "Toto pole nezodpovedá formátu telefónu",
+    "phone_hint": "Iba čísla, dĺžka 7–15",
+    "min_length": "Toto pole musí obsahovať aspoň {min} znakov",
+    "numeric": "Toto pole môže obsahovať iba čísla",
+    "length": "Tento znak musí mať {length} znakov",
+    "contain_lower_case": "Toto pole musí obsahovať aspoň jedno malé písmeno",
+    "contain_upper_case": "Toto pole musí obsahovať aspoň jedno veľké písmeno",
+    "only_latin": "Toto pole môže obsahovať iba latinské písmená",
+    "contan_number": "Toto pole musí obsahovať aspoň jedno číslo",
+    "special_symbol": "Toto pole musí obsahovať aspoň jeden špeciálny znak",
+    "password_match": "Toto pole musí zodpovedať heslu"
+  },
+  "page_title": {
+    "dashboard": "Prehľad",
+    "money_transfer": "Poslať peniaze",
+    "transaction_history": "História transakcií",
+    "charts": "Grafy",
+    "personal_info": "Osobné údaje",
+    "security": "Bezpečnosť",
+    "registration": "Registrácia",
+    "login": "Prihlásenie",
+    "forgot_password": "Zabudnuté heslo",
+    "reset_password": "Obnoviť heslo",
+    "cards": "Karty",
+    "order_card": "Objednať kartu"
+  },
+  "common_errors": {
+    "generic": "Došlo k chybe",
+    "refresh": "Skúste stlačiť tlačidlo obnoviť alebo znovu načítať stránku"
+  },
+  "form_login": {
+    "login": "Email alebo telefónne číslo"
+  },
+  "form_forgot_password": {
+    "reset_by": "Obnoviť cez",
+    "reset_by_phone": "SMS kód",
+    "reset_by_email": "Odkaz v emaile"
+  },
+  "view_forgot_password": {
+    "success_sms": "Obnovovací kód bol odoslaný",
+    "success_email": "Odkaz na obnovu bol odoslaný",
+    "description_email": "Email s odkazom na obnovenie hesla bol odoslaný na váš email. Ak ste ho nedostali, skontrolujte správnosť adresy a kliknite na tlačidlo „Poslať znova“"
+  },
+  "form_confirmation": {
+    "confirm_by": "Potvrdiť cez",
+    "confirm_by_email": "Email",
+    "confirm_by_phone": "Telefón"
+  },
+  "confirmation": {
+    "hint_email": "Email s potvrdením bol odoslaný na váš email. Ak ho nedostanete, skontrolujte adresu a kliknite na „Poslať znova“",
+    "hint_sms": "SMS s potvrdením bola odoslaná na váš telefón. Ak ju nedostanete, skontrolujte číslo a kliknite na „Poslať znova“"
+  },
+  "password_hints": {
+    "min_length": "Minimálna dĺžka {min}",
+    "contain_lower_case": "Malé písmená",
+    "contain_upper_case": "Veľké písmená",
+    "only_latin": "Iba latinské písmená",
+    "contan_number": "Čísla",
+    "special_symbol": "Špeciálne znaky"
+  },
+  "view_reset_password": {
+    "success": "Vaše heslo bolo úspešne obnovené. Teraz sa môžete prihlásiť"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Zobraziť všetky",
+    "nav_links": {
+      "link_money_transfer": "Poslať peniaze",
+      "link_charts": "Grafy",
+      "link_cards": "Karty",
+      "link_order_card": "Objednať kartu"
+    }
+  },
+  "order_card": {
+    "title": "Objednať kartu"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Zoznam je prázdny",
+      "subtitle": "Žiadne transakcie zatiaľ"
+    },
+    "categories": {
+      "all": "Všetky",
+      "groceries": "Potraviny",
+      "restaurants_cafes": "Reštaurácie a kaviarne",
+      "transportation": "Doprava",
+      "entertainment": "Zábava",
+      "health_medicine": "Zdravie a medicína",
+      "shopping": "Nákupy",
+      "utilities_bills": "Poplatky a účty",
+      "salary": "Plat",
+      "income": "Príjem"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Zatiaľ žiadne karty",
+      "subtitle": "Objednajte si svoju prvú kartu"
+    },
+    "close": {
+      "label": "Zatvoriť",
+      "question": "Ste si istý, že chcete zatvoriť kartu {cardNumber}?",
+      "success": "Karta bola úspešne zatvorená"
+    },
+    "block": {
+      "label_block": "Blokovať",
+      "label_unblock": "Odblokovať",
+      "question_block": "Ste si istý, že chcete zablokovať kartu {cardNumber}?",
+      "question_unblock": "Ste si istý, že chcete odblokovať kartu {cardNumber}?",
+      "block_success": "Karta bola úspešne zablokovaná",
+      "unblock_success": "Karta bola úspešne odblokovaná"
+    },
+    "design": {
+      "red": "Červená",
+      "green": "Zelená",
+      "blue": "Modrá",
+      "golden": "Zlatá",
+      "silver": "Strieborná"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Otvoriť filtre",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategória",
+      "label_period": "Obdobie"
+    },
+    "modal_filters": {
+      "title": "Filtre"
+    }
+  },
+  "select": {
+    "no_result": "Nič nenájdené",
+    "no_options": "Žiadne možnosti",
+    "placeholder": "Vyberte možnosť"
+  },
+  "select_modal": {
+    "clear": "Vymazať"
+  },
+  "form_money_transfer": {
+    "amount": "Suma",
+    "recipient": "Príjemca",
+    "submit": "Odoslať",
+    "max": "Max.: {value}",
+    "max_validation": "Nemôžete poslať viac ako {value}",
+    "card_available_validation": "Karta musí byť dostupná"
+  },
+  "view_transfer": {
+    "confirmation": "Naozaj chcete poslať {value} príjemcovi {recipient}?",
+    "success_title": "Hotovo",
+    "success_subtitle": "Prevádzka bola úspešne dokončená",
+    "return": "Poslať znova"
+  },
+  "bank_card_item": {
+    "balance": "Zostatok",
+    "manage": "Spravovať"
+  },
+  "view_card": {
+    "balance": "Zostatok",
+    "transactions": "Transakcie"
+  },
+  "form_order_card": {
+    "design": "Dizajn",
+    "submit": "Objednať kartu"
+  },
+  "view_order_card": {
+    "success": "Karta bola úspešne objednaná"
+  },
+  "view_charts": {
+    "mobile_trigger": "Otvoriť filtre",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategória",
+      "label_period": "Obdobie",
+      "label_currency": "Mena"
+    },
+    "modal_filters": {
+      "title": "Filtre"
+    },
+    "title_income": "Príjem",
+    "title_expense": "Výdavky",
+    "no_stats": {
+      "title": "Žiadne údaje",
+      "subtitle": "Žiadne štatistiky na zobrazenie"
+    }
+  },
+  "common_auth": {
+    "logout": "Odhlásiť sa",
+    "logout_question": "Ste si istý, že sa chcete odhlásiť?",
+    "registration_link": "Nemáte účet?",
+    "login_label": "Už máte účet?",
+    "login_link": "Prihlásiť sa!",
+    "forgot_password": "Zabudli ste heslo?"
+  },
+  "personal_info": {
+    "full_name": "Celé meno",
+    "country": "Krajina",
+    "address": "Adresa",
+    "id_number": "Číslo ID"
+  },
+  "view_security": {
+    "update_success": "Bezpečnostné údaje boli úspešne aktualizované"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Kliknite sem pre pokračovanie",
+    "sms_code": "DEMO: Zadajte ľubovoľné 4 čísla"
+  },
+  "footer": {
+    "about_link": "O projekte"
+  }
 }

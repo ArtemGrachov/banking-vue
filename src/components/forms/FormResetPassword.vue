@@ -24,7 +24,7 @@ type Emits = {
   (e: 'submit', formValue: IFormResetPassword): any;
 }
 
-const passwordValidators = usePasswordValidators();
+const passwordValidators = usePasswordValidators({ required });
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 

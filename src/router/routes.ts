@@ -9,13 +9,14 @@ export const ROUTE_NAMES = {
   CARD: 'CARD',
   ORDER_CARD: 'ORDER_CARD',
   CHARTS: 'CHARTS',
-  IDENTITY_VERIFICATION: 'IDENTITY_VERIFICATION',
+  PERSONAL_INFO: 'PERSONAL_INFO',
   SECURITY: 'SECURITY',
   REGISTRATION: 'REGISTRATION',
   LOGIN: 'LOGIN',
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
   RESET_PASSWORD: 'RESET_PASSWORD',
   UI_KIT: 'UI_KIT',
+  ABOUT: 'ABOUT',
 };
 
 export interface IRouteItem {
@@ -63,9 +64,9 @@ export const ROUTES: RouteRecordRaw[] = [
     component: () => import('@/views/order-card/ViewOrderCard.vue'),
   },
   {
-    name: ROUTE_NAMES.IDENTITY_VERIFICATION,
-    path: 'identity-verification',
-    component: PLACEHOLDER_CMP,
+    name: ROUTE_NAMES.PERSONAL_INFO,
+    path: 'personal-info',
+    component: () => import('@/views/personal-info/ViewPersonalInfo.vue'),
   },
   {
     name: ROUTE_NAMES.SECURITY,
@@ -96,6 +97,11 @@ export const ROUTES: RouteRecordRaw[] = [
     name: ROUTE_NAMES.UI_KIT,
     path: 'ui-kit',
     component: () => import('@/views/ui-kit/ViewUIKit.vue'),
+  },
+  {
+    name: ROUTE_NAMES.ABOUT,
+    path: 'about',
+    component: () => import('@/views/about/ViewAbout.vue'),
   },
 ];
 

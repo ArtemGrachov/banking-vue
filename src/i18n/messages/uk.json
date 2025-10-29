@@ -1,3 +1,256 @@
 {
-  "test": "UK message"
+  "error": {
+    "subtitle": "Сталася помилка",
+    "return": "Повернутися на головну сторінку"
+  },
+  "nav": {
+    "dashboard": "Панель",
+    "money_transfer": "Переказ грошей",
+    "transaction_history": "Історія транзакцій",
+    "cards": "Картки",
+    "charts": "Діаграми",
+    "personal_info": "Особисті дані",
+    "security": "Безпека",
+    "login": "Увійти",
+    "registration": "Створити акаунт",
+    "forgot-password": "Забули пароль?",
+    "logout": "Вийти"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Змінити мову"
+  },
+  "form_common": {
+    "full_name": "Повне ім'я",
+    "email": "Email",
+    "phone_number": "Номер телефону",
+    "password": "Пароль",
+    "password_repeat": "Повторіть пароль",
+    "confirmation_code": "Код підтвердження",
+    "submit": "Відправити",
+    "resend": "Надіслати ще раз",
+    "resend_timer": "Надіслати ще раз ({time})"
+  },
+  "view_registration": {
+    "success": "Реєстрація успішна"
+  },
+  "common_validation": {
+    "required": "Це поле обов'язкове",
+    "email": "Це поле не відповідає формату email",
+    "phone": "Це поле не відповідає формату телефону",
+    "phone_hint": "Тільки цифри, довжина 7–15",
+    "min_length": "Це поле повинно містити принаймні {min} символів",
+    "numeric": "Це поле може містити тільки числа",
+    "length": "Цей символ повинен мати {length} символів",
+    "contain_lower_case": "Це поле повинно містити принаймні одну малу літеру",
+    "contain_upper_case": "Це поле повинно містити принаймні одну велику літеру",
+    "only_latin": "Це поле може містити тільки латинські літери",
+    "contan_number": "Це поле повинно містити принаймні одну цифру",
+    "special_symbol": "Це поле повинно містити принаймні один спеціальний символ",
+    "password_match": "Це поле повинно збігатися з паролем"
+  },
+  "page_title": {
+    "dashboard": "Панель",
+    "money_transfer": "Переказ грошей",
+    "transaction_history": "Історія транзакцій",
+    "charts": "Діаграми",
+    "personal_info": "Особисті дані",
+    "security": "Безпека",
+    "registration": "Реєстрація",
+    "login": "Вхід",
+    "forgot_password": "Забули пароль",
+    "reset_password": "Скинути пароль",
+    "cards": "Картки",
+    "order_card": "Замовити картку"
+  },
+  "common_errors": {
+    "generic": "Сталася помилка",
+    "refresh": "Спробуйте натиснути кнопку оновлення або перезавантажте сторінку"
+  },
+  "form_login": {
+    "login": "Email або номер телефону"
+  },
+  "form_forgot_password": {
+    "reset_by": "Скинути через",
+    "reset_by_phone": "SMS код",
+    "reset_by_email": "Посилання на email"
+  },
+  "view_forgot_password": {
+    "success_sms": "Код для скидання надіслано",
+    "success_email": "Посилання для скидання надіслано",
+    "description_email": "Email з посиланням для скидання пароля надіслано на вашу пошту. Якщо ви його не отримали, перевірте правильність адреси і натисніть кнопку «Надіслати ще раз»"
+  },
+  "form_confirmation": {
+    "confirm_by": "Підтвердити через",
+    "confirm_by_email": "Email",
+    "confirm_by_phone": "Телефон"
+  },
+  "confirmation": {
+    "hint_email": "Email з посиланням для підтвердження надіслано на вашу пошту. Якщо не отримали, перевірте адресу і натисніть «Надіслати ще раз»",
+    "hint_sms": "SMS з кодом підтвердження надіслано на ваш телефон. Якщо не отримали, перевірте номер і натисніть «Надіслати ще раз»"
+  },
+  "password_hints": {
+    "min_length": "Мінімальна довжина {min}",
+    "contain_lower_case": "Малі літери",
+    "contain_upper_case": "Великі літери",
+    "only_latin": "Тільки латинські літери",
+    "contan_number": "Цифри",
+    "special_symbol": "Спеціальні символи"
+  },
+  "view_reset_password": {
+    "success": "Ваш пароль успішно скинуто. Тепер можете увійти"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Переглянути всі",
+    "nav_links": {
+      "link_money_transfer": "Переказ грошей",
+      "link_charts": "Діаграми",
+      "link_cards": "Картки",
+      "link_order_card": "Замовити картку"
+    }
+  },
+  "order_card": {
+    "title": "Замовити картку"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Список порожній",
+      "subtitle": "Поки що немає транзакцій"
+    },
+    "categories": {
+      "all": "Всі",
+      "groceries": "Продукти",
+      "restaurants_cafes": "Ресторани та кафе",
+      "transportation": "Транспорт",
+      "entertainment": "Розваги",
+      "health_medicine": "Здоров'я та медицина",
+      "shopping": "Покупки",
+      "utilities_bills": "Комунальні платежі",
+      "salary": "Зарплата",
+      "income": "Дохід"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Поки що немає карток",
+      "subtitle": "Замовте свою першу картку"
+    },
+    "close": {
+      "label": "Закрити",
+      "question": "Ви впевнені, що хочете закрити картку {cardNumber}?",
+      "success": "Картку успішно закрито"
+    },
+    "block": {
+      "label_block": "Заблокувати",
+      "label_unblock": "Розблокувати",
+      "question_block": "Ви впевнені, що хочете заблокувати картку {cardNumber}?",
+      "question_unblock": "Ви впевнені, що хочете розблокувати картку {cardNumber}?",
+      "block_success": "Картку успішно заблоковано",
+      "unblock_success": "Картку успішно розблоковано"
+    },
+    "design": {
+      "red": "Червона",
+      "green": "Зелена",
+      "blue": "Синя",
+      "golden": "Золота",
+      "silver": "Срібна"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Відкрити фільтри",
+    "filters": {
+      "label_card": "Картка",
+      "label_category": "Категорія",
+      "label_period": "Період"
+    },
+    "modal_filters": {
+      "title": "Фільтри"
+    }
+  },
+  "select": {
+    "no_result": "Нічого не знайдено",
+    "no_options": "Немає варіантів",
+    "placeholder": "Оберіть варіант"
+  },
+  "select_modal": {
+    "clear": "Очистити"
+  },
+  "form_money_transfer": {
+    "amount": "Сума",
+    "recipient": "Одержувач",
+    "submit": "Відправити",
+    "max": "Макс.: {value}",
+    "max_validation": "Ви не можете перевести більше {value}",
+    "card_available_validation": "Картка має бути доступна"
+  },
+  "view_transfer": {
+    "confirmation": "Ви дійсно хочете перевести {value} користувачу {recipient}?",
+    "success_title": "Готово",
+    "success_subtitle": "Переказ успішно виконано",
+    "return": "Відправити ще раз"
+  },
+  "bank_card_item": {
+    "balance": "Баланс",
+    "manage": "Керувати"
+  },
+  "view_card": {
+    "balance": "Баланс",
+    "transactions": "Транзакції"
+  },
+  "form_order_card": {
+    "design": "Дизайн",
+    "submit": "Замовити картку"
+  },
+  "view_order_card": {
+    "success": "Картку успішно замовлено"
+  },
+  "view_charts": {
+    "mobile_trigger": "Відкрити фільтри",
+    "filters": {
+      "label_card": "Картка",
+      "label_category": "Категорія",
+      "label_period": "Період",
+      "label_currency": "Валюта"
+    },
+    "modal_filters": {
+      "title": "Фільтри"
+    },
+    "title_income": "Дохід",
+    "title_expense": "Витрати",
+    "no_stats": {
+      "title": "Немає даних",
+      "subtitle": "Немає статистики для відображення"
+    }
+  },
+  "common_auth": {
+    "logout": "Вийти",
+    "logout_question": "Ви впевнені, що хочете вийти?",
+    "registration_link": "Ще немає акаунту?",
+    "login_label": "Вже маєте акаунт?",
+    "login_link": "Увійти!",
+    "forgot_password": "Забули пароль?"
+  },
+  "personal_info": {
+    "full_name": "Повне ім'я",
+    "country": "Країна",
+    "address": "Адреса",
+    "id_number": "Номер ID"
+  },
+  "view_security": {
+    "update_success": "Дані безпеки успішно оновлено"
+  },
+  "demo_confirmation": {
+    "email_link": "ДЕМО: Натисніть тут, щоб продовжити",
+    "sms_code": "ДЕМО: Введіть будь-які 4 цифри"
+  },
+  "footer": {
+    "about_link": "Про проєкт"
+  }
 }

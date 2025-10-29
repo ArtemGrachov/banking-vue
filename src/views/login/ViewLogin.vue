@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
 import { ROUTE_NAMES } from '@/router/routes';
@@ -8,6 +8,7 @@ import { useLogin } from './composable/login';
 import { useGetRoute } from '@/composables/routing/get-route';
 import { useToast } from '@/composables/toast/toast';
 import FormLogin from '@/components/forms/FormLogin.vue';
+import AuthLinks from '@/components/auth/confirmation/AuthLinks.vue';
 
 import type { IFormLogin } from '@/types/forms/form-login';
 
@@ -34,26 +35,10 @@ const submitHandler = async (formValue: IFormLogin) => {
     :status-message="statusMessage"
     @submit="submitHandler"
   />
-  <div class="footer">
-    <div class="login">
-      <RouterLink :to="getRoute({ name: ROUTE_NAMES.REGISTRATION })">
-        {{ $t('view_login.registration_link') }}
-      </RouterLink>
-    </div>
-    <div class="forgot">
-      <RouterLink :to="getRoute({ name: ROUTE_NAMES.FORGOT_PASSWORD })">
-        {{ $t('view_login.forgot_password') }}
-      </RouterLink>
-    </div>
-  </div>
+  <AuthLinks :is-login="true" />
 </template>
 
 <style lang="scss" scoped>
-.footer {
-  text-align: center;
-  margin-top: 32px;
-}
-
 .login {
   margin-bottom: 16px;
 }

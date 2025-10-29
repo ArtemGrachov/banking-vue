@@ -10,11 +10,15 @@ import { EStatus } from '@/constants/status';
 import { useForgotPassword } from './composable/forgot-password';
 import { useForgotPasswordCode } from './composable/forgot-password-code';
 import { useToast } from '@/composables/toast/toast';
+import { useGetRoute } from '@/composables/routing/get-route';
+import FormStatus from '@/components/forms/FormStatus.vue';
 import FormForgotPassword from '@/components/forms/FormForgotPassword.vue';
 import CountdownProgress from '@/components/other/CountdownProgress.vue';
 import FormConfirmationCode from '@/components/forms/FormConfirmationCode.vue';
+import AuthLinks from '@/components/auth/confirmation/AuthLinks.vue';
 
 import type { IFormForgotPassword } from '@/types/forms/form-forgot-password';
+import { ROUTE_NAMES } from '@/router/routes';
 
 const {
   submit: submitForgotPassword,
@@ -30,6 +34,7 @@ const toast = useToast();
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
+const getRoute = useGetRoute();
 
 const resetBy = ref<EConfirmBy | null>(null);
 const successMessage = ref<string | null>(null);
@@ -43,30 +48,35 @@ const isSuccess = computed(() => {
 
 const submitHandler = async (formValue: IFormForgotPassword) => {
   try {
+    resetBy.value = null;
+    submittedTimeout.value = null;
+    successMessage.value = null;
+
+    await submitForgotPassword(formValue);
+
     if (formValue.reset_by) {
       resetBy.value = formValue.reset_by;
     }
-
-    submittedTimeout.value = null;
-
-    await submitForgotPassword(formValue);
 
     switch (formValue.reset_by) {
       case EConfirmBy.EMAIL: {
         toast.success(t('view_forgot_password.success_email'));
         successMessage.value = t('view_forgot_password.description_email');
-        submittedTimeout.value = SMS_VALIDATION_TIMEOUT_MS;
-        countdown.value = SMS_VALIDATION_TIMEOUT_MS / 1000;
         blocked.value = true;
         router.push({ query: { codeToken: undefined } });
         break;
       }
       case EConfirmBy.PHONE: {
         router.push({ query: { codeToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } });
+        successMessage.value = null;
+        blocked.value = true;
         toast.success(t('view_forgot_password.success_sms'));
         break;
       }
     }
+
+    submittedTimeout.value = SMS_VALIDATION_TIMEOUT_MS;
+    countdown.value = SMS_VALIDATION_TIMEOUT_MS / 1000;
   } catch (err) {
     console.error(err);
     successMessage.value = null;
@@ -87,6 +97,22 @@ const isCode = computed(() => !!route?.query?.codeToken);
 </script>
 
 <template>
+  <FormStatus v-if="submitForgotPasswordStatus === EStatus.SUCCESS">
+    <RouterLink
+      v-if="resetBy === EConfirmBy.EMAIL"
+      :to="getRoute(getRoute({
+        name: ROUTE_NAMES.RESET_PASSWORD,
+        query: {
+          resetToken: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        },
+      }))"
+    >
+      {{ $t('demo_confirmation.email_link') }}
+    </RouterLink>
+    <template v-else-if="resetBy === EConfirmBy.PHONE">
+      {{ $t('demo_confirmation.sms_code') }}
+    </template>
+  </FormStatus>
   <FormForgotPassword
     :submit-status="submitForgotPasswordStatus"
     :status-message="forgotPasswordStatusMessage || successMessage"
@@ -109,6 +135,7 @@ const isCode = computed(() => !!route?.query?.codeToken);
     :status-message="codeStatusMessage"
     @submit="codeSubmitHandler"
   />
+  <AuthLinks :is-reset-password="true" />
 </template>
 
 <style lang="scss" scoped>

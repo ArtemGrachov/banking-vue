@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue';
 import { useModal } from 'vue-final-modal';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
+import { ROUTE_NAMES } from '@/router/routes';
+
+import { useAuthStore } from '@/store/auth';
+
+import { useGetRoute } from '@/composables/routing/get-route';
 import IconButton from '@/components/buttons/IconButton.vue';
 import LanguageSwitch from '@/components/language/LanguageSwitch.vue';
-import { ROUTE_NAMES } from '@/router/routes';
+import ThemeToggle from '@/components/other/ThemeToggle.vue';
 
 const MobileNav = defineAsyncComponent(() => import('@/views/mobile-nav/MobileNav.vue'));
 
 const { t } = useI18n();
 const route = useRoute();
+const authStore = useAuthStore();
+const getRoute = useGetRoute();
 
 const title = computed(() => {
   switch (route.name) {
@@ -34,8 +41,8 @@ const title = computed(() => {
     case ROUTE_NAMES.CHARTS: {
       return t('page_title.charts');
     }
-    case ROUTE_NAMES.IDENTITY_VERIFICATION: {
-      return t('page_title.profile');
+    case ROUTE_NAMES.PERSONAL_INFO: {
+      return t('page_title.personal_info');
     }
     case ROUTE_NAMES.SECURITY: {
       return t('page_title.security');
@@ -57,6 +64,14 @@ const title = computed(() => {
   return '';
 });
 
+const homeLink = computed(() => {
+  if (authStore.isAuthorized) {
+    return getRoute({ name: ROUTE_NAMES.DASHBOARD });
+  }
+
+  return getRoute({ name: ROUTE_NAMES.LOGIN });
+});
+
 const { open: openMobileNav, close } = useModal({
   component: MobileNav,
   attrs: {
@@ -76,12 +91,23 @@ const { open: openMobileNav, close } = useModal({
         more_vert
       </span>
     </IconButton>
+    <IconButton
+      :as="RouterLink"
+      :to="homeLink"
+      class="logo"
+    >
+      <span class="material-symbols-outlined">
+        account_balance
+      </span>
+    </IconButton>
     <h1 class="title">
       {{ title }}
     </h1>
-    <span class="cell-placeholder"></span>
     <div class="switch">
-      <LanguageSwitch />
+      <ThemeToggle class="theme-toggle" />
+      <div class="language-switch">
+        <LanguageSwitch />
+      </div>
     </div>
   </header>
 </template>
@@ -91,11 +117,15 @@ const { open: openMobileNav, close } = useModal({
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 @use '/src/styles/mixins/buttons.scss' as buttons;
 @use '/src/styles/mixins/headings.scss' as headings;
+@use '/src/styles/mixins/themes.scss' as themes;
 
 .header {
   --header-height: 74px;
   --heading-color: var(--header-color);
   --text-color: var(--header-color);
+  --icon-button-color: var(--header-icon-button-color);
+  --icon-button-hover-color: var(--header-icon-button-hover-color);
+  --icon-button-active-color: var(--header-icon-button-active-color);
 
   height: var(--header-height);
   background: var(--header-background);
@@ -115,13 +145,16 @@ const { open: openMobileNav, close } = useModal({
 }
 
 .menu-toggle,
-.cell-placeholder {
+.theme-toggle,
+.logo {
   flex: 0 0 auto;
   height: var(--header-height);
   width: var(--header-height);
   --icon-button-height: var(--header-height);
   --icon-button-width: var(--header-height);
+}
 
+.menu-toggle {
   @include breakpoints.lg() {
     --button-display: none;
     display: none;
@@ -134,9 +167,12 @@ const { open: openMobileNav, close } = useModal({
   }
 }
 
-.cell-placeholder {
+.logo {
+  --button-display: none;
+  font-size: 48px;
+
   @include breakpoints.lg() {
-    display: none;
+    --button-display: inline-flex;
   }
 }
 
@@ -144,7 +180,8 @@ const { open: openMobileNav, close } = useModal({
   @include headings.h3();
 
   margin: 0;
-  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-style: italic;
   text-align: center;
   flex: 1 1 auto;
 
@@ -153,11 +190,35 @@ const { open: openMobileNav, close } = useModal({
   }
 }
 
-.switch {
+.language-switch {
   display: none;
 
   @include breakpoints.lg() {
-    display: block;
+    display: flex;
+  }
+}
+
+.switch {
+  @include breakpoints.lg() {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+@include themes.component-theme-dark() {
+  .header {
+    --header-icon-button-color: red;
+    --header-icon-button-hover-color: orange;
+    --header-icon-button-active-color: white;
+  }
+}
+
+@include themes.component-theme-light() {
+  .header {
+    --header-icon-button-color: white;
+    --header-icon-button-hover-color: orange;
+    --header-icon-button-active-color: yellow;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 @use '/src/styles/mixins/breakpoints.scss' as breakpoints;
 
 @mixin heading-base {
-  color: var(--heading-color, #1c1c1c);
+  color: var(--heading-color);
   font-weight: 500;
 
   &:first-child {

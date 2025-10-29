@@ -6,6 +6,7 @@ import { useCardsStore } from '../../store/cards';
 import { useGetCardsData } from '@/composables/data/get-cards-data';
 
 import BankCardList from '@/components/bank-cards/BankCardList.vue';
+import ErrorPlaceholder from '@/components/error/ErrorPlaceholder.vue';
 
 const cardsStore = useCardsStore();
 const { getCardsData } = useGetCardsData();
@@ -28,6 +29,11 @@ onMounted(() => {
         :cards="cardsStore.data"
         :is-processing="cardsStore.isProcessing"
       />
+      <ErrorPlaceholder v-if="cardsStore.isError">
+        <p>
+          {{ cardsStore.statusMessage }}
+        </p>
+      </ErrorPlaceholder>
     </div>
   </div>
 </template>

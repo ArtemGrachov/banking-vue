@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
+import { useMoneyFormat } from '@/composables/money/money-format';
+
 import type { ICard } from '@/types/models/card';
 
 interface IProps {
@@ -8,6 +10,7 @@ interface IProps {
 }
 
 const { card } = defineProps<IProps>();
+const mf = useMoneyFormat();
 
 const numberParts = computed(() => card.cardNumber.split(' '));
 </script>
@@ -15,6 +18,9 @@ const numberParts = computed(() => card.cardNumber.split(' '));
 <template>
   <div class="bank-card" :class="`_${card.design}`">
     <div class="top">
+      <div class="balance">
+        {{ mf(card.balance, card.currency) }}
+      </div>
       <div class="bank-name">
         Bank name
       </div>
@@ -92,8 +98,8 @@ const numberParts = computed(() => card.cardNumber.split(' '));
   color: red;
   text-shadow: 1px 1px 1px 1px black;
   position: absolute;
-  top: px-to-em(8px);
-  left: px-to-em(8px);
+  bottom: px-to-em(8px);
+  right: px-to-em(8px);
   width: px-to-em(32px);
   height: px-to-em(32px);
   background: white;
@@ -103,14 +109,22 @@ const numberParts = computed(() => card.cardNumber.split(' '));
   border-radius: 50%;
 }
 
-.top, .bottom {
+.top {
+  margin-bottom: px-to-em(24px);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: px-to-em(16px);
 }
 
-.top {
-  margin-bottom: px-to-em(24px);
+.balance {
+  font-weight: 600;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: px-to-em(16px);
 }
 
 .bank-name {

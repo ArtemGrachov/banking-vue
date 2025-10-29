@@ -1,5 +1,4 @@
 {
-  "test": "EN message",
   "error": {
     "subtitle": "An error occured",
     "return": "Retrun to the home page"
@@ -10,8 +9,12 @@
     "transaction_history": "Transaction history",
     "cards": "Cards",
     "charts": "Charts",
-    "profile": "Profile",
-    "security": "Security"
+    "personal_info": "Personal information",
+    "security": "Security",
+    "login": "Log in",
+    "registration": "Create an account",
+    "forgot-password": "Forgot password?",
+    "logout": "Log out"
   },
   "common_locales": {
     "uk": "Українська / Ukrainian",
@@ -36,9 +39,6 @@
     "resend_timer": "Send again ({time})"
   },
   "view_registration": {
-    "login_label": "Already have an account?",
-    "login_link": "Log in!",
-    "forgot_password": "Forgot password?",
     "success": "Registered successfully"
   },
   "common_validation": {
@@ -61,7 +61,7 @@
     "money_transfer": "Transfer money",
     "transaction_history": "Transaction History",
     "charts": "Charts",
-    "profile": "Profile",
+    "personal_info": "Personal information",
     "security": "Security",
     "registration": "Registration",
     "login": "Login",
@@ -76,10 +76,6 @@
   },
   "form_login": {
     "login": "Email or phone number"
-  },
-  "view_login": {
-    "registration_link": "Don't have an account?",
-    "forgot_password": "Forgot password?"
   },
   "form_forgot_password": {
     "reset_by": "Reset by",
@@ -191,7 +187,8 @@
     "recipient": "Recipient",
     "submit": "Send",
     "max": "Max: {value}",
-    "max_validation": "You cannot transfer more than {value}"
+    "max_validation": "You cannot transfer more than {value}",
+    "card_available_validation": "The card must be available"
   },
   "view_transfer": {
     "confirmation": "Do you really want to transfer {value} to {recipient}?",
@@ -226,10 +223,36 @@
       "title": "Filters"
     },
     "title_income": "Income",
-    "title_outcome": "Outcome",
+    "title_expense": "Expense",
     "no_stats": {
       "title": "No data",
       "subtitle": "No statistics to display"
     }
+  },
+  "common_auth": {
+    "logout": "Logout",
+    "logout_question": "Are you sure you want to log out?",
+    "registration_link": "Don't have an account?",
+    "login_label": "Already have an account?",
+    "login_link": "Log in!",
+    "forgot_password": "Forgot password?"
+  },
+  "personal_info": {
+    "full_name": "Full name",
+    "country": "Country",
+    "address": "Address",
+    "id_number": "ID number"
+  },
+  "view_security": {
+    "confirmation_success": "Security data update request send succesfully",
+    "success": "Security data updated succesfully",
+    "return": "Return"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Click here to proceed",
+    "sms_code": "DEMO: Type any 4 numbers"
+  },
+  "footer": {
+    "about_link": "About the project"
   }
 }

@@ -13,10 +13,11 @@ import './styles/main.scss';
 
 const app = createApp(App)
 
+app.use(createPinia());
+
 const i18n = setupI18n();
 const router = setupRouter({ i18n });
 
-app.use(createPinia());
 app.use(i18n);
 app.use(router);
 app.use(createVfm());

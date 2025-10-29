@@ -16,6 +16,8 @@ import type {
   IGetStatsResponse,
 } from '@/types/api/stats';
 
+import { mockRequest } from '@/utils/mock-request';
+
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
 
@@ -29,7 +31,8 @@ export const useStatsData = () => {
     try {
       getStatus.value = EStatus.PROCESSING;
 
-      let transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      const rawData = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      let transactions = (await mockRequest<ITransaction[]>(rawData))!;
 
       transactions = transactions.filter(t => t.currency === query.currency);
 

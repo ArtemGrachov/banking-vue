@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { minLength, required, email, helpers } from '@vuelidate/validators'
+import { required, email, helpers, sameAs } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core';
 
 import { EStatus } from '@/constants/status';
@@ -11,8 +11,11 @@ import FormField from '@/components/forms/FormField.vue';
 import FormStatus from '@/components/forms/FormStatus.vue';
 import Input from '@/components/inputs/Input.vue';
 import InputMask from '@/components/inputs/InputMask.vue';
+import InputPassword from '@/components/inputs/InputPassword.vue';
+import PasswordHints from '@/components/inputs/PasswordHints.vue';
 
 import type { IFormRegistration } from '@/types/forms/form-registration';
+import { usePasswordValidators } from '@/composables/validation/password-validators';
 
 interface IProps {
   submitStatus?: EStatus;
@@ -26,17 +29,15 @@ type Emits = {
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
-const fieldFullName = ref('');
 const fieldEmail = ref('');
 const fieldPhoneNumber = ref('');
+const fieldPassword = ref('');
+const fieldPasswordRepeat = ref('');
 
 const phoneValidator = helpers.regex(REGEXP_PHONE);
+const passwordValidators = usePasswordValidators({ required });
 
 const rules = computed(() => ({
-  full_name: {
-    required,
-    minLength: minLength(3),
-  },
   email: {
     required,
     email,
@@ -45,12 +46,18 @@ const rules = computed(() => ({
     required,
     phone: phoneValidator,
   },
+  password: passwordValidators,
+  passwordRepeat: {
+    required,
+    passwordMatch: sameAs(fieldPassword, 'password'),
+  },
 }));
 
 const v$ = useVuelidate(rules, {
-  full_name: fieldFullName,
   email: fieldEmail,
   phone_number: fieldPhoneNumber,
+  password: fieldPassword,
+  passwordRepeat: fieldPasswordRepeat,
 });
 
 const isProcessing = computed(() => {
@@ -63,7 +70,6 @@ const submitHandler = async () => {
   }
 
   emits('submit', {
-    full_name: fieldFullName.value,
     email: fieldEmail.value,
     phone_number: fieldPhoneNumber.value,
   });
@@ -75,23 +81,6 @@ const submitHandler = async () => {
     <FormStatus v-if="statusMessage" :status="submitStatus">
       {{ statusMessage }}
     </FormStatus>
-    <FormField
-      :label-attrs="{ for: 'full_name' }"
-      :input="v$.full_name"
-    >
-      <template #label>
-        {{ $t('form_common.full_name') }}
-      </template>
-      <template #default="{ classNames }">
-        <Input
-          id="full_name"
-          v-model="fieldFullName"
-          :class="classNames"
-          :readonly="isProcessing"
-          @blur="v$.full_name.$touch()"
-        />
-      </template>
-    </FormField>
     <FormField
       :label-attrs="{ for: 'email' }"
       :input="v$.email"
@@ -128,6 +117,43 @@ const submitHandler = async () => {
       </template>
       <template #hint>
         {{ $t('common_validation.phone_hint') }}
+      </template>
+    </FormField>
+    <FormField
+      :label-attrs="{ for: 'password' }"
+      :input="v$.password"
+    >
+      <template #label>
+        {{ $t('form_common.password') }}
+      </template>
+      <template #default="{ classNames }">
+        <PasswordHints v-slot="{ onBlur, onFocus }" :input="v$.password">
+          <InputPassword
+            id="password"
+            v-model="fieldPassword"
+            :input-attrs="{ class: classNames }"
+            :readonly="isProcessing"
+            @blur="v$.password.$touch(); onBlur()"
+            @focus="onFocus"
+          />
+        </PasswordHints>
+      </template>
+    </FormField>
+    <FormField
+      :label-attrs="{ for: 'password_repeat' }"
+      :input="v$.passwordRepeat"
+    >
+      <template #label>
+        {{ $t('form_common.password_repeat') }}
+      </template>
+      <template #default="{ classNames }">
+        <InputPassword
+          id="password_repeat"
+          v-model="fieldPasswordRepeat"
+          :input-attrs="{ class: classNames }"
+          :readonly="isProcessing"
+          @blur="v$.passwordRepeat.$touch()"
+        />
       </template>
     </FormField>
     <div class="submit-row">

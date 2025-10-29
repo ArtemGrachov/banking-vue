@@ -1,3 +1,256 @@
 {
-  "test": "PL message"
+  "error": {
+    "subtitle": "Wystąpił błąd",
+    "return": "Powrót na stronę główną"
+  },
+  "nav": {
+    "dashboard": "Panel główny",
+    "money_transfer": "Przelew pieniędzy",
+    "transaction_history": "Historia transakcji",
+    "cards": "Karty",
+    "charts": "Wykresy",
+    "personal_info": "Dane osobowe",
+    "security": "Bezpieczeństwo",
+    "login": "Zaloguj się",
+    "registration": "Utwórz konto",
+    "forgot-password": "Zapomniałeś hasła?",
+    "logout": "Wyloguj się"
+  },
+  "common_locales": {
+    "uk": "Українська / Ukrainian",
+    "be": "Беларуская / Belarusian",
+    "pl": "Polski / Polish",
+    "lt": "Lietuvių / Lithuanian",
+    "cs": "Čeština / Czech",
+    "sk": "Slovenčina / Slovak",
+    "en": "English",
+    "de": "Deutsch / German",
+    "change_language": "Zmień język"
+  },
+  "form_common": {
+    "full_name": "Pełne imię i nazwisko",
+    "email": "Email",
+    "phone_number": "Numer telefonu",
+    "password": "Hasło",
+    "password_repeat": "Powtórz hasło",
+    "confirmation_code": "Kod potwierdzający",
+    "submit": "Wyślij",
+    "resend": "Wyślij ponownie",
+    "resend_timer": "Wyślij ponownie ({time})"
+  },
+  "view_registration": {
+    "success": "Rejestracja zakończona sukcesem"
+  },
+  "common_validation": {
+    "required": "To pole jest wymagane",
+    "email": "To pole nie odpowiada formatowi email",
+    "phone": "To pole nie odpowiada formatowi telefonu",
+    "phone_hint": "Tylko cyfry, długość 7–15",
+    "min_length": "To pole musi zawierać co najmniej {min} znaków",
+    "numeric": "To pole może zawierać tylko liczby",
+    "length": "Ten symbol musi mieć {length} znaków",
+    "contain_lower_case": "To pole musi zawierać co najmniej jedną małą literę",
+    "contain_upper_case": "To pole musi zawierać co najmniej jedną dużą literę",
+    "only_latin": "To pole może zawierać tylko litery łacińskie",
+    "contan_number": "To pole musi zawierać co najmniej jedną cyfrę",
+    "special_symbol": "To pole musi zawierać co najmniej jeden znak specjalny",
+    "password_match": "To pole musi być zgodne z hasłem"
+  },
+  "page_title": {
+    "dashboard": "Panel główny",
+    "money_transfer": "Przelew pieniędzy",
+    "transaction_history": "Historia transakcji",
+    "charts": "Wykresy",
+    "personal_info": "Dane osobowe",
+    "security": "Bezpieczeństwo",
+    "registration": "Rejestracja",
+    "login": "Logowanie",
+    "forgot_password": "Zapomniałeś hasła",
+    "reset_password": "Resetuj hasło",
+    "cards": "Karty",
+    "order_card": "Zamów kartę"
+  },
+  "common_errors": {
+    "generic": "Wystąpił błąd",
+    "refresh": "Spróbuj nacisnąć przycisk odśwież lub przeładuj stronę"
+  },
+  "form_login": {
+    "login": "Email lub numer telefonu"
+  },
+  "form_forgot_password": {
+    "reset_by": "Resetuj przez",
+    "reset_by_phone": "Kod SMS",
+    "reset_by_email": "Link w emailu"
+  },
+  "view_forgot_password": {
+    "success_sms": "Kod resetujący został wysłany",
+    "success_email": "Link resetujący został wysłany",
+    "description_email": "Email z linkiem do resetowania hasła został wysłany na Twój adres. Jeśli go nie otrzymałeś, sprawdź poprawność adresu i kliknij przycisk „Wyślij ponownie”"
+  },
+  "form_confirmation": {
+    "confirm_by": "Potwierdź przez",
+    "confirm_by_email": "Email",
+    "confirm_by_phone": "Telefon"
+  },
+  "confirmation": {
+    "hint_email": "Email z linkiem potwierdzającym został wysłany na Twój adres. Jeśli go nie otrzymałeś, sprawdź poprawność adresu i kliknij „Wyślij ponownie”",
+    "hint_sms": "SMS z kodem potwierdzającym został wysłany na Twój telefon. Jeśli go nie otrzymałeś, sprawdź numer telefonu i kliknij „Wyślij ponownie”"
+  },
+  "password_hints": {
+    "min_length": "Minimalna długość {min}",
+    "contain_lower_case": "Małe litery",
+    "contain_upper_case": "Duże litery",
+    "only_latin": "Tylko litery łacińskie",
+    "contan_number": "Cyfry",
+    "special_symbol": "Znaki specjalne"
+  },
+  "view_reset_password": {
+    "success": "Twoje hasło zostało pomyślnie zresetowane. Teraz możesz się zalogować"
+  },
+  "view_dashboard": {
+    "transactions_view_all": "Zobacz wszystkie",
+    "nav_links": {
+      "link_money_transfer": "Przelew pieniędzy",
+      "link_charts": "Wykresy",
+      "link_cards": "Karty",
+      "link_order_card": "Zamów kartę"
+    }
+  },
+  "order_card": {
+    "title": "Zamów kartę"
+  },
+  "common_transactions": {
+    "list_placeholder": {
+      "title": "Lista jest pusta",
+      "subtitle": "Brak transakcji"
+    },
+    "categories": {
+      "all": "Wszystkie",
+      "groceries": "Produkty spożywcze",
+      "restaurants_cafes": "Restauracje i kawiarnie",
+      "transportation": "Transport",
+      "entertainment": "Rozrywka",
+      "health_medicine": "Zdrowie i medycyna",
+      "shopping": "Zakupy",
+      "utilities_bills": "Opłaty i rachunki",
+      "salary": "Wynagrodzenie",
+      "income": "Przychód"
+    }
+  },
+  "common_cards": {
+    "list_placeholder": {
+      "title": "Brak kart",
+      "subtitle": "Zamów swoją pierwszą kartę"
+    },
+    "close": {
+      "label": "Zamknij",
+      "question": "Czy na pewno chcesz zamknąć kartę {cardNumber}?",
+      "success": "Karta została pomyślnie zamknięta"
+    },
+    "block": {
+      "label_block": "Zablokuj",
+      "label_unblock": "Odblokuj",
+      "question_block": "Czy na pewno chcesz zablokować kartę {cardNumber}?",
+      "question_unblock": "Czy na pewno chcesz odblokować kartę {cardNumber}?",
+      "block_success": "Karta została pomyślnie zablokowana",
+      "unblock_success": "Karta została pomyślnie odblokowana"
+    },
+    "design": {
+      "red": "Czerwona",
+      "green": "Zielona",
+      "blue": "Niebieska",
+      "golden": "Złota",
+      "silver": "Srebrna"
+    }
+  },
+  "view_transaction_history": {
+    "mobile_trigger": "Otwórz filtry",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategoria",
+      "label_period": "Okres"
+    },
+    "modal_filters": {
+      "title": "Filtry"
+    }
+  },
+  "select": {
+    "no_result": "Nic nie znaleziono",
+    "no_options": "Brak opcji",
+    "placeholder": "Wybierz opcję"
+  },
+  "select_modal": {
+    "clear": "Wyczyść"
+  },
+  "form_money_transfer": {
+    "amount": "Kwota",
+    "recipient": "Odbiorca",
+    "submit": "Wyślij",
+    "max": "Maks.: {value}",
+    "max_validation": "Nie możesz przelać więcej niż {value}",
+    "card_available_validation": "Karta musi być dostępna"
+  },
+  "view_transfer": {
+    "confirmation": "Czy na pewno chcesz przelać {value} do {recipient}?",
+    "success_title": "Gotowe",
+    "success_subtitle": "Przelew został pomyślnie wykonany",
+    "return": "Przelać ponownie"
+  },
+  "bank_card_item": {
+    "balance": "Saldo",
+    "manage": "Zarządzaj"
+  },
+  "view_card": {
+    "balance": "Saldo",
+    "transactions": "Transakcje"
+  },
+  "form_order_card": {
+    "design": "Wygląd",
+    "submit": "Zamów kartę"
+  },
+  "view_order_card": {
+    "success": "Karta została pomyślnie zamówiona"
+  },
+  "view_charts": {
+    "mobile_trigger": "Otwórz filtry",
+    "filters": {
+      "label_card": "Karta",
+      "label_category": "Kategoria",
+      "label_period": "Okres",
+      "label_currency": "Waluta"
+    },
+    "modal_filters": {
+      "title": "Filtry"
+    },
+    "title_income": "Przychód",
+    "title_expense": "Wydatki",
+    "no_stats": {
+      "title": "Brak danych",
+      "subtitle": "Brak statystyk do wyświetlenia"
+    }
+  },
+  "common_auth": {
+    "logout": "Wyloguj się",
+    "logout_question": "Czy na pewno chcesz się wylogować?",
+    "registration_link": "Nie masz konta?",
+    "login_label": "Masz już konto?",
+    "login_link": "Zaloguj się!",
+    "forgot_password": "Zapomniałeś hasła?"
+  },
+  "personal_info": {
+    "full_name": "Pełne imię i nazwisko",
+    "country": "Kraj",
+    "address": "Adres",
+    "id_number": "Numer dowodu / ID"
+  },
+  "view_security": {
+    "update_success": "Dane bezpieczeństwa zostały pomyślnie zaktualizowane"
+  },
+  "demo_confirmation": {
+    "email_link": "DEMO: Kliknij tutaj, aby kontynuować",
+    "sms_code": "DEMO: Wpisz dowolne 4 cyfry"
+  },
+  "footer": {
+    "about_link": "O projekcie"
+  }
 }
