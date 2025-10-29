@@ -8,6 +8,7 @@ import { ROUTE_NAMES, ROUTES_MAP } from '@/router/routes';
 import LayoutDefault from '@/layouts/layout-default/LayoutDefault.vue';
 import LayoutBase from '@/layouts/layout-default/LayoutBase.vue';
 import LayoutAuth from '@/layouts/layout-default/LayoutAuth.vue';
+import { useAuthStore } from '@/store/auth';
 
 const PATH_LOCALE = LOCALES.join('|');
 
@@ -15,7 +16,23 @@ interface ISetupRouterOptions {
   i18n: I18n;
 }
 
+export const USER_ROUTES = [
+  ROUTE_NAMES.DASHBOARD,
+  ROUTE_NAMES.MONEY_TRANSFER,
+  ROUTE_NAMES.TRANSACTION_HISTORY,
+  ROUTE_NAMES.CHARTS,
+  ROUTE_NAMES.CARD,
+  ROUTE_NAMES.CARDS,
+  ROUTE_NAMES.ORDER_CARD,
+  ROUTE_NAMES.IDENTITY_VERIFICATION,
+  ROUTE_NAMES.SECURITY,
+];
+
+const USER_ROUTES_SET = new Set(USER_ROUTES);
+
 export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
+  const authStore = useAuthStore();
+
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -81,6 +98,20 @@ export const setupRouter = ({ i18n }: ISetupRouterOptions) => {
       delete redirect.params.locale;
 
       return next(redirect);
+    }
+
+    next();
+  });
+
+  router.beforeEach((to, from, next) => {
+    if (!authStore.isAuthorized && USER_ROUTES_SET.has(to.name as string)) {
+      return next({
+        name: ROUTE_NAMES.LOGIN,
+      });
+    } else if (authStore.isAuthorized && !USER_ROUTES_SET.has(to.name as string)) {
+      return next({
+        name: ROUTE_NAMES.DASHBOARD,
+      });
     }
 
     next();
