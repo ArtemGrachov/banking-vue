@@ -34,6 +34,7 @@ const cardsStore = useCardsStore();
 <style lang="scss" scoped>
 .carousel {
   --bank-card-carousel-padding: 0 16px;
+  --placeholder-padding: 0;
   overflow: hidden;
 }
 

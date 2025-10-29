@@ -10,7 +10,7 @@ import { useGetErrorMessage } from '@/composables/common/get-error-message';
 import type { ITransaction } from '@/types/models/transaction';
 import type { IGetTransactionsQuery, IGetTransactionsResponse } from '@/types/api/transactions';
 
-import { mockPaginationRequest } from '@/utils/mock-request';
+import { mockPaginationRequest, mockRequest } from '@/utils/mock-request';
 
 dayjs.extend(isSameOrAfter);
 dayjs.extend(isSameOrBefore);
@@ -30,7 +30,8 @@ export const useTransactionsData = () => {
 
       getStatus.value = EStatus.PROCESSING;
 
-      let transactions = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      const rawData = await import('@/mock-data/transactions.json').then(m => m.default as ITransaction[]);
+      let transactions = (await mockRequest<ITransaction[]>(rawData))!;
 
       if (query.cards?.length) {
         const set = new Set(query.cards);
