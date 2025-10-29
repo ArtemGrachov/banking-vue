@@ -85,6 +85,14 @@ const links = [
           {{ link.label }}
         </Button>
       </li>
+      <li class="item _separate">
+        <Button type="button" class="link" variant="transparent">
+          <span class="material-symbols-outlined">
+            logout
+          </span>
+          Logout
+        </Button>
+      </li>
     </ul>
   </nav>
 </template>
@@ -96,6 +104,16 @@ const links = [
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: var(--nav-list-height, 100%);
+}
+
+.item {
+  &._separate {
+    margin-top: auto;
+  }
 }
 
 .link {

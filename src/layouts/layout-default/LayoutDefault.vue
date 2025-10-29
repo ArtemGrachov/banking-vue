@@ -6,7 +6,7 @@ import NavMenu from '@/components/nav/NavMenu.vue';
 <template>
   <div class="row">
     <aside class="sidebar">
-      <NavMenu />
+      <NavMenu class="nav-menu" />
     </aside>
     <router-view></router-view>
   </div>
@@ -30,5 +30,10 @@ import NavMenu from '@/components/nav/NavMenu.vue';
     flex: 0 0 auto;
     padding: 32px 0;
   }
+}
+
+.nav-menu {
+  height: 100%;
+  --nav-list-height: 100%;
 }
 </style>
