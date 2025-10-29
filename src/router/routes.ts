@@ -9,7 +9,7 @@ export const ROUTE_NAMES = {
   CARD: 'CARD',
   ORDER_CARD: 'ORDER_CARD',
   CHARTS: 'CHARTS',
-  IDENTITY_VERIFICATION: 'IDENTITY_VERIFICATION',
+  PERSONAL_INFO: 'PERSONAL_INFO',
   SECURITY: 'SECURITY',
   REGISTRATION: 'REGISTRATION',
   LOGIN: 'LOGIN',
@@ -63,9 +63,9 @@ export const ROUTES: RouteRecordRaw[] = [
     component: () => import('@/views/order-card/ViewOrderCard.vue'),
   },
   {
-    name: ROUTE_NAMES.IDENTITY_VERIFICATION,
-    path: 'identity-verification',
-    component: PLACEHOLDER_CMP,
+    name: ROUTE_NAMES.PERSONAL_INFO,
+    path: 'personal-info',
+    component: () => import('@/views/personal-info/ViewPersonalInfo.vue'),
   },
   {
     name: ROUTE_NAMES.SECURITY,

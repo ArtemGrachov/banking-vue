@@ -61,8 +61,8 @@ const links = [
   },
   {
     key: 'profile',
-    label: t('nav.profile'),
-    path: getRoute({ name: ROUTE_NAMES.IDENTITY_VERIFICATION }),
+    label: t('nav.personal_info'),
+    path: getRoute({ name: ROUTE_NAMES.PERSONAL_INFO }),
     icon: 'account_circle',
     authOnly: true,
   },
