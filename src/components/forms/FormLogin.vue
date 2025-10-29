@@ -25,8 +25,8 @@ type Emits = {
 const { statusMessage, submitStatus } = defineProps<IProps>();
 const emits = defineEmits<Emits>();
 
-const fieldLogin = ref('');
-const fieldPassword = ref('');
+const fieldLogin = ref('test@test.com');
+const fieldPassword = ref('Test123#');
 
 const rules = computed(() => ({
   login: {

@@ -41,7 +41,6 @@ const changeHandler = (e: SwiperType) => {
       class="swiper"
       :slides-per-view="'auto'"
       :space-between="-50"
-      :loop="true"
       :center-insufficient-slides="true"
       :centered-slides="true"
       :initial-slide="initialSlide"
